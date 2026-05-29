@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常见问题 FAQ — Claude Code 安装助手</title>
+  <meta name="description" content="Claude Code 安装和使用过程中的常见问题解答，涵盖网络、安装、登录和使用各个方面。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">✦</div>
+      Claude Code 安装助手
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="step1.html">步骤一</a>
+      <a href="step2.html">步骤二</a>
+      <a href="step3.html">步骤三</a>
+      <a href="faq.html" class="active">FAQ</a>
+    </div>
+    <button class="nav-toggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>常见问题 FAQ</h1>
+    <p>汇总了安装和使用过程中的常见问题，点击问题查看答案。</p>
+  </div>
+</div>
+
+<!-- FAQ Content -->
+<main class="section-sm">
+  <div class="container" style="max-width:800px;">
+
+    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">🌐 网络相关</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          为什么必须要有境外网络才能用 Claude Code？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Claude Code 调用的是 Anthropic 公司的 API，服务器位于美国。由于网络环境限制，中国大陆用户需要通过代理工具才能稳定访问。
+            这是使用境外 AI 服务的共同需求，与 Claude Code 本身无关。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          安装程序运行时提示「网络连接失败」怎么办？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            请按以下步骤排查：<br><br>
+            1. 确认代理工具已启动并正常运行<br>
+            2. 在代理工具中开启「系统代理」或「全局模式」<br>
+            3. 在 PowerShell 中运行 <code>curl https://api.anthropic.com</code> 测试连通性<br>
+            4. 如系统代理无效，尝试手动设置：<code>set HTTPS_PROXY=http://127.0.0.1:你的代理端口</code><br>
+            5. 重新运行安装程序
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          安装成功后每次使用都需要开代理吗？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            是的，Claude Code 每次对话都需要连接 Anthropic API，因此每次使用时都需要保持代理工具处于开启状态。
+            建议将代理工具设置为开机自启，这样无需每次手动开启。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:40px 0 16px;">📦 安装相关</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          安装时 Windows 提示「无法运行此应用」或 SmartScreen 警告怎么办？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            这是因为安装程序尚未通过微软的代码签名认证，属于正常现象。解决方法：<br><br>
+            1. 点击弹窗中的「更多信息」<br>
+            2. 点击「仍要运行」按钮<br><br>
+            本程序代码完全开源，你可以在 GitHub 上查看和审计所有代码，确认安全性。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          安装后运行 claude 提示「不是内部或外部命令」怎么办？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            这是 PATH 环境变量未更新的问题。解决方法：<br><br>
+            1. <strong>重启终端：</strong> 完全关闭 PowerShell/CMD 窗口，重新打开<br>
+            2. <strong>重启电脑：</strong> 如果重启终端无效，重启电脑后再试<br>
+            3. <strong>手动验证：</strong> 运行 <code>npm list -g @anthropic-ai/claude-code</code>，如果有输出说明安装成功，只是 PATH 问题
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          电脑上已有 Node.js，但版本太旧怎么办？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Claude Code 需要 Node.js 18 或更高版本。安装程序会自动检测版本，如果版本过低会提示你更新。
+            你也可以手动从 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载最新 LTS 版本安装后，再运行 Claude Code 安装程序。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          如何卸载 Claude Code？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            在 PowerShell 中运行以下命令即可完全卸载：<br><br>
+            <code>npm uninstall -g @anthropic-ai/claude-code</code><br><br>
+            Node.js 本身不会被删除，如需一并卸载，去「控制面板 → 程序和功能」中找到 Node.js 卸载即可。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:40px 0 16px;">🔑 登录 & 账号</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Claude Code 是免费的吗？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Claude Code 软件本身免费，但使用需要 Anthropic 账号，并消耗 API 用量。<br><br>
+            <strong>计费方式：</strong> 按 Token 用量计费，新用户通常有一定免费额度。实际费用取决于使用量，
+            轻度使用每月大约几美元，重度使用可能更多。<br><br>
+            详细定价请参考 <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic 官方定价页面</a>。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          登录时浏览器不会自动打开怎么办？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            如果浏览器未自动打开，终端会显示一个登录链接。手动复制该链接到浏览器地址栏打开，
+            完成授权后终端会自动检测并完成登录。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          注册账号需要手机号或信用卡吗？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            注册账号不需要手机号和信用卡，使用 Google 或 Apple 账号即可完成注册。
+            如果你想使用付费 API 功能，才需要绑定支付方式（支持信用卡）。
+            新用户通常有免费试用额度，可以先体验再决定是否充值。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:40px 0 16px;">🔄 更新相关</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          如何更新到最新版本的 Claude Code？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            运行安装目录中的 <code>update.bat</code> 脚本即可自动更新。或者手动在终端运行：<br><br>
+            <code>npm update -g @anthropic-ai/claude-code</code><br><br>
+            建议定期更新以获得最新功能和安全修复。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          安装程序本身如何获取更新？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            安装程序通过 Git 进行版本管理。运行 <code>update.bat</code> 会自动从 GitHub 拉取最新版本的安装脚本，
+            然后重新安装最新版 Claude Code。你也可以关注发布页面获取更新通知。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box" style="margin-top:40px;">
+      <strong>没有找到你的问题？</strong> 欢迎在 GitHub Issues 中提问，或参考
+      <a href="https://docs.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code 官方文档</a> 获取更详细的说明。
+    </div>
+
+    <div style="text-align:center; margin-top:48px;">
+      <p style="color:var(--text-secondary); margin-bottom:16px;">准备好了？从头开始安装：</p>
+      <a href="step1.html" class="btn btn-primary">开始安装 →</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="step1.html">步骤一</a>
+        <a href="step2.html">步骤二</a>
+        <a href="step3.html">步骤三</a>
+      </div>
+      <p class="footer-disclaimer">
+        ⚠️ 免责声明：本站仅提供 Claude Code 软件的安装指引，不提供任何网络代理或加速服务。
+        Claude Code 是 Anthropic 的官方产品，本站与 Anthropic 无官方关联。
+        使用 Claude Code 须遵守 <a href="https://www.anthropic.com/legal/usage-policy" target="_blank" rel="noopener">Anthropic 使用条款</a>。
+      </p>
+      <p class="footer-copy">© 2025 Claude Code 安装助手 · 仅供学习参考</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

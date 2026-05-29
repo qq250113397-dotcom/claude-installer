@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>步骤一：网络准备 — Claude Code 安装助手</title>
+  <meta name="description" content="配置网络环境，确保可以访问 Anthropic API，这是使用 Claude Code 的必要前提。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">✦</div>
+      Claude Code 安装助手
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="step1.html" class="active">步骤一</a>
+      <a href="step2.html">步骤二</a>
+      <a href="step3.html">步骤三</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <button class="nav-toggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Progress Bar -->
+<div class="progress-bar">
+  <div class="container">
+    <div class="progress-inner">
+      <div class="prog-step active">
+        <div class="prog-num">1</div>
+        <span>网络准备</span>
+      </div>
+      <div class="prog-line"></div>
+      <div class="prog-step">
+        <div class="prog-num">2</div>
+        <span>下载安装</span>
+      </div>
+      <div class="prog-line"></div>
+      <div class="prog-step">
+        <div class="prog-num">3</div>
+        <span>登录使用</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>步骤一：网络准备</h1>
+    <p>Claude Code 需要访问境外服务器，在安装前请先确保网络可以正常连接。</p>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main class="section-sm">
+  <div class="container" style="max-width:800px;">
+
+    <div class="tip-box tip-blue">
+      <strong>为什么需要这一步？</strong><br>
+      Claude Code 通过 Anthropic 的 API（编程接口，可理解为"远程服务器通道"）提供服务，服务器位于美国。
+      在中国大陆直接访问会被屏蔽，需要先配置代理工具（俗称"梯子"）才能正常使用。
+    </div>
+
+    <!-- Video Section -->
+    <h2 style="margin-top:40px; margin-bottom:16px; font-size:1.3rem;">📹 视频教程</h2>
+    <p style="color:var(--text-secondary); margin-bottom:0;">跟随视频完成网络配置，大约需要 3-5 分钟：</p>
+
+    <div class="video-wrap">
+      <!-- 将下方注释取消，并替换为实际视频链接
+        YouTube:  <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+        B站:      <iframe src="https://player.bilibili.com/player.html?bvid=BV_ID" allowfullscreen></iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="play-icon">▶</div>
+        <p>视频教程即将上线</p>
+        <p style="font-size:0.8rem; color:var(--text-muted);">请先按下方文字教程完成网络配置</p>
+      </div>
+    </div>
+
+    <!-- Instructions -->
+    <h2 style="margin-top:48px; margin-bottom:8px; font-size:1.3rem;">📋 网络配置检查清单</h2>
+    <p style="color:var(--text-secondary); margin-bottom:8px;">按照以下步骤完成配置，每完成一步请在脑海中打勾：</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-item-num">1</div>
+        <div class="step-item-body">
+          <h4>准备可用的网络工具</h4>
+          <p>Claude Code 需要连接境外服务器，所以你需要一个网络代理工具（即俗称的"梯子"）。如果你还没有，可以点击下方按钮下载：</p>
+          <div style="margin-top:16px;">
+            <a href="DOWNLOAD_URL" class="btn btn-primary" target="_blank" rel="noopener">
+              ⬇️ 点击下载网络工具（国内直链）
+            </a>
+            <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">下载后按视频教程安装配置，工具需要支持系统代理模式（让电脑所有软件都走代理网络）。</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">2</div>
+        <div class="step-item-body">
+          <h4>开启系统代理</h4>
+          <p>打开网络工具，找到并启用以下任一选项：</p>
+          <ul style="margin:10px 0 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.2;">
+            <li style="margin-left:16px; list-style:disc;">
+              <strong>系统代理</strong>（让电脑所有软件都走代理网络，包括命令行终端）
+            </li>
+            <li style="margin-left:16px; list-style:disc;">
+              <strong>全局模式</strong>（推荐新手使用，所有流量统一走代理，最省心）
+            </li>
+          </ul>
+          <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">⚠️ 注意：只开启"增强模式"或"PAC 模式"是不够的，命令行终端可能无法走代理。</p>
+          <div class="screenshot-placeholder" style="margin-top:16px;">
+            📸 [此处插入 V2Ray 系统代理设置截图]
+          </div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">3</div>
+        <div class="step-item-body">
+          <h4>启用 Tun 模式（重要）</h4>
+          <div class="tip-box" style="margin-bottom:16px; border-left-color:#f85149; background:rgba(248,81,73,0.08);">
+            <strong style="color:#f85149;">⚠️ 警告：</strong>不改 Core 类型直接开 Tun 会导致无法联网，请严格按以下顺序操作。
+          </div>
+          <ol style="margin:0; padding:0; counter-reset:tun-step; display:flex; flex-direction:column; gap:10px;">
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">1</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">打开 V2Ray 设置 → <strong style="color:var(--text-primary);">Core 类型设置</strong></span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">2</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将 <code>VMess</code>、<code>Shadowsocks</code>、<code>VLESS</code>、<code>Trojan</code> 全部改为 <code>sing_box</code></span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">3</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">点击<strong style="color:var(--text-primary);">确定</strong>保存</span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">4</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">回到主界面，开启<strong style="color:var(--text-primary);">「启用 Tun」</strong>开关</span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">5</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将代理模式设为<strong style="color:var(--text-primary);">「V4-全局 (Global)」</strong></span>
+            </li>
+          </ol>
+          <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">Tun 模式会创建虚拟网络接口，让命令行终端的流量也能走代理，比普通系统代理更彻底。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">4</div>
+        <div class="step-item-body">
+          <h4>验证网络连通性</h4>
+          <p>先打开命令行终端（一个可以输入命令的黑色窗口）：</p>
+          <div style="margin:12px 0; display:flex; flex-direction:column; gap:8px;">
+            <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:0.9rem;">
+              <span style="color:var(--accent); font-weight:600;">🪟 Windows 用户：</span>
+              按 <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">Win</kbd> +
+              <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">R</kbd>，
+              在弹出的框里输入 <code>powershell</code>，按回车打开
+            </div>
+            <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:0.9rem;">
+              <span style="color:var(--accent); font-weight:600;">🍎 Mac 用户：</span>
+              按 <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">Command</kbd> +
+              <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">空格</kbd>，
+              在搜索框输入 <code>terminal</code>，按回车打开
+            </div>
+          </div>
+          <p style="margin-bottom:8px;">然后在终端窗口里粘贴以下命令，按回车执行：</p>
+          <code>curl https://api.anthropic.com</code>
+          <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
+            ✅ <strong>成功标志：</strong>返回一段英文文字或 JSON 数据<br>
+            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 2 / 步骤 3
+          </p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">5</div>
+        <div class="step-item-body">
+          <h4>（可选）手动告诉命令行走哪个代理</h4>
+          <p>如果步骤 4 测试失败、但浏览器能正常上网，说明系统代理没有覆盖到命令行，可以手动指定：</p>
+          <p style="margin:8px 0 4px; font-size:0.88rem; color:var(--text-secondary);">在终端里输入以下命令（把 <code>7890</code> 换成你代理工具显示的端口号）：</p>
+          <code>set HTTPS_PROXY=http://127.0.0.1:7890</code>
+          <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
+            端口号（代理工具监听的门牌号）通常在代理工具设置里能看到，常见值：7890、7891、1080、10809。<br>
+            安装程序也会自动尝试这些常用端口，大部分情况下不需要手动设置。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip-green" style="margin-top:32px;">
+      <strong>✓ 完成标志：</strong> 能够在浏览器中正常访问
+      <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，
+      说明网络已配置完成，可以进行下一步。
+    </div>
+
+    <!-- Additional tips -->
+    <h2 style="margin-top:48px; margin-bottom:16px; font-size:1.3rem;">🔧 常见问题</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>🐢 连接很慢怎么办？</h4>
+        <ul>
+          <li>尝试切换节点（代理服务器的位置）</li>
+          <li>选择延迟（响应时间，越低越好）低的境外节点</li>
+          <li>关闭其他占用网络的程序</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>❌ 连接超时怎么办？</h4>
+        <ul>
+          <li>检查代理工具是否已启动运行</li>
+          <li>确认已开启系统代理（全局模式）</li>
+          <li>重启代理工具后重试步骤 3</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Page Actions -->
+    <div class="page-actions">
+      <a href="index.html" class="btn btn-secondary">← 返回首页</a>
+      <a href="step2.html" class="btn btn-primary">网络已就绪，继续下一步 →</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="step2.html">步骤二</a>
+        <a href="step3.html">步骤三</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <p class="footer-disclaimer">
+        ⚠️ 免责声明：本站仅提供 Claude Code 软件的安装指引，不提供任何网络代理或加速服务。
+      </p>
+      <p class="footer-copy">© 2025 Claude Code 安装助手 · 仅供学习参考</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

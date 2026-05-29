@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>步骤三：登录 & 使用 — Claude Code 安装助手</title>
+  <meta name="description" content="注册 Anthropic 账号并登录 Claude Code，开始使用 AI 编程助手。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .success-banner {
+      background: linear-gradient(135deg, rgba(63, 185, 80, 0.1), rgba(63, 185, 80, 0.05));
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+      margin: 48px 0 0;
+    }
+    .success-banner .icon { font-size: 3rem; margin-bottom: 16px; }
+    .success-banner h3 { font-size: 1.4rem; color: var(--green); margin-bottom: 8px; }
+    .success-banner p { color: var(--text-secondary); }
+
+    .cmd-block {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-family: 'Cascadia Code', Consolas, monospace;
+      font-size: 0.9rem;
+      color: var(--blue);
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cmd-block::before { content: '$'; color: var(--green); flex-shrink: 0; }
+
+    .screen-mock {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 32px;
+      margin: 16px 0;
+      font-family: 'Cascadia Code', Consolas, monospace;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .screen-mock .hl { color: var(--accent); }
+    .screen-mock .gr { color: var(--green); }
+    .screen-mock .bl { color: var(--blue); }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .usage-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+    }
+    .usage-card .tag {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-family: monospace;
+    }
+    .usage-card h5 { font-size: 0.9rem; margin-bottom: 6px; }
+    .usage-card p { color: var(--text-muted); font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">✦</div>
+      Claude Code 安装助手
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="step1.html">步骤一</a>
+      <a href="step2.html">步骤二</a>
+      <a href="step3.html" class="active">步骤三</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <button class="nav-toggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Progress Bar -->
+<div class="progress-bar">
+  <div class="container">
+    <div class="progress-inner">
+      <div class="prog-step done">
+        <div class="prog-num">✓</div>
+        <span>网络准备</span>
+      </div>
+      <div class="prog-line done"></div>
+      <div class="prog-step done">
+        <div class="prog-num">✓</div>
+        <span>下载安装</span>
+      </div>
+      <div class="prog-line done"></div>
+      <div class="prog-step active">
+        <div class="prog-num">3</div>
+        <span>登录使用</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>步骤三：登录 &amp; 开始使用</h1>
+    <p>注册或登录 Anthropic 账号，将 Claude Code 与你的账号关联，即可开始使用。</p>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main class="section-sm">
+  <div class="container" style="max-width:800px;">
+
+    <!-- Register Section -->
+    <h2 style="font-size:1.3rem; margin-bottom:8px;">👤 注册 Anthropic 账号</h2>
+    <p style="color:var(--text-secondary); margin-bottom:16px;">如果你已有账号，可跳过此部分直接登录。</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-item-num">1</div>
+        <div class="step-item-body">
+          <h4>访问注册页面</h4>
+          <p>在浏览器中打开 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，点击「Sign Up」按钮。</p>
+          <div class="screenshot-placeholder">
+            📸 截图：claude.ai 首页 → 右上角「Sign Up」按钮
+          </div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">2</div>
+        <div class="step-item-body">
+          <h4>选择注册方式</h4>
+          <p>可以使用 Google 账号、Apple 账号快捷登录，或使用邮箱注册。推荐使用 Google 账号，更简便。</p>
+          <div class="screenshot-placeholder">
+            📸 截图：注册方式选择界面（Google / Apple / Email）
+          </div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">3</div>
+        <div class="step-item-body">
+          <h4>完成验证</h4>
+          <p>按提示完成邮箱验证或账号授权，同意服务条款后即注册成功。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Section -->
+    <h2 style="font-size:1.3rem; margin-top:48px; margin-bottom:8px;">🔑 在 Claude Code 中登录</h2>
+    <p style="color:var(--text-secondary); margin-bottom:16px;">账号注册完成后，在终端中完成登录授权：</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-item-num">1</div>
+        <div class="step-item-body">
+          <h4>打开 PowerShell 或 CMD</h4>
+          <p>按 <code>Win + R</code>，输入 <code>powershell</code>，按回车。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">2</div>
+        <div class="step-item-body">
+          <h4>运行 Claude Code</h4>
+          <p>输入以下命令启动 Claude Code：</p>
+          <div class="cmd-block">claude</div>
+          <p style="margin-top:8px; color:var(--text-muted); font-size:0.88rem;">首次运行会弹出登录提示。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">3</div>
+        <div class="step-item-body">
+          <h4>按提示完成浏览器授权</h4>
+          <p>终端会显示如下提示，按照指引在浏览器中完成授权：</p>
+          <div class="screen-mock">
+<span class="hl">Claude Code</span> v1.x.x<br><br>
+<span class="gr">?</span> 请在浏览器中完成登录 →<br>
+  <span class="bl">https://claude.ai/login?code=XXXXXX</span><br><br>
+等待授权完成...<br><br>
+<span class="gr">✓</span> 登录成功！欢迎使用 Claude Code。
+          </div>
+          <div class="screenshot-placeholder">
+            📸 截图：终端显示登录链接，浏览器打开授权页面
+          </div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">4</div>
+        <div class="step-item-body">
+          <h4>开始使用</h4>
+          <p>登录成功后，你可以在任意项目目录打开终端，输入 <code>claude</code> 开始使用。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip-blue" style="margin-top:16px;">
+      <strong>API Key 方式：</strong> 高级用户也可使用 API Key 登录。在
+      <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a>
+      创建 API Key，然后运行 <code>claude config set apiKey YOUR_KEY</code> 进行配置。
+    </div>
+
+    <!-- Quick Usage Guide -->
+    <h2 style="font-size:1.3rem; margin-top:48px; margin-bottom:16px;">🚀 快速使用指南</h2>
+    <p style="color:var(--text-secondary); margin-bottom:20px;">登录成功后，试试这些常用命令：</p>
+
+    <div class="usage-grid">
+      <div class="usage-card">
+        <div class="tag">claude</div>
+        <h5>启动交互式聊天</h5>
+        <p>直接对话，询问编程问题或让 Claude 帮你写代码</p>
+      </div>
+      <div class="usage-card">
+        <div class="tag">claude "任务描述"</div>
+        <h5>单次任务执行</h5>
+        <p>快速让 Claude 完成一个具体任务，不进入交互模式</p>
+      </div>
+      <div class="usage-card">
+        <div class="tag">claude --help</div>
+        <h5>查看帮助文档</h5>
+        <p>显示所有可用命令和选项的完整说明</p>
+      </div>
+      <div class="usage-card">
+        <div class="tag">claude --version</div>
+        <h5>查看当前版本</h5>
+        <p>显示已安装的 Claude Code 版本号</p>
+      </div>
+    </div>
+
+    <!-- Success Banner -->
+    <div class="success-banner">
+      <div class="icon">🎉</div>
+      <h3>恭喜，安装完成！</h3>
+      <p>你已成功安装并配置好 Claude Code，现在可以开始 AI 辅助编程之旅了。</p>
+      <p style="margin-top:8px; font-size:0.88rem;">遇到问题？查看 <a href="faq.html">FAQ 常见问题</a> 获取帮助。</p>
+    </div>
+
+    <!-- Page Actions -->
+    <div class="page-actions">
+      <a href="step2.html" class="btn btn-secondary">← 上一步：下载安装</a>
+      <a href="faq.html" class="btn btn-secondary">查看 FAQ</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="step1.html">步骤一</a>
+        <a href="step2.html">步骤二</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <p class="footer-disclaimer">
+        ⚠️ 免责声明：本站仅提供 Claude Code 软件的安装指引，不提供任何网络代理或加速服务。
+      </p>
+      <p class="footer-copy">© 2025 Claude Code 安装助手 · 仅供学习参考</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

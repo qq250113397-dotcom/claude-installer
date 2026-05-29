@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>步骤二：下载 & 安装 — Claude Code 安装助手</title>
+  <meta name="description" content="下载 Claude Code Windows 一键安装程序，自动安装所有依赖，无需手动配置。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">✦</div>
+      Claude Code 安装助手
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="step1.html">步骤一</a>
+      <a href="step2.html" class="active">步骤二</a>
+      <a href="step3.html">步骤三</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <button class="nav-toggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Progress Bar -->
+<div class="progress-bar">
+  <div class="container">
+    <div class="progress-inner">
+      <div class="prog-step done">
+        <div class="prog-num">✓</div>
+        <span>网络准备</span>
+      </div>
+      <div class="prog-line done"></div>
+      <div class="prog-step active">
+        <div class="prog-num">2</div>
+        <span>下载安装</span>
+      </div>
+      <div class="prog-line"></div>
+      <div class="prog-step">
+        <div class="prog-num">3</div>
+        <span>登录使用</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>步骤二：下载 &amp; 安装</h1>
+    <p>下载一键安装程序，自动完成 Node.js 和 Claude Code 的全部安装流程。</p>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main class="section-sm">
+  <div class="container" style="max-width:800px;">
+
+    <!-- Download Card -->
+    <div class="download-card">
+      <div class="file-icon">🖥️</div>
+      <h3>Claude Code 一键安装程序</h3>
+      <p>适用于 Windows 10 / 11（64位），自动安装所有依赖，无需手动操作</p>
+      <!-- 将下方 href 替换为实际下载链接，例如 GitHub Releases 地址 -->
+      <a href="#" class="btn btn-primary btn-lg" id="downloadBtn" onclick="return false;" style="opacity:0.6;cursor:not-allowed;">
+        ⬇️ 下载安装程序 (.exe)
+      </a>
+      <div class="download-meta">
+        <span>📦 约 50MB</span>
+        <span>🪟 Windows 10/11</span>
+        <span>✅ 无病毒，开源可审计</span>
+        <span>🔄 支持自动更新</span>
+      </div>
+      <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);">
+        下载链接即将发布，敬请期待。
+      </p>
+    </div>
+
+    <div class="tip-box">
+      <strong>安全提示：</strong> 下载完成后，Windows 可能弹出 SmartScreen 警告，点击「更多信息」→「仍要运行」即可。
+      本程序开源，源代码可在 GitHub 查看审计。
+    </div>
+
+    <!-- Installation Steps -->
+    <h2 style="margin-top:48px; margin-bottom:8px; font-size:1.3rem;">📦 安装步骤</h2>
+    <p style="color:var(--text-secondary); margin-bottom:8px;">运行安装程序后，按以下流程操作：</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-item-num">1</div>
+        <div class="step-item-body">
+          <h4>以管理员身份运行</h4>
+          <p>右键点击下载好的 <strong>claude-install.exe</strong>，选择「以管理员身份运行」，允许 UAC 弹窗。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">2</div>
+        <div class="step-item-body">
+          <h4>自动检测环境</h4>
+          <p>安装程序会自动检测：</p>
+          <ul style="margin-top:8px; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+            <li style="margin-left:16px; list-style:disc;">Node.js 是否已安装（版本需 ≥ 18）</li>
+            <li style="margin-left:16px; list-style:disc;">网络代理配置（自动检测常用端口）</li>
+            <li style="margin-left:16px; list-style:disc;">磁盘剩余空间是否充足</li>
+          </ul>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">3</div>
+        <div class="step-item-body">
+          <h4>自动安装 Node.js（如需要）</h4>
+          <p>如果未检测到 Node.js，程序将自动下载并安装 Node.js LTS 版本（约 30MB），完成后自动继续。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">4</div>
+        <div class="step-item-body">
+          <h4>安装 Claude Code</h4>
+          <p>通过 npm 全局安装 Claude Code：</p>
+          <code>npm install -g @anthropic-ai/claude-code</code>
+          <p style="margin-top:8px; color:var(--text-muted); font-size:0.88rem;">此步骤需要访问境外 npm 源，请确保网络代理已就绪（约 1-3 分钟）。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">5</div>
+        <div class="step-item-body">
+          <h4>安装完成</h4>
+          <p>看到「✅ 安装成功！」提示后，Claude Code 已安装完毕。打开新的 PowerShell 窗口，输入 <code>claude</code> 即可启动。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Requirements -->
+    <h2 style="margin-top:48px; margin-bottom:16px; font-size:1.3rem;">💻 系统要求</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>⚙️ 硬件要求</h4>
+        <ul>
+          <li>Windows 10 版本 1903 或更高</li>
+          <li>64 位操作系统</li>
+          <li>至少 500MB 可用磁盘空间</li>
+          <li>稳定的网络连接</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>📦 将自动安装</h4>
+        <ul>
+          <li>Node.js 22 LTS（若未安装）</li>
+          <li>npm 包管理器</li>
+          <li>@anthropic-ai/claude-code</li>
+          <li>PATH 环境变量配置</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Troubleshoot -->
+    <div class="tip-box" style="margin-top:32px;">
+      <strong>安装失败？</strong> 最常见原因是网络问题。请确认：①代理工具已开启 ②系统代理模式已启用 ③重新运行安装程序。
+      更多问题请查看 <a href="faq.html">FAQ 页面</a>。
+    </div>
+
+    <!-- Page Actions -->
+    <div class="page-actions">
+      <a href="step1.html" class="btn btn-secondary">← 上一步：网络准备</a>
+      <a href="step3.html" class="btn btn-primary">安装完成，下一步 →</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="step1.html">步骤一</a>
+        <a href="step3.html">步骤三</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <p class="footer-disclaimer">
+        ⚠️ 免责声明：本站仅提供 Claude Code 软件的安装指引，不提供任何网络代理或加速服务。
+      </p>
+      <p class="footer-copy">© 2025 Claude Code 安装助手 · 仅供学习参考</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
