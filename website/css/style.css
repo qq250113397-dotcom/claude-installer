@@ -320,8 +320,6 @@ ul, ol { list-style: none; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  position: relative;
-  aspect-ratio: 16/9;
   margin: 40px 0;
 }
 .video-wrap iframe {
