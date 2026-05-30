@@ -69,73 +69,114 @@
       在中国大陆直接访问会被屏蔽，需要先配置代理工具（俗称"梯子"）才能正常使用。
     </div>
 
-    <!-- Video Section -->
-    <h2 style="margin-top:40px; margin-bottom:16px; font-size:1.3rem;">📹 视频教程</h2>
-    <p style="color:var(--text-secondary); margin-bottom:0;">跟随视频完成网络配置，大约需要 30-60 分钟：</p>
-
-    <div class="video-wrap">
-      <video width="100%" controls controlsList="nodownload" style="border-radius:8px; background:#000;">
-        <source src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Claude压缩版.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <!-- Instructions -->
-    <h2 style="margin-top:48px; margin-bottom:8px; font-size:1.3rem;">📋 网络配置检查清单</h2>
-    <p style="color:var(--text-secondary); margin-bottom:8px;">按照以下步骤完成配置，每完成一步请在脑海中打勾：</p>
+    <h2 style="margin-top:40px; margin-bottom:8px; font-size:1.3rem;">📋 网络配置检查清单</h2>
+    <p style="color:var(--text-secondary); margin-bottom:16px;">按照以下步骤完成配置，每完成一步请在脑海中打勾：</p>
 
     <div class="steps-list">
+
+      <!-- Step 1: 下载代理软件 -->
       <div class="step-item">
         <div class="step-item-num">1</div>
         <div class="step-item-body">
-          <h4>准备可用的网络工具</h4>
-          <p>Claude Code 需要连接境外服务器，所以你需要一个网络代理工具（即俗称的"梯子"）。如果你还没有，可以点击下方按钮下载：</p>
-          <div style="margin-top:16px;">
-          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:4px;">
-              <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Andorid-NekoBox.apk" class="btn btn-primary" target="_blank" rel="noopener">
-                📱 安卓手机（NekoBox）
+          <h4>下载代理软件</h4>
+          <p>根据你的设备选择对应的代理工具下载安装：</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+            <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Andorid-NekoBox.apk" class="btn btn-primary" target="_blank" rel="noopener">
+              📱 安卓手机（NekoBox）
+            </a>
+            <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
+              🍎 macOS（V2RayN）
+            </a>
+            <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener">
+              🪟 Windows（V2RayN）
+            </a>
+            <div class="btn btn-secondary" style="cursor:default; opacity:0.85;">
+              🚀 苹果手机（Shadowrocket）
+            </div>
+          </div>
+          <div style="margin-top:14px; padding:14px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); font-size:0.88rem; color:var(--text-secondary);">
+            <strong style="color:var(--text-primary);">🍎 苹果手机用户请注意：</strong><br>
+            Shadowrocket（小火箭）需在 <strong>美区 AppStore</strong> 购买下载，无法直接提供安装包。<br>
+            注册美区 Apple ID 需要在<strong>电脑网页端</strong>切换至美国节点后完成，苹果手机需要单独操作，具体步骤见步骤 3 的视频教程。
+          </div>
+          <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">下载后按视频教程安装配置，工具需要支持系统代理模式（让电脑所有软件都走代理网络）。</p>
+        </div>
+      </div>
+
+      <!-- Step 2: 扫码导入节点 -->
+      <div class="step-item">
+        <div class="step-item-num">2</div>
+        <div class="step-item-body">
+          <h4>扫码导入节点（安卓 / 苹果手机先翻墙）</h4>
+          <p>安装好代理软件后，用手机扫描下方二维码，将临时节点一键导入，即可完成首次翻墙：</p>
+
+          <!-- QR Code placeholder -->
+          <div style="margin:16px 0; display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+            <div style="width:148px; height:148px; border:2px dashed var(--border); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; background:var(--bg-secondary); flex-shrink:0;">
+              <span style="font-size:2.2rem;">📷</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); text-align:center; line-height:1.5;">二维码<br>即将上线</span>
+            </div>
+            <div style="flex:1; min-width:200px; font-size:0.9rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:10px; padding-top:4px;">
+              <p style="margin:0;">📱 <strong style="color:var(--text-primary);">安卓手机（NekoBox）：</strong><br>打开 NekoBox → 右下角「+」→「扫描二维码」</p>
+              <p style="margin:0;">🚀 <strong style="color:var(--text-primary);">苹果手机（Shadowrocket）：</strong><br>打开 Shadowrocket → 右上角「扫码」→ 扫描二维码</p>
+            </div>
+          </div>
+
+          <!-- 配套资料 -->
+          <div style="margin-top:4px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+            <p style="font-weight:600; font-size:0.95rem; margin-bottom:12px; color:var(--text-primary);">📎 配套资料下载</p>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/临时链接.txt" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; font-size:0.9rem;">
+                🔗 临时节点链接（首次翻墙用，导入代理软件）
               </a>
-              <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
-                🍎 macOS（V2RayN）
-              </a>
-              <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener">
-                🪟 Windows（V2RayN）
+              <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Claude网络配置快速参考.docx" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; font-size:0.9rem;">
+                📄 Claude 网络配置快速参考（配合视频使用）
               </a>
             </div>
-            <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">下载后按视频教程安装配置，工具需要支持系统代理模式（让电脑所有软件都走代理网络）。</p>
+          </div>
 
-            <div style="margin-top:20px; display:flex; flex-direction:column; gap:20px;">
-              <div>
-                <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">📱 安卓手机配置教程</p>
-                <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
-              </div>
-              <div>
-                <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🍎 苹果注册美区账号教程</p>
-                <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
-              </div>
-              <div>
-                <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🚀 小火箭配置教程</p>
-                <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
-              </div>
+          <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">
+            ⚠️ 如果扫码时遇到错误，请点击上方「临时节点链接」复制节点地址，在代理软件中选择「从剪贴板导入」或「手动添加」。
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3: 注册谷歌邮箱 -->
+      <div class="step-item">
+        <div class="step-item-num">3</div>
+        <div class="step-item-body">
+          <h4>注册谷歌邮箱（Gmail）</h4>
+          <p>翻墙成功后，注册一个 Gmail 邮箱，后续注册 Claude 账号和搭建自己的节点都需要用到。</p>
+          <div class="tip-box" style="margin:12px 0; border-left-color:#f85149; background:rgba(248,81,73,0.08);">
+            <strong style="color:#f85149;">⚠️ 请用手机 App 注册，不要用电脑网页：</strong><br>
+            在中国大陆用网页注册 Gmail 会要求短信验证，国内手机号无法通过验证，会注册失败。<br>
+            需要先翻墙，再在手机上打开 Gmail App，通过 App 完成注册。
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">跟随下方视频完成手机端配置和 Gmail 注册：</p>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div>
+              <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">📱 安卓手机配置教程</p>
+              <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
             </div>
-
-            <div style="margin-top:20px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-              <p style="font-weight:600; font-size:0.95rem; margin-bottom:12px; color:var(--text-primary);">📎 配套资料下载</p>
-              <div style="display:flex; flex-direction:column; gap:8px;">
-                <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/临时链接.txt" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; font-size:0.9rem;">
-                  🔗 临时节点链接（首次翻墙用，导入代理软件）
-                </a>
-                <a href="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Claude网络配置快速参考.docx" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; font-size:0.9rem;">
-                  📄 Claude 网络配置快速参考（配合视频使用）
-                </a>
-              </div>
+            <div>
+              <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🍎 苹果注册美区账号教程</p>
+              <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
+            </div>
+            <div>
+              <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🚀 小火箭配置教程</p>
+              <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Step 4: 电脑开启系统代理 / Tun 模式 -->
       <div class="step-item">
-        <div class="step-item-num">2</div>
+        <div class="step-item-num">4</div>
         <div class="step-item-body">
-          <h4>开启系统代理</h4>
+          <h4>电脑开启系统代理 / Tun 模式</h4>
+
+          <!-- 系统代理 -->
           <p>打开网络工具，找到并启用以下任一选项：</p>
           <ul style="margin:10px 0 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.2;">
             <li style="margin-left:16px; list-style:disc;">
@@ -149,43 +190,67 @@
           <div style="margin-top:16px;">
             <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/全局自动配置系统代理.png" style="width:100%; border-radius:8px;">
           </div>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-item-num">3</div>
-        <div class="step-item-body">
-          <h4>启用 Tun 模式（重要）</h4>
-          <div class="tip-box" style="margin-bottom:16px; border-left-color:#f85149; background:rgba(248,81,73,0.08);">
-            <strong style="color:#f85149;">⚠️ 警告：</strong>不改 Core 类型直接开 Tun 会导致无法联网，请严格按以下顺序操作。
+
+          <!-- Tun 模式 -->
+          <div style="margin-top:28px;">
+            <h5 style="font-size:1rem; font-weight:600; margin-bottom:12px; color:var(--text-primary);">启用 Tun 模式（重要）</h5>
+            <div class="tip-box" style="margin-bottom:16px; border-left-color:#f85149; background:rgba(248,81,73,0.08);">
+              <strong style="color:#f85149;">⚠️ 警告：</strong>不改 Core 类型直接开 Tun 会导致无法联网，请严格按以下顺序操作。
+            </div>
+            <ol style="margin:0; padding:0; counter-reset:tun-step; display:flex; flex-direction:column; gap:10px;">
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">1</span>
+                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">打开 V2Ray 设置 → <strong style="color:var(--text-primary);">Core 类型设置</strong></span>
+              </li>
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">2</span>
+                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将 <code>VMess</code>、<code>Shadowsocks</code>、<code>VLESS</code>、<code>Trojan</code> 全部改为 <code>sing_box</code></span>
+              </li>
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">3</span>
+                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">点击<strong style="color:var(--text-primary);">确定</strong>保存</span>
+              </li>
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">4</span>
+                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">回到主界面，开启<strong style="color:var(--text-primary);">「启用 Tun」</strong>开关</span>
+              </li>
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
+                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">5</span>
+                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将代理模式设为<strong style="color:var(--text-primary);">「V4-全局 (Global)」</strong></span>
+              </li>
+            </ol>
+            <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">Tun 模式会创建虚拟网络接口，让命令行终端的流量也能走代理，比普通系统代理更彻底。</p>
+            <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/tun-mode.mp4" controls style="width:100%; border-radius:8px; margin-top:12px;"></video>
           </div>
-          <ol style="margin:0; padding:0; counter-reset:tun-step; display:flex; flex-direction:column; gap:10px;">
-            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">1</span>
-              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">打开 V2Ray 设置 → <strong style="color:var(--text-primary);">Core 类型设置</strong></span>
-            </li>
-            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">2</span>
-              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将 <code>VMess</code>、<code>Shadowsocks</code>、<code>VLESS</code>、<code>Trojan</code> 全部改为 <code>sing_box</code></span>
-            </li>
-            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">3</span>
-              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">点击<strong style="color:var(--text-primary);">确定</strong>保存</span>
-            </li>
-            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">4</span>
-              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">回到主界面，开启<strong style="color:var(--text-primary);">「启用 Tun」</strong>开关</span>
-            </li>
-            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">5</span>
-              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将代理模式设为<strong style="color:var(--text-primary);">「V4-全局 (Global)」</strong></span>
-            </li>
-          </ol>
-          <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">Tun 模式会创建虚拟网络接口，让命令行终端的流量也能走代理，比普通系统代理更彻底。</p>
-          <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/tun-mode.mp4" controls style="width:100%; border-radius:8px; margin-top:12px;"></video>
         </div>
       </div>
+
+      <!-- Step 5: 用谷歌账号完成视频教程（搭建自己的节点） -->
       <div class="step-item">
-        <div class="step-item-num">4</div>
+        <div class="step-item-num">5</div>
+        <div class="step-item-body">
+          <h4>用谷歌账号完成视频教程（搭建自己的节点）</h4>
+          <p>临时节点仅供首次翻墙使用，稳定性有限。跟随下方视频，用刚注册的谷歌账号搭建属于自己的免费稳定节点：</p>
+          <div class="tip-box tip-blue" style="margin:12px 0;">
+            <strong>视频涵盖以下操作：</strong>
+            <ul style="margin:8px 0 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.1;">
+              <li style="margin-left:16px; list-style:disc;">用谷歌账号登录 Chrome 浏览器</li>
+              <li style="margin-left:16px; list-style:disc;">注册 <strong>Cloudflare Workers</strong>，部署代理脚本</li>
+              <li style="margin-left:16px; list-style:disc;">在 <strong>dnshe</strong> 配置自定义域名，绑定节点地址</li>
+              <li style="margin-left:16px; list-style:disc;">将节点导入 V2RayN / NekoBox / Shadowrocket，完成配置</li>
+            </ul>
+          </div>
+          <div class="video-wrap">
+            <video width="100%" controls controlsList="nodownload" style="border-radius:8px; background:#000;">
+              <source src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Claude压缩版.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6: 验证网络连通性 -->
+      <div class="step-item">
+        <div class="step-item-num">6</div>
         <div class="step-item-body">
           <h4>验证网络连通性</h4>
           <p>先打开命令行终端（一个可以输入命令的黑色窗口）：</p>
@@ -207,30 +272,51 @@
           <code>curl https://api.anthropic.com</code>
           <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
             ✅ <strong>成功标志：</strong>返回一段英文文字或 JSON 数据<br>
-            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 2 / 步骤 3
+            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 4
           </p>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-item-num">5</div>
-        <div class="step-item-body">
-          <h4>（可选）手动告诉命令行走哪个代理</h4>
-          <p>如果步骤 4 测试失败、但浏览器能正常上网，说明系统代理没有覆盖到命令行，可以手动指定：</p>
-          <p style="margin:8px 0 4px; font-size:0.88rem; color:var(--text-secondary);">在终端里输入以下命令（把 <code>7890</code> 换成你代理工具显示的端口号）：</p>
-          <code>set HTTPS_PROXY=http://127.0.0.1:7890</code>
-          <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
-            端口号（代理工具监听的门牌号）通常在代理工具设置里能看到，常见值：7890、7891、1080、10809。<br>
-            安装程序也会自动尝试这些常用端口，大部分情况下不需要手动设置。
-          </p>
-          <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/本地混合监听端口.mp4" controls style="width:100%; border-radius:8px; margin-top:12px;"></video>
-        </div>
-      </div>
-    </div>
 
-    <div class="tip-box tip-green" style="margin-top:32px;">
-      <strong>✓ 完成标志：</strong> 能够在浏览器中正常访问
-      <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，
-      说明网络已配置完成，可以进行下一步。
+          <!-- 手动指定端口（备用方案） -->
+          <div style="margin-top:20px; padding:16px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+            <p style="font-weight:600; font-size:0.92rem; margin-bottom:6px; color:var(--text-primary);">🔧 如果验证失败但浏览器能上网：手动指定代理端口</p>
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:8px;">说明系统代理没有覆盖到命令行，在终端里输入以下命令（把 <code>7890</code> 换成你代理工具显示的端口号）：</p>
+            <code>set HTTPS_PROXY=http://127.0.0.1:7890</code>
+            <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
+              端口号通常在代理工具设置里能看到，常见值：7890、7891、1080、10809。<br>
+              安装程序也会自动尝试这些常用端口，大部分情况下不需要手动设置。
+            </p>
+            <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/本地混合监听端口.mp4" controls style="width:100%; border-radius:8px; margin-top:12px;"></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7: 用谷歌账号注册 Claude 账号，进入步骤二 -->
+      <div class="step-item">
+        <div class="step-item-num">7</div>
+        <div class="step-item-body">
+          <h4>用谷歌账号注册 Claude 账号，进入步骤二</h4>
+          <p>网络验证通过后，前往 Claude 官网，用谷歌账号完成注册：</p>
+          <ol style="margin:12px 0 0 0; padding:0; display:flex; flex-direction:column; gap:10px;">
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">1</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">确保代理已开启，打开浏览器访问 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">2</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">点击「Continue with Google」，选择刚注册的 Gmail 账号</span>
+            </li>
+            <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+              <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">3</span>
+              <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">填写用户名，完成注册，即可开始免费使用</span>
+            </li>
+          </ol>
+          <div class="tip-box tip-green" style="margin-top:20px;">
+            <strong>✓ 完成标志：</strong> 能够在浏览器中正常访问
+            <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，
+            说明网络已配置完成，可以进行下一步。
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Additional tips -->
@@ -249,7 +335,7 @@
         <ul>
           <li>检查代理工具是否已启动运行</li>
           <li>确认已开启系统代理（全局模式）</li>
-          <li>重启代理工具后重试步骤 3</li>
+          <li>重启代理工具后重试步骤 4</li>
         </ul>
       </div>
     </div>
