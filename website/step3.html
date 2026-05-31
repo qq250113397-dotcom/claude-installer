@@ -6,6 +6,12 @@
   <title>步骤三：登录 & 使用 — Claude Code 安装助手</title>
   <meta name="description" content="注册 Anthropic 账号并登录 Claude Code，开始使用 AI 编程助手。">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      var rec = JSON.parse(localStorage.getItem('cc_unlock') || 'null');
+      if (!rec || Date.now() > rec.expiry) { window.location.replace('unlock.html'); }
+    })();
+  </script>
   <style>
     .success-banner {
       background: linear-gradient(135deg, rgba(63, 185, 80, 0.1), rgba(63, 185, 80, 0.05));

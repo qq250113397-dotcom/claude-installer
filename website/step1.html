@@ -6,6 +6,12 @@
   <title>步骤一：网络准备 — Claude Code 安装助手</title>
   <meta name="description" content="配置网络环境，确保可以访问 Anthropic API，这是使用 Claude Code 的必要前提。">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      var rec = JSON.parse(localStorage.getItem('cc_unlock') || 'null');
+      if (!rec || Date.now() > rec.expiry) { window.location.replace('unlock.html'); }
+    })();
+  </script>
 </head>
 <body>
 
