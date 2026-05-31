@@ -112,10 +112,7 @@
 
           <!-- QR Code placeholder -->
           <div style="margin:16px 0; display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
-            <div style="width:148px; height:148px; border:2px dashed var(--border); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; background:var(--bg-secondary); flex-shrink:0;">
-              <span style="font-size:2.2rem;">📷</span>
-              <span style="font-size:0.75rem; color:var(--text-muted); text-align:center; line-height:1.5;">二维码<br>即将上线</span>
-            </div>
+            <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/节点二维码.png" style="width:148px; height:148px; border-radius:var(--radius-sm); object-fit:contain; background:var(--bg-secondary); flex-shrink:0;" alt="节点二维码">
             <div style="flex:1; min-width:200px; font-size:0.9rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:10px; padding-top:4px;">
               <p style="margin:0;">📱 <strong style="color:var(--text-primary);">安卓手机（NekoBox）：</strong><br>打开 NekoBox → 右下角「+」→「扫描二维码」</p>
               <p style="margin:0;">🚀 <strong style="color:var(--text-primary);">苹果手机（Shadowrocket）：</strong><br>打开 Shadowrocket → 右上角「扫码」→ 扫描二维码</p>
@@ -156,23 +153,46 @@
           <div style="display:flex; flex-direction:column; gap:20px;">
             <div>
               <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">📱 安卓手机配置教程</p>
-              <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
+              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/安卓手机配置及谷歌邮箱注册.mp4" controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
             </div>
             <div>
               <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🍎 苹果注册美区账号教程</p>
-              <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
+              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/压缩版美区账号.mp4" controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
             </div>
             <div>
               <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🚀 小火箭配置教程</p>
-              <video controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
+              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/苹果手机配置教程.mp4" controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Step 4: 电脑开启系统代理 / Tun 模式 -->
+      <!-- Step 4: 用谷歌账号完成视频教程（搭建自己的节点） -->
       <div class="step-item">
         <div class="step-item-num">4</div>
+        <div class="step-item-body">
+          <h4>用谷歌账号完成视频教程（搭建自己的节点）</h4>
+          <p>临时节点仅供首次翻墙使用，稳定性有限。跟随下方视频，用刚注册的谷歌账号搭建属于自己的免费稳定节点：</p>
+          <div class="tip-box tip-blue" style="margin:12px 0;">
+            <strong>视频涵盖以下操作：</strong>
+            <ul style="margin:8px 0 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.1;">
+              <li style="margin-left:16px; list-style:disc;">用谷歌账号登录 Chrome 浏览器</li>
+              <li style="margin-left:16px; list-style:disc;">注册 <strong>Cloudflare Workers</strong>，部署代理脚本</li>
+              <li style="margin-left:16px; list-style:disc;">在 <strong>dnshe</strong> 配置自定义域名，绑定节点地址</li>
+              <li style="margin-left:16px; list-style:disc;">将节点导入 V2RayN / NekoBox / Shadowrocket，完成配置</li>
+            </ul>
+          </div>
+          <div class="video-wrap">
+            <video width="100%" controls controlsList="nodownload" style="border-radius:8px; background:#000;">
+              <source src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Claude压缩版.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: 电脑开启系统代理 / Tun 模式 -->
+      <div class="step-item">
+        <div class="step-item-num">5</div>
         <div class="step-item-body">
           <h4>电脑开启系统代理 / Tun 模式</h4>
 
@@ -225,29 +245,6 @@
         </div>
       </div>
 
-      <!-- Step 5: 用谷歌账号完成视频教程（搭建自己的节点） -->
-      <div class="step-item">
-        <div class="step-item-num">5</div>
-        <div class="step-item-body">
-          <h4>用谷歌账号完成视频教程（搭建自己的节点）</h4>
-          <p>临时节点仅供首次翻墙使用，稳定性有限。跟随下方视频，用刚注册的谷歌账号搭建属于自己的免费稳定节点：</p>
-          <div class="tip-box tip-blue" style="margin:12px 0;">
-            <strong>视频涵盖以下操作：</strong>
-            <ul style="margin:8px 0 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.1;">
-              <li style="margin-left:16px; list-style:disc;">用谷歌账号登录 Chrome 浏览器</li>
-              <li style="margin-left:16px; list-style:disc;">注册 <strong>Cloudflare Workers</strong>，部署代理脚本</li>
-              <li style="margin-left:16px; list-style:disc;">在 <strong>dnshe</strong> 配置自定义域名，绑定节点地址</li>
-              <li style="margin-left:16px; list-style:disc;">将节点导入 V2RayN / NekoBox / Shadowrocket，完成配置</li>
-            </ul>
-          </div>
-          <div class="video-wrap">
-            <video width="100%" controls controlsList="nodownload" style="border-radius:8px; background:#000;">
-              <source src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/Claude压缩版.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-
       <!-- Step 6: 验证网络连通性 -->
       <div class="step-item">
         <div class="step-item-num">6</div>
@@ -272,7 +269,7 @@
           <code>curl https://api.anthropic.com</code>
           <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
             ✅ <strong>成功标志：</strong>返回一段英文文字或 JSON 数据<br>
-            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 4
+            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 5
           </p>
 
           <!-- 手动指定端口（备用方案） -->
