@@ -113,15 +113,21 @@
           <!-- QR Code placeholder -->
           <div style="margin:16px 0; display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
             <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/节点二维码.png" style="width:148px; height:148px; border-radius:var(--radius-sm); object-fit:contain; background:var(--bg-secondary); flex-shrink:0;" alt="节点二维码">
-            <div style="flex:1; min-width:200px; font-size:0.9rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:16px; padding-top:4px;">
-              <div>
-                <p style="margin:0 0 8px;">📱 <strong style="color:var(--text-primary);">安卓手机（NekoBox）：</strong><br>打开 NekoBox → 右上角「+」→「扫描二维码」</p>
-                <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/nekobox+号截图.png" style="width:100%; border-radius:6px;" alt="NekoBox 添加节点截图">
-              </div>
-              <div>
-                <p style="margin:0 0 8px;">🚀 <strong style="color:var(--text-primary);">苹果手机（Shadowrocket）：</strong><br>打开 Shadowrocket → 左上角「扫码」→ 扫描二维码</p>
-                <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/小火箭+号截图.png" style="width:100%; border-radius:6px;" alt="Shadowrocket 添加节点截图">
-              </div>
+            <div style="flex:1; min-width:200px; font-size:0.9rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:12px; padding-top:4px;">
+              <p style="margin:0;">📱 <strong style="color:var(--text-primary);">安卓手机（NekoBox）：</strong><br>打开 NekoBox → 右上角「+」→「扫描二维码」</p>
+              <p style="margin:0;">🚀 <strong style="color:var(--text-primary);">苹果手机（Shadowrocket）：</strong><br>打开 Shadowrocket → 左上角「扫码」→ 扫描二维码</p>
+            </div>
+          </div>
+
+          <!-- App screenshots side by side -->
+          <div class="app-screens">
+            <div class="screen-item">
+              <p class="screen-label">NekoBox 添加节点</p>
+              <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/nekobox+号截图.png" alt="NekoBox 添加节点截图">
+            </div>
+            <div class="screen-item">
+              <p class="screen-label">Shadowrocket 扫码</p>
+              <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/小火箭+号截图.png" alt="Shadowrocket 添加节点截图">
             </div>
           </div>
 
@@ -156,18 +162,18 @@
             需要先翻墙，再在手机上打开 Gmail App，通过 App 完成注册。
           </div>
           <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">跟随下方视频完成手机端配置和 Gmail 注册：</p>
-          <div style="display:flex; flex-direction:column; gap:20px;">
-            <div>
-              <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">📱 安卓手机配置教程</p>
-              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/安卓手机配置及谷歌邮箱注册.mp4" controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
+          <div class="phone-video-grid">
+            <div class="phone-video-item">
+              <p>📱 安卓手机配置教程</p>
+              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/安卓手机配置及谷歌邮箱注册.mp4" controls></video>
             </div>
-            <div>
-              <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🍎 苹果注册美区账号教程</p>
-              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/压缩版美区账号.mp4" controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
+            <div class="phone-video-item">
+              <p>🍎 苹果注册美区账号教程</p>
+              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/压缩版美区账号.mp4" controls></video>
             </div>
-            <div>
-              <p style="font-weight:600; font-size:0.95rem; color:var(--text-primary); margin-bottom:4px;">🚀 小火箭配置教程</p>
-              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/苹果配置教程.mp4" controls style="width:100%; border-radius:8px; margin-top:8px;"></video>
+            <div class="phone-video-item">
+              <p>🚀 小火箭配置教程</p>
+              <video src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/苹果配置教程.mp4" controls></video>
             </div>
           </div>
         </div>

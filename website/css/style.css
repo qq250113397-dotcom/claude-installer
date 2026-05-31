@@ -559,6 +559,47 @@ ul, ol { list-style: none; }
 }
 .footer-copy { color: var(--text-muted); font-size: 0.8rem; }
 
+/* ===== Phone video grid (portrait recordings) ===== */
+.phone-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+.phone-video-item p {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.phone-video-item video {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  background: #000;
+}
+
+/* ===== App screenshot 2-column grid ===== */
+.app-screens {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+.app-screens .screen-item img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+.app-screens .screen-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .nav-links { display: none; flex-direction: column; }
