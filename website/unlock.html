@@ -67,30 +67,71 @@
 <div class="unlock-wrap">
   <div class="unlock-card">
     <div class="unlock-icon">🔐</div>
-    <h1>输入访问密码</h1>
-    <p class="sub">本教程为付费内容，请输入密码后访问。</p>
-    <input type="password" id="pwd" class="unlock-input" placeholder="输入密码" autocomplete="off">
+    <h1>输入访问卡密</h1>
+    <p class="sub">本教程为付费内容，请输入卡密后访问。</p>
+    <input type="text" id="pwd" class="unlock-input" placeholder="输入卡密，如 XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
     <div id="pwd-err" class="unlock-error"></div>
     <button class="unlock-btn" id="unlock-btn">进入教程</button>
   </div>
 </div>
 <script>
-  var KEY = 'cc_unlock';
-  var CORRECT = 'CLAUDE2024';
-  var SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+  var WORKER_URL = 'https://verify-card.qq250113397.workers.dev/verify';
+  var LS_KEY = 'cc_unlock';
+
+  function getStoredToken() {
+    try {
+      var rec = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+      return rec && rec.token ? rec.token : null;
+    } catch (e) { return null; }
+  }
+
+  function setLoading(on) {
+    var btn = document.getElementById('unlock-btn');
+    btn.disabled = on;
+    btn.textContent = on ? '验证中…' : '进入教程';
+  }
+
+  function showError(msg) {
+    var input = document.getElementById('pwd');
+    var errEl = document.getElementById('pwd-err');
+    input.classList.add('err');
+    errEl.textContent = msg;
+    input.focus();
+  }
 
   function attempt() {
     var input = document.getElementById('pwd');
-    var errEl = document.getElementById('pwd-err');
-    if (input.value.trim() === CORRECT) {
-      localStorage.setItem(KEY, JSON.stringify({ expiry: Date.now() + SEVEN_DAYS }));
-      window.location.href = 'step1.html';
-    } else {
-      input.classList.add('err');
-      errEl.textContent = '密码不正确，请重新输入';
-      input.value = '';
-      input.focus();
+    var card = input.value.trim();
+    document.getElementById('pwd-err').textContent = '';
+    input.classList.remove('err');
+
+    if (!card) {
+      showError('请输入卡密');
+      return;
     }
+
+    setLoading(true);
+
+    fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ card: card, token: getStoredToken() })
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        setLoading(false);
+        if (data.ok) {
+          localStorage.setItem(LS_KEY, JSON.stringify({ token: data.token, expiry: data.expiry }));
+          window.location.href = 'step1.html';
+        } else {
+          showError(data.error || '验证失败，请重试');
+          input.value = '';
+        }
+      })
+      .catch(function () {
+        setLoading(false);
+        showError('网络错误，请检查网络后重试');
+      });
   }
 
   document.getElementById('unlock-btn').addEventListener('click', attempt);
