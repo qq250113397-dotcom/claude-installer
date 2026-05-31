@@ -28,9 +28,7 @@ export default {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
 
-    const url = new URL(request.url);
-
-    if (url.pathname === '/verify' && request.method === 'POST') {
+    if (request.method === 'POST') {
       return handleVerify(request, env);
     }
 
