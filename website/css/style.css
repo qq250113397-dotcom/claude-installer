@@ -383,7 +383,7 @@ ul, ol { list-style: none; }
 .step-item {
   display: flex;
   gap: 20px;
-  padding: 24px 0;
+  padding: 32px 0;
   border-bottom: 1px solid var(--border-light);
 }
 .step-item:last-child { border-bottom: none; }
