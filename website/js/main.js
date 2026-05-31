@@ -1,3 +1,28 @@
+// Usage disclaimer modal - shows on every visit
+(function () {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.72);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px;';
+
+  const modal = document.createElement('div');
+  modal.style.cssText = 'background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;max-width:480px;width:100%;padding:32px;box-shadow:0 20px 60px rgba(0,0,0,0.5);';
+  modal.innerHTML =
+    '<div style="font-size:1.5rem;margin-bottom:12px;">⚠️</div>' +
+    '<h2 style="font-size:1.15rem;margin-bottom:16px;color:var(--text-primary);">使用声明</h2>' +
+    '<div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.85;margin-bottom:24px;">' +
+      '<p style="margin-bottom:10px;">本站仅提供 Claude Code 软件的<strong style="color:var(--text-primary);">安装指引教程</strong>，不提供任何网络代理或加速服务。</p>' +
+      '<p style="margin-bottom:10px;">Claude Code 是 <strong style="color:var(--text-primary);">Anthropic</strong> 的官方产品，本站与 Anthropic <strong style="color:var(--text-primary);">无官方关联</strong>。</p>' +
+      '<p>使用 Claude Code 须遵守 <a href="https://www.anthropic.com/legal/usage-policy" target="_blank" rel="noopener" style="color:var(--accent);">Anthropic 使用条款</a>。</p>' +
+    '</div>' +
+    '<button id="disclaimer-close" style="width:100%;padding:12px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;">我已了解，继续访问</button>';
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+
+  document.getElementById('disclaimer-close').addEventListener('click', function () {
+    overlay.remove();
+  });
+})();
+
 // FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
