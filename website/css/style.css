@@ -574,7 +574,8 @@ ul, ol { list-style: none; }
 }
 .phone-video-item video {
   width: 100%;
-  max-width: 320px;
+  max-width: 260px;
+  max-height: 380px;
   border-radius: 8px;
   display: block;
   margin: 0 auto;
