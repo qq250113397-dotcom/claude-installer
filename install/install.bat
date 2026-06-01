@@ -94,7 +94,7 @@ echo  [*] 正在安装 Claude Code...
 echo  [*] 这可能需要 1-3 分钟，请耐心等待...
 echo.
 
-npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org
+npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com
 
 if %errorLevel% neq 0 (
     echo.
@@ -103,7 +103,7 @@ if %errorLevel% neq 0 (
     echo      - npm 权限问题
     echo.
     echo  [*] 尝试使用备用方法安装...
-    npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org --prefer-online
+    npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com --prefer-online
     if !errorLevel! neq 0 (
         echo  [!] 安装仍然失败，请查看上方错误信息排查问题。
         echo  [*] 更多帮助请访问 FAQ 页面。
@@ -146,11 +146,16 @@ echo.
 echo  [*] 正在下载 Node.js LTS...
 
 set NODE_VERSION=22.13.1
-set NODE_URL=https://nodejs.org/dist/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
+set NODE_URL=https://registry.npmmirror.com/-/binary/node/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
+set NODE_URL_FALLBACK=https://nodejs.org/dist/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
 set NODE_MSI=%TEMP%\node-install.msi
 
-echo  [*] 下载地址: %NODE_URL%
+echo  [*] 使用国内镜像下载 Node.js（无需代理）...
 curl -L --progress-bar -o "%NODE_MSI%" "%NODE_URL%"
+if %errorLevel% neq 0 (
+    echo  [!] 国内镜像失败，尝试官方源...
+    curl -L --progress-bar -o "%NODE_MSI%" "%NODE_URL_FALLBACK%"
+)
 
 if %errorLevel% neq 0 (
     echo  [!] Node.js 下载失败，请检查网络连接。

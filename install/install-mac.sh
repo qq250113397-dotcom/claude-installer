@@ -46,14 +46,15 @@ else
     info "这可能需要 5-10 分钟，请保持网络通畅"
     echo ""
 
-    if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
-        error "Homebrew 安装失败！"
-        echo ""
-        echo "  常见原因："
-        echo "  - 网络未翻墙，无法访问 GitHub"
-        echo "  - 请先确保代理已开启（参考步骤一），再重新运行本脚本"
-        echo ""
-        exit 1
+    info "优先使用国内镜像安装，无需代理..."
+    if /bin/bash -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" <<< "1"; then
+        success "Homebrew 通过国内镜像安装完成"
+    else
+        warning "国内镜像失败，尝试官方源（需代理）..."
+        if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
+            error "Homebrew 安装失败！请确保代理已开启后重试"
+            exit 1
+        fi
     fi
 
     # Apple Silicon Mac 需要手动初始化 brew 路径
@@ -140,9 +141,9 @@ echo -e "  ${BOLD}▶ 第四步：安装 Claude Code${NC}"
 info "正在安装，这可能需要 1-3 分钟，请耐心等待..."
 echo ""
 
-if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org; then
+if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com; then
     warning "首次安装失败，尝试备用方式..."
-    if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org --prefer-online; then
+    if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com --prefer-online; then
         error "安装失败！"
         echo ""
         echo "  常见原因及解决方法："
