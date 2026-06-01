@@ -1,6 +1,17 @@
 name = "verify-card"
 main = "verify-card.js"
-compatibility_date = "2024-09-23"
+compatibility_date = "2026-05-31"
+compatibility_flags = [ "nodejs_compat" ]
+
+[observability]
+enabled = true
+
+  [observability.logs]
+  head_sampling_rate = 1
+
+  [observability.traces]
+  enabled = true
+  head_sampling_rate = 0.01
 
 [[kv_namespaces]]
 binding = "CC_CARDS"

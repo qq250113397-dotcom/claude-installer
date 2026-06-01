@@ -30,7 +30,7 @@ echo "  2. 通过 Homebrew 安装 Node.js"
 echo "  3. 安装 Claude Code"
 echo ""
 echo -n "  按回车键开始安装，按 Ctrl+C 取消..."
-read
+read -r
 
 # ─────────────────────────────────────────────────────
 # 第一步：检测 / 安装 Homebrew
@@ -46,9 +46,7 @@ else
     info "这可能需要 5-10 分钟，请保持网络通畅"
     echo ""
 
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    if [ $? -ne 0 ]; then
+    if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
         error "Homebrew 安装失败！"
         echo ""
         echo "  常见原因："
@@ -62,7 +60,10 @@ else
     if [[ $(uname -m) == "arm64" ]]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
         # 写入 shell 配置以便下次生效
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+        brew_shellenv_line="eval \"\$(/opt/homebrew/bin/brew shellenv)\""
+        if ! grep -qxF "$brew_shellenv_line" "$HOME/.zprofile" 2>/dev/null; then
+            printf '%s\n' "$brew_shellenv_line" >> "$HOME/.zprofile"
+        fi
     fi
 
     success "Homebrew 安装完成"
@@ -82,8 +83,7 @@ if command -v node &>/dev/null; then
         success "已检测到 Node.js $NODE_VER（满足要求）"
     else
         warning "Node.js 版本过低（$NODE_VER，需要 v18+），准备升级..."
-        brew install node
-        if [ $? -ne 0 ]; then
+        if ! brew install node; then
             error "Node.js 升级失败，请检查网络连接"
             exit 1
         fi
@@ -91,9 +91,7 @@ if command -v node &>/dev/null; then
     fi
 else
     info "未检测到 Node.js，正在通过 Homebrew 安装..."
-    brew install node
-
-    if [ $? -ne 0 ]; then
+    if ! brew install node; then
         error "Node.js 安装失败！"
         echo ""
         echo "  请手动访问 https://nodejs.org 下载安装后重试"
@@ -117,7 +115,7 @@ else
     echo ""
     echo "  请输入代理端口（常用值：7890 / 1080 / 10809）"
     echo -n "  代理端口（直接回车跳过）: "
-    read PROXY_PORT
+    read -r PROXY_PORT
 
     if [ -n "$PROXY_PORT" ]; then
         export https_proxy="http://127.0.0.1:$PROXY_PORT"
@@ -142,13 +140,9 @@ echo -e "  ${BOLD}▶ 第四步：安装 Claude Code${NC}"
 info "正在安装，这可能需要 1-3 分钟，请耐心等待..."
 echo ""
 
-npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org
-
-if [ $? -ne 0 ]; then
+if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org; then
     warning "首次安装失败，尝试备用方式..."
-    npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org --prefer-online
-
-    if [ $? -ne 0 ]; then
+    if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org --prefer-online; then
         error "安装失败！"
         echo ""
         echo "  常见原因及解决方法："

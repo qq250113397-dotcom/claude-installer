@@ -4,6 +4,11 @@
  * 环境变量（wrangler secret put）:
  *   MBD_APP_KEY  — 面包多后台的 App Key（用于签名验证）
  *
+ * 可选环境变量（wrangler.toml [vars]，产品创建后再填写）:
+ *   MBD_PRODUCT_ID / MBD_PRODUCT_IDS      允许发卡的商品 ID，多个用英文逗号分隔
+ *   MBD_AMOUNT                           允许发卡的订单金额，按面包多 webhook 原值填写
+ *   MBD_DESCRIPTION_KEYWORD              商品描述必须包含的关键词
+ *
  * 面包多 POST JSON 结构（charge_succeeded）:
  * {
  *   "type": "charge_succeeded",
@@ -18,6 +23,10 @@
  * 逻辑：支付成功后以 out_trade_no 作为卡密写入 KV，
  * 买家在 unlock.html 输入订单号即可解锁教程。
  */
+
+const MAX_BODY_BYTES = 64 * 1024;
+
+class PayloadTooLargeError extends Error {}
 
 export default {
   async fetch(request, env) {
@@ -34,14 +43,21 @@ export default {
 async function handleWebhook(request, env) {
   let body;
   try {
-    body = await request.json();
-  } catch {
+    body = await readJsonBody(request);
+  } catch (error) {
+    if (error instanceof PayloadTooLargeError) {
+      return new Response('payload too large', { status: 413 });
+    }
     return new Response('invalid json', { status: 400 });
   }
 
   // 验证签名
-  if (!verifySign(body, env.MBD_APP_KEY)) {
-    console.error('sign mismatch', JSON.stringify(body));
+  if (!(await verifySign(body, env.MBD_APP_KEY))) {
+    log('warn', 'mbd_sign_mismatch', {
+      type: safeString(body?.type),
+      orderNo: safeString(body?.out_trade_no),
+      chargeId: safeString(body?.charge_id),
+    });
     return new Response('sign error', { status: 403 });
   }
 
@@ -50,19 +66,156 @@ async function handleWebhook(request, env) {
     return new Response('success');
   }
 
-  const orderNo = String(body.out_trade_no || '').trim();
+  const orderNo = normalizeCardKey(body.out_trade_no);
   if (!orderNo) {
     return new Response('missing out_trade_no', { status: 400 });
+  }
+
+  const productCheck = validateProduct(body, env);
+  if (!productCheck.ok) {
+    log('warn', 'mbd_product_skipped', {
+      reason: productCheck.reason,
+      orderNo,
+      productId: safeString(productCheck.productId),
+      amount: safeString(body.amount),
+    });
+    return new Response('success');
   }
 
   // 幂等：已存在则跳过（防止面包多重复推送）
   const kvKey = `card:${orderNo}`;
   const existing = await env.CC_CARDS.get(kvKey);
   if (!existing) {
-    await env.CC_CARDS.put(kvKey, JSON.stringify({ used: false }));
+    await env.CC_CARDS.put(kvKey, JSON.stringify({
+      used: false,
+      source: 'mianbaoduo',
+      orderNo,
+      chargeId: safeString(body.charge_id),
+      productId: productCheck.productId || null,
+      amount: body.amount ?? null,
+      createdAt: new Date().toISOString(),
+    }));
   }
 
   return new Response('success');
+}
+
+async function readJsonBody(request) {
+  const contentLength = Number(request.headers.get('content-length') || '0');
+  if (contentLength > MAX_BODY_BYTES) {
+    throw new PayloadTooLargeError();
+  }
+
+  if (!request.body) return {};
+
+  const reader = request.body.getReader();
+  const chunks = [];
+  let totalLength = 0;
+
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    totalLength += value.byteLength;
+
+    if (totalLength > MAX_BODY_BYTES) {
+      throw new PayloadTooLargeError();
+    }
+
+    chunks.push(value);
+  }
+
+  const bytes = new Uint8Array(totalLength);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+function validateProduct(body, env) {
+  const productId = pickFirst(body, [
+    'product_id',
+    'productId',
+    'goods_id',
+    'goodsId',
+    'sku_id',
+    'skuId',
+    'plan_id',
+    'planId',
+  ]);
+  const productIdText = productId === undefined ? '' : String(productId).trim();
+  const expectedProductIds = splitCsv(env.MBD_PRODUCT_IDS || env.MBD_PRODUCT_ID);
+
+  if (expectedProductIds.length > 0 && !expectedProductIds.includes(productIdText)) {
+    return {
+      ok: false,
+      reason: productIdText ? 'product_id_mismatch' : 'missing_product_id',
+      productId: productIdText,
+    };
+  }
+
+  const expectedAmount = optionalString(env.MBD_AMOUNT);
+  if (expectedAmount && String(body.amount ?? '').trim() !== expectedAmount) {
+    return { ok: false, reason: 'amount_mismatch', productId: productIdText };
+  }
+
+  const keyword = optionalString(env.MBD_DESCRIPTION_KEYWORD);
+  if (keyword) {
+    const description = [
+      body.description,
+      body.product_name,
+      body.productName,
+      body.title,
+      body.subject,
+    ].map(value => optionalString(value)).find(Boolean) || '';
+
+    if (!description.includes(keyword)) {
+      return { ok: false, reason: 'description_keyword_mismatch', productId: productIdText };
+    }
+  }
+
+  return { ok: true, productId: productIdText };
+}
+
+function normalizeCardKey(value) {
+  return String(value || '').trim().toUpperCase();
+}
+
+function pickFirst(source, keys) {
+  for (const key of keys) {
+    if (source && source[key] !== undefined && source[key] !== null && source[key] !== '') {
+      return source[key];
+    }
+  }
+  return undefined;
+}
+
+function splitCsv(value) {
+  return optionalString(value)
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean);
+}
+
+function optionalString(value) {
+  return value === undefined || value === null ? '' : String(value).trim();
+}
+
+function safeString(value) {
+  return optionalString(value).slice(0, 128);
+}
+
+function log(level, message, data = {}) {
+  const line = JSON.stringify({ message, ...data });
+  if (level === 'error') {
+    console.error(line);
+  } else if (level === 'warn') {
+    console.warn(line);
+  } else {
+    console.log(line);
+  }
 }
 
 /**
@@ -72,9 +225,9 @@ async function handleWebhook(request, env) {
  * 3. 拼接为 k1=v1&k2=v2...&key=APP_KEY
  * 4. MD5 小写
  */
-function verifySign(body, appKey) {
+async function verifySign(body, appKey) {
   if (!appKey) return false;
-  const receivedSign = body.sign;
+  const receivedSign = optionalString(body.sign).toLowerCase();
   if (!receivedSign) return false;
 
   const params = {};
@@ -88,10 +241,28 @@ function verifySign(body, appKey) {
   const signStr =
     Object.keys(params)
       .sort()
-      .map(k => `${k}=${params[k]}`)
+      .map(k => `${k}=${String(params[k])}`)
       .join('&') + `&key=${appKey}`;
 
-  return md5(signStr) === receivedSign.toLowerCase();
+  return constantTimeEqual(md5(signStr), receivedSign);
+}
+
+async function constantTimeEqual(left, right) {
+  const encoder = new TextEncoder();
+  const [leftHash, rightHash] = await Promise.all([
+    crypto.subtle.digest('SHA-256', encoder.encode(left)),
+    crypto.subtle.digest('SHA-256', encoder.encode(right)),
+  ]);
+
+  const leftBytes = new Uint8Array(leftHash);
+  const rightBytes = new Uint8Array(rightHash);
+  let diff = 0;
+
+  for (let i = 0; i < leftBytes.length; i++) {
+    diff |= leftBytes[i] ^ rightBytes[i];
+  }
+
+  return diff === 0;
 }
 
 // ── 纯 JS MD5（Web Crypto 不支持 MD5，需内联实现）──────────────────────────

@@ -74,15 +74,11 @@
     <button class="unlock-btn" id="unlock-btn">进入教程</button>
   </div>
 </div>
+<script src="js/access.js"></script>
 <script>
-  var WORKER_URL = 'https://verify-card.qq250113397.workers.dev/verify';
-  var LS_KEY = 'cc_unlock';
-
   function getStoredToken() {
-    try {
-      var rec = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
-      return rec && rec.token ? rec.token : null;
-    } catch (e) { return null; }
+    var rec = window.CC_ACCESS.readRecord();
+    return rec && rec.token ? rec.token : null;
   }
 
   function setLoading(on) {
@@ -101,7 +97,7 @@
 
   function attempt() {
     var input = document.getElementById('pwd');
-    var card = input.value.trim();
+    var card = window.CC_ACCESS.normalizeCard(input.value);
     document.getElementById('pwd-err').textContent = '';
     input.classList.remove('err');
 
@@ -112,16 +108,16 @@
 
     setLoading(true);
 
-    fetch(WORKER_URL, {
+    fetch(window.CC_ACCESS.workerUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ card: card, token: getStoredToken() })
+      body: JSON.stringify({ card: card, token: getStoredToken(), mode: 'activate' })
     })
       .then(function (res) { return res.json(); })
       .then(function (data) {
         setLoading(false);
         if (data.ok) {
-          localStorage.setItem(LS_KEY, JSON.stringify({ token: data.token, expiry: data.expiry }));
+          window.CC_ACCESS.writeRecord(card, data);
           window.location.href = 'step1.html';
         } else {
           showError(data.error || '验证失败，请重试');
@@ -140,6 +136,20 @@
     document.getElementById('pwd-err').textContent = '';
     if (e.key === 'Enter') attempt();
   });
+
+  (function showRedirectReason() {
+    var reason = new URLSearchParams(window.location.search).get('reason');
+    var messages = {
+      expired: '访问已过期，请重新输入卡密',
+      invalid: '访问验证失败，请重新输入卡密',
+      network: '网络验证失败，请检查网络后重试'
+    };
+
+    if (messages[reason]) {
+      showError(messages[reason]);
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  })();
 </script>
 </body>
 </html>

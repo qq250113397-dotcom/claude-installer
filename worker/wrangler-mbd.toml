@@ -1,6 +1,23 @@
 name = "webhook-mbd"
 main = "webhook-mbd.js"
-compatibility_date = "2024-09-23"
+compatibility_date = "2026-05-31"
+compatibility_flags = [ "nodejs_compat" ]
+
+[vars]
+# 面包多产品创建后填写；留空时只校验签名和 charge_succeeded 事件。
+MBD_PRODUCT_IDS = ""
+MBD_AMOUNT = ""
+MBD_DESCRIPTION_KEYWORD = ""
+
+[observability]
+enabled = true
+
+  [observability.logs]
+  head_sampling_rate = 1
+
+  [observability.traces]
+  enabled = true
+  head_sampling_rate = 0.01
 
 [[kv_namespaces]]
 binding = "CC_CARDS"
