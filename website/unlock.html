@@ -48,6 +48,12 @@
       min-height: 20px;
       margin-bottom: 14px;
     }
+    .unlock-status {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      min-height: 18px;
+      margin: -6px 0 12px;
+    }
     .unlock-btn {
       width: 100%;
       padding: 13px;
@@ -71,11 +77,14 @@
     <p class="sub">本教程为付费内容，请输入卡密后访问。</p>
     <input type="text" id="pwd" class="unlock-input" placeholder="输入卡密，如 XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
     <div id="pwd-err" class="unlock-error"></div>
+    <div id="pwd-status" class="unlock-status"></div>
     <button class="unlock-btn" id="unlock-btn">进入教程</button>
   </div>
 </div>
 <script src="js/access.js?v=20260601b"></script>
 <script>
+  var VERIFY_TIMEOUT_MS = 12000;
+
   function getStoredToken() {
     var rec = window.CC_ACCESS.readRecord();
     return rec && rec.token ? rec.token : null;
@@ -83,15 +92,19 @@
 
   function setLoading(on) {
     var btn = document.getElementById('unlock-btn');
+    var status = document.getElementById('pwd-status');
     btn.disabled = on;
     btn.textContent = on ? '验证中…' : '进入教程';
+    status.textContent = on ? '正在验证，请稍等…' : '';
   }
 
   function showError(msg) {
     var input = document.getElementById('pwd');
     var errEl = document.getElementById('pwd-err');
+    var status = document.getElementById('pwd-status');
     input.classList.add('err');
     errEl.textContent = msg;
+    status.textContent = '';
     input.focus();
   }
 
@@ -108,12 +121,19 @@
 
     setLoading(true);
 
-    fetch(window.CC_ACCESS.workerUrl, {
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, VERIFY_TIMEOUT_MS) : null;
+
+    fetch(window.CC_ACCESS.resolveVerifyUrl(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ card: card, token: getStoredToken(), mode: 'activate' })
+      body: JSON.stringify({ card: card, token: getStoredToken(), mode: 'activate' }),
+      signal: controller ? controller.signal : undefined
     })
-      .then(function (res) { return res.json(); })
+      .then(function (res) {
+        if (timer) clearTimeout(timer);
+        return res.json();
+      })
       .then(function (data) {
         setLoading(false);
         if (data.ok) {
@@ -124,8 +144,13 @@
           input.value = '';
         }
       })
-      .catch(function () {
+      .catch(function (error) {
+        if (timer) clearTimeout(timer);
         setLoading(false);
+        if (error && error.name === 'AbortError') {
+          showError('验证超时，请重试一次');
+          return;
+        }
         showError('网络错误，请检查网络后重试');
       });
   }
