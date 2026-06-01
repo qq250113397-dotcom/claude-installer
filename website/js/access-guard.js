@@ -21,6 +21,11 @@
     return;
   }
 
+  if (access.isLocalDev && access.isLocalDev()) {
+    finish();
+    return;
+  }
+
   var record = access.readRecord();
   if (!record || access.isExpired(record)) {
     access.clearRecord();

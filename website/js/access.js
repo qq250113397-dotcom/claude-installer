@@ -2,6 +2,7 @@
   var LS_KEY = 'cc_unlock';
   var VERIFY_CACHE_MS = 12 * 60 * 60 * 1000;
   var FALLBACK_VERIFY_URL = 'https://verify-card.qq250113397.workers.dev/verify';
+  var LOCAL_DEV_TOK = 'local-dev-access';
 
   function normalizeCard(value) {
     return String(value || '')
@@ -42,6 +43,15 @@
     localStorage.removeItem(LS_KEY);
   }
 
+  function isLocalDev() {
+    try {
+      var host = window.location && window.location.hostname ? window.location.hostname : '';
+      return host === 'localhost' || host === '127.0.0.1' || host === '::1';
+    } catch (e) {
+      return false;
+    }
+  }
+
   function resolveVerifyUrl() {
     try {
       var origin = window.location && window.location.origin ? window.location.origin : '';
@@ -66,6 +76,15 @@
   }
 
   function verify(record, mode) {
+    if (isLocalDev()) {
+      return Promise.resolve({
+        ok: true,
+        card: normalizeCard(record && record.card ? record.card : 'LOCAL-DEV'),
+        token: LOCAL_DEV_TOK,
+        expiry: Date.now() + 365 * 24 * 60 * 60 * 1000,
+      });
+    }
+
     var controller = window.AbortController ? new AbortController() : null;
     var timer = controller ? setTimeout(function () { controller.abort(); }, 10000) : null;
 
@@ -94,6 +113,7 @@
     readRecord: readRecord,
     writeRecord: writeRecord,
     clearRecord: clearRecord,
+    isLocalDev: isLocalDev,
     isExpired: isExpired,
     shouldRefresh: shouldRefresh,
     verify: verify,

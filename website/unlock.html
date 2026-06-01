@@ -83,8 +83,6 @@
 </div>
 <script src="js/access.js?v=20260601b"></script>
 <script>
-  var VERIFY_TIMEOUT_MS = 12000;
-
   function getStoredToken() {
     var rec = window.CC_ACCESS.readRecord();
     return rec && rec.token ? rec.token : null;
@@ -121,19 +119,7 @@
 
     setLoading(true);
 
-    var controller = window.AbortController ? new AbortController() : null;
-    var timer = controller ? setTimeout(function () { controller.abort(); }, VERIFY_TIMEOUT_MS) : null;
-
-    fetch(window.CC_ACCESS.resolveVerifyUrl(), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ card: card, token: getStoredToken(), mode: 'activate' }),
-      signal: controller ? controller.signal : undefined
-    })
-      .then(function (res) {
-        if (timer) clearTimeout(timer);
-        return res.json();
-      })
+    window.CC_ACCESS.verify({ card: card, token: getStoredToken() }, 'activate')
       .then(function (data) {
         setLoading(false);
         if (data.ok) {
@@ -145,7 +131,6 @@
         }
       })
       .catch(function (error) {
-        if (timer) clearTimeout(timer);
         setLoading(false);
         if (error && error.name === 'AbortError') {
           showError('验证超时，请重试一次');
