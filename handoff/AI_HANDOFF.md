@@ -21,6 +21,26 @@ Build and maintain the Claude installer tutorial site, including:
 
 ## What Was Changed Most Recently
 
+### Access gating and local preview behavior
+
+- The usage disclaimer modal on the site now:
+  - appears only once per browser via `localStorage`
+  - includes the network-scheme notice inside the modal
+  - requires a 3-second countdown before enabling the continue button
+- The unlock page now shows explicit loading/status feedback while verifying a card
+- Local preview (`localhost` / `127.0.0.1`) bypasses unlock verification so the site can be inspected without auth friction
+- Production unlock verification was restored to the existing worker-backed endpoint after the same-origin Pages Function path proved unreliable in practice
+- A Pages Function experiment for `/verify` was created, then the live flow was moved back to the worker-backed path because the deployment/root setup did not match the expected Pages Functions directory layout for this site
+
+### Step 1 flow simplification
+
+- Step 1 was trimmed down to avoid repeating the same "connect first, replace later" guidance
+- Duplicate download/link blocks under Step 1 were removed
+- A backend login / QR scan screenshot was added to Step 1, placed in the mobile / Gmail section as the first screenshot to guide users to:
+  - open `https://zuibenniuge.cc.cd/login`
+  - enter `ADMIN`
+  - scan the QR code to import the subscription
+
 ### Portable V2RayN packaging
 
 - Added `build/v2rayn-portable.mjs`
@@ -59,6 +79,7 @@ Build and maintain the Claude installer tutorial site, including:
 - Step 1 now promotes the portable V2RayN flow
 - Step 2 and Step 3 now emphasize that registration is handled in the video tutorial
 - `worker/claude-media.js` allowlist was updated for the project domain
+- The homepage network-scheme explanation was removed from the page body and moved into the disclaimer modal
 
 ### R2 uploads
 
@@ -83,6 +104,10 @@ Build and maintain the Claude installer tutorial site, including:
 
 ## Verified
 
+- `node --check website/js/access.js`
+- `node --check website/js/access-guard.js`
+- `node --check website/js/main.js`
+- `node --check website/unlock.html` is not used as a JS check, but the unlock page script was manually updated and reviewed
 - `node --check build/v2rayn-portable.mjs`
 - `node --check build/v2rayn-macos-portable.mjs`
 - `node --check worker/claude-media.js`
@@ -104,10 +129,15 @@ Build and maintain the Claude installer tutorial site, including:
 - If the local `v2rayN-windows-64-desktop.zip` path changes, the build script will fall back to GitHub release download.
 - This is still a packaging / launcher flow, not a full service-side content protection system.
 - The upload relay Worker is temporary and should be removed or rotated once you no longer need large maintenance uploads.
+- The current unlock flow is intentionally worker-backed again for production; the Pages Function version was not the reliable route for the current repo layout.
+- The local preview bypass is deliberate so reviewers can inspect the site without being blocked by auth.
 
 ## Next Things To Check
 
 1. Have Claude Code review:
+   - the current worker-backed unlock path
+   - local preview bypass behavior
+   - the disclaimer modal timing / persistence logic
    - launcher behavior
    - proxy env cleanup
    - mirror fallback logic
