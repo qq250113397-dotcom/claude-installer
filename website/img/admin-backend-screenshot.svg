@@ -1,0 +1,87 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000000" flood-opacity="0.18"/>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F3FF"/>
+      <stop offset="1" stop-color="#EEEAFB"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFB347"/>
+      <stop offset="1" stop-color="#FF8A1F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1000" rx="40" fill="url(#bg)"/>
+
+  <!-- Browser chrome -->
+  <rect x="80" y="60" width="1440" height="880" rx="34" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="80" y="60" width="1440" height="70" rx="34" fill="#F8F9FB"/>
+  <circle cx="124" cy="95" r="10" fill="#FF5F57"/>
+  <circle cx="154" cy="95" r="10" fill="#FEBC2E"/>
+  <circle cx="184" cy="95" r="10" fill="#28C840"/>
+  <rect x="250" y="79" width="740" height="32" rx="16" fill="#EEF1F6"/>
+  <text x="270" y="101" fill="#8E96A4" font-size="18" font-family="Arial, Helvetica, sans-serif">https://zuibenniuge.cc.cd/login</text>
+
+  <!-- Top bar -->
+  <rect x="126" y="170" width="1348" height="128" rx="28" fill="#FFFFFF" stroke="#F0F0F5" stroke-width="2"/>
+  <rect x="150" y="214" width="42" height="42" rx="12" fill="url(#orange)"/>
+  <text x="156" y="243" fill="#FFFFFF" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">✦</text>
+  <text x="214" y="238" fill="#FF8A1F" font-size="42" font-family="Arial, Helvetica, sans-serif" font-weight="800">edgetunnel 设置页面</text>
+
+  <rect x="920" y="192" width="280" height="80" rx="18" fill="#233044"/>
+  <text x="946" y="245" fill="#FFFFFF" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">🐥 我是小白！我想简单点！</text>
+  <rect x="1220" y="192" width="160" height="80" rx="18" fill="#EE3434"/>
+  <text x="1256" y="245" fill="#FFFFFF" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">⚠️ 重置配置</text>
+
+  <!-- Main card -->
+  <rect x="126" y="340" width="1348" height="500" rx="30" fill="#FFFFFF" stroke="#F0F0F5" stroke-width="2"/>
+  <text x="158" y="392" fill="#1F2937" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="800">🌍 当前网络信息</text>
+
+  <rect x="156" y="430" width="320" height="200" rx="22" fill="#FFFFFF" stroke="#E2E5EC" stroke-width="2"/>
+  <circle cx="184" cy="462" r="10" fill="#49B458"/>
+  <text x="214" y="469" fill="#1F2937" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">国内测试</text>
+  <text x="182" y="545" fill="#2680EB" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="800">113.**.**.**</text>
+  <text x="182" y="598" fill="#9AA3AF" font-size="18" font-family="Arial, Helvetica, sans-serif">国内访问使用的 IP</text>
+
+  <rect x="496" y="430" width="320" height="200" rx="22" fill="#FFFFFF" stroke="#E2E5EC" stroke-width="2"/>
+  <circle cx="524" cy="462" r="10" fill="#49B458"/>
+  <text x="554" y="469" fill="#1F2937" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">国外测试</text>
+  <text x="522" y="545" fill="#2680EB" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="800">140.***.***.***</text>
+  <text x="522" y="598" fill="#9AA3AF" font-size="18" font-family="Arial, Helvetica, sans-serif">海外站点访问使用的 IP</text>
+
+  <rect x="836" y="430" width="320" height="200" rx="22" fill="#FFFFFF" stroke="#E2E5EC" stroke-width="2"/>
+  <circle cx="864" cy="462" r="10" fill="#49B458"/>
+  <text x="894" y="469" fill="#1F2937" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">Cloudflare</text>
+  <text x="864" y="545" fill="#2680EB" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="800">140.***.***.***</text>
+  <text x="864" y="598" fill="#9AA3AF" font-size="18" font-family="Arial, Helvetica, sans-serif">CFCDN 节点所用的落地 IP</text>
+
+  <rect x="1176" y="430" width="260" height="200" rx="22" fill="#FFFFFF" stroke="#FF8A1F" stroke-width="3"/>
+  <circle cx="1204" cy="462" r="10" fill="#49B458"/>
+  <text x="1234" y="469" fill="#1F2937" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">墙外测试</text>
+  <text x="1202" y="545" fill="#2680EB" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="800">140.***.***.***</text>
+  <text x="1202" y="598" fill="#9AA3AF" font-size="18" font-family="Arial, Helvetica, sans-serif">谷歌 / YouTube</text>
+
+  <!-- Node section -->
+  <rect x="156" y="676" width="1280" height="152" rx="22" fill="#FFFFFF" stroke="#E2E5EC" stroke-width="2"/>
+  <text x="184" y="722" fill="#1F2937" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="800">获取节点链接</text>
+  <rect x="430" y="700" width="520" height="54" rx="12" fill="#F7F8FB" stroke="#DDE2EA" stroke-width="2"/>
+  <text x="448" y="734" fill="#717B8A" font-size="20" font-family="Arial, Helvetica, sans-serif">vless://...@zuibenniuge.cc.cd:443?security=tls</text>
+  <rect x="974" y="690" width="130" height="72" rx="14" fill="#10A7D4"/>
+  <text x="1005" y="734" fill="#FFFFFF" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">二维码</text>
+  <rect x="1120" y="690" width="150" height="72" rx="14" fill="url(#orange)"/>
+  <text x="1155" y="734" fill="#FFFFFF" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">复制节点</text>
+
+  <rect x="430" y="772" width="520" height="54" rx="12" fill="#F7F8FB" stroke="#DDE2EA" stroke-width="2"/>
+  <text x="448" y="806" fill="#717B8A" font-size="20" font-family="Arial, Helvetica, sans-serif">https://zuibenniuge.cc.cd/sub?token=...</text>
+  <rect x="974" y="762" width="130" height="72" rx="14" fill="#10A7D4"/>
+  <text x="1005" y="806" fill="#FFFFFF" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">二维码</text>
+  <rect x="1120" y="762" width="150" height="72" rx="14" fill="url(#orange)"/>
+  <text x="1155" y="806" fill="#FFFFFF" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">复制订阅</text>
+
+  <!-- Arrow + note -->
+  <path d="M1185 758 L1110 808" stroke="#FF4D4D" stroke-width="7" stroke-linecap="round"/>
+  <path d="M1110 808 L1126 806 L1120 790" fill="#FF4D4D"/>
+  <text x="100" y="915" fill="#6E7582" font-size="22" font-family="Arial, Helvetica, sans-serif">输入 ADMIN 进入后台后，点击「二维码」扫描即可复制节点或订阅。</text>
+</svg>
