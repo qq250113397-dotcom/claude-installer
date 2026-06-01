@@ -1,8 +1,14 @@
 export default {
   async fetch(request, env) {
-    // 只放行来自网站的请求
+    // 只放行来自网站的请求（换域名时在此数组添加新域名即可）
+    const ALLOWED_DOMAINS = [
+      'claude.lbenben.cc.cd',
+      'claudecode-eut.pages.dev',
+      // 新域名占位，买好后填入：
+      // 'example.com',
+    ];
     const referer = request.headers.get('Referer') || '';
-    if (!referer.includes('claude.lbenben.cc.cd')) {
+    if (!ALLOWED_DOMAINS.some(d => referer.includes(d))) {
       return new Response('403 Forbidden', {
         status: 403,
         headers: { 'content-type': 'text/plain; charset=utf-8' },
