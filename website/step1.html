@@ -430,43 +430,10 @@
           <h4>导入 AI 专属分流规则（养号必备）</h4>
           <p>默认「全局模式」把所有流量都走代理，容易被风控。导入这套规则后，只有 <strong>AI 相关域名</strong>（Claude、OpenAI、Gemini、Cursor 等 30+ 平台）走代理，国内网站直连，<strong>账号 IP 更干净、更稳定</strong>。</p>
 
-          <!-- V2rayN 步骤 -->
-          <div style="margin-top:20px;">
-            <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:14px;">适用：Windows 和 macOS，操作完全相同</p>
-            <ol style="margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">1</span>
-                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
-                  打开 V2rayN 主界面
-                  <div style="margin-top:6px; display:flex; flex-direction:column; gap:4px;">
-                    <span>🪟 <strong style="color:var(--text-primary);">Windows：</strong>右下角任务栏点 V2rayN 图标，双击打开主界面</span>
-                    <span>🍎 <strong style="color:var(--text-primary);">macOS：</strong>顶部菜单栏点 V2rayN 图标 → 「主界面」</span>
-                  </div>
-                </div>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">2</span>
-                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">顶部菜单栏 → <strong style="color:var(--text-primary);">「设置」→「路由设置」</strong></div>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">3</span>
-                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">点击 <strong style="color:var(--text-primary);">「添加规则集」</strong>，在弹出的「规则集设置」窗口中：
-                  <div style="margin-top:8px; display:flex; flex-direction:column; gap:6px; padding-left:4px;">
-                    <span>① 填写别名：<code style="background:var(--bg-card); padding:1px 6px; border-radius:4px;">Codex-应用分流</code></span>
-                    <span>② 点击顶部 <strong style="color:var(--text-primary);">「从订阅 Url 中导入规则」</strong>，粘贴以下地址：</span>
-                  </div>
-                  <div style="margin-top:8px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); word-break:break-all; user-select:all;">https://claude.lbenben.cc.cd/v2rayn-routing.json</div>
-                </div>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">4</span>
-                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">规则导入完成后保存，回到路由设置列表，<strong style="color:var(--text-primary);">双击「Codex-应用分流」</strong>设为活动路由，前面出现 ✓</div>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">5</span>
-                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">关闭路由设置，主界面代理模式切换为 <strong style="color:var(--text-primary);">「Codex-应用分流」</strong></div>
-              </li>
-            </ol>
+          <!-- V2rayN 规则文件地址 -->
+          <div style="margin-top:20px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:10px;">在 V2rayN 路由设置中导入以下规则文件地址：</p>
+            <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.88rem; color:var(--text-primary); word-break:break-all; user-select:all;">https://claude.lbenben.cc.cd/v2rayn-routing.json</div>
           </div>
 
           <div class="tip-box tip-green" style="margin-top:20px;">
