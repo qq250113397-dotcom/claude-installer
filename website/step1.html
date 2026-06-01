@@ -166,24 +166,27 @@
           <div style="margin-top:16px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
             <p style="font-weight:600; font-size:0.95rem; margin-bottom:12px; color:var(--text-primary);">🖥️ 电脑端（Windows / macOS）如何导入二维码？</p>
             <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">手机扫码即可，电脑无法直接扫码——但可以把二维码保存成图片，让 V2rayN 识别：</p>
-            <ol style="margin:0; padding:0; display:flex; flex-direction:column; gap:10px;">
-              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">1</span>
-                <span style="font-size:0.88rem; color:var(--text-secondary);">在上方二维码图片上 <strong style="color:var(--text-primary);">右键 → 「将图片存储为」</strong>，保存到桌面，文件名随意</span>
-              </li>
-              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">2</span>
-                <span style="font-size:0.88rem; color:var(--text-secondary);">打开 V2rayN 主界面，点击顶部菜单 <strong style="color:var(--text-primary);">「配置项」→「扫描图片中的二维码」</strong></span>
-              </li>
-              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">3</span>
-                <span style="font-size:0.88rem; color:var(--text-secondary);">在弹出的文件选择框中，找到桌面上刚保存的二维码图片，点击打开</span>
-              </li>
-              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">4</span>
-                <span style="font-size:0.88rem; color:var(--text-secondary);">V2rayN 主界面出现新节点，<strong style="color:var(--text-primary);">双击该节点</strong>设为活动连接，即可开始翻墙</span>
-              </li>
-            </ol>
+            <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+              <ol style="margin:0; padding:0; display:flex; flex-direction:column; gap:10px; flex:1; min-width:220px;">
+                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">1</span>
+                  <span style="font-size:0.88rem; color:var(--text-secondary);">在上方二维码图片上 <strong style="color:var(--text-primary);">右键 → 「将图片存储为」</strong>，保存到桌面，文件名随意</span>
+                </li>
+                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">2</span>
+                  <span style="font-size:0.88rem; color:var(--text-secondary);">打开 V2rayN 主界面，点击顶部菜单 <strong style="color:var(--text-primary);">「配置项」→「扫描图片中的二维码」</strong>（见右图）</span>
+                </li>
+                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">3</span>
+                  <span style="font-size:0.88rem; color:var(--text-secondary);">在弹出的文件选择框中，找到桌面上刚保存的二维码图片，点击打开</span>
+                </li>
+                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">4</span>
+                  <span style="font-size:0.88rem; color:var(--text-secondary);">V2rayN 主界面出现新节点，<strong style="color:var(--text-primary);">双击该节点</strong>设为活动连接，即可开始翻墙</span>
+                </li>
+              </ol>
+              <img src="img/v2rayn-menu.png" alt="V2rayN 配置项菜单截图" style="width:200px; border-radius:8px; flex-shrink:0; border:1px solid var(--border);">
+            </div>
             <div style="margin-top:12px; padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); font-size:0.85rem; color:var(--text-muted);">
               💡 也可以直接下载下方的「临时节点链接」文本文件，复制里面的链接，在 V2rayN 中选择 <strong style="color:var(--text-primary);">「配置项」→「从剪贴板导入分享链接」</strong>，同样有效。
             </div>
