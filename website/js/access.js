@@ -1,6 +1,7 @@
 (function (window) {
   var WORKER_URL = 'https://verify-card.qq250113397.workers.dev/verify';
   var LS_KEY = 'cc_unlock';
+  var VERIFY_CACHE_MS = 12 * 60 * 60 * 1000;
 
   function normalizeCard(value) {
     return String(value || '')
@@ -17,7 +18,8 @@
       return {
         card: normalizeCard(record.card),
         token: String(record.token),
-        expiry: Number(record.expiry)
+        expiry: Number(record.expiry),
+        lastCheckedAt: Number(record.lastCheckedAt || record.unlockedAt || 0)
       };
     } catch (e) {
       return null;
@@ -29,7 +31,8 @@
       card: normalizeCard(data.card || card),
       token: data.token,
       expiry: data.expiry,
-      unlockedAt: Date.now()
+      unlockedAt: Date.now(),
+      lastCheckedAt: Number(data.lastCheckedAt || Date.now())
     };
     localStorage.setItem(LS_KEY, JSON.stringify(record));
     return record;
@@ -41,6 +44,13 @@
 
   function isExpired(record) {
     return !record || !record.expiry || Date.now() > record.expiry;
+  }
+
+  function shouldRefresh(record, maxAgeMs) {
+    if (!record) return true;
+    var age = Date.now() - Number(record.lastCheckedAt || 0);
+    if (!Number.isFinite(age)) return true;
+    return age >= (maxAgeMs || VERIFY_CACHE_MS);
   }
 
   function verify(record, mode) {
@@ -73,6 +83,7 @@
     writeRecord: writeRecord,
     clearRecord: clearRecord,
     isExpired: isExpired,
+    shouldRefresh: shouldRefresh,
     verify: verify
   };
 })(window);
