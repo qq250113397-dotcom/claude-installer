@@ -99,6 +99,11 @@ async function validateExistingCard(stored, cardKey, clientToken) {
     return json({ ok: false, error: '卡密已过期，请联系客服处理' });
   }
 
+  // 永久卡（管理员卡）：任意设备直接放行，无需 token 匹配
+  if (stored.permanent) {
+    return json({ ok: true, card: cardKey, token: stored.token, expiry: stored.expiry });
+  }
+
   if (clientToken && stored.token && await constantTimeEqual(clientToken, stored.token)) {
     return json({ ok: true, card: cardKey, token: stored.token, expiry: stored.expiry });
   }
