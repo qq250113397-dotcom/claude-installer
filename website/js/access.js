@@ -58,7 +58,7 @@
       if (!origin || origin === 'null' || origin.indexOf('127.0.0.1') !== -1 || origin.indexOf('localhost') !== -1) {
         return FALLBACK_VERIFY_URL;
       }
-      return new URL('/verify', origin).toString();
+      return FALLBACK_VERIFY_URL;
     } catch (e) {
       return FALLBACK_VERIFY_URL;
     }
