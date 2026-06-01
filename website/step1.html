@@ -146,84 +146,37 @@
         </div>
       </div>
 
-      <!-- Step 2: 扫码导入节点 -->
+      <!-- Step 2: 导入节点 -->
       <div class="step-item">
         <div class="step-item-num">2</div>
         <div class="step-item-body">
           <h4>导入节点（首次翻墙）</h4>
-          <p>安装好代理软件后，将下方临时节点导入，即可完成首次翻墙。手机扫码导入，电脑保存图片后由 V2rayN 识别导入：</p>
-
-          <!-- QR Code placeholder -->
-          <div style="margin:16px 0; display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
-            <div id="node-qrcode" style="width:148px; height:148px; border-radius:var(--radius-sm); background:var(--bg-secondary); flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden;"></div>
-            <script src="js/qrcode.min.js"></script>
-            <script>
-              new QRCode(document.getElementById('node-qrcode'), {
-                text: 'https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641',
-                width: 148, height: 148,
-                colorDark: '#000000', colorLight: '#ffffff',
-                correctLevel: QRCode.CorrectLevel.M
-              });
-            </script>
-            <div style="flex:1; min-width:200px; font-size:0.9rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:12px; padding-top:4px;">
-              <p style="margin:0;">📱 <strong style="color:var(--text-primary);">安卓手机（NekoBox）：</strong><br>打开 NekoBox → 右上角「+」→「扫描二维码」</p>
-              <p style="margin:0;">🚀 <strong style="color:var(--text-primary);">苹果手机（Shadowrocket）：</strong><br>打开 Shadowrocket → 左上角「扫码」→ 扫描二维码</p>
-            </div>
-          </div>
+          <p>复制下方订阅链接，粘贴到代理软件中完成导入，即可首次翻墙：</p>
 
           <!-- 订阅链接 -->
-          <div style="margin-top:4px; padding:14px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-            <p style="font-weight:600; font-size:0.92rem; margin-bottom:8px; color:var(--text-primary);">📋 扫码不方便？直接复制订阅链接导入</p>
-            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:10px;">复制下方链接，在代理软件中选择「从剪贴板导入」即可一键添加节点：</p>
-            <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.8rem; color:var(--text-primary); word-break:break-all; user-select:all; margin-bottom:10px;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</div>
-            <div style="display:flex; flex-direction:column; gap:6px; font-size:0.85rem; color:var(--text-secondary);">
-              <span>🪟🍎 <strong style="color:var(--text-primary);">V2rayN（电脑）：</strong>顶部菜单 →「配置项」→「从剪贴板导入分享链接」</span>
-              <span>📱 <strong style="color:var(--text-primary);">NekoBox（安卓）：</strong>右上角「+」→「从剪贴板导入」</span>
-              <span>🚀 <strong style="color:var(--text-primary);">Shadowrocket（苹果）：</strong>首页右上角「+」→ 类型选「Subscribe」→ 粘贴链接</span>
+          <div style="margin-top:14px; padding:16px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+              <span style="font-weight:600; font-size:0.92rem; color:var(--text-primary);">📋 订阅链接</span>
+              <button onclick="(function(){navigator.clipboard.writeText('https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641');this.textContent='已复制 ✓';setTimeout(()=>this.textContent='一键复制',2000)}).call(this)" style="padding:5px 14px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); font-size:0.82rem; font-weight:600; cursor:pointer;">一键复制</button>
+            </div>
+            <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.8rem; color:var(--text-primary); word-break:break-all; user-select:all; margin-bottom:14px;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</div>
+            <p style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">复制后按你的设备操作：</p>
+            <div style="display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary);">
+              <div style="padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                🪟🍎 <strong style="color:var(--text-primary);">V2rayN（Windows / macOS）：</strong><br>
+                <span style="padding-left:24px; display:block; margin-top:4px;">顶部菜单 →「配置项」→「从剪贴板导入分享链接」→ 主界面出现新节点后双击激活</span>
+              </div>
+              <div style="padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                📱 <strong style="color:var(--text-primary);">NekoBox（安卓）：</strong><br>
+                <span style="padding-left:24px; display:block; margin-top:4px;">右上角「+」→「从剪贴板导入」→ 导入成功后点击节点连接</span>
+              </div>
+              <div style="padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                🚀 <strong style="color:var(--text-primary);">Shadowrocket（苹果手机）：</strong><br>
+                <span style="padding-left:24px; display:block; margin-top:4px;">首页右上角「+」→ 类型选「Subscribe」→ URL 粘贴链接 → 保存后开启连接</span>
+              </div>
             </div>
           </div>
 
-          <!-- 电脑端导入说明 -->
-          <div style="margin-top:16px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-            <p style="font-weight:600; font-size:0.95rem; margin-bottom:12px; color:var(--text-primary);">🖥️ 电脑端（Windows / macOS）如何导入二维码？</p>
-            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">手机扫码即可，电脑无法直接扫码——但可以把二维码保存成图片，让 V2rayN 识别：</p>
-            <div style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
-              <ol style="margin:0; padding:0; display:flex; flex-direction:column; gap:10px; flex:1; min-width:220px;">
-                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">1</span>
-                  <span style="font-size:0.88rem; color:var(--text-secondary);">在上方二维码图片上 <strong style="color:var(--text-primary);">右键 → 「将图片存储为」</strong>，保存到桌面，文件名随意</span>
-                </li>
-                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">2</span>
-                  <span style="font-size:0.88rem; color:var(--text-secondary);">打开 V2rayN 主界面，点击顶部菜单 <strong style="color:var(--text-primary);">「配置项」→「扫描图片中的二维码」</strong>（见右图）</span>
-                </li>
-                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">3</span>
-                  <span style="font-size:0.88rem; color:var(--text-secondary);">在弹出的文件选择框中，找到桌面上刚保存的二维码图片，点击打开</span>
-                </li>
-                <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
-                  <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">4</span>
-                  <span style="font-size:0.88rem; color:var(--text-secondary);">V2rayN 主界面出现新节点，<strong style="color:var(--text-primary);">双击该节点</strong>设为活动连接，即可开始翻墙</span>
-                </li>
-              </ol>
-              <img src="img/v2rayn-menu.png" alt="V2rayN 配置项菜单截图" style="width:200px; border-radius:8px; flex-shrink:0; border:1px solid var(--border);">
-            </div>
-            <div style="margin-top:12px; padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); font-size:0.85rem; color:var(--text-muted);">
-              💡 也可以直接下载下方的「临时节点链接」文本文件，复制里面的链接，在 V2rayN 中选择 <strong style="color:var(--text-primary);">「配置项」→「从剪贴板导入分享链接」</strong>，同样有效。
-            </div>
-          </div>
-
-          <!-- App screenshots side by side -->
-          <div class="app-screens" style="display:flex; flex-wrap:wrap; justify-content:center; gap:24px; margin-top:16px;">
-            <div class="screen-item" style="flex:0 1 280px; max-width:320px;">
-              <p class="screen-label">NekoBox 添加节点</p>
-              <img src="https://hidden-lab-852a.qq250113397.workers.dev/nekobox+号截图.png" alt="NekoBox 添加节点截图" style="width:100%; height:auto; border-radius:8px; display:block;">
-            </div>
-            <div class="screen-item" style="flex:0 1 280px; max-width:320px;">
-              <p class="screen-label">Shadowrocket 扫码</p>
-              <img src="https://hidden-lab-852a.qq250113397.workers.dev/小火箭+号截图.png" alt="Shadowrocket 添加节点截图" style="width:100%; height:auto; border-radius:8px; display:block;">
-            </div>
-          </div>
 
           <!-- 手机端下载提示 -->
           <div style="margin-top:20px; padding:14px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
