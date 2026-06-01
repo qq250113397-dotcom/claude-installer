@@ -150,8 +150,8 @@
       <div class="step-item">
         <div class="step-item-num">2</div>
         <div class="step-item-body">
-          <h4>扫码导入节点（安卓 / 苹果手机先翻墙）</h4>
-          <p>安装好代理软件后，用手机扫描下方二维码，将临时节点一键导入，即可完成首次翻墙：</p>
+          <h4>导入节点（首次翻墙）</h4>
+          <p>安装好代理软件后，将下方临时节点导入，即可完成首次翻墙。手机扫码导入，电脑保存图片后由 V2rayN 识别导入：</p>
 
           <!-- QR Code placeholder -->
           <div style="margin:16px 0; display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
@@ -159,6 +159,33 @@
             <div style="flex:1; min-width:200px; font-size:0.9rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:12px; padding-top:4px;">
               <p style="margin:0;">📱 <strong style="color:var(--text-primary);">安卓手机（NekoBox）：</strong><br>打开 NekoBox → 右上角「+」→「扫描二维码」</p>
               <p style="margin:0;">🚀 <strong style="color:var(--text-primary);">苹果手机（Shadowrocket）：</strong><br>打开 Shadowrocket → 左上角「扫码」→ 扫描二维码</p>
+            </div>
+          </div>
+
+          <!-- 电脑端导入说明 -->
+          <div style="margin-top:16px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+            <p style="font-weight:600; font-size:0.95rem; margin-bottom:12px; color:var(--text-primary);">🖥️ 电脑端（Windows / macOS）如何导入二维码？</p>
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">手机扫码即可，电脑无法直接扫码——但可以把二维码保存成图片，让 V2rayN 识别：</p>
+            <ol style="margin:0; padding:0; display:flex; flex-direction:column; gap:10px;">
+              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">1</span>
+                <span style="font-size:0.88rem; color:var(--text-secondary);">在上方二维码图片上 <strong style="color:var(--text-primary);">右键 → 「将图片存储为」</strong>，保存到桌面，文件名随意</span>
+              </li>
+              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">2</span>
+                <span style="font-size:0.88rem; color:var(--text-secondary);">打开 V2rayN 主界面，点击顶部菜单 <strong style="color:var(--text-primary);">「服务器」→「从二维码扫描添加服务器」</strong></span>
+              </li>
+              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">3</span>
+                <span style="font-size:0.88rem; color:var(--text-secondary);">在弹出的文件选择框中，找到桌面上刚保存的二维码图片，点击打开</span>
+              </li>
+              <li style="display:flex; gap:10px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:22px; height:22px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; margin-top:1px;">4</span>
+                <span style="font-size:0.88rem; color:var(--text-secondary);">V2rayN 主界面出现新节点，<strong style="color:var(--text-primary);">双击该节点</strong>设为活动连接，即可开始翻墙</span>
+              </li>
+            </ol>
+            <div style="margin-top:12px; padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); font-size:0.85rem; color:var(--text-muted);">
+              💡 也可以直接下载下方的「临时节点链接」文本文件，在 V2rayN 中选择 <strong style="color:var(--text-primary);">「服务器」→「从剪贴板导入」</strong>，粘贴链接内容同样有效。
             </div>
           </div>
 
