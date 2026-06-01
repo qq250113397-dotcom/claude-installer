@@ -3,6 +3,7 @@ export default {
     // 只放行来自网站的请求（换域名时在此数组添加新域名即可）
     const ALLOWED_DOMAINS = [
       'claude.lbenben.cc.cd',
+      'codex.lbenben.cc.cd',
       'claudecode-eut.pages.dev',
       // 新域名占位，买好后填入：
       // 'example.com',

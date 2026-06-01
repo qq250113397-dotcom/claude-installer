@@ -51,8 +51,9 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Claude Code 调用的是 Anthropic 公司的 API，服务器位于美国。由于网络环境限制，中国大陆用户需要通过代理工具才能稳定访问。
-            这是使用境外 AI 服务的共同需求，与 Claude Code 本身无关。
+            第一阶段先连通境外网络，是为了能打开 <a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">Cloudflare</a> 和
+            <a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">dnshe</a>，方便后面搭建自己的订阅和链式代理。
+            后续再继续注册和安装 Claude / GPT / Codex。
           </div>
         </div>
       </div>
@@ -65,11 +66,11 @@
         <div class="faq-answer">
           <div class="faq-answer-inner">
             请按以下步骤排查：<br><br>
-            1. 确认代理工具已启动并正常运行<br>
-            2. 在代理工具中开启「系统代理」或「全局模式」<br>
-            3. 在 PowerShell 中运行 <code>curl https://api.anthropic.com</code> 测试连通性<br>
-            4. 如系统代理无效，尝试手动设置：<code>set HTTPS_PROXY=http://127.0.0.1:你的代理端口</code><br>
-            5. 重新运行安装程序
+            1. 确认步骤一里的便携版已经启动，并且初始节点处于连接状态<br>
+            2. 先尝试打开 <a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">Cloudflare</a> 和
+            <a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">dnshe</a><br>
+            3. 如果页面打不开，再回到代理工具里检查「系统代理」或「Tun 模式」是否已开启<br>
+            4. 重新运行安装程序
           </div>
         </div>
       </div>
@@ -81,8 +82,8 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            是的，Claude Code 每次对话都需要连接 Anthropic API，因此每次使用时都需要保持代理工具处于开启状态。
-            建议将代理工具设置为开机自启，这样无需每次手动开启。
+            只要你还要继续访问 Cloudflare、dnshe、Claude / GPT / Codex 这些境外站点，就需要保持代理工具处于开启状态。
+            建议将代理工具设置为开机自启，这样后续不用每次手动打开。
           </div>
         </div>
       </div>

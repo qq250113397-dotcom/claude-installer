@@ -17,6 +17,17 @@ success() { echo -e "  ${GREEN}[✓]${NC} $1"; }
 warning() { echo -e "  ${YELLOW}[!]${NC} $1"; }
 error()   { echo -e "  ${RED}[✗]${NC} $1"; }
 
+npm_install_direct() {
+    local package_name="$1"
+    local registry_url="$2"
+    env -u HTTP_PROXY -u HTTPS_PROXY -u http_proxy -u https_proxy -u ALL_PROXY -u all_proxy \
+      npm install -g "$package_name" \
+      --registry "$registry_url" \
+      --fetch-retries=5 \
+      --fetch-retry-mintimeout=2000 \
+      --fetch-retry-maxtimeout=10000
+}
+
 clear
 echo ""
 echo "  ╔═══════════════════════════════════════════════╗"
@@ -109,7 +120,7 @@ echo ""
 echo -e "  ${BOLD}▶ 第三步：检测网络连接${NC}"
 info "正在测试访问 npm 服务器..."
 
-if curl -s --max-time 10 https://registry.npmjs.org/ &>/dev/null; then
+if curl -s --max-time 10 --retry 3 --retry-all-errors --connect-timeout 10 https://registry.npmjs.org/ &>/dev/null; then
     success "网络连接正常"
 else
     warning "无法连接到 npm 服务器，请检查代理设置"
@@ -123,7 +134,7 @@ else
         export http_proxy="http://127.0.0.1:$PROXY_PORT"
         info "已设置代理端口: $PROXY_PORT，重新测试连接..."
 
-        if ! curl -s --max-time 10 https://registry.npmjs.org/ &>/dev/null; then
+        if ! curl -s --max-time 10 --retry 3 --retry-all-errors --connect-timeout 10 https://registry.npmjs.org/ &>/dev/null; then
             error "仍然无法连接，请确认代理已开启且端口正确后重试"
             exit 1
         fi
@@ -141,9 +152,10 @@ echo -e "  ${BOLD}▶ 第四步：安装 Claude Code${NC}"
 info "正在安装，这可能需要 1-3 分钟，请耐心等待..."
 echo ""
 
-if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com; then
+if ! npm_install_direct "@anthropic-ai/claude-code" "https://registry.npmmirror.com"; then
     warning "首次安装失败，尝试备用方式..."
-    if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com --prefer-online; then
+    if ! npm install -g @anthropic-ai/claude-code --registry https://registry.npmjs.org \
+        --fetch-retries=5 --fetch-retry-mintimeout=2000 --fetch-retry-maxtimeout=10000 --prefer-online; then
         error "安装失败！"
         echo ""
         echo "  常见原因及解决方法："

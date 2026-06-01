@@ -32,7 +32,7 @@ echo.
 
 :: ----- 网络连通性检查 -----
 echo  [*] 正在检测网络连接...
-curl -s --max-time 10 https://registry.npmjs.org/ >nul 2>&1
+call :curl_test https://registry.npmjs.org/
 if %errorLevel% neq 0 (
     echo.
     echo  [!] 无法连接到 npm 服务器，请检查网络代理设置。
@@ -48,7 +48,7 @@ if %errorLevel% neq 0 (
         set HTTP_PROXY=http://127.0.0.1:!PROXY_PORT!
         echo  [*] 已设置代理端口: !PROXY_PORT!
         echo  [*] 重新测试连接...
-        curl -s --max-time 10 https://registry.npmjs.org/ >nul 2>&1
+        call :curl_test https://registry.npmjs.org/
         if !errorLevel! neq 0 (
             echo  [!] 仍然无法连接，请确认代理端口是否正确后重试。
             pause
@@ -94,7 +94,7 @@ echo  [*] 正在安装 Claude Code...
 echo  [*] 这可能需要 1-3 分钟，请耐心等待...
 echo.
 
-npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com
+call :install_claude_mirror https://registry.npmmirror.com
 
 if %errorLevel% neq 0 (
     echo.
@@ -103,7 +103,7 @@ if %errorLevel% neq 0 (
     echo      - npm 权限问题
     echo.
     echo  [*] 尝试使用备用方法安装...
-    npm install -g @anthropic-ai/claude-code --registry https://registry.npmmirror.com --prefer-online
+    call :install_claude_official https://registry.npmjs.org
     if !errorLevel! neq 0 (
         echo  [!] 安装仍然失败，请查看上方错误信息排查问题。
         echo  [*] 更多帮助请访问 FAQ 页面。
@@ -147,14 +147,20 @@ echo  [*] 正在下载 Node.js LTS...
 
 set NODE_VERSION=22.13.1
 set NODE_URL=https://registry.npmmirror.com/-/binary/node/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
+set NODE_URL_ALT=https://npmmirror.com/mirrors/node/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
 set NODE_URL_FALLBACK=https://nodejs.org/dist/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
 set NODE_MSI=%TEMP%\node-install.msi
 
 echo  [*] 使用国内镜像下载 Node.js（无需代理）...
-curl -L --progress-bar -o "%NODE_MSI%" "%NODE_URL%"
+call :curl_download_direct "%NODE_URL%" "%NODE_MSI%"
 if %errorLevel% neq 0 (
-    echo  [!] 国内镜像失败，尝试官方源...
-    curl -L --progress-bar -o "%NODE_MSI%" "%NODE_URL_FALLBACK%"
+    echo  [!] 国内镜像失败，尝试备用镜像...
+    call :curl_download_direct "%NODE_URL_ALT%" "%NODE_MSI%"
+)
+
+if %errorLevel% neq 0 (
+    echo  [!] 备用镜像失败，尝试官方源...
+    curl -L --retry 5 --retry-all-errors --connect-timeout 15 --progress-bar -o "%NODE_MSI%" "%NODE_URL_FALLBACK%"
 )
 
 if %errorLevel% neq 0 (
@@ -195,3 +201,68 @@ if not exist "%ProgramFiles%\nodejs\node.exe" (
 
 echo  [✓] Node.js 安装完成
 exit /b 0
+
+:: =====================================================
+:: 子程序：安装 Claude Code（带镜像回退）
+:: =====================================================
+:: =====================================================
+:: 子程序：直接下载（清理代理环境）
+:: =====================================================
+:curl_download_direct
+setlocal
+set "DOWNLOAD_URL=%~1"
+set "DOWNLOAD_OUT=%~2"
+set "HTTP_PROXY="
+set "HTTPS_PROXY="
+set "http_proxy="
+set "https_proxy="
+set "ALL_PROXY="
+set "all_proxy="
+curl -L --retry 5 --retry-all-errors --connect-timeout 15 --progress-bar -o "%DOWNLOAD_OUT%" "%DOWNLOAD_URL%"
+set "RC=%errorLevel%"
+endlocal & exit /b %RC%
+
+:: =====================================================
+:: 子程序：测试连接（保留当前代理设置）
+:: =====================================================
+:curl_test
+curl -s --max-time 10 --retry 3 --retry-all-errors --connect-timeout 10 "%~1" >nul 2>&1
+exit /b %errorLevel%
+
+:: =====================================================
+:: 子程序：安装 Claude Code（国内镜像，清代理）
+:: =====================================================
+:install_claude_mirror
+set "NPM_REGISTRY=%~1"
+set "NPM_CONFIG_FETCH_RETRIES=5"
+set "NPM_CONFIG_FETCH_RETRY_MINTIMEOUT=2000"
+set "NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT=10000"
+set "npm_config_fetch_retries=5"
+set "npm_config_fetch_retry_mintimeout=2000"
+set "npm_config_fetch_retry_maxtimeout=10000"
+setlocal
+set "HTTP_PROXY="
+set "HTTPS_PROXY="
+set "http_proxy="
+set "https_proxy="
+set "ALL_PROXY="
+set "all_proxy="
+echo  [*] 使用 npm 源：%NPM_REGISTRY%
+npm install -g @anthropic-ai/claude-code --registry %NPM_REGISTRY%
+set "RC=%errorLevel%"
+endlocal & exit /b %RC%
+
+:: =====================================================
+:: 子程序：安装 Claude Code（官方源，保留代理）
+:: =====================================================
+:install_claude_official
+set "NPM_REGISTRY=%~1"
+set "NPM_CONFIG_FETCH_RETRIES=5"
+set "NPM_CONFIG_FETCH_RETRY_MINTIMEOUT=2000"
+set "NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT=10000"
+set "npm_config_fetch_retries=5"
+set "npm_config_fetch_retry_mintimeout=2000"
+set "npm_config_fetch_retry_maxtimeout=10000"
+echo  [*] 使用 npm 源：%NPM_REGISTRY%
+npm install -g @anthropic-ai/claude-code --registry %NPM_REGISTRY%
+exit /b %errorLevel%

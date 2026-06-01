@@ -67,8 +67,9 @@
 
     <div class="tip-box tip-blue">
       <strong>为什么需要这一步？</strong><br>
-      Claude Code 通过 Anthropic 的 API（编程接口，可理解为"远程服务器通道"）提供服务，服务器位于美国。
-      在中国大陆直接访问会被屏蔽，需要先配置代理工具（俗称"梯子"）才能正常使用。
+      这一步的目标只有一个：先把网络连通到你后续要用的两个站点，<a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">Cloudflare</a> 和
+      <a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">dnshe</a>。
+      我们这里优先提供一个<em>预配置便携版</em>，让你先少走几步。
     </div>
 
     <h2 style="margin-top:40px; margin-bottom:8px; font-size:1.3rem;">📋 网络配置检查清单</h2>
@@ -81,16 +82,16 @@
         <div class="step-item-num">1</div>
         <div class="step-item-body">
           <h4>下载代理软件</h4>
-          <p>根据你的设备选择对应的代理工具下载安装：</p>
+          <p>根据你的设备选择对应的代理工具下载安装，Windows 和 macOS 都提供了预置节点、自动系统代理、Tun 模式和分流规则的便携版：</p>
           <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
             <a href="https://hidden-lab-852a.qq250113397.workers.dev/Andorid-NekoBox.apk" class="btn btn-primary" target="_blank" rel="noopener">
               📱 安卓手机（NekoBox）
             </a>
-            <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
-              🍎 macOS（V2RayN）
+            <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-macos-arm64-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
+              🍎 macOS 便携版
             </a>
-            <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener">
-              🪟 Windows（V2RayN）
+            <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-windows-64-desktop-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
+              🪟 Windows 便携版
             </a>
             <div class="btn btn-secondary" style="cursor:default; opacity:0.85;">
               🚀 苹果手机（Shadowrocket）
@@ -110,16 +111,16 @@
                 <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🪟 Windows 常见问题</p>
                 <div style="display:flex; flex-direction:column; gap:8px;">
                   <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                    <strong style="color:var(--text-primary);">1.</strong> 提示"Windows已保护你的电脑" → 点击 <strong>"更多信息"</strong> → 点击 <strong>"仍要运行"</strong>
+                    <strong style="color:var(--text-primary);">1.</strong> 提示"Windows 已保护你的电脑" → 点击 <strong>"更多信息"</strong> → 再点 <strong>"仍要运行"</strong>
                   </div>
                   <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
                     <strong style="color:var(--text-primary);">2.</strong> 提示缺少运行库 → 需要安装 <strong>.NET 6.0 Runtime</strong>，下载地址：<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank" rel="noopener">dotnet.microsoft.com/download/dotnet/6.0</a>
                   </div>
                   <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                    <strong style="color:var(--text-primary);">3.</strong> 杀毒软件误报拦截 → 暂时关闭杀毒软件或将 V2RayN 加入白名单
+                    <strong style="color:var(--text-primary);">3.</strong> 杀毒软件误报拦截 → 先把安装包重新解压到普通文件夹，再将 V2RayN 加入白名单；不要直接在压缩包里运行
                   </div>
                   <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                    <strong style="color:var(--text-primary);">4.</strong> 解压后找不到 exe → 右键压缩包选择 <strong>"解压到当前文件夹"</strong>，不要直接双击压缩包运行
+                    <strong style="color:var(--text-primary);">4.</strong> 解压后找不到 exe → 右键压缩包选择 <strong>"解压到当前文件夹"</strong>，再双击文件夹里的程序启动
                   </div>
                 </div>
               </div>
@@ -129,7 +130,13 @@
                 <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🍎 macOS 常见问题</p>
                 <div style="display:flex; flex-direction:column; gap:8px;">
                   <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                    <strong style="color:var(--text-primary);">1.</strong> 提示"无法打开，因为无法验证开发者" → 系统设置 → 隐私与安全性 → 点击 <strong>"仍要打开"</strong>
+                    <strong style="color:var(--text-primary);">1.</strong> 不想用终端 → 在 Finder 里<strong>右键 v2rayN.app</strong>，点 <strong>"打开"</strong>；第一次弹窗再点一次 <strong>"打开"</strong>
+                  </div>
+                  <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                    <strong style="color:var(--text-primary);">2.</strong> 还是被拦截 → 到 <strong>系统设置 → 隐私与安全性</strong>，在下面找到 <strong>"仍要打开"</strong> 并确认
+                  </div>
+                  <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                    <strong style="color:var(--text-primary);">3.</strong> 只有在上面两种都不行时，再用终端命令：<code>xattr -dr com.apple.quarantine ...</code> 和 <code>chmod +x ...</code>
                   </div>
                 </div>
               </div>
@@ -143,6 +150,7 @@
             注册美区 Apple ID 需要在<strong>电脑网页端</strong>切换至美国节点后完成，苹果手机需要单独操作，具体步骤见步骤 3 的视频教程。
           </div>
           <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">下载后按视频教程安装配置，工具需要支持系统代理模式（让电脑所有软件都走代理网络）。</p>
+          <p style="margin-top:8px; font-size:0.85rem; color:var(--text-muted);">Windows 和 macOS 便携版都已预置启动器、初始节点、自动系统代理、Tun 模式和分流规则，并且在打包时已经自动测过延迟，预选了一个可用的 US 节点。解压后直接双击启动即可；这一步不需要手动导入旧订阅。</p>
         </div>
       </div>
 
@@ -150,30 +158,23 @@
       <div class="step-item">
         <div class="step-item-num">2</div>
         <div class="step-item-body">
-          <h4>导入节点（首次翻墙）</h4>
-          <p>复制下方订阅链接，粘贴到代理软件中完成导入，即可首次翻墙：</p>
+          <h4>先连通外网，再换成自己的订阅</h4>
+          <p>如果你下载的是 Windows 或 macOS 便携版，里面已经预置了初始节点。先直接连通外网，等你自己的订阅导入成功以后，再删除这条初始节点；不要在新订阅还没准备好之前先删掉：</p>
 
-          <!-- 订阅链接 -->
           <div style="margin-top:14px; padding:16px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
-              <span style="font-weight:600; font-size:0.92rem; color:var(--text-primary);">📋 订阅链接</span>
-              <button onclick="(function(){navigator.clipboard.writeText('https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641');this.textContent='已复制 ✓';setTimeout(()=>this.textContent='一键复制',2000)}).call(this)" style="padding:5px 14px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); font-size:0.82rem; font-weight:600; cursor:pointer;">一键复制</button>
-            </div>
-            <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.8rem; color:var(--text-primary); word-break:break-all; user-select:all; margin-bottom:14px;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</div>
-            <p style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">复制后按你的设备操作：</p>
+            <p style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">打开后按你的设备操作：</p>
             <div style="display:flex; flex-direction:column; gap:8px; font-size:0.88rem; color:var(--text-secondary);">
               <div style="padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
                 🪟🍎 <strong style="color:var(--text-primary);">V2rayN（Windows / macOS）：</strong><br>
-                <span style="padding-left:24px; display:block; margin-top:4px;">顶部菜单 →「配置项」→「从剪贴板导入分享链接」→ 主界面出现新节点后双击激活</span>
+                <span style="padding-left:24px; display:block; margin-top:4px;">直接点击软件里的连接按钮，先让外网跑通；后续要换成自己的订阅，再在配置项里导入，确认新订阅可用后再删除初始节点</span>
               </div>
               <div style="padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
                 📱 <strong style="color:var(--text-primary);">NekoBox（安卓）：</strong><br>
-                <span style="padding-left:24px; display:block; margin-top:4px;">右上角「+」→「从剪贴板导入」→ 导入成功后点击节点连接</span>
+                <span style="padding-left:24px; display:block; margin-top:4px;">这一步先只负责让手机能上外网，后面自己建好订阅后再导入自己的链接</span>
               </div>
               <div style="padding:10px 14px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
                 🚀 <strong style="color:var(--text-primary);">Shadowrocket（苹果手机）：</strong><br>
-                <span style="padding-left:24px; display:block; margin-top:4px;">复制链接后直接打开 Shadowrocket，通常会弹出「是否允许粘贴」提示，点允许即可自动导入。</span>
-                <span style="padding-left:24px; display:block; margin-top:4px; color:var(--text-muted);">若未弹出提示：首页右上角「+」→ 类型选「Subscribe」→ URL 粘贴链接 → 保存后开启连接</span>
+                <span style="padding-left:24px; display:block; margin-top:4px;">这一步先只负责让手机能上外网，后面自己建好订阅后再导入自己的链接</span>
               </div>
             </div>
           </div>
@@ -196,8 +197,8 @@
           <div style="margin-top:12px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
             <p style="font-weight:600; font-size:0.95rem; margin-bottom:12px; color:var(--text-primary);">📎 配套资料下载</p>
             <div style="display:flex; flex-direction:column; gap:8px;">
-              <a href="https://hidden-lab-852a.qq250113397.workers.dev/临时链接.txt" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; font-size:0.9rem;">
-                🔗 临时节点链接（首次翻墙用，导入代理软件）
+              <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-windows-64-desktop-portable.zip" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; font-size:0.9rem;">
+                🪟 Windows 便携版 V2RayN
               </a>
               <a href="https://hidden-lab-852a.qq250113397.workers.dev/Claude网络配置快速参考.docx" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; font-size:0.9rem;">
                 📄 Claude 网络配置快速参考（配合视频使用）
@@ -206,7 +207,7 @@
           </div>
 
           <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">
-            ⚠️ 如果扫码时遇到错误，请点击上方「临时节点链接」复制节点地址，在代理软件中选择「从剪贴板导入」或「手动添加」。
+            ⚠️ 如果你后面要把自己的订阅换进去，先导入并确认新订阅能正常连接，再删除这条初始节点。
           </p>
         </div>
       </div>
@@ -220,7 +221,7 @@
             <span style="font-size:1.1rem;">💡</span>
             <span style="color:var(--text-secondary);">已有谷歌账号？<strong style="color:var(--text-primary);">直接跳到第 4 步</strong>，无需重复注册。</span>
           </div>
-          <p>翻墙成功后，注册一个 Gmail 邮箱，后续注册 Claude 账号和搭建自己的节点都需要用到。</p>
+          <p>外网连通后，注册一个 Gmail 邮箱。后续无论是自己搭建订阅、买住宅 IP，还是注册 Claude / GPT / Codex，都会用到它。</p>
           <div class="tip-box" style="margin:12px 0; border-left-color:#f85149; background:rgba(248,81,73,0.08);">
             <strong style="color:#f85149;">⚠️ 请用手机 App 注册，不要用电脑网页：</strong><br>
             在中国大陆用网页注册 Gmail 会要求短信验证，国内手机号无法通过验证，会注册失败。<br>
@@ -245,19 +246,19 @@
         </div>
       </div>
 
-      <!-- Step 4: 用谷歌账号完成视频教程（搭建自己的节点） -->
+      <!-- Step 4: 有 Gmail 的用户，进入自己的订阅流程 -->
       <div class="step-item">
         <div class="step-item-num">4</div>
         <div class="step-item-body">
-          <h4>用谷歌账号完成视频教程（搭建自己的节点）</h4>
-          <p>临时节点仅供首次翻墙使用，稳定性有限。跟随下方视频，用刚注册的谷歌账号搭建属于自己的免费稳定节点：</p>
+          <h4>有 Gmail 的用户，进入自己的订阅流程</h4>
+          <p>初始节点只负责把你先带上外网。接下来按视频把自己的域名、订阅和住宅 IP 接起来，等自己的环境搭好后，再把初始节点删掉：</p>
           <div class="tip-box tip-blue" style="margin:12px 0;">
             <strong>视频涵盖以下操作：</strong>
             <ul style="margin:8px 0 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.1;">
-              <li style="margin-left:16px; list-style:disc;">用谷歌账号登录 Chrome 浏览器</li>
-              <li style="margin-left:16px; list-style:disc;">注册 <strong>Cloudflare Workers</strong>，部署代理脚本</li>
-              <li style="margin-left:16px; list-style:disc;">在 <strong>dnshe</strong> 配置自定义域名，绑定节点地址</li>
-              <li style="margin-left:16px; list-style:disc;">将节点导入 V2RayN / NekoBox / Shadowrocket，完成配置</li>
+              <li style="margin-left:16px; list-style:disc;">用 Gmail 登录 Cloudflare 和 dnshe</li>
+              <li style="margin-left:16px; list-style:disc;">申请免费域名并绑定到 CF Workers</li>
+              <li style="margin-left:16px; list-style:disc;">把你自己的订阅导入 V2RayN / NekoBox / Shadowrocket</li>
+              <li style="margin-left:16px; list-style:disc;">确认自己的订阅可用后，删除初始节点</li>
             </ul>
           </div>
           <div class="video-wrap">
@@ -315,11 +316,11 @@
           <div style="margin-top:24px; padding:14px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
             <p style="font-size:0.88rem; font-weight:600; color:var(--text-primary); margin-bottom:10px;">📥 电脑端代理软件下载（视频中使用）：</p>
             <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener">
-                🪟 Windows（V2RayN）
+              <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-macos-arm64-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
+                🍎 macOS 便携版
               </a>
-              <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
-                🍎 macOS（V2RayN）
+              <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-windows-64-desktop-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
+                🪟 Windows 便携版
               </a>
             </div>
           </div>
@@ -332,135 +333,30 @@
         <div class="step-item-body">
           <h4>电脑开启系统代理 / Tun 模式</h4>
 
-          <!-- 系统代理 -->
-          <p>打开网络工具，找到并启用以下任一选项：</p>
-          <ul style="margin:10px 0 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.2;">
-            <li style="margin-left:16px; list-style:disc;">
-              <strong>系统代理</strong>（让电脑所有软件都走代理网络，包括命令行终端）
-            </li>
-            <li style="margin-left:16px; list-style:disc;">
-              <strong>全局模式</strong>（推荐新手使用，所有流量统一走代理，最省心）
-            </li>
-          </ul>
-          <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">⚠️ 注意：只开启"增强模式"或"PAC 模式"是不够的，命令行终端可能无法走代理。</p>
+          <div class="tip-box" style="margin-bottom:16px; border-left-color:#3fb950; background:rgba(63,185,80,0.08);">
+            <strong style="color:#3fb950;">已预设：</strong>Windows 和 macOS 便携版已经默认打开 <strong>自动系统代理</strong>、<strong>Tun 模式</strong>，Core 类型也已经改好 <strong>sing_box</strong>。包里还会先自动测延迟，默认预选一个可用的 US 节点。你打开软件后，通常只要点一次连接就行。
+          </div>
+
+          <p style="margin-top:8px; font-size:0.88rem; color:var(--text-muted);">如果你只想先跑起来，不用管下面这些高级选项；便携版已经帮你设好了。</p>
           <div style="margin-top:16px;">
             <img src="https://hidden-lab-852a.qq250113397.workers.dev/全局自动配置系统代理.png" style="width:100%; border-radius:8px;">
           </div>
 
-          <!-- Tun 模式 -->
-          <div style="margin-top:28px;">
-            <h5 style="font-size:1rem; font-weight:600; margin-bottom:12px; color:var(--text-primary);">启用 Tun 模式（重要）</h5>
-            <div class="tip-box" style="margin-bottom:16px; border-left-color:#f85149; background:rgba(248,81,73,0.08);">
-              <strong style="color:#f85149;">⚠️ 警告：</strong>不改 Core 类型直接开 Tun 会导致无法联网，请严格按以下顺序操作。
-            </div>
-            <ol style="margin:0; padding:0; counter-reset:tun-step; display:flex; flex-direction:column; gap:10px;">
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">1</span>
-                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">打开 V2Ray 设置 → <strong style="color:var(--text-primary);">Core 类型设置</strong></span>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">2</span>
-                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将 <code>VMess</code>、<code>Shadowsocks</code>、<code>VLESS</code>、<code>Trojan</code> 全部改为 <code>sing_box</code></span>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">3</span>
-                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">点击<strong style="color:var(--text-primary);">确定</strong>保存</span>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">4</span>
-                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">回到主界面，开启<strong style="color:var(--text-primary);">「启用 Tun」</strong>开关</span>
-              </li>
-              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none; counter-increment:tun-step;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:6px; background:var(--bg-secondary); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--text-muted);">5</span>
-                <span style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">将代理模式设为<strong style="color:var(--text-primary);">「V4-全局 (Global)」</strong></span>
-              </li>
+          <div style="margin-top:18px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+            <p style="font-weight:600; color:var(--text-primary); margin-bottom:6px;">请确认这几个开关都已经打开</p>
+            <ol style="margin:0; padding-left:18px; color:var(--text-secondary); line-height:1.9; font-size:0.92rem;">
+              <li>自动系统代理</li>
+              <li>Tun 模式</li>
+              <li>Core 类型 = <strong style="color:var(--text-primary);">sing_box</strong></li>
             </ol>
-            <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">Tun 模式会创建虚拟网络接口，让命令行终端的流量也能走代理，比普通系统代理更彻底。</p>
-            <video src="https://hidden-lab-852a.qq250113397.workers.dev/tun-mode.mp4" controls style="width:100%; max-height:500px; display:block; border-radius:8px; margin-top:12px;"></video>
-          </div>
-
-          <!-- Motrix 下载加速 -->
-          <div style="margin-top:28px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-            <p style="font-weight:600; color:var(--text-primary); margin-bottom:6px;">⚡ 下载大文件提速：安装 Motrix</p>
-            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:14px;">
-              CF 节点带宽有限，单线程下载较慢。<strong>开启 Tun 模式后</strong>，用 Motrix 替代浏览器下载，自动多线程并发，速度可提升数倍，Mac 和 Windows 体验一致。
-            </p>
-            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
-              <a href="https://github.com/agalwood/Motrix/releases/latest" class="btn btn-primary" target="_blank" rel="noopener">
-                ⬇️ 下载 Motrix（Windows / macOS）
-              </a>
-            </div>
-            <div style="font-size:0.85rem; color:var(--text-muted); display:flex; flex-direction:column; gap:6px;">
-              <p style="margin:0;">🪟 <strong style="color:var(--text-primary);">Windows：</strong>Tun 模式已接管全局流量，Motrix 安装后直接用，无需额外配置。</p>
-              <p style="margin:0;">🍎 <strong style="color:var(--text-primary);">macOS：</strong>同上，Tun 模式开启后 Motrix 自动走代理链，无需手动填代理地址。</p>
-            </div>
+            <p style="margin-top:10px; color:var(--text-muted); font-size:0.88rem;">下方截图保留给你对照位置，打开软件后先确认这几个开关已经打开，再点连接即可。</p>
           </div>
         </div>
       </div>
 
-      <!-- Step 6: 导入 AI 专属分流规则 -->
+      <!-- Step 6: 用谷歌账号注册 Claude 账号，进入步骤二 -->
       <div class="step-item">
         <div class="step-item-num">6</div>
-        <div class="step-item-body">
-          <h4>导入 AI 专属分流规则（养号必备）</h4>
-          <p>默认「全局模式」把所有流量都走代理，容易被风控。导入这套规则后，只有 <strong>AI 相关域名</strong>（Claude、OpenAI、Gemini、Cursor 等 30+ 平台）走代理，国内网站直连，<strong>账号 IP 更干净、更稳定</strong>。</p>
-
-          <!-- V2rayN 规则文件地址 -->
-          <div style="margin-top:20px; padding:16px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:10px;">在 V2rayN 路由设置中导入以下规则文件地址：</p>
-            <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.88rem; color:var(--text-primary); word-break:break-all; user-select:all;">https://claudecode-eut.pages.dev/v2rayn-routing.json</div>
-          </div>
-
-          <div class="tip-box tip-green" style="margin-top:20px;">
-            <strong>✓ 完成标志：</strong>打开 claude.ai 能正常访问，同时打开百度 / 淘宝等国内网站也能正常加载（走直连），说明分流规则已生效。
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 7: 验证网络连通性 -->
-      <div class="step-item">
-        <div class="step-item-num">7</div>
-        <div class="step-item-body">
-          <h4>验证网络连通性</h4>
-          <p>先打开命令行终端（一个可以输入命令的黑色窗口）：</p>
-          <div style="margin:12px 0; display:flex; flex-direction:column; gap:8px;">
-            <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:0.9rem;">
-              <span style="color:var(--accent); font-weight:600;">🪟 Windows 用户：</span>
-              按 <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">Win</kbd> +
-              <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">R</kbd>，
-              在弹出的框里输入 <code>powershell</code>，按回车打开
-            </div>
-            <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 16px; font-size:0.9rem;">
-              <span style="color:var(--accent); font-weight:600;">🍎 Mac 用户：</span>
-              按 <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">Command</kbd> +
-              <kbd style="background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:2px 7px; font-size:0.85rem;">空格</kbd>，
-              在搜索框输入 <code>terminal</code>，按回车打开
-            </div>
-          </div>
-          <p style="margin-bottom:8px;">然后在终端窗口里粘贴以下命令，按回车执行：</p>
-          <code>curl https://api.anthropic.com</code>
-          <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
-            ✅ <strong>成功标志：</strong>返回一段英文文字或 JSON 数据<br>
-            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 5 和步骤 6
-          </p>
-
-          <!-- 手动指定端口（备用方案） -->
-          <div style="margin-top:20px; padding:16px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-            <p style="font-weight:600; font-size:0.92rem; margin-bottom:6px; color:var(--text-primary);">🔧 如果验证失败但浏览器能上网：手动指定代理端口</p>
-            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:8px;">说明系统代理没有覆盖到命令行，在终端里输入以下命令（把 <code>7890</code> 换成你代理工具显示的端口号）：</p>
-            <code>set HTTPS_PROXY=http://127.0.0.1:7890</code>
-            <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
-              端口号通常在代理工具设置里能看到，常见值：7890、7891、1080、10809。<br>
-              安装程序也会自动尝试这些常用端口，大部分情况下不需要手动设置。
-            </p>
-            <video src="https://hidden-lab-852a.qq250113397.workers.dev/本地混合监听端口.mp4" controls style="width:100%; max-height:500px; display:block; border-radius:8px; margin-top:12px;"></video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 8: 用谷歌账号注册 Claude 账号，进入步骤二 -->
-      <div class="step-item">
-        <div class="step-item-num">8</div>
         <div class="step-item-body">
           <h4>用谷歌账号注册 Claude 账号，进入步骤二</h4>
           <p>网络验证通过后，前往 Claude 官网，用谷歌账号完成注册：</p>
