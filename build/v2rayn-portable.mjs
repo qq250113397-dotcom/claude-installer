@@ -239,12 +239,12 @@ function buildLauncher(launcherName) {
   return `@echo off
 setlocal
 chcp 65001 >nul 2>&1
-set "ROOT=%~dp0"
-start "" "%ROOT%v2rayN.exe"
+set “ROOT=%~dp0”
+start “” “%ROOT%v2rayN.exe”
 
 echo.
-echo  [*] 便携版已启动，初始节点已经预置在软件里。
-echo  [*] 你可以直接点连接；后续要导入自己的订阅，再去配置项里替换即可。
+echo  [*] 便携版已启动，分流规则和节点已预置好，直接点连接即可。
+echo  [*] 如果节点延迟显示 -1，点软件顶部闪电图标（⚡）全部测速，再双击延迟低的节点切换。
 echo.
 pause
 `;
@@ -252,12 +252,12 @@ pause
 
 function buildReadme() {
   return [
-    'v2rayN 便携版使用说明',
+    'v2rayN Windows 便携版使用说明',
     '',
-    `1. 双击“${launcherName}”。`,
-    '2. 程序会自动启动 v2rayN，初始节点已经预置好。',
-    '3. 先确保外网能连通，再按后续步骤导入你自己的订阅和住宅 IP。',
-    '4. “ai-abroad-proxy-cn-direct.json” 是现成的分流规则文件，导入后即可实现 AI / 国外走代理，国内直连。',
+    `1. 双击”${launcherName}”启动 v2rayN。`,
+    '2. 软件打开后分流规则已自动生效，直接点”连接”即可。',
+    '3. 如果节点延迟显示 -1，点顶栏闪电图标(⚡)全部测速，再双击延迟低的节点。',
+    '4. 分流规则：AI工具/海外流量走代理，国内直连（已预置，无需手动导入）。',
     '',
   ].join('\n');
 }

@@ -209,9 +209,17 @@ if [ ! -f "$APP_SUPPORT/guiNConfig.json" ] && [ -f "$SEED_DIR/guiNConfig.json" ]
   cp "$SEED_DIR/guiNConfig.json" "$APP_SUPPORT/guiNConfig.json"
 fi
 
-open "$ROOT/v2rayN.app"
-echo "v2rayN 已启动，初始节点已经预置在软件里。"
-echo "你可以直接点连接；后续要导入自己的订阅，再去配置项里替换即可。"
+open "$ROOT/v2rayN.app" 2>/dev/null || {
+  echo ""
+  echo "⚠️  macOS 安全提示：系统阻止了 v2rayN 启动。"
+  echo "    请前往：系统设置 → 隐私与安全性 → 点击「仍要打开」"
+  echo "    然后重新双击 ${launcherName} 启动。"
+  read -r -p "按回车键退出..."
+  exit 1
+}
+echo "v2rayN 已启动，分流规则和节点已预置好，直接点连接即可。"
+echo ""
+echo "如果节点延迟显示 -1，点软件顶部闪电图标(⚡)全部测速，再双击延迟低的节点切换。"
 read -r -p "按回车键退出..."
 `;
 }
@@ -219,13 +227,17 @@ read -r -p "按回车键退出..."
 function buildReadme() {
   return `v2rayN macOS 便携包
 
-1. 双击 ${launcherName} 启动 v2rayN
-2. 启动后初始节点已经预置好，直接连接即可
-3. 如果后面要换成你自己的订阅，就在软件里替换掉这条初始节点
+使用步骤：
+1. 双击 start-v2rayN.command 启动 v2rayN
+2. 软件打开后分流规则已自动生效，直接点”连接”即可
+3. 如果节点延迟显示 -1，点顶栏闪电图标(⚡)全部测速，再双击延迟低的节点
+
+安全提示（首次运行必看）：
+- macOS 会弹出”无法打开”提示 → 去”系统设置 → 隐私与安全性”点”仍要打开”
+- 然后重新双击 start-v2rayN.command
 
 说明：
-- 包内包含 v2rayN.app、分流规则和预置配置文件
-- macOS 版的最终配置存放在 ~/Library/Application Support/v2rayN/guiConfigs
-- 如果系统弹出安全提示，去“系统设置 → 隐私与安全性”里允许打开
+- 分流规则已预置：AI工具/海外流量走代理，国内直连
+- macOS 配置存放在 ~/Library/Application Support/v2rayN/guiConfigs
 `;
 }

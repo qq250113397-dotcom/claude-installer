@@ -12,6 +12,8 @@ export async function optimizePortablePackage(packageRoot, options = {}) {
   const limit = Number(options.limit || 20);
   const dryRun = options.dryRun === true;
 
+  cleanEmptySubscriptions(dbPath);
+
   const candidates = queryUsCandidates(dbPath, limit);
   if (!candidates.length) {
     return { selected: null, candidates: [] };
@@ -118,6 +120,14 @@ async function writeSelectedState(configPath, selected) {
     config.SubIndexId = selected.subid;
   }
   await writeFile(configPath, `${JSON.stringify(config, null, 2)}\n`, 'utf8');
+}
+
+function cleanEmptySubscriptions(dbPath) {
+  const sql = "BEGIN; DELETE FROM SubItem WHERE Url IS NULL OR TRIM(Url) = ''; COMMIT;";
+  const result = spawnSync('sqlite3', ['-batch', dbPath, sql], { encoding: 'utf8' });
+  if (result.status !== 0) {
+    throw new Error(`sqlite3 subscription cleanup failed: ${result.stderr || result.stdout || 'unknown error'}`);
+  }
 }
 
 function escapeSql(value) {
