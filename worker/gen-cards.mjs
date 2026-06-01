@@ -148,7 +148,7 @@ function keyExists(namespaceId, key) {
 }
 
 function runWrangler(args, { allowFailure = false } = {}) {
-  const result = spawnSync('npx', ['--yes', 'wrangler', ...args], {
+  const result = spawnSync('npx', ['--yes', 'wrangler', ...args, '--remote'], {
     cwd: SCRIPT_DIR,
     encoding: 'utf8',
     stdio: ['ignore', 'pipe', 'pipe'],
