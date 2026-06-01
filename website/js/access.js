@@ -1,7 +1,7 @@
 (function (window) {
-  var WORKER_URL = 'https://verify-card.qq250113397.workers.dev/verify';
   var LS_KEY = 'cc_unlock';
   var VERIFY_CACHE_MS = 12 * 60 * 60 * 1000;
+  var FALLBACK_VERIFY_URL = 'https://verify-card.qq250113397.workers.dev/verify';
 
   function normalizeCard(value) {
     return String(value || '')
@@ -42,6 +42,18 @@
     localStorage.removeItem(LS_KEY);
   }
 
+  function resolveVerifyUrl() {
+    try {
+      var origin = window.location && window.location.origin ? window.location.origin : '';
+      if (!origin || origin === 'null' || origin.indexOf('127.0.0.1') !== -1 || origin.indexOf('localhost') !== -1) {
+        return FALLBACK_VERIFY_URL;
+      }
+      return new URL('/verify', origin).toString();
+    } catch (e) {
+      return FALLBACK_VERIFY_URL;
+    }
+  }
+
   function isExpired(record) {
     return !record || !record.expiry || Date.now() > record.expiry;
   }
@@ -57,7 +69,7 @@
     var controller = window.AbortController ? new AbortController() : null;
     var timer = controller ? setTimeout(function () { controller.abort(); }, 10000) : null;
 
-    return fetch(WORKER_URL, {
+    return fetch(resolveVerifyUrl(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -77,13 +89,14 @@
 
   window.CC_ACCESS = {
     storageKey: LS_KEY,
-    workerUrl: WORKER_URL,
+    workerUrl: resolveVerifyUrl(),
     normalizeCard: normalizeCard,
     readRecord: readRecord,
     writeRecord: writeRecord,
     clearRecord: clearRecord,
     isExpired: isExpired,
     shouldRefresh: shouldRefresh,
-    verify: verify
+    verify: verify,
+    resolveVerifyUrl: resolveVerifyUrl
   };
 })(window);
