@@ -389,9 +389,91 @@
         </div>
       </div>
 
-      <!-- Step 6: 验证网络连通性 -->
+      <!-- Step 6: 导入 AI 专属分流规则 -->
       <div class="step-item">
         <div class="step-item-num">6</div>
+        <div class="step-item-body">
+          <h4>导入 AI 专属分流规则（养号必备）</h4>
+          <p>默认的「全局模式」会把所有流量都走代理，容易造成浪费。导入这套分流规则后，只有 <strong>AI 相关域名</strong>（Claude、OpenAI、Gemini、Cursor 等）走代理，国内网站正常直连，<strong>账号 IP 更干净、更稳定</strong>。</p>
+
+          <div class="tip-box" style="margin-top:14px; border-left-color:var(--accent); background:rgba(88,166,255,0.07);">
+            <strong>规则说明：</strong>
+            涵盖 Claude、OpenAI、Gemini、Cursor、GitHub Copilot、DeepSeek、Kimi 等 30+ AI 平台，中国域名 / IP 自动直连，其余境外流量走代理。
+          </div>
+
+          <!-- 操作步骤 -->
+          <div style="margin-top:20px;">
+            <p style="font-weight:600; color:var(--text-primary); margin-bottom:14px;">操作步骤（Windows / macOS 相同）：</p>
+            <ol style="margin:0; padding:0; display:flex; flex-direction:column; gap:12px;">
+
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">1</span>
+                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
+                  打开 V2rayN 主界面
+                  <div style="margin-top:6px; display:flex; flex-direction:column; gap:4px;">
+                    <span>🪟 <strong style="color:var(--text-primary);">Windows：</strong>点击右下角任务栏的 V2rayN 图标，双击打开主界面</span>
+                    <span>🍎 <strong style="color:var(--text-primary);">macOS：</strong>点击顶部菜单栏的 V2rayN 图标 → 点击「主界面」</span>
+                  </div>
+                </div>
+              </li>
+
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">2</span>
+                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
+                  在顶部菜单栏点击 <strong style="color:var(--text-primary);">「设置」→「路由设置」</strong>，打开路由规则管理窗口
+                </div>
+              </li>
+
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">3</span>
+                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
+                  在路由设置窗口的<strong style="color:var(--text-primary);">右上角</strong>找到「从 URL 导入」按钮（或在规则列表空白处右键 → 「从 URL 导入」），点击打开导入框
+                </div>
+              </li>
+
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">4</span>
+                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
+                  在弹出的输入框中粘贴以下地址，点击确认：
+                  <div style="margin-top:8px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.88rem; color:var(--text-primary); word-break:break-all; user-select:all;">
+                    https://claude.lbenben.cc.cd/v2rayn-routing.json
+                  </div>
+                </div>
+              </li>
+
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">5</span>
+                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
+                  导入成功后，规则列表中会出现 <strong style="color:var(--text-primary);">「Codex-应用分流」</strong>
+                </div>
+              </li>
+
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">6</span>
+                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
+                  <strong style="color:var(--text-primary);">双击「Codex-应用分流」</strong>，或右键 → 「设为活动路由」，确认该条规则前出现 ✓ 标记
+                </div>
+              </li>
+
+              <li style="display:flex; gap:12px; align-items:flex-start; list-style:none;">
+                <span style="flex-shrink:0; width:26px; height:26px; border-radius:6px; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff;">7</span>
+                <div style="color:var(--text-secondary); font-size:0.92rem; padding-top:3px;">
+                  关闭路由设置窗口，在主界面将代理模式从「V4-全局 (Global)」切换为 <strong style="color:var(--text-primary);">「Codex-应用分流」</strong>
+                </div>
+              </li>
+
+            </ol>
+          </div>
+
+          <div class="tip-box tip-green" style="margin-top:20px;">
+            <strong>✓ 完成标志：</strong>V2rayN 主界面底部状态栏显示当前路由为「Codex-应用分流」，打开 claude.ai 可以正常访问，打开百度 / 淘宝等国内网站也能正常加载（走直连）。
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7: 验证网络连通性 -->
+      <div class="step-item">
+        <div class="step-item-num">7</div>
         <div class="step-item-body">
           <h4>验证网络连通性</h4>
           <p>先打开命令行终端（一个可以输入命令的黑色窗口）：</p>
@@ -413,7 +495,7 @@
           <code>curl https://api.anthropic.com</code>
           <p style="margin-top:10px; font-size:0.88rem; color:var(--text-muted);">
             ✅ <strong>成功标志：</strong>返回一段英文文字或 JSON 数据<br>
-            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 5
+            ❌ <strong>失败标志：</strong>显示「连接超时」或长时间没有响应，说明代理未生效，请重新检查步骤 5 和步骤 6
           </p>
 
           <!-- 手动指定端口（备用方案） -->
@@ -430,9 +512,9 @@
         </div>
       </div>
 
-      <!-- Step 7: 用谷歌账号注册 Claude 账号，进入步骤二 -->
+      <!-- Step 8: 用谷歌账号注册 Claude 账号，进入步骤二 -->
       <div class="step-item">
-        <div class="step-item-num">7</div>
+        <div class="step-item-num">8</div>
         <div class="step-item-body">
           <h4>用谷歌账号注册 Claude 账号，进入步骤二</h4>
           <p>网络验证通过后，前往 Claude 官网，用谷歌账号完成注册：</p>
