@@ -1,0 +1,79 @@
+{
+  "route": {
+    "rules": [
+      {
+        "network": "udp",
+        "port": 443,
+        "outbound": "block",
+        "description": "阻断 QUIC/UDP443，避免浏览器绕路"
+      },
+      {
+        "domain_suffix": [
+          "anthropic.com",
+          "claude.ai",
+          "openai.com",
+          "chatgpt.com",
+          "oaiusercontent.com",
+          "oaistatic.com",
+          "perplexity.ai",
+          "poe.com",
+          "cursor.com",
+          "cursor.sh",
+          "windsurf.com",
+          "codeium.com",
+          "githubcopilot.com",
+          "copilot.microsoft.com",
+          "gemini.google.com",
+          "generativelanguage.googleapis.com",
+          "ai.google.dev",
+          "grok.com",
+          "x.ai",
+          "groq.com",
+          "openrouter.ai",
+          "huggingface.co",
+          "mistral.ai",
+          "cohere.ai",
+          "together.ai",
+          "replicate.com",
+          "stability.ai",
+          "deepseek.com",
+          "deepseek.com.cn",
+          "kimi.com",
+          "moonshot.cn",
+          "bigmodel.cn",
+          "zhipuai.cn",
+          "doubao.com",
+          "volcengine.com",
+          "qwen.ai",
+          "dashscope.aliyuncs.com",
+          "tongyi.aliyun.com",
+          "siliconflow.cn",
+          "modelscope.cn",
+          "minimax.chat",
+          "minimaxi.com",
+          "google.com",
+          "googleapis.com"
+        ],
+        "outbound": "proxy",
+        "description": "AI / 开发助手全部走代理"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct",
+        "description": "局域网直连"
+      },
+      {
+        "geoip": ["cn", "private"],
+        "outbound": "direct",
+        "description": "中国 IP 直连"
+      },
+      {
+        "geosite": ["cn"],
+        "outbound": "direct",
+        "description": "中国域名直连"
+      }
+    ],
+    "final": "proxy",
+    "auto_detect_interface": true
+  }
+}

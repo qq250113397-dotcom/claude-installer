@@ -1,0 +1,56 @@
+# Shadowrocket AI 专属分流规则
+# 适用：iOS Shadowrocket（小火箭）
+# 更新：2026-05-31
+# 导入方式：Shadowrocket → 配置 → 规则 → 右上角「+」→ 填入此文件 URL → 类型选「RULE」
+
+# ── AI / 开发助手 走代理 ──────────────────────────
+DOMAIN-SUFFIX,anthropic.com,PROXY
+DOMAIN-SUFFIX,claude.ai,PROXY
+DOMAIN-SUFFIX,openai.com,PROXY
+DOMAIN-SUFFIX,chatgpt.com,PROXY
+DOMAIN-SUFFIX,oaiusercontent.com,PROXY
+DOMAIN-SUFFIX,oaistatic.com,PROXY
+DOMAIN-SUFFIX,perplexity.ai,PROXY
+DOMAIN-SUFFIX,poe.com,PROXY
+DOMAIN-SUFFIX,cursor.com,PROXY
+DOMAIN-SUFFIX,cursor.sh,PROXY
+DOMAIN-SUFFIX,windsurf.com,PROXY
+DOMAIN-SUFFIX,codeium.com,PROXY
+DOMAIN-SUFFIX,githubcopilot.com,PROXY
+DOMAIN-SUFFIX,copilot.microsoft.com,PROXY
+DOMAIN-SUFFIX,gemini.google.com,PROXY
+DOMAIN-SUFFIX,generativelanguage.googleapis.com,PROXY
+DOMAIN-SUFFIX,ai.google.dev,PROXY
+DOMAIN-SUFFIX,grok.com,PROXY
+DOMAIN-SUFFIX,x.ai,PROXY
+DOMAIN-SUFFIX,groq.com,PROXY
+DOMAIN-SUFFIX,openrouter.ai,PROXY
+DOMAIN-SUFFIX,huggingface.co,PROXY
+DOMAIN-SUFFIX,mistral.ai,PROXY
+DOMAIN-SUFFIX,cohere.ai,PROXY
+DOMAIN-SUFFIX,together.ai,PROXY
+DOMAIN-SUFFIX,replicate.com,PROXY
+DOMAIN-SUFFIX,stability.ai,PROXY
+DOMAIN-SUFFIX,deepseek.com,PROXY
+DOMAIN-SUFFIX,deepseek.com.cn,PROXY
+DOMAIN-SUFFIX,kimi.com,PROXY
+DOMAIN-SUFFIX,moonshot.cn,PROXY
+DOMAIN-SUFFIX,bigmodel.cn,PROXY
+DOMAIN-SUFFIX,zhipuai.cn,PROXY
+DOMAIN-SUFFIX,doubao.com,PROXY
+DOMAIN-SUFFIX,volcengine.com,PROXY
+DOMAIN-SUFFIX,qwen.ai,PROXY
+DOMAIN-SUFFIX,dashscope.aliyuncs.com,PROXY
+DOMAIN-SUFFIX,tongyi.aliyun.com,PROXY
+DOMAIN-SUFFIX,siliconflow.cn,PROXY
+DOMAIN-SUFFIX,modelscope.cn,PROXY
+DOMAIN-SUFFIX,minimax.chat,PROXY
+DOMAIN-SUFFIX,minimaxi.com,PROXY
+DOMAIN-SUFFIX,google.com,PROXY
+DOMAIN-SUFFIX,googleapis.com,PROXY
+
+# ── 中国大陆 直连 ──────────────────────────────────
+GEOIP,CN,DIRECT
+
+# ── 最终规则 ──────────────────────────────────────
+FINAL,PROXY
