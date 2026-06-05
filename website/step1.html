@@ -82,16 +82,16 @@
         <div class="step-item-num">1</div>
         <div class="step-item-body">
           <h4>下载代理软件</h4>
-          <p>根据你的设备选择对应的代理工具下载安装，Windows 和 macOS 都提供了预置节点、自动系统代理、Tun 模式和分流规则的便携版：</p>
+          <p>根据你的设备选择对应的代理工具下载安装，Windows 和 macOS 均可从 GitHub 官方获取最新版：</p>
           <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
             <a href="https://hidden-lab-852a.qq250113397.workers.dev/Andorid-NekoBox.apk" class="btn btn-primary" target="_blank" rel="noopener">
               📱 安卓手机（NekoBox）
             </a>
-            <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-macos-arm64-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
-              🍎 macOS 便携版
+            <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
+              🍎 macOS（ARM64）
             </a>
-            <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-windows-64-desktop-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
-              🪟 Windows 便携版
+            <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener">
+              🪟 Windows 64位
             </a>
             <div class="btn btn-secondary" style="cursor:default; opacity:0.85;">
               🚀 苹果手机（Shadowrocket）
@@ -150,7 +150,7 @@
             注册美区 Apple ID 需要在<strong>电脑网页端</strong>切换至美国节点后完成，苹果手机需要单独操作，具体步骤见步骤 3 的视频教程。
           </div>
           <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">下载后按视频教程安装配置，工具需要支持系统代理模式（让电脑所有软件都走代理网络）。</p>
-          <p style="margin-top:8px; font-size:0.85rem; color:var(--text-muted);">Windows 和 macOS 便携版都已预置启动器、初始节点、自动系统代理、Tun 模式和分流规则，并且在打包时已经自动测过延迟，预选了一个可用的 US 节点。解压后直接双击启动即可；这一步不需要手动导入旧订阅。</p>
+          <p style="margin-top:8px; font-size:0.85rem; color:var(--text-muted);">官方版不含预置节点，安装后需要手动添加订阅链接或节点，参考第 4 步完成自己的订阅配置后再连接。</p>
         </div>
       </div>
 
@@ -159,7 +159,7 @@
         <div class="step-item-num">2</div>
         <div class="step-item-body">
           <h4>先连通外网</h4>
-          <p>Windows 和 macOS 便携版已经预置了初始节点，打开后直接点一次连接即可。</p>
+          <p>安装 v2rayN 后，先按第 4 步添加自己的订阅节点，或手动输入节点信息，然后点一次连接即可。</p>
 
 
         </div>
@@ -278,11 +278,11 @@
           <div style="margin-top:24px; padding:14px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
             <p style="font-size:0.88rem; font-weight:600; color:var(--text-primary); margin-bottom:10px;">📥 电脑端代理软件下载（视频中使用）：</p>
             <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-macos-arm64-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
-                🍎 macOS 便携版
+              <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
+                🍎 macOS（ARM64）
               </a>
-              <a href="https://hidden-lab-852a.qq250113397.workers.dev/v2rayN-windows-64-desktop-portable.zip" class="btn btn-primary" target="_blank" rel="noopener">
-                🪟 Windows 便携版
+              <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener">
+                🪟 Windows 64位
               </a>
             </div>
           </div>
@@ -296,10 +296,10 @@
           <h4>电脑开启系统代理 / Tun 模式</h4>
 
           <div class="tip-box" style="margin-bottom:16px; border-left-color:#3fb950; background:rgba(63,185,80,0.08);">
-            <strong style="color:#3fb950;">已预设：</strong>Windows 和 macOS 便携版已经默认打开 <strong>自动系统代理</strong>、<strong>Tun 模式</strong>，Core 类型也已经改好 <strong>sing_box</strong>。包里还会先自动测延迟，默认预选一个可用的 US 节点。你打开软件后，通常只要点一次连接就行。
+            <strong style="color:#3fb950;">首次配置：</strong>官方版需要手动开启以下三个设置，添加好节点后再点连接。
           </div>
 
-          <p style="margin-top:8px; font-size:0.88rem; color:var(--text-muted);">如果你只想先跑起来，不用管下面这些高级选项；便携版已经帮你设好了。</p>
+          <p style="margin-top:8px; font-size:0.88rem; color:var(--text-muted);">对照下方截图开启这几个选项，确认无误后再点连接。</p>
           <div style="margin-top:16px;">
             <img src="https://hidden-lab-852a.qq250113397.workers.dev/全局自动配置系统代理.png" style="width:100%; border-radius:8px;">
           </div>

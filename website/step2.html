@@ -57,7 +57,7 @@
 <div class="page-header">
   <div class="container">
     <h1>步骤二：下载 &amp; 安装</h1>
-    <p>下载一键安装程序，双击后自动完成 Node.js、Claude Code 和必要依赖的安装。</p>
+    <p>前往 Node.js 官网下载并安装，随后通过一行 npm 命令完成 Claude Code 安装。</p>
   </div>
 </div>
 
@@ -71,79 +71,90 @@
       <!-- Windows 卡片（左） -->
       <div class="download-card" style="flex:1; min-width:280px;">
         <div class="file-icon">🖥️</div>
-        <h3>Claude Code 一键安装程序</h3>
-        <p>适用于 Windows 10 / 11（64 位），双击后自动安装所有依赖，下载失败会自动切换国内镜像</p>
-        <a href="https://hidden-lab-852a.qq250113397.workers.dev/claude-code-setup.exe" class="btn btn-primary btn-lg" id="downloadBtn">
-          ⬇️ 下载安装程序 (.exe)
+        <h3>Node.js 官方安装包（Windows）</h3>
+        <p>前往 Node.js 官网下载 LTS 版本，双击安装包按向导完成安装，全程点「Next」即可</p>
+        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+          ⬇️ 前往 Node.js 官网下载
         </a>
         <div class="download-meta">
-          <span>📦 约 2MB</span>
           <span>🪟 Windows 10/11</span>
-          <span>✅ 无病毒，开源可审计</span>
-          <span>🔄 支持自动更新</span>
+          <span>✅ 官方来源</span>
+          <span>📦 选 LTS 版本</span>
         </div>
       </div>
 
       <!-- macOS 卡片（右） -->
       <div class="download-card" style="flex:1; min-width:280px;">
         <div class="file-icon">🍎</div>
-        <h3>Claude Code macOS 安装助手</h3>
-        <p>适用于 macOS，双击后自动安装所有依赖，网络不稳时会自动重试并切换镜像</p>
-        <a href="https://hidden-lab-852a.qq250113397.workers.dev/install-mac.zip" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-          ⬇️ 下载安装脚本 (.sh)
+        <h3>Node.js 官方安装包（macOS）</h3>
+        <p>前往 Node.js 官网下载 LTS 版本的 .pkg 安装包，双击安装即可</p>
+        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+          ⬇️ 前往 Node.js 官网下载
         </a>
         <div class="download-meta">
           <span>🍎 Apple Silicon / Intel</span>
-          <span>✅ 无病毒，开源可审计</span>
+          <span>✅ 官方来源</span>
+          <span>📦 选 LTS 版本</span>
         </div>
       </div>
 
     </div>
 
-    <div class="tip-box">
-      <strong>安全提示：</strong> 下载完成后，Windows 可能弹出 SmartScreen 警告，点击「更多信息」→「仍要运行」即可。
-      本程序开源，源代码可在 GitHub 查看审计。<br>
-      <span style="display:block; margin-top:8px;">🍎 <strong>macOS 用户：</strong>下载后双击 .sh 文件，如提示无法打开，前往系统设置 → 隐私与安全性 → 点击「仍要打开」</span>
+    <!-- npm 安装命令 -->
+    <div style="margin-top:24px; padding:20px 24px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+      <p style="font-weight:600; color:var(--text-primary); margin-bottom:12px;">📦 安装 Node.js 后，打开终端执行以下命令安装 Claude Code：</p>
+      <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:14px 18px; font-family:monospace; font-size:1rem; color:var(--text-primary); user-select:all; letter-spacing:0.02em;">
+        npm install -g @anthropic-ai/claude-code
+      </div>
+      <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">Windows 用户请用 <strong>命令提示符（cmd）</strong> 或 <strong>PowerShell</strong>；macOS 用户请用<strong>终端（Terminal）</strong>。</p>
+    </div>
+
+    <div class="tip-box" style="margin-top:16px;">
+      <strong>提示：</strong> Node.js 安装完成后，打开新的终端窗口再运行 npm 命令，确保环境变量已刷新。
     </div>
 
     <!-- Installation Steps -->
     <h2 style="margin-top:48px; margin-bottom:8px; font-size:1.3rem;">📦 安装步骤</h2>
-    <p style="color:var(--text-secondary); margin-bottom:8px;">运行安装程序后，按以下流程操作：</p>
+    <p style="color:var(--text-secondary); margin-bottom:8px;">按以下流程完成安装：</p>
 
     <div class="steps-list">
       <div class="step-item">
         <div class="step-item-num">1</div>
         <div class="step-item-body">
-          <h4>双击运行安装程序</h4>
-          <p>Windows 直接双击下载好的 <strong>install.bat</strong>；macOS 直接双击解压后的 <strong>install-mac.sh</strong>，按提示允许执行即可。</p>
+          <h4>下载并安装 Node.js LTS</h4>
+          <p>点击上方「前往 Node.js 官网下载」，选择 <strong>LTS（长期支持）</strong> 版本下载。Windows 双击 .msi 安装包，macOS 双击 .pkg 安装包，按向导一路 Next / 继续 即可。</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-item-num">2</div>
         <div class="step-item-body">
-          <h4>自动检查并补齐依赖</h4>
-          <p>安装器会自动检查 Node.js、npm 和网络环境；缺什么就自动下载并补齐，不需要你手动配置 PATH。</p>
+          <h4>打开终端 / 命令提示符</h4>
+          <p>Windows：按 <code>Win + R</code>，输入 <code>cmd</code> 回车；或搜索「PowerShell」打开。<br>
+          macOS：按 <code>⌘ + 空格</code> 搜索「终端」打开。</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-item-num">3</div>
         <div class="step-item-body">
-          <h4>自动安装 Claude Code</h4>
-          <p>程序会先走国内镜像，失败后再回退官方源，安装完成后会自动给出下一步提示。</p>
+          <h4>运行安装命令</h4>
+          <p>在终端中粘贴以下命令并回车，等待安装完成：</p>
+          <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.92rem; color:var(--text-primary); user-select:all; margin-top:8px;">
+            npm install -g @anthropic-ai/claude-code
+          </div>
         </div>
       </div>
       <div class="step-item">
         <div class="step-item-num">4</div>
         <div class="step-item-body">
-          <h4>安装完成后直接用</h4>
-          <p>看到安装成功提示后，打开新的终端输入 <code>claude</code> 即可开始使用。</p>
+          <h4>验证安装成功</h4>
+          <p>安装完成后，打开新的终端窗口，输入 <code>claude --version</code>，能看到版本号说明安装成功，随后输入 <code>claude</code> 即可开始使用。</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-item-num">5</div>
         <div class="step-item-body">
           <h4>遇到问题怎么办？</h4>
-          <p>如果安装失败，先确认步骤一里的网络已经连通，再回到 FAQ 查对应报错。大多数问题都是网络或权限导致的。</p>
+          <p>如果 npm 命令报错，先确认步骤一里的网络已经连通，再回到 FAQ 查对应报错。常见原因是网络未连通或 Node.js 安装后未重新打开终端。</p>
         </div>
       </div>
     </div>
@@ -152,28 +163,27 @@
     <h2 style="margin-top:48px; margin-bottom:16px; font-size:1.3rem;">💻 系统要求</h2>
     <div class="info-grid">
       <div class="info-card">
-        <h4>⚙️ 硬件要求</h4>
+        <h4>⚙️ 系统要求</h4>
         <ul>
-          <li>Windows 10 版本 1903 或更高</li>
-          <li>64 位操作系统</li>
+          <li>Windows 10 / 11（64 位）或 macOS 12+</li>
+          <li>Node.js 18 LTS 或更高</li>
           <li>至少 500MB 可用磁盘空间</li>
-          <li>稳定的网络连接</li>
+          <li>稳定的网络连接（已完成步骤一）</li>
         </ul>
       </div>
       <div class="info-card">
-        <h4>📦 将自动安装</h4>
+        <h4>📦 需要手动安装</h4>
         <ul>
-          <li>Node.js 22 LTS（若未安装）</li>
-          <li>npm 包管理器</li>
-          <li>@anthropic-ai/claude-code</li>
-          <li>PATH 环境变量配置</li>
+          <li>Node.js LTS（从 nodejs.org 下载）</li>
+          <li>npm 随 Node.js 一起安装</li>
+          <li>@anthropic-ai/claude-code（npm 命令）</li>
         </ul>
       </div>
     </div>
 
     <!-- Troubleshoot -->
     <div class="tip-box" style="margin-top:32px;">
-      <strong>安装失败？</strong> 最常见原因是网络问题。请确认：①代理工具已开启 ②系统代理模式已启用 ③重新运行安装程序。
+      <strong>安装失败？</strong> 最常见原因是网络问题。请确认：①代理工具已开启 ②系统代理模式已启用 ③关闭终端重新打开后再运行 npm 命令。
       更多问题请查看 <a href="faq.html">FAQ 页面</a>。
     </div>
 
