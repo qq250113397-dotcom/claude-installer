@@ -66,11 +66,11 @@
         <div class="faq-answer">
           <div class="faq-answer-inner">
             请按以下步骤排查：<br><br>
-            1. 确认步骤一里的便携版已经启动，并且初始节点处于连接状态<br>
-            2. 先尝试打开 <a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">Cloudflare</a> 和
-            <a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">dnshe</a><br>
-            3. 如果页面打不开，再回到代理工具里检查「系统代理」或「Tun 模式」是否已开启<br>
-            4. 重新运行安装程序
+            1. 确认 v2rayN 已启动，且已导入订阅链接并选中了一个低延迟节点<br>
+            2. 检查「系统代理」或「Tun 模式」是否已开启<br>
+            3. 先尝试打开 <a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">Cloudflare</a> 和
+            <a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">dnshe</a>，能打开说明网络已通<br>
+            4. 重新打开终端，再次运行 npm 安装命令
           </div>
         </div>
       </div>
@@ -162,9 +162,8 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Claude Code 软件本身免费，但使用需要 Anthropic 账号，并消耗 API 用量。<br><br>
-            <strong>计费方式：</strong> 按 Token 用量计费，新用户通常有一定免费额度。实际费用取决于使用量，
-            轻度使用每月大约几美元，重度使用可能更多。<br><br>
+            Claude Code 软件本身免费，但正常使用需要订阅 <strong>Claude Pro（$20/月）</strong> 或 <strong>Claude Max（$100/月）</strong>，没有免费使用额度。<br><br>
+            国内用户可通过 <a href="https://bewild.ai?code=6XSWDDEI" target="_blank" rel="noopener">WildAI</a> 等平台完成充值订阅，具体操作见步骤三。<br><br>
             详细定价请参考 <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic 官方定价页面</a>。
           </div>
         </div>
@@ -209,7 +208,7 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            运行安装目录中的 <code>update.bat</code> 脚本即可自动更新。或者手动在终端运行：<br><br>
+            在终端运行以下命令即可更新到最新版本：<br><br>
             <code>npm update -g @anthropic-ai/claude-code</code><br><br>
             建议定期更新以获得最新功能和安全修复。
           </div>
@@ -223,8 +222,7 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            安装程序通过 Git 进行版本管理。运行 <code>update.bat</code> 会自动从 GitHub 拉取最新版本的安装脚本，
-            然后重新安装最新版 Claude Code。你也可以关注发布页面获取更新通知。
+            Claude Code 本身通过 npm 管理。运行 <code>npm update -g @anthropic-ai/claude-code</code> 即可拉取最新版本。Node.js 如需更新，前往 <a href="https://nodejs.org/zh-cn/download" target="_blank" rel="noopener">nodejs.org</a> 重新下载安装即可。
           </div>
         </div>
       </div>
