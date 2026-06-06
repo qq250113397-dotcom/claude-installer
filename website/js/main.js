@@ -84,6 +84,25 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
 
+// Subscription URL copy button
+(function () {
+  var btn = document.getElementById('sub-copy-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var txt = document.getElementById('sub-url-txt');
+    if (!txt) return;
+    navigator.clipboard.writeText(txt.textContent.trim()).then(function () {
+      btn.textContent = '已复制 ✓';
+      setTimeout(function () { btn.textContent = '复制'; }, 2000);
+    }).catch(function () {
+      var r = document.createRange();
+      r.selectNode(txt);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(r);
+    });
+  });
+})();
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {

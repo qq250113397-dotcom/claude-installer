@@ -150,7 +150,7 @@
             注册美区 Apple ID 需要在<strong>电脑网页端</strong>切换至美国节点后完成，苹果手机需要单独操作，具体步骤见步骤 3 的视频教程。
           </div>
           <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">下载后按视频教程安装配置，工具需要支持系统代理模式（让电脑所有软件都走代理网络）。</p>
-          <p style="margin-top:8px; font-size:0.85rem; color:var(--text-muted);">官方版不含预置节点，安装后需要手动添加订阅链接或节点，参考第 4 步完成自己的订阅配置后再连接。</p>
+          <p style="margin-top:8px; font-size:0.85rem; color:var(--text-muted);">官方版不含预置节点，下载后参考步骤 2 导入订阅链接即可获得可用节点。</p>
         </div>
       </div>
 
@@ -158,9 +158,50 @@
       <div class="step-item">
         <div class="step-item-num">2</div>
         <div class="step-item-body">
-          <h4>先连通外网</h4>
-          <p>安装 v2rayN 后，先按第 4 步添加自己的订阅节点，或手动输入节点信息，然后点一次连接即可。</p>
+          <h4>导入订阅链接，连通外网</h4>
+          <p>安装好 v2rayN 后，将下方订阅链接导入，即可获得可用节点：</p>
 
+          <!-- 订阅链接 + 一键复制 -->
+          <div style="display:flex; align-items:center; gap:8px; margin:14px 0; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+            <code id="sub-url-txt" style="flex:1; font-size:0.82rem; word-break:break-all; color:var(--accent); user-select:all;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</code>
+            <button id="sub-copy-btn" style="flex-shrink:0; padding:6px 14px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); font-size:0.82rem; cursor:pointer; white-space:nowrap;">复制</button>
+          </div>
+
+          <!-- Windows 导入步骤 -->
+          <details style="border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
+            <summary style="padding:10px 16px; background:var(--bg-secondary); cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-primary); user-select:none; list-style:none; display:flex; align-items:center; gap:8px;">
+              <span style="flex:1;">🪟 Windows v2rayN — 导入订阅步骤</span>
+              <span style="font-size:0.8rem; color:var(--text-muted);">点击展开 ▼</span>
+            </summary>
+            <div style="padding:14px 18px;">
+              <ol style="margin:0; padding-left:18px; line-height:2.2; font-size:0.9rem; color:var(--text-secondary);">
+                <li>解压下载的 ZIP，双击文件夹内的 <strong style="color:var(--text-primary);">v2rayN.exe</strong> 启动</li>
+                <li>点顶部菜单 <strong style="color:var(--text-primary);">「订阅分组」→「订阅设置」</strong></li>
+                <li>点 <strong style="color:var(--text-primary);">「添加」</strong>，将上方订阅链接粘贴进地址栏，点 <strong style="color:var(--text-primary);">「确定」</strong></li>
+                <li>回主界面，点 <strong style="color:var(--text-primary);">「订阅分组」→「更新全部订阅」</strong>，等待节点列表刷新</li>
+                <li>点顶部闪电图标 <strong style="color:var(--text-primary);">⚡（测速）</strong>，等延迟数字出现</li>
+                <li>双击延迟最低的节点，点工具栏 <strong style="color:var(--text-primary);">「系统代理」→「自动配置系统代理」</strong>，完成连接</li>
+              </ol>
+            </div>
+          </details>
+
+          <!-- macOS 导入步骤 -->
+          <details style="margin-top:8px; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
+            <summary style="padding:10px 16px; background:var(--bg-secondary); cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-primary); user-select:none; list-style:none; display:flex; align-items:center; gap:8px;">
+              <span style="flex:1;">🍎 macOS v2rayN — 导入订阅步骤</span>
+              <span style="font-size:0.8rem; color:var(--text-muted);">点击展开 ▼</span>
+            </summary>
+            <div style="padding:14px 18px;">
+              <ol style="margin:0; padding-left:18px; line-height:2.2; font-size:0.9rem; color:var(--text-secondary);">
+                <li>打开 DMG，把 <strong style="color:var(--text-primary);">v2rayN.app</strong> 拖入 <strong style="color:var(--text-primary);">应用程序（Applications）</strong> 文件夹</li>
+                <li>从应用程序打开 v2rayN（参考下方常见安装问题跳过 Gatekeeper 拦截）</li>
+                <li>点菜单栏图标 → <strong style="color:var(--text-primary);">「订阅分组」→「订阅设置」</strong></li>
+                <li>点 <strong style="color:var(--text-primary);">「添加」</strong>，粘贴上方订阅链接，点 <strong style="color:var(--text-primary);">「确定」</strong></li>
+                <li><strong style="color:var(--text-primary);">「订阅分组」→「更新全部订阅」</strong>，等节点列表刷新</li>
+                <li>全部测速后双击延迟低的节点，点 <strong style="color:var(--text-primary);">「系统代理」→「自动配置系统代理」</strong></li>
+              </ol>
+            </div>
+          </details>
 
         </div>
       </div>
@@ -401,6 +442,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20260601b"></script>
+<script src="js/main.js?v=20260606a"></script>
 </body>
 </html>
