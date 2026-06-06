@@ -90,6 +90,23 @@
 
     </div>
 
+      <div class="faq-item">
+        <div class="faq-question">
+          CF 节点老是断线 / 频繁掉线怎么办？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            CF Workers 免费节点本质上是借用 Cloudflare 的公共 IP，会受到运营商 QoS 限速和 CF 自身的并发限制，断线属于正常现象。几个缓解方法：<br><br>
+            <strong>1. 断了就切换节点：</strong>在 v2rayN 里点顶部闪电图标全部测速，双击当前延迟最低的节点切换即可，不用重启软件。<br><br>
+            <strong>2. 定期更新订阅：</strong>「订阅分组 → 更新全部订阅」刷新节点列表，新节点通常比旧的稳定。<br><br>
+            <strong>3. 换成住宅 IP（根本解决）：</strong>CF 节点适合临时上网，长期稳定使用建议在步骤一第 4 步里接入住宅 IP（<a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a>），住宅 IP 走真实家庭宽带线路，不会被 QoS，稳定性远高于 CF 免费节点。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:40px 0 16px;">📦 安装相关</h2>
     <div class="faq-list">
 

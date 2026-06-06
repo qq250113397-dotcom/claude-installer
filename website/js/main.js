@@ -22,7 +22,7 @@
     '<div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.85;margin-bottom:24px;">' +
       '<p style="margin-bottom:10px;">本站仅提供 Claude Code 软件的<strong style="color:var(--text-primary);">安装指引教程</strong>，不提供任何网络代理或加速服务。</p>' +
       '<p style="margin-bottom:10px;">Claude Code 是 <strong style="color:var(--text-primary);">Anthropic</strong> 的官方产品，本站与 Anthropic <strong style="color:var(--text-primary);">无官方关联</strong>。</p>' +
-      '<p style="margin-bottom:10px;">本站教程默认使用 <strong style="color:var(--text-primary);">CF Workers 节点 + 静态住宅 IP</strong> 的链式代理方案；如果你只用 GPT / Gemini，只搭好 CF Workers 机场节点就够了。</p>' +
+      '<p style="margin-bottom:10px;">本站教程包含代理工具的安装与配置引导；教程本身不提供任何代理服务，节点由用户自行管理。</p>' +
       '<p>使用 Claude Code 须遵守 <a href="https://www.anthropic.com/legal/usage-policy" target="_blank" rel="noopener" style="color:var(--accent);">Anthropic 使用条款</a>。</p>' +
     '</div>' +
     '<button id="disclaimer-close" style="width:100%;padding:12px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:not-allowed;opacity:0.65;" disabled>我已了解，继续访问（3）</button>';

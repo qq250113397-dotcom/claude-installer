@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>步骤二：下载 & 安装 — Claude Code 安装助手</title>
-  <meta name="description" content="下载 Claude Code Windows 一键安装程序，自动安装所有依赖，无需手动配置。">
+  <meta name="description" content="下载 Node.js 官方安装包，执行一行 npm 命令完成 Claude Code 安装，支持 Windows 和 macOS。">
   <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -112,6 +112,44 @@
       <strong>提示：</strong> Node.js 安装完成后，打开新的终端窗口再运行 npm 命令，确保环境变量已刷新。
     </div>
 
+    <!-- Windows npm 常见问题 -->
+    <details style="margin-top:16px; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
+      <summary style="padding:12px 16px; background:var(--bg-secondary); cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-primary); user-select:none; list-style:none; display:flex; align-items:center; gap:8px;">
+        <span style="flex:1;">🪟 Windows 常见安装问题</span>
+        <span style="font-size:0.8rem; color:var(--text-muted);">点击展开 ▼</span>
+      </summary>
+      <div style="padding:16px 20px; display:flex; flex-direction:column; gap:16px;">
+
+        <div>
+          <p style="font-weight:600; font-size:0.92rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题一：npm 报网络错误 / 下载超时</p>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:10px;">
+            v2rayN 开启后 npm 仍可能无法联网，因为 npm 不自动读取系统代理。需要手动告诉 npm 走代理端口。<br>
+            v2rayN 默认 HTTP 代理端口是 <strong style="color:var(--text-primary);">10809</strong>（可在 v2rayN → 参数设置 → Core 设置里确认）。
+          </p>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">在 PowerShell / cmd 中依次运行：</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">npm config set proxy http://127.0.0.1:10809</div>
+            <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">npm config set https-proxy http://127.0.0.1:10809</div>
+            <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">npm install -g @anthropic-ai/claude-code</div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">安装完成后如需恢复：<code>npm config delete proxy</code> 和 <code>npm config delete https-proxy</code></p>
+        </div>
+
+        <div>
+          <p style="font-weight:600; font-size:0.92rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题二：PowerShell 提示"无法运行脚本"</p>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:8px;">Windows 默认禁止运行外部脚本，需要先放开执行策略：</p>
+          <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</div>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-top:6px;">输入后选 Y 确认，再重新运行 npm 安装命令。</p>
+        </div>
+
+        <div>
+          <p style="font-weight:600; font-size:0.92rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题三：安装完后 claude 命令找不到</p>
+          <p style="font-size:0.88rem; color:var(--text-secondary);">完全关闭当前终端窗口，重新打开一个新的 PowerShell / cmd，再输入 <code>claude</code> 即可。若还是找不到，重启电脑后再试。</p>
+        </div>
+
+      </div>
+    </details>
+
     <!-- Installation Steps -->
     <h2 style="margin-top:48px; margin-bottom:8px; font-size:1.3rem;">📦 安装步骤</h2>
     <p style="color:var(--text-secondary); margin-bottom:8px;">按以下流程完成安装：</p>
@@ -213,6 +251,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20260601b"></script>
+<script src="js/main.js?v=20260606b"></script>
 </body>
 </html>
