@@ -117,6 +117,132 @@
       <p style="margin-top:6px; font-size:0.82rem; color:var(--text-muted);">遇到问题？查看 <a href="faq.html">FAQ 常见问题</a> 获取帮助。</p>
     </div>
 
+    <!-- 分流规则 -->
+    <div style="margin-top:48px;">
+      <h2 style="font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">🚦 配置 Codex 应用分流规则</h2>
+      <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:16px;">
+        导入分流规则后，Claude、ChatGPT、Codex 等 AI 工具<strong style="color:var(--text-primary);">强制走代理</strong>，国内网站正常直连。切换节点后不需要重新设置。
+      </p>
+
+      <!-- 视频占位，录制后替换 src -->
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:48px 24px; text-align:center; margin-bottom:16px; color:var(--text-muted);">
+        <div style="font-size:2.5rem; margin-bottom:10px;">🎬</div>
+        <p style="font-size:0.875rem; font-weight:500; margin-bottom:4px;">视频教程录制中，敬请期待</p>
+        <p style="font-size:0.78rem;">录制完成后将替换为操作演示视频</p>
+      </div>
+      <!-- 录制好后把上方占位 div 替换为：
+      <video preload="none" src="https://media.zuibenniuge.cc.cd/分流规则导入教程.mp4" controls style="width:100%; border-radius:var(--radius); border:1px solid var(--border); display:block; margin-bottom:16px;"></video>
+      -->
+
+      <!-- 规则代码块 -->
+      <div style="border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:var(--bg-secondary); border-bottom:1px solid var(--border);">
+          <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted); font-family:monospace;">v2rayn-routing.json</span>
+          <button data-copy-target="routing-rules-code" style="padding:5px 14px; background:var(--accent); color:#fff; border:none; border-radius:5px; font-size:0.78rem; font-weight:600; cursor:pointer; white-space:nowrap;">复制全部</button>
+        </div>
+        <pre id="routing-rules-code" style="margin:0; padding:14px 16px; background:var(--bg-card); font-family:'Cascadia Code','Fira Code',Consolas,monospace; font-size:0.78rem; line-height:1.7; color:var(--text-secondary); overflow-x:auto; overflow-y:auto; max-height:280px; user-select:all; white-space:pre;">[
+  {
+    "Id": "6105310000000001001",
+    "Port": "443",
+    "Network": "udp",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Remarks": "阻断 QUIC/UDP443，避免浏览器绕路"
+  },
+  {
+    "Id": "6105310000000001002",
+    "OutboundTag": "proxy",
+    "Domain": [
+      "domain:openai.com",
+      "domain:chatgpt.com",
+      "domain:oaiusercontent.com",
+      "domain:oaistatic.com",
+      "domain:anthropic.com",
+      "domain:claude.ai",
+      "domain:perplexity.ai",
+      "domain:poe.com",
+      "domain:cursor.com",
+      "domain:cursor.sh",
+      "domain:windsurf.com",
+      "domain:codeium.com",
+      "domain:githubcopilot.com",
+      "domain:copilot.microsoft.com",
+      "domain:gemini.google.com",
+      "domain:generativelanguage.googleapis.com",
+      "domain:ai.google.dev",
+      "domain:grok.com",
+      "domain:x.ai",
+      "domain:groq.com",
+      "domain:openrouter.ai",
+      "domain:huggingface.co",
+      "domain:mistral.ai",
+      "domain:cohere.ai",
+      "domain:together.ai",
+      "domain:replicate.com",
+      "domain:stability.ai",
+      "domain:deepseek.com",
+      "domain:deepseek.com.cn",
+      "domain:kimi.com",
+      "domain:moonshot.cn",
+      "domain:bigmodel.cn",
+      "domain:zhipuai.cn",
+      "domain:doubao.com",
+      "domain:volcengine.com",
+      "domain:qwen.ai",
+      "domain:dashscope.aliyuncs.com",
+      "domain:tongyi.aliyun.com",
+      "domain:siliconflow.cn",
+      "domain:modelscope.cn",
+      "domain:minimax.chat",
+      "domain:minimaxi.com",
+      "geosite:google"
+    ],
+    "Enabled": true,
+    "Remarks": "AI / 开发助手全部走代理"
+  },
+  {
+    "Id": "6105310000000001003",
+    "OutboundTag": "direct",
+    "Ip": ["geoip:private"],
+    "Enabled": true,
+    "Remarks": "局域网 IP 直连"
+  },
+  {
+    "Id": "6105310000000001004",
+    "OutboundTag": "direct",
+    "Domain": ["geosite:private"],
+    "Enabled": true,
+    "Remarks": "局域网域名直连"
+  },
+  {
+    "Id": "6105310000000001005",
+    "OutboundTag": "direct",
+    "Ip": ["geoip:cn"],
+    "Enabled": true,
+    "Remarks": "中国 IP 直连"
+  },
+  {
+    "Id": "6105310000000001006",
+    "OutboundTag": "direct",
+    "Domain": ["geosite:cn", "geosite:geolocation-cn"],
+    "Enabled": true,
+    "Remarks": "中国域名直连"
+  },
+  {
+    "Id": "6105310000000001007",
+    "Port": "0-65535",
+    "OutboundTag": "proxy",
+    "Enabled": true,
+    "Remarks": "其他非中国流量走代理"
+  }
+]</pre>
+      </div>
+
+      <div class="tip-box" style="margin-top:10px;">
+        <strong>导入方式：</strong>按视频演示，在 v2rayN 路由设置里粘贴上方 JSON，保存后即生效。导入后 AI 工具流量自动走代理，国内网站自动直连。
+      </div>
+    </div>
+
     <!-- 订阅 Claude Pro -->
     <div style="margin-top:48px;">
       <h2 style="font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">💳 订阅 Claude Pro（国内用户）</h2>

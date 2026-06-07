@@ -103,6 +103,25 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   });
 })();
 
+// Generic copy-target buttons  ([data-copy-target="elementId"])
+document.querySelectorAll('[data-copy-target]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var target = document.getElementById(btn.getAttribute('data-copy-target'));
+    if (!target) return;
+    var text = target.textContent.trim();
+    navigator.clipboard.writeText(text).then(function () {
+      var orig = btn.textContent;
+      btn.textContent = '已复制 ✓';
+      setTimeout(function () { btn.textContent = orig; }, 2000);
+    }).catch(function () {
+      var r = document.createRange();
+      r.selectNodeContents(target);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(r);
+    });
+  });
+});
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
