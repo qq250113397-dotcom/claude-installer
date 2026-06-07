@@ -215,24 +215,20 @@
           </div>
         </div>
 
-        <!-- Step 4: 注册 Claude 账号 -->
+        <!-- Step 4: 验证网络可用 -->
         <div class="step-item">
           <div class="step-item-num">4</div>
           <div class="step-item-body">
-            <h4>注册 Claude 账号，验证网络可用</h4>
-            <p>代理开启后，在浏览器访问 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，用 Google 账号完成注册：</p>
-            <ol style="margin:12px 0; padding-left:18px; color:var(--text-secondary); font-size:0.92rem; line-height:2;">
-              <li>确保代理已开启，打开浏览器访问 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></li>
-              <li>点击「Continue with Google」，选择你的 Gmail 账号</li>
-              <li>填写用户名，同意条款，完成注册</li>
-            </ol>
-            <div class="tip-box tip-green">
-              <strong>✓ 完成标志：</strong>浏览器能正常打开 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，说明网络已配置完成。
+            <h4>验证网络连通</h4>
+            <p>系统代理开启后，在浏览器访问以下两个站点，能打开说明基础网络已就绪：</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin:12px 0;">
+              <a href="https://dash.cloudflare.com/login" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 Cloudflare ↗</a>
+              <a href="https://my.dnshe.com/clientarea.php" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 dnshe ↗</a>
             </div>
-            <div style="margin-top:16px; padding:14px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-              <p style="font-size:0.88rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">🖥️ 顺手下载 Claude 桌面版</p>
-              <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">遇到问题可以直接截图问 Claude，比网页版更方便。</p>
-              <a href="https://claude.ai/download" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">⬇️ 下载 Claude 桌面版</a>
+            <div class="tip-box tip-red" style="margin-top:4px;">
+              <strong>⚠️ 注意：CF 免费节点无法直接注册 Claude 账号</strong><br>
+              CF Workers 免费节点的 IP 会被 Claude / Google 识别并拦截，直接注册大概率失败。<br>
+              需要先完成下方<strong>进阶步骤</strong>，接入住宅 IP 后再注册 Claude 账号。
             </div>
           </div>
         </div>
@@ -310,12 +306,12 @@
       </div>
     </div>
 
-    <!-- ===== SECTION 3: 进阶 ===== -->
+    <!-- ===== SECTION 3: 进阶（注册Claude必须完成） ===== -->
     <div class="page-section">
       <div class="page-section-header">
-        <span class="section-badge advanced">进阶</span>
-        <h2>搭建自己的节点</h2>
-        <p>初始订阅节点稳定性有限。搭建自己的 Cloudflare Workers 订阅 + 住宅 IP，可获得更稳定的连接。</p>
+        <span class="section-badge required">注册Claude必须完成</span>
+        <h2>搭建住宅 IP 链式代理</h2>
+        <p>CF 免费节点无法注册 Claude 账号。完成这一步，接入住宅 IP，才能稳定访问 Claude / GPT 等服务。</p>
       </div>
 
       <div class="steps-list">
@@ -392,6 +388,27 @@
                   🪟 Windows 64位
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-item-num">2</div>
+          <div class="step-item-body">
+            <h4>住宅 IP 就绪后，注册 Claude 账号</h4>
+            <p>链式代理接入住宅 IP 后，浏览器走的是真实的美国家庭宽带 IP，注册 Claude 不会被拦截：</p>
+            <ol style="margin:12px 0; padding-left:18px; color:var(--text-secondary); font-size:0.92rem; line-height:2;">
+              <li>确认住宅 IP 已连通，访问 <a href="https://ping0.cc" target="_blank" rel="noopener">ping0.cc</a> 确认 IP 显示为美国</li>
+              <li>在浏览器打开 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></li>
+              <li>点击「Continue with Google」，选择你的 Gmail 账号完成注册</li>
+            </ol>
+            <div class="tip-box tip-green">
+              <strong>✓ 完成标志：</strong>能正常访问 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，账号注册成功，即可进入步骤二安装 Claude Code。
+            </div>
+            <div style="margin-top:14px; padding:14px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+              <p style="font-size:0.88rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">🖥️ 顺手下载 Claude 桌面版</p>
+              <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">安装桌面版后遇到问题可以直接截图问 Claude，比网页版更方便。</p>
+              <a href="https://claude.ai/download" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">⬇️ 下载 Claude 桌面版</a>
             </div>
           </div>
         </div>
