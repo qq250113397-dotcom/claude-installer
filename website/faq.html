@@ -41,7 +41,7 @@
 <main class="section-sm">
   <div class="container" style="max-width:800px;">
 
-    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">🌐 网络相关</h2>
+    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">🌐 网络相关</p>
     <div class="faq-list">
 
       <div class="faq-item">
@@ -82,13 +82,11 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            只要你还要继续访问 Cloudflare、dnshe、Claude / GPT / Codex 这些境外站点，就需要保持代理工具处于开启状态。
+            只要你还要继续访问 Claude / GPT / Codex 这些境外站点，就需要保持代理工具处于开启状态。
             建议将代理工具设置为开机自启，这样后续不用每次手动打开。
           </div>
         </div>
       </div>
-
-    </div>
 
       <div class="faq-item">
         <div class="faq-question">
@@ -100,14 +98,14 @@
             CF Workers 免费节点本质上是借用 Cloudflare 的公共 IP，会受到运营商 QoS 限速和 CF 自身的并发限制，断线属于正常现象。几个缓解方法：<br><br>
             <strong>1. 断了就切换节点：</strong>在 v2rayN 里点顶部闪电图标全部测速，双击当前延迟最低的节点切换即可，不用重启软件。<br><br>
             <strong>2. 定期更新订阅：</strong>「订阅分组 → 更新全部订阅」刷新节点列表，新节点通常比旧的稳定。<br><br>
-            <strong>3. 换成住宅 IP（根本解决）：</strong>CF 节点适合临时上网，长期稳定使用建议在步骤一第 4 步里接入住宅 IP（<a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a>），住宅 IP 走真实家庭宽带线路，不会被 QoS，稳定性远高于 CF 免费节点。
+            <strong>3. 换成住宅 IP（根本解决）：</strong>CF 节点适合临时上网，长期稳定使用建议在步骤一进阶部分接入住宅 IP（<a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a>），住宅 IP 走真实家庭宽带线路，稳定性远高于 CF 免费节点。
           </div>
         </div>
       </div>
 
     </div>
 
-    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:40px 0 16px;">📦 安装相关</h2>
+    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin:40px 0 12px;">📦 安装相关</p>
     <div class="faq-list">
 
       <div class="faq-item">
@@ -119,8 +117,7 @@
           <div class="faq-answer-inner">
             这是因为安装程序尚未通过微软的代码签名认证，属于正常现象。解决方法：<br><br>
             1. 点击弹窗中的「更多信息」<br>
-            2. 点击「仍要运行」按钮<br><br>
-            本程序代码完全开源，你可以在 GitHub 上查看和审计所有代码，确认安全性。
+            2. 点击「仍要运行」按钮
           </div>
         </div>
       </div>
@@ -147,8 +144,7 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Claude Code 需要 Node.js 18 或更高版本。安装程序会自动检测版本，如果版本过低会提示你更新。
-            你也可以手动从 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载最新 LTS 版本安装后，再运行 Claude Code 安装程序。
+            Claude Code 需要 Node.js 18 或更高版本。从 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载最新 LTS 版本安装后，再运行安装命令即可。
           </div>
         </div>
       </div>
@@ -160,7 +156,7 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            在 PowerShell 中运行以下命令即可完全卸载：<br><br>
+            在终端运行以下命令即可完全卸载：<br><br>
             <code>npm uninstall -g @anthropic-ai/claude-code</code><br><br>
             Node.js 本身不会被删除，如需一并卸载，去「控制面板 → 程序和功能」中找到 Node.js 卸载即可。
           </div>
@@ -169,7 +165,7 @@
 
     </div>
 
-    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:40px 0 16px;">🔑 登录 & 账号</h2>
+    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin:40px 0 12px;">🔑 登录 &amp; 账号</p>
     <div class="faq-list">
 
       <div class="faq-item">
@@ -182,6 +178,19 @@
             Claude Code 软件本身免费，但正常使用需要订阅 <strong>Claude Pro（$20/月）</strong> 或 <strong>Claude Max（$100/月）</strong>，没有免费使用额度。<br><br>
             国内用户可通过 <a href="https://bewild.ai?code=6XSWDDEI" target="_blank" rel="noopener">WildAI</a> 等平台完成充值订阅，具体操作见步骤三。<br><br>
             详细定价请参考 <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic 官方定价页面</a>。
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          为什么 CF 免费节点无法注册 Claude 账号？
+          <i class="faq-chevron">▾</i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            CF Workers 免费节点使用的是 Cloudflare 的公共 CDN IP，这些 IP 被 Claude / Google 识别并拦截，因此无法完成注册或登录。<br><br>
+            解决方法：完成步骤一进阶部分，接入住宅 IP（<a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a>），住宅 IP 走真实家庭宽带线路，可以正常注册和使用 Claude。
           </div>
         </div>
       </div>
@@ -206,16 +215,15 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            注册账号不需要手机号和信用卡，使用 Google 或 Apple 账号即可完成注册。
-            如果你想使用付费 API 功能，才需要绑定支付方式（支持信用卡）。
-            新用户通常有免费试用额度，可以先体验再决定是否充值。
+            注册账号不需要手机号和信用卡，使用 Google 账号即可完成注册。
+            订阅 Claude Pro 需要信用卡或通过 WildAI 等第三方平台充值。
           </div>
         </div>
       </div>
 
     </div>
 
-    <h2 style="font-size:1.1rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:40px 0 16px;">🔄 更新相关</h2>
+    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin:40px 0 12px;">🔄 更新相关</p>
     <div class="faq-list">
 
       <div class="faq-item">
@@ -234,25 +242,25 @@
 
       <div class="faq-item">
         <div class="faq-question">
-          安装程序本身如何获取更新？
+          Node.js 如何更新？
           <i class="faq-chevron">▾</i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Claude Code 本身通过 npm 管理。运行 <code>npm update -g @anthropic-ai/claude-code</code> 即可拉取最新版本。Node.js 如需更新，前往 <a href="https://nodejs.org/zh-cn/download" target="_blank" rel="noopener">nodejs.org</a> 重新下载安装即可。
+            前往 <a href="https://nodejs.org/zh-cn/download" target="_blank" rel="noopener">nodejs.org</a> 重新下载 LTS 版本安装即可，新版本会覆盖旧版本。
           </div>
         </div>
       </div>
 
     </div>
 
-    <div class="tip-box" style="margin-top:40px;">
-      <strong>没有找到你的问题？</strong> 欢迎在 GitHub Issues 中提问，或参考
+    <div class="tip-box tip-blue" style="margin-top:40px;">
+      <strong>没有找到你的问题？</strong> 欢迎参考
       <a href="https://docs.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code 官方文档</a> 获取更详细的说明。
     </div>
 
     <div style="text-align:center; margin-top:48px;">
-      <p style="color:var(--text-secondary); margin-bottom:16px;">准备好了？从头开始安装：</p>
+      <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:16px;">准备好了？从头开始安装：</p>
       <a href="step1.html" class="btn btn-primary">开始安装 →</a>
     </div>
 
@@ -279,6 +287,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20260601b"></script>
+<script src="js/main.js?v=20260607a"></script>
 </body>
 </html>

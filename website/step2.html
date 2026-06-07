@@ -6,7 +6,6 @@
   <title>步骤二：下载 & 安装 — Claude Code 安装助手</title>
   <meta name="description" content="下载 Node.js 官方安装包，执行一行 npm 命令完成 Claude Code 安装，支持 Windows 和 macOS。">
   <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 
@@ -64,102 +63,96 @@
 <main class="section-sm">
   <div class="container" style="max-width:800px;">
 
-    <!-- Download Cards: 两列并排 -->
-    <div style="display:flex; gap:24px; align-items:stretch; flex-wrap:wrap;">
+    <!-- Download Cards -->
+    <div style="display:flex; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;">
 
-      <!-- Windows 卡片（左） -->
-      <div class="download-card" style="flex:1; min-width:280px;">
+      <div class="download-card" style="flex:1; border:none; border-radius:0; margin:0;">
         <div class="file-icon">🖥️</div>
-        <h3>Node.js 官方安装包（Windows）</h3>
-        <p>前往 Node.js 官网下载 LTS 版本，双击安装包按向导完成安装，全程点「Next」即可</p>
-        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+        <h3>Node.js for Windows</h3>
+        <p>下载 LTS 版本，双击 .msi 安装包按向导完成安装，全程点「Next」即可</p>
+        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary" target="_blank" rel="noopener">
           ⬇️ 前往 Node.js 官网下载
         </a>
         <div class="download-meta">
           <span>🪟 Windows 10/11</span>
           <span>✅ 官方来源</span>
-          <span>📦 选 LTS 版本</span>
+          <span>选 LTS 版本</span>
         </div>
       </div>
 
-      <!-- macOS 卡片（右） -->
-      <div class="download-card" style="flex:1; min-width:280px;">
+      <div class="download-card" style="flex:1; border:none; border-radius:0; margin:0; border-left:1px solid var(--border);">
         <div class="file-icon">🍎</div>
-        <h3>Node.js 官方安装包（macOS）</h3>
-        <p>前往 Node.js 官网下载 LTS 版本的 .pkg 安装包，双击安装即可</p>
-        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+        <h3>Node.js for macOS</h3>
+        <p>下载 LTS 版本的 .pkg 安装包，双击安装即可，ARM64 和 Intel 均支持</p>
+        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary" target="_blank" rel="noopener">
           ⬇️ 前往 Node.js 官网下载
         </a>
         <div class="download-meta">
           <span>🍎 Apple Silicon / Intel</span>
           <span>✅ 官方来源</span>
-          <span>📦 选 LTS 版本</span>
+          <span>选 LTS 版本</span>
         </div>
       </div>
 
     </div>
 
-    <!-- npm 安装命令 -->
-    <div style="margin-top:24px; padding:20px 24px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-      <p style="font-weight:600; color:var(--text-primary); margin-bottom:12px;">📦 安装 Node.js 后，打开终端执行以下命令安装 Claude Code：</p>
-      <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:14px 18px; font-family:monospace; font-size:1rem; color:var(--text-primary); user-select:all; letter-spacing:0.02em;">
-        npm install -g @anthropic-ai/claude-code
-      </div>
-      <p style="margin-top:10px; font-size:0.85rem; color:var(--text-muted);">Windows 用户请用 <strong>命令提示符（cmd）</strong> 或 <strong>PowerShell</strong>；macOS 用户请用<strong>终端（Terminal）</strong>。</p>
+    <!-- npm install command -->
+    <div style="margin-top:20px; padding:18px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+      <p style="font-weight:600; font-size:0.875rem; color:var(--text-primary); margin-bottom:10px;">📦 安装 Node.js 后，打开终端执行以下命令安装 Claude Code：</p>
+      <div class="code-block">npm install -g @anthropic-ai/claude-code</div>
+      <p style="margin-top:8px; font-size:0.8rem; color:var(--text-muted);">Windows 请用 <strong style="color:var(--text-secondary);">命令提示符（cmd）</strong> 或 <strong style="color:var(--text-secondary);">PowerShell</strong>；macOS 请用<strong style="color:var(--text-secondary);">终端（Terminal）</strong>。</p>
     </div>
 
-    <div class="tip-box" style="margin-top:16px;">
+    <div class="tip-box">
       <strong>提示：</strong> Node.js 安装完成后，打开新的终端窗口再运行 npm 命令，确保环境变量已刷新。
     </div>
 
-    <!-- Windows npm 常见问题 -->
-    <details style="margin-top:16px; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
-      <summary style="padding:12px 16px; background:var(--bg-secondary); cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-primary); user-select:none; list-style:none; display:flex; align-items:center; gap:8px;">
-        <span style="flex:1;">🪟 Windows 常见安装问题</span>
-        <span style="font-size:0.8rem; color:var(--text-muted);">点击展开 ▼</span>
+    <!-- Windows common issues -->
+    <details class="details-block" style="margin-top:4px;">
+      <summary>
+        <span>🪟 Windows 常见安装问题</span>
+        <span class="summary-hint">点击展开 ▼</span>
       </summary>
-      <div style="padding:16px 20px; display:flex; flex-direction:column; gap:16px;">
+      <div class="details-body" style="display:flex; flex-direction:column; gap:16px;">
 
         <div>
-          <p style="font-weight:600; font-size:0.92rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题一：npm 报网络错误 / 下载超时</p>
-          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:10px;">
-            v2rayN 开启后 npm 仍可能无法联网，因为 npm 不自动读取系统代理。需要手动告诉 npm 走代理端口。<br>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题一：npm 报网络错误 / 下载超时</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary); margin-bottom:10px;">
+            v2rayN 开启后 npm 仍可能无法联网，因为 npm 不自动读取系统代理。<br>
             v2rayN 默认 HTTP 代理端口是 <strong style="color:var(--text-primary);">10809</strong>（可在 v2rayN → 参数设置 → Core 设置里确认）。
           </p>
-          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">在 PowerShell / cmd 中依次运行：</p>
-          <div style="display:flex; flex-direction:column; gap:6px;">
-            <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">npm config set proxy http://127.0.0.1:10809</div>
-            <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">npm config set https-proxy http://127.0.0.1:10809</div>
-            <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">npm install -g @anthropic-ai/claude-code</div>
-          </div>
-          <p style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">安装完成后如需恢复：<code>npm config delete proxy</code> 和 <code>npm config delete https-proxy</code></p>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">在 PowerShell / cmd 中依次运行：</p>
+          <div class="code-block">npm config set proxy http://127.0.0.1:10809</div>
+          <div class="code-block">npm config set https-proxy http://127.0.0.1:10809</div>
+          <div class="code-block">npm install -g @anthropic-ai/claude-code</div>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:8px;">安装完成后如需恢复：<code style="font-family:monospace;">npm config delete proxy</code> 和 <code style="font-family:monospace;">npm config delete https-proxy</code></p>
         </div>
 
         <div>
-          <p style="font-weight:600; font-size:0.92rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题二：PowerShell 提示"无法运行脚本"</p>
-          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:8px;">Windows 默认禁止运行外部脚本，需要先放开执行策略：</p>
-          <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.85rem; color:var(--text-primary); user-select:all;">Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</div>
-          <p style="font-size:0.82rem; color:var(--text-muted); margin-top:6px;">输入后选 Y 确认，再重新运行 npm 安装命令。</p>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题二：PowerShell 提示"无法运行脚本"</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary); margin-bottom:8px;">Windows 默认禁止运行外部脚本，需要先放开执行策略：</p>
+          <div class="code-block">Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</div>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:6px;">输入后选 Y 确认，再重新运行 npm 安装命令。</p>
         </div>
 
         <div>
-          <p style="font-weight:600; font-size:0.92rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题三：安装完后 claude 命令找不到</p>
-          <p style="font-size:0.88rem; color:var(--text-secondary);">完全关闭当前终端窗口，重新打开一个新的 PowerShell / cmd，再输入 <code>claude</code> 即可。若还是找不到，重启电脑后再试。</p>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题三：安装完后 claude 命令找不到</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary);">完全关闭当前终端窗口，重新打开一个新的 PowerShell / cmd，再输入 <code style="font-family:monospace;">claude</code> 即可。若还是找不到，重启电脑后再试。</p>
         </div>
 
       </div>
     </details>
 
     <!-- Installation Steps -->
-    <h2 style="margin-top:48px; margin-bottom:8px; font-size:1.3rem;">📦 安装步骤</h2>
-    <p style="color:var(--text-secondary); margin-bottom:8px;">按以下流程完成安装：</p>
+    <h2 style="margin-top:48px; margin-bottom:4px; font-size:1.1rem; font-weight:700; letter-spacing:-0.01em;">📦 安装步骤</h2>
+    <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:4px;">按以下流程完成安装：</p>
 
     <div class="steps-list">
       <div class="step-item">
         <div class="step-item-num">1</div>
         <div class="step-item-body">
           <h4>下载并安装 Node.js LTS</h4>
-          <p>点击上方「前往 Node.js 官网下载」，选择 <strong>LTS（长期支持）</strong> 版本下载。Windows 双击 .msi 安装包，macOS 双击 .pkg 安装包，按向导一路 Next / 继续 即可。</p>
+          <p>点击上方「前往 Node.js 官网下载」，选择 <strong>LTS（长期支持）</strong> 版本下载。Windows 双击 .msi，macOS 双击 .pkg，按向导一路 Next / 继续 即可。</p>
         </div>
       </div>
       <div class="step-item">
@@ -175,9 +168,7 @@
         <div class="step-item-body">
           <h4>运行安装命令</h4>
           <p>在终端中粘贴以下命令并回车，等待安装完成：</p>
-          <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 14px; font-family:monospace; font-size:0.92rem; color:var(--text-primary); user-select:all; margin-top:8px;">
-            npm install -g @anthropic-ai/claude-code
-          </div>
+          <div class="code-block" style="margin-top:8px;">npm install -g @anthropic-ai/claude-code</div>
         </div>
       </div>
       <div class="step-item">
@@ -197,7 +188,7 @@
     </div>
 
     <!-- System Requirements -->
-    <h2 style="margin-top:48px; margin-bottom:16px; font-size:1.3rem;">💻 系统要求</h2>
+    <h2 style="margin-top:48px; margin-bottom:4px; font-size:1.1rem; font-weight:700; letter-spacing:-0.01em;">💻 系统要求</h2>
     <div class="info-grid">
       <div class="info-card">
         <h4>⚙️ 系统要求</h4>
@@ -209,18 +200,17 @@
         </ul>
       </div>
       <div class="info-card">
-        <h4>📦 需要手动安装</h4>
+        <h4>📦 需要安装</h4>
         <ul>
           <li>Node.js LTS（从 nodejs.org 下载）</li>
-          <li>npm 随 Node.js 一起安装</li>
+          <li>npm（随 Node.js 一起安装）</li>
           <li>@anthropic-ai/claude-code（npm 命令）</li>
         </ul>
       </div>
     </div>
 
-    <!-- Troubleshoot -->
-    <div class="tip-box" style="margin-top:32px;">
-      <strong>安装失败？</strong> 最常见原因是网络问题。请确认：①代理工具已开启 ②系统代理模式已启用 ③关闭终端重新打开后再运行 npm 命令。
+    <div class="tip-box tip-red" style="margin-top:8px;">
+      <strong>安装失败？</strong> 最常见原因是网络问题。请确认：① 代理工具已开启 ② 系统代理模式已启用 ③ 关闭终端重新打开后再运行 npm 命令。
       更多问题请查看 <a href="faq.html">FAQ 页面</a>。
     </div>
 
@@ -251,6 +241,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20260606b"></script>
+<script src="js/main.js?v=20260607a"></script>
 </body>
 </html>
