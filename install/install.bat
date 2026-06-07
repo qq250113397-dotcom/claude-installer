@@ -2,111 +2,98 @@
 chcp 65001 >nul 2>&1
 setlocal EnableDelayedExpansion
 
-:: =====================================================
-:: Claude Code Windows 一键安装程序
-:: 版本: 1.0.0
-:: =====================================================
-
-title Claude Code 安装程序
+title Claude Code Installer
 
 echo.
-echo  ╔═══════════════════════════════════════════════╗
-echo  ║       Claude Code Windows 一键安装程序        ║
-echo  ║            版本 v1.0.0                        ║
-echo  ╚═══════════════════════════════════════════════╝
+echo  ================================================
+echo   Claude Code Windows Installer  v1.0.0
+echo  ================================================
 echo.
 
-:: ----- 管理员权限检查 -----
+:: ----- Admin check -----
 net session >nul 2>&1
 if %errorLevel% neq 0 (
-    echo  [!] 请以管理员身份运行此脚本！
+    echo  [!] Please run as Administrator!
     echo.
-    echo      右键点击此文件，选择「以管理员身份运行」
+    echo      Right-click this file and choose "Run as administrator"
     echo.
     pause
     exit /b 1
 )
 
-echo  [✓] 已获取管理员权限
+echo  [OK] Running as administrator
 echo.
 
-:: ----- 网络连通性检查 -----
-echo  [*] 正在检测网络连接...
+:: ----- Network check -----
+echo  [..] Checking network connection...
 call :curl_test https://registry.npmjs.org/
 if %errorLevel% neq 0 (
     echo.
-    echo  [!] 无法连接到 npm 服务器，请检查网络代理设置。
+    echo  [!] Cannot reach npm server. Check your proxy settings.
     echo.
-    echo      解决方法：
-    echo      1. 确认代理工具已启动
-    echo      2. 开启系统代理 / 全局模式
-    echo      3. 或手动设置代理端口后重试：
-    echo.
-    set /p PROXY_PORT="     请输入代理端口（常用: 7890 / 1080 / 10809，回车跳过）: "
+    set /p PROXY_PORT="     Proxy port (common: 7890 / 1080 / 10809, Enter to skip): "
     if not "!PROXY_PORT!"=="" (
         set HTTPS_PROXY=http://127.0.0.1:!PROXY_PORT!
         set HTTP_PROXY=http://127.0.0.1:!PROXY_PORT!
-        echo  [*] 已设置代理端口: !PROXY_PORT!
-        echo  [*] 重新测试连接...
+        echo  [..] Proxy set to port: !PROXY_PORT!
+        echo  [..] Retrying connection...
         call :curl_test https://registry.npmjs.org/
         if !errorLevel! neq 0 (
-            echo  [!] 仍然无法连接，请确认代理端口是否正确后重试。
+            echo  [!] Still cannot connect. Check your proxy port and try again.
             pause
             exit /b 1
         )
-        echo  [✓] 网络连接正常
+        echo  [OK] Network OK
     ) else (
-        echo  [!] 跳过代理设置，继续尝试安装...
+        echo  [!] Skipping proxy, continuing anyway...
     )
 ) else (
-    echo  [✓] 网络连接正常
+    echo  [OK] Network OK
 )
 
 echo.
 
-:: ----- 检测 Node.js -----
-echo  [*] 正在检测 Node.js...
+:: ----- Node.js check -----
+echo  [..] Checking Node.js...
 node --version >nul 2>&1
 if %errorLevel% neq 0 (
-    echo  [!] 未检测到 Node.js，准备自动下载安装...
+    echo  [!] Node.js not found. Downloading...
     call :install_nodejs
     if !errorLevel! neq 0 (
-        echo  [!] Node.js 安装失败，请手动从 https://nodejs.org 下载安装后重试。
+        echo  [!] Node.js install failed. Download manually from https://nodejs.org
         pause
         exit /b 1
     )
 ) else (
     for /f "tokens=*" %%v in ('node --version 2^>nul') do set NODE_VER=%%v
-    echo  [✓] 检测到 Node.js !NODE_VER!
+    echo  [OK] Node.js !NODE_VER! found
 
-    :: 检查版本是否 >= 18
     for /f "tokens=1 delims=." %%m in ("!NODE_VER:v=!") do set NODE_MAJOR=%%m
     if !NODE_MAJOR! lss 18 (
-        echo  [!] Node.js 版本过低（需要 v18+），准备更新...
+        echo  [!] Node.js version too old (need v18+). Upgrading...
         call :install_nodejs
     )
 )
 
 echo.
 
-:: ----- 安装 Claude Code -----
-echo  [*] 正在安装 Claude Code...
-echo  [*] 这可能需要 1-3 分钟，请耐心等待...
+:: ----- Install Claude Code -----
+echo  [..] Installing Claude Code...
+echo  [..] This may take 1-3 minutes, please wait...
 echo.
 
 call :install_claude_mirror https://registry.npmmirror.com
 
 if %errorLevel% neq 0 (
     echo.
-    echo  [!] 安装失败！可能的原因：
-    echo      - 网络连接中断（请检查代理）
-    echo      - npm 权限问题
+    echo  [!] Install failed. Possible reasons:
+    echo      - Network interrupted (check proxy)
+    echo      - npm permission issue
     echo.
-    echo  [*] 尝试使用备用方法安装...
+    echo  [..] Trying official npm registry...
     call :install_claude_official https://registry.npmjs.org
     if !errorLevel! neq 0 (
-        echo  [!] 安装仍然失败，请查看上方错误信息排查问题。
-        echo  [*] 更多帮助请访问 FAQ 页面。
+        echo  [!] Install still failed. See errors above.
         pause
         exit /b 1
     )
@@ -114,36 +101,36 @@ if %errorLevel% neq 0 (
 
 echo.
 
-:: ----- 验证安装 -----
-echo  [*] 正在验证安装...
+:: ----- Verify -----
+echo  [..] Verifying installation...
 claude --version >nul 2>&1
 if %errorLevel% neq 0 (
-    echo  [!] 验证失败：claude 命令未找到
-    echo  [*] 请重启终端后再试，或重启电脑后运行 claude
+    echo  [!] Verification failed: claude command not found
+    echo  [*] Please open a new terminal window and run: claude --version
 ) else (
     for /f "tokens=*" %%v in ('claude --version 2^>nul') do set CLAUDE_VER=%%v
-    echo  [✓] Claude Code !CLAUDE_VER! 安装成功！
+    echo  [OK] Claude Code !CLAUDE_VER! installed successfully!
 )
 
 echo.
-echo  ╔═══════════════════════════════════════════════╗
-echo  ║              ✅ 安装完成！                    ║
-echo  ╠═══════════════════════════════════════════════╣
-echo  ║  下一步：                                     ║
-echo  ║  1. 关闭此窗口，打开新的 PowerShell          ║
-echo  ║  2. 输入 claude 启动并完成登录               ║
-echo  ║  3. 开始使用 AI 编程助手！                   ║
-echo  ╚═══════════════════════════════════════════════╝
+echo  ================================================
+echo   Install complete!
+echo  ================================================
+echo   Next steps:
+echo   1. Close this window
+echo   2. Open a new PowerShell window
+echo   3. Type: claude
+echo  ================================================
 echo.
 pause
 exit /b 0
 
 :: =====================================================
-:: 子程序：安装 Node.js
+:: Subroutine: install Node.js
 :: =====================================================
 :install_nodejs
 echo.
-echo  [*] 正在下载 Node.js LTS...
+echo  [..] Downloading Node.js LTS...
 
 set NODE_VERSION=22.13.1
 set NODE_URL=https://registry.npmmirror.com/-/binary/node/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
@@ -151,46 +138,44 @@ set NODE_URL_ALT=https://npmmirror.com/mirrors/node/v%NODE_VERSION%/node-v%NODE_
 set NODE_URL_FALLBACK=https://nodejs.org/dist/v%NODE_VERSION%/node-v%NODE_VERSION%-x64.msi
 set NODE_MSI=%TEMP%\node-install.msi
 
-echo  [*] 使用国内镜像下载 Node.js（无需代理）...
+echo  [..] Trying CN mirror (no proxy needed)...
 call :curl_download_direct "%NODE_URL%" "%NODE_MSI%"
 if %errorLevel% neq 0 (
-    echo  [!] 国内镜像失败，尝试备用镜像...
+    echo  [!] Mirror 1 failed, trying mirror 2...
     call :curl_download_direct "%NODE_URL_ALT%" "%NODE_MSI%"
 )
 
 if %errorLevel% neq 0 (
-    echo  [!] 备用镜像失败，尝试官方源...
+    echo  [!] Mirror 2 failed, trying official source...
     curl -L --retry 5 --retry-all-errors --connect-timeout 15 --progress-bar -o "%NODE_MSI%" "%NODE_URL_FALLBACK%"
 )
 
 if %errorLevel% neq 0 (
-    echo  [!] Node.js 下载失败，请检查网络连接。
+    echo  [!] Node.js download failed. Check your network.
     exit /b 1
 )
 
-echo  [*] 正在静默安装 Node.js，请稍候...
+echo  [..] Installing Node.js silently...
 msiexec /i "%NODE_MSI%" /quiet /norestart ADDLOCAL=ALL
 
 if %errorLevel% neq 0 (
-    echo  [!] Node.js 安装失败。
+    echo  [!] Node.js install failed.
     del "%NODE_MSI%" >nul 2>&1
     exit /b 1
 )
 
 del "%NODE_MSI%" >nul 2>&1
 
-:: 刷新 PATH
+:: Refresh PATH in current session
 call RefreshEnv.cmd >nul 2>&1
-:: 手动添加 Node.js 到当前会话 PATH
 for /f "tokens=*" %%p in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\node.exe" /ve 2^>nul ^| find "REG_SZ"') do (
     for %%d in ("%%~dpp") do set NODE_DIR=%%~fd
 )
 if not "!NODE_DIR!"=="" set PATH=!NODE_DIR!;!PATH!
 
-:: 尝试通过常用路径找到 node
 if not exist "%ProgramFiles%\nodejs\node.exe" (
     if not exist "%ProgramFiles(x86)%\nodejs\node.exe" (
-        echo  [!] Node.js 安装位置未找到，请重启终端后继续。
+        echo  [!] Node.js install path not found. Please restart your terminal.
         exit /b 0
     ) else (
         set PATH=%ProgramFiles(x86)%\nodejs;!PATH!
@@ -199,14 +184,11 @@ if not exist "%ProgramFiles%\nodejs\node.exe" (
     set PATH=%ProgramFiles%\nodejs;!PATH!
 )
 
-echo  [✓] Node.js 安装完成
+echo  [OK] Node.js installed
 exit /b 0
 
 :: =====================================================
-:: 子程序：安装 Claude Code（带镜像回退）
-:: =====================================================
-:: =====================================================
-:: 子程序：直接下载（清理代理环境）
+:: Subroutine: download without proxy
 :: =====================================================
 :curl_download_direct
 setlocal
@@ -223,14 +205,14 @@ set "RC=%errorLevel%"
 endlocal & exit /b %RC%
 
 :: =====================================================
-:: 子程序：测试连接（保留当前代理设置）
+:: Subroutine: test connection (keep current proxy)
 :: =====================================================
 :curl_test
 curl -s --max-time 10 --retry 3 --retry-all-errors --connect-timeout 10 "%~1" >nul 2>&1
 exit /b %errorLevel%
 
 :: =====================================================
-:: 子程序：安装 Claude Code（国内镜像，清代理）
+:: Subroutine: install via CN mirror (clear proxy)
 :: =====================================================
 :install_claude_mirror
 set "NPM_REGISTRY=%~1"
@@ -247,13 +229,13 @@ set "http_proxy="
 set "https_proxy="
 set "ALL_PROXY="
 set "all_proxy="
-echo  [*] 使用 npm 源：%NPM_REGISTRY%
+echo  [..] Using registry: %NPM_REGISTRY%
 npm install -g @anthropic-ai/claude-code --registry %NPM_REGISTRY%
 set "RC=%errorLevel%"
 endlocal & exit /b %RC%
 
 :: =====================================================
-:: 子程序：安装 Claude Code（官方源，保留代理）
+:: Subroutine: install via official registry (keep proxy)
 :: =====================================================
 :install_claude_official
 set "NPM_REGISTRY=%~1"
@@ -263,6 +245,6 @@ set "NPM_CONFIG_FETCH_RETRY_MAXTIMEOUT=10000"
 set "npm_config_fetch_retries=5"
 set "npm_config_fetch_retry_mintimeout=2000"
 set "npm_config_fetch_retry_maxtimeout=10000"
-echo  [*] 使用 npm 源：%NPM_REGISTRY%
+echo  [..] Using registry: %NPM_REGISTRY%
 npm install -g @anthropic-ai/claude-code --registry %NPM_REGISTRY%
 exit /b %errorLevel%
