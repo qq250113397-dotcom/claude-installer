@@ -134,7 +134,10 @@
                       <strong style="color:var(--text-primary);">2.</strong> 还是被拦截 → 到 <strong>系统设置 → 隐私与安全性</strong>，找到 <strong>"仍要打开"</strong> 并确认
                     </div>
                     <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">3.</strong> 以上无效时，才用终端：<code>xattr -dr com.apple.quarantine &lt;路径&gt;</code>
+                      <strong style="color:var(--text-primary);">3.</strong> 以上无效时，打开终端执行：<code>sudo spctl --master-disable</code>，输入开机密码后回车，再重新打开 v2rayN.app
+                    </div>
+                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                      <strong style="color:var(--text-primary);">4.</strong> 仍不行 → 终端执行：<code>xattr -dr com.apple.quarantine &lt;v2rayN.app 路径&gt;</code>（把路径替换为实际位置）
                     </div>
                   </div>
                 </div>
