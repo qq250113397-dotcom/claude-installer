@@ -158,6 +158,48 @@
                   </div>
                 </div>
 
+                <!-- 常见安装问题（电脑） -->
+                <details class="details-block" style="margin-top:2px;">
+                  <summary>
+                    <span>🛠️ 电脑端常见安装问题</span>
+                    <span class="summary-hint">点击展开 ▼</span>
+                  </summary>
+                  <div class="details-body" style="display:flex; flex-direction:column; gap:20px;">
+                    <div>
+                      <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🪟 Windows 常见问题</p>
+                      <div style="display:flex; flex-direction:column; gap:8px;">
+                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                          <strong style="color:var(--text-primary);">1.</strong> 提示"Windows 已保护你的电脑" → 点击 <strong>"更多信息"</strong> → 再点 <strong>"仍要运行"</strong>
+                        </div>
+                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                          <strong style="color:var(--text-primary);">2.</strong> 提示缺少运行库 → 安装 <strong>.NET 6.0 Runtime</strong>：<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank" rel="noopener">dotnet.microsoft.com/download/dotnet/6.0</a>
+                        </div>
+                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                          <strong style="color:var(--text-primary);">3.</strong> 杀毒软件误报 → 先解压到普通文件夹，再将 v2rayN 加入白名单
+                        </div>
+                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                          <strong style="color:var(--text-primary);">4.</strong> 解压后找不到 exe → 右键 ZIP 选 <strong>"解压到当前文件夹"</strong>，再双击文件夹里的程序
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🍎 macOS 常见问题</p>
+                      <div style="display:flex; flex-direction:column; gap:8px;">
+                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                          <strong style="color:var(--text-primary);">1.</strong> 无法打开 → 在 Finder 里<strong>右键 v2rayN.app</strong>，点 <strong>"打开"</strong>；弹窗后再点一次 <strong>"打开"</strong>
+                        </div>
+                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                          <strong style="color:var(--text-primary);">2.</strong> 还是被拦截 → 到 <strong>系统设置 → 隐私与安全性</strong>，找到 <strong>"仍要打开"</strong> 并确认
+                        </div>
+                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                          <strong style="color:var(--text-primary);">3.</strong> 以上无效时 → 打开「终端」，复制粘贴这行命令然后按回车：<code>sudo spctl --master-disable</code><br>
+                          <span style="color:var(--text-muted); font-size:0.82rem;">⚠️ 输入命令后会提示输入密码，直接输入你的<strong>电脑登录密码</strong>（输入时屏幕不显示，这是正常的），输完按回车。成功后重新打开 v2rayN.app。</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+
               </div>
             </div>
 
@@ -210,48 +252,6 @@
 
               </div>
             </div>
-
-            <!-- 常见安装问题（电脑） -->
-            <details class="details-block" style="margin-top:14px;">
-              <summary>
-                <span>🛠️ 电脑端常见安装问题</span>
-                <span class="summary-hint">点击展开 ▼</span>
-              </summary>
-              <div class="details-body" style="display:flex; flex-direction:column; gap:20px;">
-                <div>
-                  <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🪟 Windows 常见问题</p>
-                  <div style="display:flex; flex-direction:column; gap:8px;">
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">1.</strong> 提示"Windows 已保护你的电脑" → 点击 <strong>"更多信息"</strong> → 再点 <strong>"仍要运行"</strong>
-                    </div>
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">2.</strong> 提示缺少运行库 → 安装 <strong>.NET 6.0 Runtime</strong>：<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank" rel="noopener">dotnet.microsoft.com/download/dotnet/6.0</a>
-                    </div>
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">3.</strong> 杀毒软件误报 → 先解压到普通文件夹，再将 v2rayN 加入白名单
-                    </div>
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">4.</strong> 解压后找不到 exe → 右键 ZIP 选 <strong>"解压到当前文件夹"</strong>，再双击文件夹里的程序
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🍎 macOS 常见问题</p>
-                  <div style="display:flex; flex-direction:column; gap:8px;">
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">1.</strong> 无法打开 → 在 Finder 里<strong>右键 v2rayN.app</strong>，点 <strong>"打开"</strong>；弹窗后再点一次 <strong>"打开"</strong>
-                    </div>
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">2.</strong> 还是被拦截 → 到 <strong>系统设置 → 隐私与安全性</strong>，找到 <strong>"仍要打开"</strong> 并确认
-                    </div>
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">3.</strong> 以上无效时 → 打开「终端」，复制粘贴这行命令然后按回车：<code>sudo spctl --master-disable</code><br>
-                      <span style="color:var(--text-muted); font-size:0.82rem;">⚠️ 输入命令后会提示输入密码，直接输入你的<strong>电脑登录密码</strong>（输入时屏幕不显示，这是正常的），输完按回车。成功后重新打开 v2rayN.app。</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </details>
 
             <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">官方版不含预置节点，下载后参考步骤 2 导入订阅链接即可获得可用节点。</p>
           </div>
