@@ -134,10 +134,8 @@
                       <strong style="color:var(--text-primary);">2.</strong> 还是被拦截 → 到 <strong>系统设置 → 隐私与安全性</strong>，找到 <strong>"仍要打开"</strong> 并确认
                     </div>
                     <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">3.</strong> 以上无效时，打开终端执行：<code>sudo spctl --master-disable</code>，输入开机密码后回车，再重新打开 v2rayN.app
-                    </div>
-                    <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                      <strong style="color:var(--text-primary);">4.</strong> 仍不行 → 终端执行：<code>xattr -dr com.apple.quarantine &lt;v2rayN.app 路径&gt;</code>（把路径替换为实际位置）
+                      <strong style="color:var(--text-primary);">3.</strong> 以上无效时 → 打开「终端」，复制粘贴这行命令然后按回车：<code>sudo spctl --master-disable</code><br>
+                      <span style="color:var(--text-muted); font-size:0.82rem;">⚠️ 输入命令后会提示输入密码，直接输入你的<strong>电脑登录密码</strong>（输入时屏幕不显示，这是正常的），输完按回车。成功后重新打开 v2rayN.app。</span>
                     </div>
                   </div>
                 </div>
@@ -216,6 +214,9 @@
                 <li>Tun 模式</li>
                 <li>Core 类型 = <strong style="color:var(--text-primary);">sing_box</strong></li>
               </ol>
+            </div>
+            <div class="tip-box tip-yellow" style="margin-top:12px;">
+              🍎 <strong>苹果电脑用户注意：</strong>开启 Tun 模式时系统会弹出密码框，输入你的<strong>电脑登录密码</strong>并点「好」，这是正常的系统权限申请，必须授权才能生效。
             </div>
           </div>
         </div>
