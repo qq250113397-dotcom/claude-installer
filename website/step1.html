@@ -97,38 +97,105 @@
           <div class="step-item-num">1</div>
           <div class="step-item-body">
             <h4>下载代理软件</h4>
-            <p>根据你的设备选择对应版本，均从 GitHub 官方下载最新版：</p>
-            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
-              <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener">
-                🪟 Windows 64位
-              </a>
-              <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
-                🍎 macOS ARM64（M 系列）
-              </a>
-              <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
-                🍎 macOS Intel（老款）
-              </a>
-              <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/latest" class="btn btn-secondary" target="_blank" rel="noopener">
-                📱 安卓（NekoBox）
-              </a>
+            <p>根据你的设备选择对应版本，<strong>电脑和手机都要下载好</strong>，再进行下一步。</p>
+
+            <!-- 💻 电脑端 -->
+            <div style="margin-top:16px; border:1px solid #d0e4ff; border-radius:10px; overflow:hidden;">
+              <div style="background:#e8f0fe; padding:8px 14px; font-size:0.85rem; font-weight:700; color:#1a4db5;">💻 电脑端（必须先完成）</div>
+              <div style="padding:14px; display:flex; flex-direction:column; gap:14px;">
+
+                <!-- Windows -->
+                <div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🪟 Windows</div>
+                  <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener" style="margin-bottom:8px; display:inline-block;">
+                    🪟 Windows 64位（推荐）
+                  </a>
+                  <div style="font-size:0.82rem; color:var(--text-secondary); background:var(--bg-card); border:1px solid var(--border-light); border-radius:6px; padding:8px 10px; line-height:1.6;">
+                    ✅ 支持 <strong>Windows 10 / 11（64位）</strong><br>
+                    如果你的系统不是 64 位，或版本较旧（Win 7 / Win 8），请前往
+                    <a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener" style="color:var(--primary);">GitHub 版本列表</a>
+                    手动选择适合你的版本下载。
+                  </div>
+                </div>
+
+                <!-- macOS -->
+                <div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🍎 macOS</div>
+                  <div style="font-size:0.82rem; color:#7a5000; background:#fff8e6; border:1px solid #ffd770; border-radius:6px; padding:8px 10px; margin-bottom:8px; line-height:1.6;">
+                    📌 不确定是 M 系列还是 Intel？点左上角 <strong>苹果图标 → 关于本机</strong>，查看「芯片」或「处理器」一栏：<br>
+                    · 显示 <strong>Apple M1 / M2 / M3 / M4</strong> → 选 ARM64（M 系列）<br>
+                    · 显示 <strong>Intel Core</strong> → 选 Intel（老款）
+                  </div>
+                  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                    <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
+                      🍎 macOS ARM64（M 系列）
+                    </a>
+                    <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
+                      🍎 macOS Intel（老款）
+                    </a>
+                  </div>
+                  <div style="font-size:0.82rem; color:var(--text-secondary);">
+                    其他版本：<a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener" style="color:var(--primary);">GitHub 版本列表</a>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
-            <!-- iOS 小火箭提示 -->
-            <div style="margin-top:16px; background:#fff8f0; border:1px solid #ffd0a0; border-radius:10px; padding:14px 16px; font-size:0.88rem; line-height:1.7; color:#6b4c1e;">
-              <strong style="color:#c05000;">🚀 iPhone / iPad 用户（小火箭 Shadowrocket）</strong><br>
-              iOS 推荐使用 <strong>Shadowrocket（小火箭）</strong>，它是搭建链式代理的必要工具，需在美区 App Store 购买（<strong>$2.99 美元</strong>）。步骤如下：
-              <ol style="margin:8px 0 0 16px; padding:0; display:flex; flex-direction:column; gap:4px;">
-                <li>注册一个<strong>苹果美区 Apple ID</strong>（国区 ID 搜不到此 App）</li>
-                <li>用支付宝搜索 <strong>"App Store 礼品卡"</strong>，购买 $5 礼品卡充值到美区 Apple ID</li>
-                <li>在 iPhone 上打开 <strong>App Store</strong>，点右上角头像 → 滚到底部 <strong>"退出登录"</strong>，再用美区 Apple ID 登录 App Store，搜索 <strong>Shadowrocket</strong> 购买下载<br><span style="color:#c0392b; font-weight:600;">⚠️ 注意：只在 App Store 里切换，千万不要去「设置」里登录美区 ID，否则会替换你的 iCloud 账号！</span></li>
-                <li>下载完成后打开 App，<strong>导入订阅链接</strong>即可连通外网</li>
-              </ol>
+            <!-- 📱 手机端 -->
+            <div style="margin-top:14px; border:1px solid #d4edda; border-radius:10px; overflow:hidden;">
+              <div style="background:#d4edda; padding:8px 14px; font-size:0.85rem; font-weight:700; color:#155724;">📱 手机端</div>
+              <div style="padding:14px; display:flex; flex-direction:column; gap:14px;">
+
+                <!-- 安卓 -->
+                <div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🤖 安卓手机（NekoBox）</div>
+                  <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/latest" class="btn btn-secondary" target="_blank" rel="noopener" style="margin-bottom:8px; display:inline-block;">
+                    📱 安卓（NekoBox）
+                  </a>
+                  <details class="details-block" style="margin-top:2px;">
+                    <summary>
+                      <span>📥 安卓安装小技巧 &amp; 安全拦截解决方案</span>
+                      <span class="summary-hint">点击展开 ▼</span>
+                    </summary>
+                    <div class="details-body" style="display:flex; flex-direction:column; gap:10px;">
+                      <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                        <strong style="color:var(--text-primary);">💡 传输方法：</strong>先用电脑下载 APK 文件，再通过 <strong>QQ 或微信</strong> 发送到手机，在手机上点击文件直接安装。
+                      </div>
+                      <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+                        <strong style="color:var(--text-primary);">🔒 遇到安全拦截怎么办：</strong><br>
+                        · <strong>通用方法：</strong>点「更多详情」或「仍要安装」→ 允许安装即可<br>
+                        · <strong>小米 / Redmi：</strong>弹出「风险应用」→ 点「继续安装」；或到「设置 → 隐私保护 → 特殊权限 → 安装未知应用」开启对应 App 权限<br>
+                        · <strong>华为 / 荣耀：</strong>「设置 → 安全 → 更多安全设置 → 安装未知应用」，找到对应 App 开启权限<br>
+                        · <strong>OPPO / vivo：</strong>「设置 → 其他设置 → 安装未知应用」，允许来源后重新安装
+                      </div>
+                    </div>
+                  </details>
+                </div>
+
+                <!-- iOS 小火箭 -->
+                <div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🍎 iPhone / iPad（小火箭 Shadowrocket）</div>
+                  <div style="background:#fff8f0; border:1px solid #ffd0a0; border-radius:8px; padding:12px 14px; font-size:0.85rem; line-height:1.7; color:#6b4c1e;">
+                    iOS 推荐使用 <strong>Shadowrocket（小火箭）</strong>，它是搭建链式代理的必要工具，需在美区 App Store 购买（<strong>$2.99 美元</strong>）。步骤如下：
+                    <ol style="margin:8px 0 0 16px; padding:0; display:flex; flex-direction:column; gap:4px;">
+                      <li>注册一个<strong>苹果美区 Apple ID</strong>（国区 ID 搜不到此 App）</li>
+                      <li>用支付宝搜索 <strong>"App Store 礼品卡"</strong>，购买 $5 礼品卡充值到美区 Apple ID</li>
+                      <li>在 iPhone 上打开 <strong>App Store</strong>，点右上角头像 → 滚到底部 <strong>"退出登录"</strong>，再用美区 Apple ID 登录，搜索 <strong>Shadowrocket</strong> 购买下载<br>
+                        <span style="color:#c0392b; font-weight:600;">⚠️ 只在 App Store 里切换，千万不要去「设置」里登录美区 ID，否则会替换你的 iCloud 账号！</span>
+                      </li>
+                      <li>下载完成后打开 App，<strong>导入订阅链接</strong>即可连通外网</li>
+                    </ol>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
-            <!-- 常见安装问题 -->
-            <details class="details-block" style="margin-top:16px;">
+            <!-- 常见安装问题（电脑） -->
+            <details class="details-block" style="margin-top:14px;">
               <summary>
-                <span>🛠️ 常见安装问题</span>
+                <span>🛠️ 电脑端常见安装问题</span>
                 <span class="summary-hint">点击展开 ▼</span>
               </summary>
               <div class="details-body" style="display:flex; flex-direction:column; gap:20px;">
