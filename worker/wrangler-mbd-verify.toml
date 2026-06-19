@@ -1,0 +1,7 @@
+name = "mbd-verify"
+main = "mbd-verify.js"
+compatibility_date = "2026-05-31"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true

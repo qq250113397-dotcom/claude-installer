@@ -1,4 +1,159 @@
-// FAQ Accordion
+// ===== 面包多会员系统 =====
+(function () {
+  var MBD_VERIFY_URL = 'https://mbd-verify.qq250113397.workers.dev';
+  var MBD_PRODUCT_URL = 'https://mbd.pub/o/bread/YZaTmZtvaw==';
+
+  function getMbrExpiry() { return Number(localStorage.getItem('mbr_expiry') || 0); }
+  function isMember() { return getMbrExpiry() > Date.now(); }
+  function daysLeft() { return Math.max(1, Math.ceil((getMbrExpiry() - Date.now()) / 86400000)); }
+
+  // 注入验证弹窗 DOM
+  function injectModal() {
+    if (document.getElementById('mbd-modal')) return;
+    var div = document.createElement('div');
+    div.id = 'mbd-modal';
+    div.setAttribute('aria-hidden', 'true');
+    div.innerHTML = [
+      '<div class="mbd-modal-card" role="dialog" aria-modal="true">',
+      '  <button class="mbd-modal-close" aria-label="关闭" data-close-mbd-modal>×</button>',
+      '  <div class="mbd-modal-eyebrow">面包多会员</div>',
+      '  <div class="mbd-modal-title">验证会员订单</div>',
+      '  <div class="mbd-modal-desc">',
+      '    在面包多完成购买后，把订单号粘贴到下方，验证成功后解锁全部内容，有效期 32 天。',
+      '  </div>',
+      '  <form id="mbd-verify-form">',
+      '    <div class="card-verify-row">',
+      '      <input id="mbd-order-input" type="text" placeholder="面包多订单号，如 xxxxx" autocomplete="off" spellcheck="false">',
+      '      <button type="submit" class="btn btn-primary" style="flex-shrink:0;">验证</button>',
+      '    </div>',
+      '  </form>',
+      '  <div id="mbd-verify-status" class="mbd-verify-status"></div>',
+      '  <div class="mbd-modal-divider"><span>还没有购买？</span></div>',
+      '  <a href="' + MBD_PRODUCT_URL + '" target="_blank" rel="noopener" class="btn btn-secondary" style="width:100%;justify-content:center;">',
+      '    前往面包多开通会员 →',
+      '  </a>',
+      '</div>'
+    ].join('');
+    document.body.appendChild(div);
+
+    // 绑定关闭
+    div.addEventListener('click', function (e) {
+      if (e.target === div || e.target.hasAttribute('data-close-mbd-modal')) closeMbdModal();
+    });
+
+    // 绑定验证表单
+    initVerifyForm();
+  }
+
+  function openMbdModal() {
+    var modal = document.getElementById('mbd-modal');
+    if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  }
+
+  function closeMbdModal() {
+    var modal = document.getElementById('mbd-modal');
+    if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+
+  function initVerifyForm() {
+    var form = document.getElementById('mbd-verify-form');
+    if (!form) return;
+    var input = document.getElementById('mbd-order-input');
+    var statusEl = document.getElementById('mbd-verify-status');
+
+    if (isMember()) {
+      setStatus('✓ 会员有效，剩余 ' + daysLeft() + ' 天', 'ok');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var orderNo = (input ? input.value : '').trim();
+      if (!orderNo) { setStatus('请先输入面包多订单号', 'err'); return; }
+
+      setStatus('验证中...', 'info');
+
+      fetch(MBD_VERIFY_URL, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ order_no: orderNo }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.ok) {
+            localStorage.setItem('mbr_expiry', String(data.expiry));
+            localStorage.setItem('mbr_order', orderNo);
+            setStatus('验证成功 ✓ 剩余 ' + Math.ceil((data.expiry - Date.now()) / 86400000) + ' 天，3秒后自动刷新页面', 'ok');
+            setTimeout(function () { location.reload(); }, 3000);
+          } else {
+            setStatus('验证失败：' + (data.error || '请检查订单号后重试'), 'err');
+          }
+        })
+        .catch(function () {
+          setStatus('网络错误，请检查网络后重试', 'err');
+        });
+
+      function setStatus(msg, type) {
+        if (!statusEl) return;
+        statusEl.textContent = msg;
+        statusEl.className = 'mbd-verify-status show ' + type;
+      }
+    });
+  }
+
+  // 替换视频为会员锁（仅对有 data-member-gate 属性的元素）
+  function applyContentGates() {
+    if (isMember()) return;
+    document.querySelectorAll('[data-member-gate]').forEach(function (el) {
+      var gate = document.createElement('div');
+      gate.className = 'member-gate';
+      gate.innerHTML = [
+        '<div class="member-gate-icon">🔒</div>',
+        '<div class="member-gate-title">此内容仅会员可见</div>',
+        '<div class="member-gate-desc">开通会员后可查看全部视频和资源</div>',
+        '<div class="member-gate-actions">',
+        '  <a href="' + MBD_PRODUCT_URL + '" target="_blank" rel="noopener" class="btn btn-primary btn-sm">开通会员</a>',
+        '  <button class="btn btn-secondary btn-sm" data-open-mbd-modal>已购买？验证订单</button>',
+        '</div>'
+      ].join('');
+      el.parentNode.replaceChild(gate, el);
+    });
+  }
+
+  // 在导航栏注入「开通会员」按钮
+  function injectNavBtn() {
+    var navLinks = document.querySelector('.nav-links');
+    if (!navLinks || navLinks.querySelector('.nav-mbd-btn')) return;
+    var btn = document.createElement('button');
+    btn.className = 'nav-mbd-btn';
+    if (isMember()) {
+      btn.textContent = '会员 ✓ 剩余' + daysLeft() + '天';
+      btn.classList.add('is-member');
+      btn.setAttribute('data-open-mbd-modal', '');
+    } else {
+      btn.textContent = '开通会员';
+      btn.addEventListener('click', openMbdModal);
+    }
+    btn.addEventListener('click', openMbdModal);
+    navLinks.appendChild(btn);
+  }
+
+  // 全局 [data-open-mbd-modal] 按钮绑定（包括注入的锁内容里的按钮）
+  document.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-open-mbd-modal') || e.target.closest('[data-open-mbd-modal]')) {
+      openMbdModal();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMbdModal();
+  });
+
+  // 初始化
+  injectModal();
+  applyContentGates();
+  injectNavBtn();
+})();
+
+// ===== FAQ Accordion =====
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.closest('.faq-item');
@@ -146,59 +301,3 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Card verification
-(function () {
-  var form = document.getElementById('card-verify-form');
-  if (!form) return;
-
-  var input = document.getElementById('card-verify-input');
-  var statusEl = document.getElementById('card-verify-status');
-
-  function setStatus(msg, type) {
-    statusEl.textContent = msg;
-    statusEl.className = 'card-verify-status show ' + type;
-  }
-
-  // Auto-fill from localStorage if previously verified
-  var savedCard = localStorage.getItem('cv_card');
-  var savedToken = localStorage.getItem('cv_token');
-  var savedExpiry = Number(localStorage.getItem('cv_expiry') || 0);
-  if (savedCard && savedToken && savedExpiry > Date.now()) {
-    var daysLeft = Math.ceil((savedExpiry - Date.now()) / 86400000);
-    input.value = savedCard;
-    setStatus('已验证 ✓ 卡密有效，剩余 ' + daysLeft + ' 天', 'ok');
-  }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var card = input.value.trim().toUpperCase();
-    if (!card) { setStatus('请先输入卡密', 'err'); return; }
-
-    setStatus('验证中...', 'ok');
-
-    fetch('/verify', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        card: card,
-        token: localStorage.getItem('cv_token') || '',
-        mode: 'activate',
-      }),
-    })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (data.ok) {
-          localStorage.setItem('cv_card', data.card);
-          localStorage.setItem('cv_token', data.token);
-          localStorage.setItem('cv_expiry', String(data.expiry));
-          var daysLeft = Math.ceil((data.expiry - Date.now()) / 86400000);
-          setStatus('验证成功 ✓ 卡密有效，剩余 ' + daysLeft + ' 天。感谢购买！', 'ok');
-        } else {
-          setStatus('验证失败：' + data.error, 'err');
-        }
-      })
-      .catch(function () {
-        setStatus('网络错误，请检查网络后重试', 'err');
-      });
-  });
-})();
