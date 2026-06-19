@@ -1,6 +1,6 @@
 // ===== 面包多会员系统 =====
 (function () {
-  var MBD_VERIFY_URL = 'https://mbd-verify.qq250113397.workers.dev';
+  var MBD_VERIFY_URL = '/api/verify';
   var MBD_PRODUCT_URL = 'https://mbd.pub/o/bread/YZaTmZtvaw==';
 
   function getMbrExpiry() { return Number(localStorage.getItem('mbr_expiry') || 0); }
