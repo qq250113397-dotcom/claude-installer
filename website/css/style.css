@@ -1760,7 +1760,16 @@ ul, ol { list-style: none; }
   color: var(--text-primary);
 }
 @media (max-width: 640px) {
-  .path-overlay-card { padding: 28px 18px 24px; }
+  #path-overlay {
+    align-items: flex-start;
+    padding: 12px;
+    overflow-y: auto;
+  }
+  .path-overlay-card {
+    padding: 28px 18px 24px;
+    max-height: none;
+    margin: auto 0;
+  }
 }
 
 /* 退出登录按钮 */
