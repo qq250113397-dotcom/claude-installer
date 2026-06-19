@@ -1718,9 +1718,7 @@ ul, ol { list-style: none; }
 .path-overlay-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.78);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.82);
   cursor: pointer;
   z-index: 0;
 }
@@ -1734,11 +1732,6 @@ ul, ol { list-style: none; }
   max-width: 880px;
   width: 100%;
   margin: 0 auto;
-  transform: translateY(24px) scale(0.97);
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
-}
-#path-overlay.open .path-overlay-card {
-  transform: translateY(0) scale(1);
 }
 .path-overlay-close {
   position: absolute;
