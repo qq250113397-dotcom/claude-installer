@@ -82,8 +82,15 @@
           if (data.ok) {
             localStorage.setItem('mbr_expiry', String(data.expiry));
             localStorage.setItem('mbr_order', orderNo);
-            setStatus('验证成功 ✓ 剩余 ' + Math.ceil((data.expiry - Date.now()) / 86400000) + ' 天，3秒后自动刷新页面', 'ok');
-            setTimeout(function () { location.reload(); }, 3000);
+            var days = Math.ceil((data.expiry - Date.now()) / 86400000);
+            setStatus('验证成功 ✓ 已开通会员，剩余 ' + days + ' 天！', 'ok');
+            // 直接更新当前页面 UI，不依赖刷新后读 localStorage
+            setTimeout(function () {
+              closeMbdModal();
+              var old = document.querySelector('[data-nav-mbd]');
+              if (old) old.remove();
+              injectNavBtn();
+            }, 1200);
           } else {
             setStatus('验证失败：' + (data.error || '请检查订单号后重试'), 'err');
           }
