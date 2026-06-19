@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>常见问题 FAQ — Claude Code 安装助手</title>
-  <meta name="description" content="Claude Code 安装和使用过程中的常见问题解答，涵盖网络、安装、登录和使用各个方面。">
+  <title>常见问题 FAQ — AI coding 入门导航站</title>
+  <meta name="description" content="关于邮箱准备、会员内容和快速开通的常见问题。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- Navigation -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
       <div class="logo-icon">✦</div>
-      Claude Code 安装助手
+      AI coding 入门导航站
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="step1.html">步骤一</a>
-      <a href="step2.html">步骤二</a>
-      <a href="step3.html">步骤三</a>
+      <a href="step1.html">邮箱准备</a>
+      <a href="step2.html">会员内容</a>
+      <a href="step3.html">快速开通</a>
       <a href="faq.html" class="active">FAQ</a>
     </div>
     <button class="nav-toggle" aria-label="菜单">
@@ -29,264 +28,115 @@
   </div>
 </nav>
 
-<!-- Page Header -->
-<div class="page-header">
+<div class="page-hero-shell">
   <div class="container">
-    <h1>常见问题 FAQ</h1>
-    <p>汇总了安装和使用过程中的常见问题，点击问题查看答案。</p>
+    <h1 class="page-title">常见问题</h1>
+    <p class="page-subtitle">先把大家最常问的几个问题放在这里，省得你来回找答案。</p>
   </div>
 </div>
 
-<!-- FAQ Content -->
 <main class="section-sm">
-  <div class="container" style="max-width:800px;">
-
-    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">🌐 网络相关</p>
+  <div class="container" style="max-width:860px;">
+    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">关于入门</p>
     <div class="faq-list">
-
       <div class="faq-item">
         <div class="faq-question">
-          为什么必须要联网才能用 Claude Code？
+          这个站主要是做什么的？
           <i class="faq-chevron">▾</i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            第一阶段先连通外网，是为了能打开 <a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">Cloudflare</a> 和
-            <a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">dnshe</a>，方便后面搭建自己的订阅和链式代理。
-            后续再继续注册和安装 Claude / GPT / Codex。
+            这是一个给新手看的 AI coding 入门导航站，帮你把邮箱准备、会员内容和快速开通入口整理到一起。
           </div>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question">
-          安装程序运行时提示「网络连接失败」怎么办？
+          我不会折腾，适合看吗？
           <i class="faq-chevron">▾</i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            请按以下步骤排查：<br><br>
-            1. 确认 v2rayN 已启动，且已导入订阅链接并选中了一个低延迟节点<br>
-            2. 检查「系统代理」或「Tun 模式」是否已开启<br>
-            3. 先尝试打开 <a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">Cloudflare</a> 和
-            <a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">dnshe</a>，能打开说明网络已通<br>
-            4. 重新打开终端，再次运行 npm 安装命令
+            适合。我们尽量把复杂内容讲简单，先看首页和步骤一，再决定要不要直接走快速开通。
           </div>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question">
-          安装成功后每次使用都需要开代理吗？
+          如果我只想先了解，不想马上开通呢？
           <i class="faq-chevron">▾</i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            只要你还要继续访问 Claude / GPT / Codex 这些国际站点，就需要保持代理工具处于开启状态。
-            建议将代理工具设置为开机自启，这样后续不用每次手动打开。
+            可以先看会员内容页和 FAQ，把流程看明白以后再决定。
           </div>
         </div>
       </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          CF 节点老是断线 / 频繁掉线怎么办？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            CF Workers 免费节点本质上是借用 Cloudflare 的公共 IP，会受到运营商 QoS 限速和 CF 自身的并发限制，断线属于正常现象。几个缓解方法：<br><br>
-            <strong>1. 断了就切换节点：</strong>在 v2rayN 里点顶部闪电图标全部测速，双击当前延迟最低的节点切换即可，不用重启软件。<br><br>
-            <strong>2. 定期更新订阅：</strong>「订阅分组 → 更新全部订阅」刷新节点列表，新节点通常比旧的稳定。<br><br>
-            <strong>3. 换成住宅 IP（根本解决）：</strong>CF 节点适合临时上网，长期稳定使用建议在步骤一进阶部分接入住宅 IP（<a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a>），住宅 IP 走真实家庭宽带线路，稳定性远高于 CF 免费节点。
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin:40px 0 12px;">📦 安装相关</p>
+    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin:40px 0 12px;">关于会员</p>
     <div class="faq-list">
-
       <div class="faq-item">
         <div class="faq-question">
-          安装时 Windows 提示「无法运行此应用」或 SmartScreen 警告怎么办？
+          会员里会更新什么？
           <i class="faq-chevron">▾</i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            这是因为安装程序尚未通过微软的代码签名认证，属于正常现象。解决方法：<br><br>
-            1. 点击弹窗中的「更多信息」<br>
-            2. 点击「仍要运行」按钮
+            主要是持续更新的视频、工具整理、使用说明和适合新手的学习路径。
           </div>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question">
-          安装后运行 claude 提示「不是内部或外部命令」怎么办？
+          为什么要先填邮箱？
           <i class="faq-chevron">▾</i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            这是 PATH 环境变量未更新的问题。解决方法：<br><br>
-            1. <strong>重启终端：</strong> 完全关闭 PowerShell/CMD 窗口，重新打开<br>
-            2. <strong>重启电脑：</strong> 如果重启终端无效，重启电脑后再试<br>
-            3. <strong>手动验证：</strong> 运行 <code>npm list -g @anthropic-ai/claude-code</code>，如果有输出说明安装成功，只是 PATH 问题
+            邮箱用于接收开通提醒和后续更新通知，这样你不会错过新的内容。
           </div>
         </div>
       </div>
-
       <div class="faq-item">
         <div class="faq-question">
-          电脑上已有 Node.js，但版本太旧怎么办？
+          如果我觉得步骤太多怎么办？
           <i class="faq-chevron">▾</i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Claude Code 需要 Node.js 18 或更高版本。从 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 下载最新 LTS 版本安装后，再运行安装命令即可。
+            可以直接去快速开通页，那里放了更省事的入口，适合想尽快开始的人。
           </div>
         </div>
       </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          如何卸载 Claude Code？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            在终端运行以下命令即可完全卸载：<br><br>
-            <code>npm uninstall -g @anthropic-ai/claude-code</code><br><br>
-            Node.js 本身不会被删除，如需一并卸载，去「控制面板 → 程序和功能」中找到 Node.js 卸载即可。
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin:40px 0 12px;">🔑 登录 &amp; 账号</p>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-question">
-          Claude Code 是免费的吗？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Claude Code 软件本身免费，但正常使用需要订阅 <strong>Claude Pro（$20/月）</strong> 或 <strong>Claude Max（$100/月）</strong>，没有免费使用额度。<br><br>
-            国内用户可通过 <a href="https://bewild.ai?code=6XSWDDEI" target="_blank" rel="noopener">WildAI</a> 等平台完成充值订阅，具体操作见步骤三。<br><br>
-            详细定价请参考 <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic 官方定价页面</a>。
-          </div>
-        </div>
+    <div class="inline-callout" style="margin-top:40px;">
+      <strong>还在犹豫？</strong>先看首页再决定也没问题。<br>
+      <div class="callout-actions">
+        <a href="index.html" class="btn btn-primary btn-sm">返回首页</a>
+        <a href="step3.html" class="btn btn-secondary btn-sm">去看快速方案</a>
       </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          为什么 CF 免费节点无法注册 Claude 账号？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            CF Workers 免费节点使用的是 Cloudflare 的公共 CDN IP，这些 IP 被 Claude / Google 识别并拦截，因此无法完成注册或登录。<br><br>
-            解决方法：完成步骤一进阶部分，接入住宅 IP（<a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a>），住宅 IP 走真实家庭宽带线路，可以正常注册和使用 Claude。
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          登录时浏览器不会自动打开怎么办？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            如果浏览器未自动打开，终端会显示一个登录链接。手动复制该链接到浏览器地址栏打开，
-            完成授权后终端会自动检测并完成登录。
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          注册账号需要手机号或信用卡吗？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            注册账号不需要手机号和信用卡，使用 Google 账号即可完成注册。
-            订阅 Claude Pro 需要信用卡或通过 WildAI 等第三方平台充值。
-          </div>
-        </div>
-      </div>
-
     </div>
-
-    <p style="font-size:0.72rem; font-weight:700; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin:40px 0 12px;">🔄 更新相关</p>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-question">
-          如何更新到最新版本的 Claude Code？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            在终端运行以下命令即可更新到最新版本：<br><br>
-            <code>npm update -g @anthropic-ai/claude-code</code><br><br>
-            建议定期更新以获得最新功能和安全修复。
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          Node.js 如何更新？
-          <i class="faq-chevron">▾</i>
-        </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            前往 <a href="https://nodejs.org/zh-cn/download" target="_blank" rel="noopener">nodejs.org</a> 重新下载 LTS 版本安装即可，新版本会覆盖旧版本。
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="tip-box tip-blue" style="margin-top:40px;">
-      <strong>没有找到你的问题？</strong> 欢迎参考
-      <a href="https://docs.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code 官方文档</a> 获取更详细的说明。
-    </div>
-
-    <div style="text-align:center; margin-top:48px;">
-      <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:16px;">准备好了？从头开始安装：</p>
-      <a href="step1.html" class="btn btn-primary">开始安装 →</a>
-    </div>
-
   </div>
 </main>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-links">
         <a href="index.html">首页</a>
-        <a href="step1.html">步骤一</a>
-        <a href="step2.html">步骤二</a>
-        <a href="step3.html">步骤三</a>
+        <a href="step1.html">邮箱准备</a>
+        <a href="step2.html">会员内容</a>
+        <a href="step3.html">快速开通</a>
+        <a href="faq.html">FAQ</a>
       </div>
-      <p class="footer-disclaimer">
-        ⚠️ 免责声明：本站仅提供 Claude Code 软件的安装指引，不提供任何网络代理或加速服务。
-        Claude Code 是 Anthropic 的官方产品，本站与 Anthropic 无官方关联。
-        使用 Claude Code 须遵守 <a href="https://www.anthropic.com/legal/usage-policy" target="_blank" rel="noopener">Anthropic 使用条款</a>。
-      </p>
-      <p class="footer-copy">© 2025 Claude Code 安装助手 · 仅供学习参考</p>
+      <p class="footer-disclaimer">本站仅提供学习导航、内容整理与使用说明。</p>
+      <p class="footer-copy">© 2026 AI coding 入门导航站</p>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js?v=20260607a"></script>
+<script src="js/main.js?v=20260618a"></script>
 </body>
 </html>

@@ -1,96 +1,30 @@
 [
   {
-    "Id": "6105310000000001001",
-    "Port": "443",
-    "Network": "udp",
-    "OutboundTag": "block",
+    "Id": "1001",
+    "OutboundTag": "direct",
+    "Domain": ["geosite:private"],
     "Enabled": true,
-    "Remarks": "阻断 QUIC/UDP443，避免浏览器绕路"
+    "Remarks": "本地资源直连"
   },
   {
-    "Id": "6105310000000001002",
-    "OutboundTag": "proxy",
-    "Domain": [
-      "domain:openai.com",
-      "domain:chatgpt.com",
-      "domain:oaiusercontent.com",
-      "domain:oaistatic.com",
-      "domain:anthropic.com",
-      "domain:claude.ai",
-      "domain:perplexity.ai",
-      "domain:poe.com",
-      "domain:cursor.com",
-      "domain:cursor.sh",
-      "domain:windsurf.com",
-      "domain:codeium.com",
-      "domain:githubcopilot.com",
-      "domain:copilot.microsoft.com",
-      "domain:gemini.google.com",
-      "domain:generativelanguage.googleapis.com",
-      "domain:ai.google.dev",
-      "domain:grok.com",
-      "domain:x.ai",
-      "domain:groq.com",
-      "domain:openrouter.ai",
-      "domain:huggingface.co",
-      "domain:mistral.ai",
-      "domain:cohere.ai",
-      "domain:together.ai",
-      "domain:replicate.com",
-      "domain:stability.ai",
-      "domain:deepseek.com",
-      "domain:deepseek.com.cn",
-      "domain:kimi.com",
-      "domain:moonshot.cn",
-      "domain:bigmodel.cn",
-      "domain:zhipuai.cn",
-      "domain:doubao.com",
-      "domain:volcengine.com",
-      "domain:qwen.ai",
-      "domain:dashscope.aliyuncs.com",
-      "domain:tongyi.aliyun.com",
-      "domain:siliconflow.cn",
-      "domain:modelscope.cn",
-      "domain:minimax.chat",
-      "domain:minimaxi.com",
-      "geosite:google"
-    ],
-    "Enabled": true,
-    "Remarks": "AI / 开发助手全部走代理"
-  },
-  {
-    "Id": "6105310000000001003",
+    "Id": "1002",
     "OutboundTag": "direct",
     "Ip": ["geoip:private"],
     "Enabled": true,
     "Remarks": "局域网 IP 直连"
   },
   {
-    "Id": "6105310000000001004",
-    "OutboundTag": "direct",
-    "Domain": ["geosite:private"],
-    "Enabled": true,
-    "Remarks": "局域网域名直连"
-  },
-  {
-    "Id": "6105310000000001005",
-    "OutboundTag": "direct",
-    "Ip": ["geoip:cn"],
-    "Enabled": true,
-    "Remarks": "中国 IP 直连"
-  },
-  {
-    "Id": "6105310000000001006",
-    "OutboundTag": "direct",
-    "Domain": ["geosite:cn", "geosite:geolocation-cn"],
-    "Enabled": true,
-    "Remarks": "中国域名直连"
-  },
-  {
-    "Id": "6105310000000001007",
-    "Port": "0-65535",
+    "Id": "1003",
     "OutboundTag": "proxy",
+    "Domain": ["domain:example.com", "domain:docs.example.com"],
     "Enabled": true,
-    "Remarks": "其他非中国流量走代理"
+    "Remarks": "示例外部资源走代理"
+  },
+  {
+    "Id": "1004",
+    "Port": "0-65535",
+    "OutboundTag": "direct",
+    "Enabled": true,
+    "Remarks": "其他流量直连"
   }
 ]
