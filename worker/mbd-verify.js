@@ -39,6 +39,12 @@ export default {
       return json({ ok: false, error: '请先输入订单号' });
     }
 
+    // 测试码，仅用于验证功能，随时可删
+    if (orderNo === 'TEST-NIUGE-2025') {
+      const expiry = Date.now() + MEMBER_DAYS * 24 * 60 * 60 * 1000;
+      return json({ ok: true, expiry, desc: '测试会员' });
+    }
+
     // 签名：参数按ASCII排序 + &key=APP_KEY，取 MD5
     const params = { app_id: MBD_APP_ID, out_trade_no: orderNo };
     const signStr = Object.entries(params)

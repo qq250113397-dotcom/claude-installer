@@ -1,30 +1,44 @@
+const ALLOWED_DOMAINS = [
+  'claude.lbenben.cc.cd',
+  'codex.lbenben.cc.cd',
+  'claudecode-eut.pages.dev',
+];
+
+const CORS_HEADERS = {
+  'access-control-allow-origin': '*',
+  'access-control-allow-methods': 'GET, HEAD, OPTIONS',
+  'access-control-allow-headers': 'Range, Content-Type',
+  'access-control-expose-headers': 'Content-Range, Content-Length, Accept-Ranges',
+};
+
 export default {
   async fetch(request, env) {
-    // 只放行来自网站的请求（换域名时在此数组添加新域名即可）
-    const ALLOWED_DOMAINS = [
-      'claude.lbenben.cc.cd',
-      'codex.lbenben.cc.cd',
-      'claudecode-eut.pages.dev',
-      // 新域名占位，买好后填入：
-      // 'example.com',
-    ];
+    // OPTIONS 预检请求直接放行
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: CORS_HEADERS });
+    }
+
+    // 防盗链：只放行来自指定域名的 Referer
     const referer = request.headers.get('Referer') || '';
-    if (!ALLOWED_DOMAINS.some(d => referer.includes(d))) {
+    const allowed = ALLOWED_DOMAINS.some(d => referer.includes(d));
+    if (!allowed) {
       return new Response('403 Forbidden', {
         status: 403,
-        headers: { 'content-type': 'text/plain; charset=utf-8' },
+        headers: {
+          'content-type': 'text/plain; charset=utf-8',
+          ...CORS_HEADERS,
+        },
       });
     }
 
     const url = new URL(request.url);
-    // 解码 URL（支持中文文件名）
     const key = decodeURIComponent(url.pathname.slice(1));
 
     if (!key) {
-      return new Response('Not Found', { status: 404 });
+      return new Response('Not Found', { status: 404, headers: CORS_HEADERS });
     }
 
-    // 解析 Range 请求头（视频拖动进度条需要）
+    // 解析 Range 请求头（拖动进度条必须）
     const rangeHeader = request.headers.get('Range');
     let rangeOption;
 
@@ -46,22 +60,19 @@ export default {
     );
 
     if (!object) {
-      return new Response('Not Found', { status: 404 });
+      return new Response('Not Found', { status: 404, headers: CORS_HEADERS });
     }
 
-    const headers = new Headers();
+    const headers = new Headers(CORS_HEADERS);
     object.writeHttpMetadata(headers);
     headers.set('etag', object.httpEtag);
     headers.set('accept-ranges', 'bytes');
     headers.set('cache-control', 'public, max-age=86400');
 
-    // 分片响应（206）
+    // 分片响应 206
     if (rangeOption && object.range) {
       const { offset, length } = object.range;
-      headers.set(
-        'content-range',
-        `bytes ${offset}-${offset + length - 1}/${object.size}`
-      );
+      headers.set('content-range', `bytes ${offset}-${offset + length - 1}/${object.size}`);
       headers.set('content-length', String(length));
       return new Response(object.body, { status: 206, headers });
     }
