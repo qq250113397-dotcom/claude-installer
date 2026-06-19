@@ -215,6 +215,11 @@ document.querySelectorAll('[data-copy-target]').forEach(function (btn) {
   });
 });
 
+// QQ 号码点击显示
+document.querySelectorAll('.qq-blur').forEach(function (el) {
+  el.addEventListener('click', function () { el.classList.toggle('revealed'); });
+});
+
 // Codex email capture helper
 const CODEX_EMAIL_ENDPOINT = 'https://codex-email-leads.qq250113397.workers.dev/';
 

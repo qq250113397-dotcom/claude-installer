@@ -1697,3 +1697,15 @@ ul, ol { list-style: none; }
   .trust-bar { gap: 28px; }
   .modal-card { padding: 20px; }
 }
+
+/* QQ 号码点击显示 */
+.qq-blur {
+  filter: blur(5px);
+  cursor: pointer;
+  user-select: none;
+  transition: filter 0.25s;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: inline-block;
+}
+.qq-blur.revealed { filter: none; }
