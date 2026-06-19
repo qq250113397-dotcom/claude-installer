@@ -1396,12 +1396,12 @@ ul, ol { list-style: none; }
 }
 .nav-mbd-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
 .nav-mbd-btn.is-member {
-  background: rgba(5,150,105,0.12);
-  color: #047857 !important;
-  border: 1px solid rgba(5,150,105,0.22);
+  background: rgba(52,211,153,0.15);
+  color: #6ee7b7 !important;
+  border: 1px solid rgba(52,211,153,0.3);
   box-shadow: none;
 }
-.nav-mbd-btn.is-member:hover { background: rgba(5,150,105,0.18); }
+.nav-mbd-btn.is-member:hover { background: rgba(52,211,153,0.22); }
 
 /* ===== MBD Verify Modal ===== */
 #mbd-modal {
@@ -1765,14 +1765,14 @@ ul, ol { list-style: none; }
 /* 退出登录按钮 */
 .nav-logout-btn {
   background: transparent !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
-  color: rgba(255,255,255,0.5) !important;
+  border: 1px solid rgba(255,255,255,0.28) !important;
+  color: rgba(255,255,255,0.65) !important;
   font-size: 0.78rem !important;
   padding: 5px 10px !important;
 }
 .nav-logout-btn:hover {
-  border-color: rgba(255,255,255,0.4) !important;
-  color: rgba(255,255,255,0.8) !important;
+  border-color: rgba(255,255,255,0.55) !important;
+  color: #fff !important;
 }
 
 /* QQ 号码点击显示 */
