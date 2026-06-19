@@ -126,27 +126,37 @@
     location.reload();
   }
 
-  // 在导航栏注入「开通会员」或「退出」按钮
+  // 在导航栏注入「开通会员」或会员状态+退出按钮（用内联样式保证可见）
   function injectNavBtn() {
     var navLinks = document.querySelector('.nav-links');
     if (!navLinks || navLinks.querySelector('.nav-mbd-btn')) return;
     if (isMember()) {
       var memberBtn = document.createElement('button');
-      memberBtn.className = 'nav-mbd-btn is-member';
       memberBtn.textContent = '会员 ✓ 剩余' + daysLeft() + '天';
+      memberBtn.setAttribute('style', 'display:inline-flex;align-items:center;padding:5px 12px;border-radius:6px;background:rgba(52,211,153,0.15);color:#6ee7b7;border:1px solid rgba(52,211,153,0.35);font-size:0.8rem;font-weight:600;cursor:pointer;margin-left:8px;white-space:nowrap;letter-spacing:-0.01em;');
       memberBtn.addEventListener('click', openMbdModal);
       navLinks.appendChild(memberBtn);
 
       var logoutBtn = document.createElement('button');
-      logoutBtn.className = 'nav-mbd-btn nav-logout-btn';
       logoutBtn.textContent = '退出';
       logoutBtn.title = '退出后可重新输入订单号登录';
+      logoutBtn.setAttribute('style', 'display:inline-flex;align-items:center;padding:5px 10px;border-radius:6px;background:transparent;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.3);font-size:0.78rem;cursor:pointer;margin-left:4px;white-space:nowrap;');
       logoutBtn.addEventListener('click', logout);
       navLinks.appendChild(logoutBtn);
+
+      // 同时更新首页"当前模式"面板（仅在首页存在该元素）
+      var featureSub = document.querySelector('.hero-feature-sub');
+      var featureBtn = document.querySelector('.hero-feature .btn');
+      if (featureSub) featureSub.textContent = '已开通会员，剩余 ' + daysLeft() + ' 天。';
+      if (featureBtn) {
+        featureBtn.textContent = '退出登录';
+        featureBtn.removeAttribute('data-buy-and-verify');
+        featureBtn.addEventListener('click', function(e){ e.preventDefault(); logout(); });
+      }
     } else {
       var btn = document.createElement('button');
-      btn.className = 'nav-mbd-btn';
       btn.textContent = '开通会员';
+      btn.setAttribute('style', 'display:inline-flex;align-items:center;padding:7px 16px;border-radius:6px;background:var(--accent,#CF6B50);color:#fff;border:none;font-size:0.82rem;font-weight:600;cursor:pointer;margin-left:8px;white-space:nowrap;');
       btn.addEventListener('click', openMbdModal);
       navLinks.appendChild(btn);
     }
