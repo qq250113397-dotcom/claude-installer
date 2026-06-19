@@ -188,31 +188,70 @@
     });
   })();
 
-  // data-scroll-to-path：平滑滚动到"两条路"并触发淡入
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('[data-scroll-to-path]');
-    if (btn) {
-      var target = document.getElementById('path-select');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(function () { target.classList.add('visible'); }, 200);
-      }
-    }
-  });
-
-  // 滚动进入视口时自动淡入（用户手动滚动也能触发）
-  var pathSection = document.getElementById('path-select');
-  if (pathSection && 'IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    obs.observe(pathSection);
+  // 全屏遮罩：两条路选择层
+  function injectPathOverlay() {
+    if (document.getElementById('path-overlay')) return;
+    var div = document.createElement('div');
+    div.id = 'path-overlay';
+    div.setAttribute('aria-hidden', 'true');
+    div.innerHTML = [
+      '<div class="path-overlay-backdrop" data-close-path-overlay></div>',
+      '<div class="path-overlay-card">',
+      '  <button class="path-overlay-close" aria-label="关闭" data-close-path-overlay>×</button>',
+      '  <h2 style="text-align:center;font-size:1.35rem;font-weight:800;margin-bottom:6px;">两条路，你选一条</h2>',
+      '  <p style="text-align:center;color:var(--text-secondary);font-size:0.875rem;margin-bottom:24px;">自己来，或者找我协助部署，都行</p>',
+      '  <div class="two-path-grid">',
+      '    <div class="path-card">',
+      '      <div class="path-card-badge free">自助注册</div>',
+      '      <h3>自己按步骤来</h3>',
+      '      <p>跟着教程一步步配置，整个流程 30–60 分钟，自己注册账号完成全套安装。</p>',
+      '      <ul class="path-card-list">',
+      '        <li>步骤一：配置网络 + 注册 Gmail</li>',
+      '        <li>步骤二：安装 Node.js + Claude Code</li>',
+      '        <li>步骤三：登录授权，开始使用</li>',
+      '      </ul>',
+      '      <button class="btn btn-secondary" data-mbd-gate-href="step1.html">自己开始 →</button>',
+      '    </div>',
+      '    <div class="path-card path-buy">',
+      '      <div class="path-card-badge paid">协助部署</div>',
+      '      <h3>找我帮你搭好</h3>',
+      '      <p>不想折腾环境？购买远程协助服务后，通过 ToDesk 远程帮你完成全套配置，通常 1 小时内搞定。</p>',
+      '      <ul class="path-card-list">',
+      '        <li>第一步：购买下方远程协助服务</li>',
+      '        <li>第二步：下载安装 ToDesk 远程软件</li>',
+      '        <li>第三步：添加 QQ，发送设备码等待远程</li>',
+      '      </ul>',
+      '      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">',
+      '        <a href="https://dl.todesk.com/windows/ToDesk_Setup.exe" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">下载 ToDesk（Windows）</a>',
+      '        <a href="https://dl.todesk.com/macos/ToDesk_amd64.dmg" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">下载 ToDesk（Mac）</a>',
+      '      </div>',
+      '      <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:14px;">',
+      '        安装后添加 QQ：<span class="qq-blur">250113397</span>（点击号码显示）',
+      '      </p>',
+      '      <a href="https://mbd.pub/o/bread/YZaTmZtxbQ==" target="_blank" rel="noopener" class="btn btn-primary">购买远程协助 →</a>',
+      '    </div>',
+      '  </div>',
+      '</div>',
+    ].join('');
+    document.body.appendChild(div);
   }
+
+  function openPathOverlay() {
+    var el = document.getElementById('path-overlay');
+    if (el) { el.classList.add('open'); el.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+  }
+  function closePathOverlay() {
+    var el = document.getElementById('path-overlay');
+    if (el) { el.classList.remove('open'); el.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-open-path-overlay]')) openPathOverlay();
+    if (e.target.hasAttribute('data-close-path-overlay') || e.target.closest('[data-close-path-overlay]')) closePathOverlay();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePathOverlay(); });
+
+  injectPathOverlay();
 
   // URL 含 ?verify 时自动弹出验证框（面包多后台可设付款跳转链接为 ?verify=1）
   if (location.search.indexOf('verify') !== -1) {

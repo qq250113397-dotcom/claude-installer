@@ -1698,15 +1698,68 @@ ul, ol { list-style: none; }
   .modal-card { padding: 20px; }
 }
 
-/* 两条路淡入动画 */
-.path-reveal {
+/* 全屏遮罩选择层 */
+#path-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
-.path-reveal.visible {
+#path-overlay.open {
   opacity: 1;
-  transform: translateY(0);
+  pointer-events: auto;
+}
+.path-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+.path-overlay-card {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 40px 36px 36px;
+  max-width: 880px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+#path-overlay.open .path-overlay-card {
+  transform: translateY(0) scale(1);
+}
+.path-overlay-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.path-overlay-close:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+@media (max-width: 640px) {
+  .path-overlay-card { padding: 28px 18px 24px; }
 }
 
 /* QQ 号码点击显示 */
