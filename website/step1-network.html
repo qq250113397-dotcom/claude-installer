@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>步骤一-A：电脑端网络准备 — AI coding 入门导航站</title>
+  <meta name="description" content="电脑端网络准备、订阅导入、系统代理与网络验证。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="logo-icon">✦</div>AI coding 入门导航站</a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="step1.html" class="active">步骤一</a>
+      <a href="step2.html">步骤二</a>
+      <a href="step3.html">步骤三</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero-shell">
+  <div class="container">
+    <h1 class="page-title">电脑端网络准备</h1>
+    <p class="page-subtitle">这一页只放电脑端最关键的内容，适合先把基础网络跑通。教程同时适用于 Claude Code / Codex 的入门路径。</p>
+  </div>
+</div>
+
+<main class="section-sm">
+  <div class="container" style="max-width:860px;">
+    <div class="tip-box tip-blue">
+      <strong>为什么先看这一页？</strong><br>
+      先把网络准备好，后面的账号、工具和更新都会顺很多。这里把内容拆出来，避免和手机视频挤在一起。
+    </div>
+
+    <div class="page-section">
+      <div class="page-section-header">
+        <span class="section-badge required">必做</span>
+        <h2>连通外网（电脑端）</h2>
+        <p>完成以下 4 步，电脑即可访问所有国际站点。</p>
+      </div>
+
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-item-num">1</div>
+          <div class="step-item-body">
+            <h4>下载代理软件</h4>
+            <p>根据你的设备选择对应版本，电脑端先完成下载再继续。</p>
+            <div style="margin-top:16px; border:1px solid #d0e4ff; border-radius:10px; overflow:hidden;">
+              <div style="background:#e8f0fe; padding:8px 14px; font-size:0.85rem; font-weight:700; color:#1a4db5;">💻 电脑端（必须先完成）</div>
+              <div style="padding:14px; display:flex; flex-direction:column; gap:14px;">
+                <div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🪟 Windows</div>
+                  <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener" style="margin-bottom:8px; display:inline-block;">🪟 Windows 64位（推荐）</a>
+                  <div style="font-size:0.82rem; color:var(--text-secondary); background:var(--bg-card); border:1px solid var(--border-light); border-radius:6px; padding:8px 10px; line-height:1.6;">
+                    ✅ 支持 Windows 10 / 11（64位），如果系统较旧可去版本列表里手动选择。
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🍎 macOS</div>
+                  <div style="font-size:0.82rem; color:#7a5000; background:#fff8e6; border:1px solid #ffd770; border-radius:6px; padding:8px 10px; margin-bottom:8px; line-height:1.6;">
+                    不确定芯片？Apple 图标 → 关于本机，看是 M 系列还是 Intel。
+                  </div>
+                  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                    <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">🍎 macOS ARM64</a>
+                    <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-64.dmg" class="btn btn-primary" target="_blank" rel="noopener">🍎 macOS Intel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-item-num">2</div>
+          <div class="step-item-body">
+            <h4>导入订阅链接，连通外网</h4>
+            <p>安装好 v2rayN 后，将下方订阅链接导入即可。</p>
+            <div style="display:flex; align-items:center; gap:8px; margin:14px 0; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+              <code id="sub-url-txt" style="flex:1; font-size:0.82rem; word-break:break-all; color:var(--accent); user-select:all;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</code>
+              <button id="sub-copy-btn" style="flex-shrink:0; padding:6px 14px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); font-size:0.82rem; cursor:pointer; white-space:nowrap;">复制</button>
+            </div>
+            <details class="details-block">
+              <summary><span>🪟 Windows / 🍎 macOS 导入步骤</span><span class="summary-hint">点击展开 ▼</span></summary>
+              <div class="details-body">
+                <ol style="margin:0; padding-left:18px; line-height:2.2; font-size:0.9rem; color:var(--text-secondary);">
+                  <li>打开 v2rayN</li>
+                  <li>订阅分组 → 订阅设置 → 添加</li>
+                  <li>粘贴订阅链接，点确定</li>
+                  <li>更新全部订阅后选择低延迟节点</li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-item-num">3</div>
+          <div class="step-item-body">
+            <h4>开启系统代理 / Tun 模式</h4>
+            <div class="tip-box tip-green" style="margin-bottom:16px;"><strong>首次配置：</strong>打开系统代理和 Tun 模式后再继续。</div>
+            <div style="padding:14px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+              <ol style="margin:0; padding-left:18px; color:var(--text-secondary); line-height:2; font-size:0.92rem;">
+                <li>自动系统代理</li>
+                <li>Tun 模式</li>
+                <li>Core 类型 = sing_box</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-item-num">4</div>
+          <div class="step-item-body">
+            <h4>验证网络连通</h4>
+            <p>在浏览器访问下面两个站点，能打开说明基础网络已就绪。</p>
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin:12px 0;">
+              <a href="https://dash.cloudflare.com/login" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 Cloudflare ↗</a>
+              <a href="https://my.dnshe.com/clientarea.php" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 dnshe ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-actions">
+        <a href="step1.html" class="btn btn-secondary">← 返回步骤一总览</a>
+        <a href="step1-mobile.html" class="btn btn-primary">下一页：手机端配置 →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="step1.html">步骤一</a>
+        <a href="step2.html">步骤二</a>
+        <a href="step3.html">步骤三</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <p class="footer-disclaimer">本站仅提供学习导航、内容整理与使用说明。</p>
+      <p class="footer-copy">© 2026 AI coding 入门导航站</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=20260618b"></script>
+</body>
+</html>

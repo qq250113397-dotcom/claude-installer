@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>步骤一-C：进阶内容 — AI coding 入门导航站</title>
+  <meta name="description" content="住宅 IP、Cloudflare、订阅和后续账号准备的进阶说明。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="logo-icon">✦</div>AI coding 入门导航站</a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="step1.html" class="active">步骤一</a>
+      <a href="step2.html">步骤二</a>
+      <a href="step3.html">步骤三</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <button class="nav-toggle" aria-label="菜单"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero-shell">
+  <div class="container">
+    <h1 class="page-title">进阶内容</h1>
+    <p class="page-subtitle">把需要额外说明的内容单独放一页，适合已经准备继续往下走的人。教程也会兼顾 Claude Code / Codex。</p>
+  </div>
+</div>
+
+<main class="section-sm">
+  <div class="container" style="max-width:900px;">
+    <div class="tip-box tip-yellow">
+      <strong>这页是做什么的？</strong><br>
+      这里放的是进阶说明、资源清单和后续注册的关键步骤。和前两页分开后，阅读会更轻松。
+    </div>
+
+    <div class="page-section">
+      <div class="page-section-header">
+        <span class="section-badge required">进阶</span>
+        <h2>搭建住宅 IP 链式代理</h2>
+        <p>如果你要继续推进后续账号流程，这一页就是重点。</p>
+      </div>
+
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-item-num">1</div>
+          <div class="step-item-body">
+            <h4>用 Gmail 登录 Cloudflare，搭建订阅</h4>
+            <div class="tip-box tip-blue" style="margin-bottom:12px;">
+              <strong>视频涵盖以下操作：</strong>
+              <ul style="margin:8px 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.1;">
+                <li style="margin-left:16px; list-style:disc;">用 Gmail 登录 Cloudflare 和 dnshe</li>
+                <li style="margin-left:16px; list-style:disc;">部署 CF Workers 并绑定自己的域名</li>
+                <li style="margin-left:16px; list-style:disc;">将自己的订阅导入 v2rayN / NekoBox / Shadowrocket</li>
+                <li style="margin-left:16px; list-style:disc;">验证可用后，继续下一步</li>
+              </ul>
+            </div>
+
+            <div class="video-wrap">
+              <video preload="none" controls controlsList="nodownload" style="width:100%; max-height:500px; display:block; border-radius:8px; background:#000;">
+                <source src="https://media.zuibenniuge.cc.cd/Claude压缩版.mp4" type="video/mp4">
+              </video>
+            </div>
+
+            <div class="resource-table" style="margin-top:16px;">
+              <div class="resource-table-head">📎 视频中所需资源一览</div>
+              <table>
+                <tr><td>Cloudflare</td><td><a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">https://dash.cloudflare.com/login</a></td></tr>
+                <tr><td>免费域名</td><td><a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">https://my.dnshe.com/clientarea.php</a></td></tr>
+                <tr><td>住宅 IP</td><td><a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a></td></tr>
+                <tr><td>IP 检测</td><td><a href="https://ping0.cc" target="_blank" rel="noopener">https://ping0.cc</a></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-item-num">2</div>
+          <div class="step-item-body">
+            <h4>住宅 IP 就绪后，注册 Claude 账号</h4>
+            <p>接入住宅 IP 后，浏览器走的是真实线路，后续注册会顺很多。</p>
+            <ol style="margin:12px 0; padding-left:18px; color:var(--text-secondary); font-size:0.92rem; line-height:2;">
+              <li>确认住宅 IP 已连通，访问 ping0.cc</li>
+              <li>打开 claude.ai</li>
+              <li>点击 Continue with Google，选择 Gmail 账号完成注册</li>
+            </ol>
+            <div class="tip-box tip-green">
+              <strong>✓ 完成标志：</strong>能正常访问 claude.ai，账号注册成功，即可进入步骤二安装 Claude Code / Codex 相关工具。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-actions">
+        <a href="step1-mobile.html" class="btn btn-secondary">← 上一页：手机端配置</a>
+        <a href="step2.html" class="btn btn-primary">继续到步骤二 →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="step1.html">步骤一</a>
+        <a href="step2.html">步骤二</a>
+        <a href="step3.html">步骤三</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <p class="footer-disclaimer">本站仅提供学习导航、内容整理与使用说明。</p>
+      <p class="footer-copy">© 2026 AI coding 入门导航站</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js?v=20260618b"></script>
+</body>
+</html>

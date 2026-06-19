@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>步骤一：网络准备 — AI coding 入门导航站</title>
-  <meta name="description" content="配置网络环境，确保可以访问相关服务，这是入门流程的必要前提。">
+  <title>步骤一总览 — AI coding 入门导航站</title>
+  <meta name="description" content="把步骤一拆成更轻的页面，减少拥挤，方便按模块查看。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- Navigation -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -29,558 +28,80 @@
   </div>
 </nav>
 
-<!-- Progress Bar -->
-<div class="progress-bar">
+<div class="page-hero-shell">
   <div class="container">
-    <div class="progress-inner">
-      <div class="prog-step active">
-        <div class="prog-num">1</div>
-        <span>网络准备</span>
-      </div>
-      <div class="prog-line"></div>
-      <div class="prog-step">
-        <div class="prog-num">2</div>
-        <span>下载安装</span>
-      </div>
-      <div class="prog-line"></div>
-      <div class="prog-step">
-        <div class="prog-num">3</div>
-        <span>登录使用</span>
-      </div>
-    </div>
+    <h1 class="page-title">步骤一：先把入门路径拆开</h1>
+    <p class="page-subtitle">原来的内容很多，所以我把它拆成 3 个更清爽的页面，电脑端、手机端、进阶说明各看各的，不会互相挤在一起。</p>
   </div>
 </div>
 
-<!-- Page Header -->
-<div class="page-header">
-  <div class="container">
-    <h1>步骤一：网络准备</h1>
-    <p>先把基础网络准备好，后面的账号、工具和更新会顺很多。</p>
-  </div>
-</div>
-
-<!-- Main Content -->
 <main class="section-sm">
-  <div class="container" style="max-width:800px;">
-
+  <div class="container" style="max-width:1100px;">
     <div class="tip-box tip-blue">
-      <strong>为什么需要这一步？</strong><br>
-      目标是先把外网连通，后续无论是注册账号、安装工具，还是查看更新内容，都需要稳定的网络环境。
-      下载 v2rayN 并导入下方订阅链接，即可一键完成配置。
+      <strong>为什么这样拆？</strong><br>
+      你现在可以按模块看，不需要在一页里反复滚动找视频。教程主体保留，排版会更轻，内容也更好消化。<br>
+      这里的内容同时适用于 <strong>Claude Code / Codex</strong> 的入门路径。
     </div>
 
-    <!-- 手机+电脑配合提示 -->
-    <div style="background:#f0faf0; border:1px solid #a8d8a8; border-radius:10px; padding:14px 16px; font-size:0.88rem; line-height:1.7; color:#2d5a2d; margin-bottom:20px;">
-      <strong style="color:#1a7a1a;">📱💻 手机 + 电脑配合完成教程</strong><br>
-      建议全程<strong>手机和电脑同时准备好</strong>：
-      <ul style="margin:8px 0 0 16px; padding:0; display:flex; flex-direction:column; gap:4px;">
-        <li><strong>手机端</strong>：先用手机连上外网（小火箭或 NekoBox），注册一个<strong>谷歌邮箱（Gmail）</strong></li>
-        <li><strong>电脑端</strong>：用谷歌邮箱登录电脑上的 <strong>Chrome 浏览器</strong>，后续注册 Claude 账号等操作更顺畅</li>
-      </ul>
-      <div style="margin-top:8px; padding:8px 10px; background:#fff3cd; border-radius:6px; color:#7a5000; font-size:0.84rem;">
-        ⚠️ <strong>华为手机用户注意：</strong>新款华为手机没有预装 Google 服务框架，可能无法完成谷歌邮箱注册。建议换一台其他安卓手机（小米、OPPO、vivo 等）来完成这一步。
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-kicker">Module 1</div>
+        <h3>电脑端网络准备</h3>
+        <p>下载代理软件、导入订阅、开启系统代理、验证网络。这个页面会把最基础的桌面端步骤讲清楚。</p>
+        <a href="step1-network.html" class="btn btn-primary">打开页面</a>
       </div>
-    </div>
-
-    <!-- 谷歌浏览器下载提示 -->
-    <div style="background:#fff; border:2px solid #4285f4; border-radius:10px; padding:14px 16px; font-size:0.88rem; line-height:1.7; color:#1a1a1a; margin-bottom:20px;">
-      <strong style="color:#4285f4; font-size:0.92rem;">🌐 教程必须使用谷歌浏览器（Chrome）</strong><br>
-      后续注册 Claude 账号、登录 Cloudflare 等操作均需在 <strong>Chrome 浏览器</strong> 中进行，请提前下载好：
-      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">
-        <a href="https://www.google.cn/chrome/?platform=win" class="btn" target="_blank" rel="noopener"
-           style="background:#4285f4; color:#fff; border:none; padding:8px 16px; border-radius:6px; font-size:0.85rem; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-          🪟 Windows 版 Chrome
-        </a>
-        <a href="https://www.google.cn/chrome/?platform=mac" class="btn" target="_blank" rel="noopener"
-           style="background:#4285f4; color:#fff; border:none; padding:8px 16px; border-radius:6px; font-size:0.85rem; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
-          🍎 macOS 版 Chrome
-        </a>
+      <div class="module-card">
+        <div class="module-kicker">Module 2</div>
+        <h3>手机端配置 &amp; Gmail</h3>
+        <p>安卓、iPhone 和 Gmail 注册视频会单独放在这一页，视频之间不再互相挤压。</p>
+        <a href="step1-mobile.html" class="btn btn-primary">打开页面</a>
       </div>
-      <div style="margin-top:8px; font-size:0.82rem; color:#555;">
-        下载安装后，用你的<strong>谷歌邮箱（Gmail）</strong>登录 Chrome，后续所有操作在同一个浏览器里完成即可。
+      <div class="module-card">
+        <div class="module-kicker">Module 3</div>
+        <h3>进阶：住宅 IP / Claude 账号</h3>
+        <p>如果你想继续走完整流程，这里会放进阶部分和资源清单，也会保留给 Codex 的说明。</p>
+        <a href="step1-advanced.html" class="btn btn-primary">打开页面</a>
       </div>
     </div>
 
-    <!-- ===== SECTION 1: 必做 ===== -->
-    <div class="page-section">
-      <div class="page-section-header">
-        <span class="section-badge required">必做</span>
-        <h2>连通外网（电脑端）</h2>
-        <p>完成以下 4 步，电脑即可访问所有国际站点。</p>
+    <div class="member-grid">
+      <div class="member-card">
+        <h4>现在该怎么走？</h4>
+        <p>先从电脑端网络准备开始。如果你已经有基础网络，可以直接看手机端或进阶页。</p>
       </div>
-
-      <div class="steps-list">
-
-        <!-- Step 1: 下载代理软件 -->
-        <div class="step-item">
-          <div class="step-item-num">1</div>
-          <div class="step-item-body">
-            <h4>下载代理软件</h4>
-            <p>根据你的设备选择对应版本，<strong>电脑和手机都要下载好</strong>，再进行下一步。</p>
-
-            <!-- 💻 电脑端 -->
-            <div style="margin-top:16px; border:1px solid #d0e4ff; border-radius:10px; overflow:hidden;">
-              <div style="background:#e8f0fe; padding:8px 14px; font-size:0.85rem; font-weight:700; color:#1a4db5;">💻 电脑端（必须先完成）</div>
-              <div style="padding:14px; display:flex; flex-direction:column; gap:14px;">
-
-                <!-- Windows -->
-                <div>
-                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🪟 Windows</div>
-                  <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64-desktop.zip" class="btn btn-primary" target="_blank" rel="noopener" style="margin-bottom:8px; display:inline-block;">
-                    🪟 Windows 64位（推荐）
-                  </a>
-                  <div style="font-size:0.82rem; color:var(--text-secondary); background:var(--bg-card); border:1px solid var(--border-light); border-radius:6px; padding:8px 10px; line-height:1.6;">
-                    ✅ 支持 <strong>Windows 10 / 11（64位）</strong><br>
-                    如果你的系统不是 64 位，或版本较旧（Win 7 / Win 8），请前往
-                    <a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener" style="color:var(--primary);">GitHub 版本列表</a>
-                    手动选择适合你的版本下载。
-                  </div>
-                </div>
-
-                <!-- macOS -->
-                <div>
-                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🍎 macOS</div>
-                  <div style="font-size:0.82rem; color:#7a5000; background:#fff8e6; border:1px solid #ffd770; border-radius:6px; padding:8px 10px; margin-bottom:8px; line-height:1.6;">
-                    📌 不确定是 M 系列还是 Intel？点左上角 <strong>苹果图标 → 关于本机</strong>，查看「芯片」或「处理器」一栏：<br>
-                    · 显示 <strong>Apple M1 / M2 / M3 / M4</strong> → 选 ARM64（M 系列）<br>
-                    · 显示 <strong>Intel Core</strong> → 选 Intel（老款）
-                  </div>
-                  <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
-                    <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-arm64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
-                      🍎 macOS ARM64（M 系列）
-                    </a>
-                    <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-64.dmg" class="btn btn-primary" target="_blank" rel="noopener">
-                      🍎 macOS Intel（老款）
-                    </a>
-                  </div>
-                  <div style="font-size:0.82rem; color:var(--text-secondary);">
-                    其他版本：<a href="https://github.com/2dust/v2rayN/releases" target="_blank" rel="noopener" style="color:var(--primary);">GitHub 版本列表</a>
-                  </div>
-                </div>
-
-                <!-- 常见安装问题（电脑） -->
-                <details class="details-block" style="margin-top:2px;">
-                  <summary>
-                    <span>🛠️ 电脑端常见安装问题</span>
-                    <span class="summary-hint">点击展开 ▼</span>
-                  </summary>
-                  <div class="details-body" style="display:flex; flex-direction:column; gap:20px;">
-                    <div>
-                      <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🪟 Windows 常见问题</p>
-                      <div style="display:flex; flex-direction:column; gap:8px;">
-                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                          <strong style="color:var(--text-primary);">1.</strong> 提示"Windows 已保护你的电脑" → 点击 <strong>"更多信息"</strong> → 再点 <strong>"仍要运行"</strong>
-                        </div>
-                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                          <strong style="color:var(--text-primary);">2.</strong> 提示缺少运行库 → 安装 <strong>.NET 6.0 Runtime</strong>：<a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank" rel="noopener">dotnet.microsoft.com/download/dotnet/6.0</a>
-                        </div>
-                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                          <strong style="color:var(--text-primary);">3.</strong> 杀毒软件误报 → 先解压到普通文件夹，再将 v2rayN 加入白名单
-                        </div>
-                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                          <strong style="color:var(--text-primary);">4.</strong> 解压后找不到 exe → 右键 ZIP 选 <strong>"解压到当前文件夹"</strong>，再双击文件夹里的程序
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p style="font-weight:600; font-size:0.92rem; margin-bottom:10px; color:var(--text-primary);">🍎 macOS 常见问题</p>
-                      <div style="display:flex; flex-direction:column; gap:8px;">
-                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                          <strong style="color:var(--text-primary);">1.</strong> 无法打开 → 在 Finder 里<strong>右键 v2rayN.app</strong>，点 <strong>"打开"</strong>；弹窗后再点一次 <strong>"打开"</strong>
-                        </div>
-                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                          <strong style="color:var(--text-primary);">2.</strong> 还是被拦截 → 到 <strong>系统设置 → 隐私与安全性</strong>，找到 <strong>"仍要打开"</strong> 并确认
-                        </div>
-                        <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                          <strong style="color:var(--text-primary);">3.</strong> 以上无效时 → 打开「终端」，复制粘贴这行命令然后按回车：<code>sudo spctl --master-disable</code><br>
-                          <span style="color:var(--text-muted); font-size:0.82rem;">⚠️ 输入命令后会提示输入密码，直接输入你的<strong>电脑登录密码</strong>（输入时屏幕不显示，这是正常的），输完按回车。成功后重新打开 v2rayN.app。</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </details>
-
-              </div>
-            </div>
-
-            <!-- 📱 手机端 -->
-            <div style="margin-top:14px; border:1px solid #d4edda; border-radius:10px; overflow:hidden;">
-              <div style="background:#d4edda; padding:8px 14px; font-size:0.85rem; font-weight:700; color:#155724;">📱 手机端</div>
-              <div style="padding:14px; display:flex; flex-direction:column; gap:14px;">
-
-                <!-- 安卓 -->
-                <div>
-                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🤖 安卓手机（NekoBox）</div>
-                  <a href="https://github.com/MatsuriDayo/NekoBoxForAndroid/releases/latest" class="btn btn-secondary" target="_blank" rel="noopener" style="margin-bottom:8px; display:inline-block;">
-                    📱 安卓（NekoBox）
-                  </a>
-                  <details class="details-block" style="margin-top:2px;">
-                    <summary>
-                      <span>📥 安卓安装小技巧 &amp; 安全拦截解决方案</span>
-                      <span class="summary-hint">点击展开 ▼</span>
-                    </summary>
-                    <div class="details-body" style="display:flex; flex-direction:column; gap:10px;">
-                      <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                        <strong style="color:var(--text-primary);">💡 传输方法：</strong>先用电脑下载 APK 文件，再通过 <strong>QQ 或微信</strong> 发送到手机，在手机上点击文件直接安装。
-                      </div>
-                      <div style="font-size:0.88rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
-                        <strong style="color:var(--text-primary);">🔒 遇到安全拦截怎么办：</strong><br>
-                        · <strong>通用方法：</strong>点「更多详情」或「仍要安装」→ 允许安装即可<br>
-                        · <strong>小米 / Redmi：</strong>弹出「风险应用」→ 点「继续安装」；或到「设置 → 隐私保护 → 特殊权限 → 安装未知应用」开启对应 App 权限<br>
-                        · <strong>华为 / 荣耀：</strong>「设置 → 安全 → 更多安全设置 → 安装未知应用」，找到对应 App 开启权限<br>
-                        · <strong>OPPO / vivo：</strong>「设置 → 其他设置 → 安装未知应用」，允许来源后重新安装
-                      </div>
-                    </div>
-                  </details>
-                </div>
-
-                <!-- iOS 小火箭 -->
-                <div>
-                  <div style="font-size:0.85rem; font-weight:600; color:var(--text-primary); margin-bottom:6px;">🍎 iPhone / iPad（小火箭 Shadowrocket）</div>
-                  <div style="background:#fff8f0; border:1px solid #ffd0a0; border-radius:8px; padding:12px 14px; font-size:0.85rem; line-height:1.7; color:#6b4c1e;">
-                    iOS 推荐使用 <strong>Shadowrocket（小火箭）</strong>，它是搭建链式代理的必要工具，需在美区 App Store 购买（<strong>$2.99 美元</strong>）。步骤如下：
-                    <ol style="margin:8px 0 0 16px; padding:0; display:flex; flex-direction:column; gap:4px;">
-                      <li>注册一个<strong>苹果美区 Apple ID</strong>（国区 ID 搜不到此 App）</li>
-                      <li>用支付宝搜索 <strong>"App Store 礼品卡"</strong>，购买 $5 礼品卡充值到美区 Apple ID</li>
-                      <li>在 iPhone 上打开 <strong>App Store</strong>，点右上角头像 → 滚到底部 <strong>"退出登录"</strong>，再用美区 Apple ID 登录，搜索 <strong>Shadowrocket</strong> 购买下载<br>
-                        <span style="color:#c0392b; font-weight:600;">⚠️ 只在 App Store 里切换，千万不要去「设置」里登录美区 ID，否则会替换你的 iCloud 账号！</span>
-                      </li>
-                      <li>下载完成后打开 App，<strong>导入订阅链接</strong>即可连通外网</li>
-                    </ol>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <p style="margin-top:12px; font-size:0.85rem; color:var(--text-muted);">官方版不含预置节点，下载后参考步骤 2 导入订阅链接即可获得可用节点。</p>
-          </div>
-        </div>
-
-        <!-- Step 2: 导入订阅链接 -->
-        <div class="step-item">
-          <div class="step-item-num">2</div>
-          <div class="step-item-body">
-            <h4>导入订阅链接，连通外网</h4>
-            <p>安装好 v2rayN 后，将下方订阅链接导入，即可获得可用节点：</p>
-
-            <div style="display:flex; align-items:center; gap:8px; margin:14px 0; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-              <code id="sub-url-txt" style="flex:1; font-size:0.82rem; word-break:break-all; color:var(--accent); user-select:all;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</code>
-              <button id="sub-copy-btn" style="flex-shrink:0; padding:6px 14px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); font-size:0.82rem; cursor:pointer; white-space:nowrap;">复制</button>
-            </div>
-
-            <details class="details-block">
-              <summary>
-                <span>🪟 Windows v2rayN — 导入订阅步骤</span>
-                <span class="summary-hint">点击展开 ▼</span>
-              </summary>
-              <div class="details-body">
-                <ol style="margin:0; padding-left:18px; line-height:2.2; font-size:0.9rem; color:var(--text-secondary);">
-                  <li>解压下载的 ZIP，双击文件夹内的 <strong style="color:var(--text-primary);">v2rayN.exe</strong> 启动</li>
-                  <li>点顶部菜单 <strong style="color:var(--text-primary);">「订阅分组」→「订阅设置」</strong></li>
-                  <li>点 <strong style="color:var(--text-primary);">「添加」</strong>，将上方订阅链接粘贴进地址栏，点 <strong style="color:var(--text-primary);">「确定」</strong></li>
-                  <li>回主界面，点 <strong style="color:var(--text-primary);">「订阅分组」→「更新全部订阅」</strong>，等待节点列表刷新</li>
-                  <li>点顶部闪电图标 <strong style="color:var(--text-primary);">⚡（测速）</strong>，等延迟数字出现</li>
-                  <li>双击延迟最低的节点，点工具栏 <strong style="color:var(--text-primary);">「系统代理」→「自动配置系统代理」</strong></li>
-                </ol>
-              </div>
-            </details>
-
-            <details class="details-block">
-              <summary>
-                <span>🍎 macOS v2rayN — 导入订阅步骤</span>
-                <span class="summary-hint">点击展开 ▼</span>
-              </summary>
-              <div class="details-body">
-                <ol style="margin:0; padding-left:18px; line-height:2.2; font-size:0.9rem; color:var(--text-secondary);">
-                  <li>打开 DMG，把 <strong style="color:var(--text-primary);">v2rayN.app</strong> 拖入 <strong style="color:var(--text-primary);">应用程序（Applications）</strong></li>
-                  <li>从应用程序打开 v2rayN（参考上方安装问题跳过 Gatekeeper 拦截）</li>
-                  <li>点菜单栏图标 → <strong style="color:var(--text-primary);">「订阅分组」→「订阅设置」</strong></li>
-                  <li>点 <strong style="color:var(--text-primary);">「添加」</strong>，粘贴上方订阅链接，点 <strong style="color:var(--text-primary);">「确定」</strong></li>
-                  <li><strong style="color:var(--text-primary);">「订阅分组」→「更新全部订阅」</strong>，等节点列表刷新</li>
-                  <li>全部测速后双击延迟低的节点，点 <strong style="color:var(--text-primary);">「系统代理」→「自动配置系统代理」</strong></li>
-                </ol>
-              </div>
-            </details>
-
-            <video preload="none" src="https://media.zuibenniuge.cc.cd/安装v2rayN导入订阅链接.mp4" controls style="width:100%; border-radius:var(--radius); border:1px solid var(--border); display:block; margin-top:16px;"></video>
-          </div>
-        </div>
-
-        <!-- Step 3: 开启系统代理 -->
-        <div class="step-item">
-          <div class="step-item-num">3</div>
-          <div class="step-item-body">
-            <h4>开启系统代理 / Tun 模式</h4>
-            <div class="tip-box tip-green" style="margin-bottom:16px;">
-              <strong>首次配置：</strong>官方版需要手动开启以下三个设置，添加好节点后再点连接。
-            </div>
-            <div style="margin-bottom:16px;">
-              <img src="https://media.zuibenniuge.cc.cd/全局自动配置系统代理.png" style="width:100%; border-radius:8px;" alt="v2rayN 系统代理设置截图">
-            </div>
-            <div style="padding:14px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-              <p style="font-weight:600; color:var(--text-primary); margin-bottom:8px;">请确认这三个开关都已打开：</p>
-              <ol style="margin:0; padding-left:18px; color:var(--text-secondary); line-height:2; font-size:0.92rem;">
-                <li>自动系统代理</li>
-                <li>Tun 模式</li>
-                <li>Core 类型 = <strong style="color:var(--text-primary);">sing_box</strong></li>
-              </ol>
-            </div>
-            <div class="tip-box tip-yellow" style="margin-top:12px;">
-              🍎 <strong>苹果电脑用户注意：</strong>开启 Tun 模式时系统会弹出密码框，输入你的<strong>电脑登录密码</strong>并点「好」，这是正常的系统权限申请，必须授权才能生效。
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 4: 验证网络可用 -->
-        <div class="step-item">
-          <div class="step-item-num">4</div>
-          <div class="step-item-body">
-            <h4>验证网络连通</h4>
-            <p>系统代理开启后，在浏览器访问以下两个站点，能打开说明基础网络已就绪：</p>
-            <div style="display:flex; flex-wrap:wrap; gap:10px; margin:12px 0;">
-              <a href="https://dash.cloudflare.com/login" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 Cloudflare ↗</a>
-              <a href="https://my.dnshe.com/clientarea.php" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 dnshe ↗</a>
-            </div>
-            <div class="tip-box tip-red" style="margin-top:4px;">
-              <strong>⚠️ 注意：CF 免费节点无法直接注册 Claude 账号</strong><br>
-              CF Workers 免费节点的 IP 会被 Claude / Google 识别并拦截，直接注册大概率失败。<br>
-              需要先完成下方<strong>进阶步骤</strong>，接入住宅 IP 后再注册 Claude 账号。
-            </div>
-          </div>
-        </div>
-
+      <div class="member-card">
+        <h4>适合谁？</h4>
+        <p>适合第一次看这种教程、又不想在一页里被大量视频和说明挤住的人。</p>
+      </div>
+      <div class="member-card">
+        <h4>内容会变少吗？</h4>
+        <p>不会，内容还在，只是拆开了。你看起来会更轻松，也更容易按顺序完成。</p>
       </div>
     </div>
 
-    <!-- ===== SECTION 2: 可选 ===== -->
-    <div class="page-section">
-      <div class="page-section-header">
-        <span class="section-badge optional">可选</span>
-        <h2>手机端配置 &amp; Gmail 注册</h2>
-        <p>如果需要在手机上使用代理，或还没有 Gmail 邮箱，完成以下步骤。</p>
-      </div>
-
-      <div class="steps-list">
-
-        <div class="step-item">
-          <div class="step-item-num">1</div>
-          <div class="step-item-body">
-            <h4>在手机上扫码导入订阅</h4>
-            <p>手机端需要先通过 QR 码导入订阅链接，再配置代理软件：</p>
-
-            <div style="margin:16px 0; padding:14px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-              <p style="font-weight:600; color:var(--text-primary); margin-bottom:8px;">🖼️ 先去后台扫订阅</p>
-              <p style="color:var(--text-secondary); font-size:0.9rem; line-height:1.8; margin-bottom:12px;">
-                打开 <a href="https://zuibenniuge.cc.cd/login" target="_blank" rel="noopener">https://zuibenniuge.cc.cd/login</a>，
-                输入 <strong style="color:var(--text-primary);">ADMIN</strong> 进入后台，点「二维码」扫码导入订阅链接。
-              </p>
-              <img src="img/admin-backend-screenshot.svg" alt="后台登录与扫码导入订阅示意截图" style="width:100%; display:block; border-radius:8px; border:1px solid var(--border-light); background:#fff;">
-            </div>
-
-            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">跟随下方视频完成手机端配置：</p>
-            <div class="phone-video-grid">
-              <div class="phone-video-item">
-                <p>📱 安卓手机配置及谷歌邮箱注册</p>
-                <video preload="none" src="https://media.zuibenniuge.cc.cd/安卓手机配置及谷歌邮箱注册.mp4" controls style="max-width:320px; max-height:560px; display:block; margin:0 auto;"></video>
-              </div>
-              <div class="phone-video-item">
-                <p>🍎 苹果注册美区账号教程</p>
-                <video preload="none" src="https://media.zuibenniuge.cc.cd/压缩版美区账号.mp4" controls style="width:100%; max-height:500px; display:block;"></video>
-              </div>
-              <div class="phone-video-item">
-                <p>🚀 小火箭（Shadowrocket）配置教程</p>
-                <video preload="none" src="https://media.zuibenniuge.cc.cd/苹果配置教程.mp4" controls style="max-width:320px; max-height:560px; display:block; margin:0 auto;"></video>
-              </div>
-            </div>
-
-            <div style="margin-top:14px; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); font-size:0.88rem; color:var(--text-secondary);">
-              <strong style="color:var(--text-primary);">🍎 苹果手机用户请注意：</strong><br>
-              Shadowrocket（小火箭）需在 <strong>美区 AppStore</strong> 购买，无法直接提供安装包。<br>
-              注册美区 Apple ID 需在电脑网页端切换至美国节点后完成，具体步骤见上方视频。
-            </div>
-          </div>
-        </div>
-
-        <div class="step-item">
-          <div class="step-item-num">2</div>
-          <div class="step-item-body">
-            <h4>注册谷歌邮箱（Gmail）</h4>
-            <div class="tip-box tip-red" style="margin-bottom:12px;">
-              <strong>⚠️ 请用手机 App 注册，不要用电脑网页：</strong><br>
-              在中国大陆用网页注册 Gmail 会要求短信验证，国内手机号无法通过。<br>
-              需要先在手机上开启代理，再打开 Gmail App，通过 App 完成注册。
-            </div>
-            <p>完成安卓手机配置视频后，在 Gmail App 内完成账号注册。注册好的 Gmail 账号后续用于：</p>
-            <ul style="margin:10px 0; padding-left:18px; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
-              <li>登录 Cloudflare 和 dnshe 搭建自己的订阅</li>
-              <li>注册相关 AI 工具账号</li>
-              <li>购买住宅 IP（OnesProxy）</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ===== SECTION 3: 进阶（注册Claude必须完成） ===== -->
-    <div class="page-section">
-      <div class="page-section-header">
-        <span class="section-badge required">注册Claude必须完成</span>
-        <h2>搭建住宅 IP 链式代理</h2>
-        <p>CF 免费节点无法注册 Claude 账号。完成这一步，接入住宅 IP，才能稳定访问 Claude / GPT 等服务。</p>
-      </div>
-
-      <div class="steps-list">
-
-        <div class="step-item">
-          <div class="step-item-num">1</div>
-          <div class="step-item-body">
-            <h4>用 Gmail 登录 Cloudflare，搭建订阅</h4>
-            <div class="tip-box tip-blue" style="margin-bottom:12px;">
-              <strong>视频涵盖以下操作：</strong>
-              <ul style="margin:8px 0 0; color:var(--text-secondary); font-size:0.92rem; line-height:2.1;">
-                <li style="margin-left:16px; list-style:disc;">用 Gmail 登录 Cloudflare 和 dnshe，申请免费域名</li>
-                <li style="margin-left:16px; list-style:disc;">部署 CF Workers 并绑定自己的域名</li>
-                <li style="margin-left:16px; list-style:disc;">将自己的订阅导入 v2rayN / NekoBox / Shadowrocket</li>
-                <li style="margin-left:16px; list-style:disc;">验证可用后，删除初始节点</li>
-              </ul>
-            </div>
-
-            <div class="video-wrap">
-              <video preload="none" controls controlsList="nodownload" style="width:100%; max-height:500px; display:block; border-radius:8px; background:#000;">
-                <source src="https://media.zuibenniuge.cc.cd/Claude压缩版.mp4" type="video/mp4">
-              </video>
-            </div>
-
-            <div class="resource-table" style="margin-top:16px;">
-              <div class="resource-table-head">📎 视频中所需资源一览</div>
-              <table>
-                <tr>
-                  <td>Cloudflare</td>
-                  <td><a href="https://dash.cloudflare.com/login" target="_blank" rel="noopener">https://dash.cloudflare.com/login</a></td>
-                </tr>
-                <tr>
-                  <td>免费域名</td>
-                  <td><a href="https://my.dnshe.com/clientarea.php" target="_blank" rel="noopener">https://my.dnshe.com/clientarea.php</a></td>
-                </tr>
-                <tr>
-                  <td>Worker 源码</td>
-                  <td><a href="https://github.com/cmliu/edgetunnel/blob/main/_worker.js" target="_blank" rel="noopener">github.com/cmliu/edgetunnel</a></td>
-                </tr>
-                <tr>
-                  <td>住宅 IP</td>
-                  <td><a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" target="_blank" rel="noopener">OnesProxy</a></td>
-                </tr>
-                <tr>
-                  <td>订阅生成器代码</td>
-                  <td style="font-family:monospace; color:var(--text-primary); user-select:all;">Cm.Soso.Edu.Kg</td>
-                </tr>
-                <tr>
-                  <td>ProxyIP 代码</td>
-                  <td style="font-family:monospace; color:var(--text-primary); user-select:all;">ProxyIP.US.CMLiussss.Net</td>
-                </tr>
-                <tr>
-                  <td>IP 检测</td>
-                  <td><a href="https://ping0.cc" target="_blank" rel="noopener">https://ping0.cc</a></td>
-                </tr>
-                <tr>
-                  <td>美区苹果账号注册</td>
-                  <td><a href="https://account.apple.com/" target="_blank" rel="noopener">https://account.apple.com/</a></td>
-                </tr>
-                <tr>
-                  <td>美国免税州地址</td>
-                  <td><a href="https://www.meiguodizhi.com/" target="_blank" rel="noopener">https://www.meiguodizhi.com/</a></td>
-                </tr>
-              </table>
-            </div>
-
-            <div style="margin-top:16px; padding:14px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-              <p style="font-size:0.88rem; font-weight:600; color:var(--text-primary); margin-bottom:10px;">📥 电脑端代理软件下载（视频中使用）：</p>
-              <div style="display:flex; flex-wrap:wrap; gap:10px;">
-                <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-macos-arm64.dmg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-                  🍎 macOS ARM64
-                </a>
-                <a href="https://github.com/2dust/v2rayN/releases/latest/download/v2rayN-windows-64-desktop.zip" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-                  🪟 Windows 64位
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="step-item">
-          <div class="step-item-num">2</div>
-          <div class="step-item-body">
-            <h4>住宅 IP 就绪后，注册 Claude 账号</h4>
-            <p>链式代理接入住宅 IP 后，浏览器走的是真实的美国家庭宽带 IP，注册 Claude 不会被拦截：</p>
-            <ol style="margin:12px 0; padding-left:18px; color:var(--text-secondary); font-size:0.92rem; line-height:2;">
-              <li>确认住宅 IP 已连通，访问 <a href="https://ping0.cc" target="_blank" rel="noopener">ping0.cc</a> 确认 IP 显示为美国</li>
-              <li>在浏览器打开 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></li>
-              <li>点击「Continue with Google」，选择你的 Gmail 账号完成注册</li>
-            </ol>
-            <div class="tip-box tip-green">
-              <strong>✓ 完成标志：</strong>能正常访问 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，账号注册成功，即可进入步骤二安装 Claude Code。
-            </div>
-            <div style="margin-top:14px; padding:14px 18px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
-              <p style="font-size:0.88rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">🖥️ 顺手下载 Claude 桌面版</p>
-              <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;">安装桌面版后遇到问题可以直接截图问 Claude，比网页版更方便。</p>
-              <a href="https://claude.ai/download" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">⬇️ 下载 Claude 桌面版</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Additional tips -->
-    <h2 style="margin-top:48px; margin-bottom:16px; font-size:1.2rem;">🔧 常见连接问题</h2>
-    <div class="info-grid">
-      <div class="info-card">
-        <h4>🐢 连接很慢怎么办？</h4>
-        <ul>
-          <li>在 v2rayN 里全部测速，切换到延迟最低的节点</li>
-          <li>点「订阅分组 → 更新全部订阅」刷新节点列表</li>
-          <li>关闭其他占用网络的程序</li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <h4>❌ 连接超时怎么办？</h4>
-        <ul>
-          <li>检查代理工具是否已启动并连接节点</li>
-          <li>确认系统代理或 Tun 模式已开启</li>
-          <li>重启代理工具后重新导入订阅</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Page Actions -->
     <div class="page-actions">
       <a href="index.html" class="btn btn-secondary">← 返回首页</a>
-      <a href="step2.html" class="btn btn-primary">网络已就绪，继续下一步 →</a>
+      <a href="step1-network.html" class="btn btn-primary">从电脑端开始 →</a>
     </div>
-
   </div>
 </main>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-links">
         <a href="index.html">首页</a>
+        <a href="step1.html">步骤一</a>
         <a href="step2.html">步骤二</a>
         <a href="step3.html">步骤三</a>
         <a href="faq.html">FAQ</a>
       </div>
-      <p class="footer-disclaimer">
-        ⚠️ 免责声明：本站仅提供 Claude Code 软件的安装指引，不提供任何网络代理或加速服务。
-      </p>
-      <p class="footer-copy">© 2026 AI coding 入门导航站 · 仅供学习参考</p>
+      <p class="footer-disclaimer">本站仅提供学习导航、内容整理与使用说明。</p>
+      <p class="footer-copy">© 2026 AI coding 入门导航站</p>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js?v=20260607a"></script>
+<script src="js/main.js?v=20260618b"></script>
 </body>
 </html>
