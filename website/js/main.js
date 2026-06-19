@@ -188,6 +188,32 @@
     });
   })();
 
+  // data-scroll-to-path：平滑滚动到"两条路"并触发淡入
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-scroll-to-path]');
+    if (btn) {
+      var target = document.getElementById('path-select');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(function () { target.classList.add('visible'); }, 200);
+      }
+    }
+  });
+
+  // 滚动进入视口时自动淡入（用户手动滚动也能触发）
+  var pathSection = document.getElementById('path-select');
+  if (pathSection && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    obs.observe(pathSection);
+  }
+
   // URL 含 ?verify 时自动弹出验证框（面包多后台可设付款跳转链接为 ?verify=1）
   if (location.search.indexOf('verify') !== -1) {
     openMbdModal();

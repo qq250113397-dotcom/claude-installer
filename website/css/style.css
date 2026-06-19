@@ -1698,6 +1698,17 @@ ul, ol { list-style: none; }
   .modal-card { padding: 20px; }
 }
 
+/* 两条路淡入动画 */
+.path-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.path-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* QQ 号码点击显示 */
 .qq-blur {
   filter: blur(5px);
