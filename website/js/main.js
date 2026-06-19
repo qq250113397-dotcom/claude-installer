@@ -151,6 +151,21 @@
   injectModal();
   applyContentGates();
   injectNavBtn();
+
+  // data-buy-and-verify：开新窗口去面包多 + 同时弹出验证框，付完款直接粘贴订单号
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-buy-and-verify]');
+    if (btn) {
+      e.preventDefault();
+      window.open(MBD_PRODUCT_URL, '_blank');
+      openMbdModal();
+    }
+  });
+
+  // URL 含 ?verify 时自动弹出验证框（面包多后台可设付款跳转链接为 ?verify=1）
+  if (location.search.indexOf('verify') !== -1) {
+    openMbdModal();
+  }
 })();
 
 // ===== FAQ Accordion =====
