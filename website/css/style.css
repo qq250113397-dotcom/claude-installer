@@ -1762,6 +1762,19 @@ ul, ol { list-style: none; }
   .path-overlay-card { padding: 28px 18px 24px; }
 }
 
+/* 退出登录按钮 */
+.nav-logout-btn {
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  color: rgba(255,255,255,0.5) !important;
+  font-size: 0.78rem !important;
+  padding: 5px 10px !important;
+}
+.nav-logout-btn:hover {
+  border-color: rgba(255,255,255,0.4) !important;
+  color: rgba(255,255,255,0.8) !important;
+}
+
 /* QQ 号码点击显示 */
 .qq-blur {
   filter: blur(5px);

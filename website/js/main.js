@@ -119,22 +119,37 @@
     });
   }
 
-  // 在导航栏注入「开通会员」按钮
+  // 退出登录
+  function logout() {
+    localStorage.removeItem('mbr_expiry');
+    localStorage.removeItem('mbr_order');
+    location.reload();
+  }
+
+  // 在导航栏注入「开通会员」或「退出」按钮
   function injectNavBtn() {
     var navLinks = document.querySelector('.nav-links');
     if (!navLinks || navLinks.querySelector('.nav-mbd-btn')) return;
-    var btn = document.createElement('button');
-    btn.className = 'nav-mbd-btn';
     if (isMember()) {
-      btn.textContent = '会员 ✓ 剩余' + daysLeft() + '天';
-      btn.classList.add('is-member');
-      btn.setAttribute('data-open-mbd-modal', '');
+      var memberBtn = document.createElement('button');
+      memberBtn.className = 'nav-mbd-btn is-member';
+      memberBtn.textContent = '会员 ✓ 剩余' + daysLeft() + '天';
+      memberBtn.addEventListener('click', openMbdModal);
+      navLinks.appendChild(memberBtn);
+
+      var logoutBtn = document.createElement('button');
+      logoutBtn.className = 'nav-mbd-btn nav-logout-btn';
+      logoutBtn.textContent = '退出';
+      logoutBtn.title = '退出后可重新输入订单号登录';
+      logoutBtn.addEventListener('click', logout);
+      navLinks.appendChild(logoutBtn);
     } else {
+      var btn = document.createElement('button');
+      btn.className = 'nav-mbd-btn';
       btn.textContent = '开通会员';
       btn.addEventListener('click', openMbdModal);
+      navLinks.appendChild(btn);
     }
-    btn.addEventListener('click', openMbdModal);
-    navLinks.appendChild(btn);
   }
 
   // 全局 [data-open-mbd-modal] 按钮绑定（包括注入的锁内容里的按钮）
