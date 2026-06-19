@@ -126,25 +126,31 @@
     location.reload();
   }
 
-  // 在导航栏注入「开通会员」或会员状态+退出按钮（用内联样式保证可见）
+  // 在导航栏注入「开通会员」或会员状态+退出按钮
+  // 注意：注入到 .nav-inner（外层容器），而非 .nav-links（移动端 display:none 会把按钮一起隐藏）
   function injectNavBtn() {
-    var navLinks = document.querySelector('.nav-links');
-    if (!navLinks || navLinks.querySelector('.nav-mbd-btn')) return;
+    var navInner = document.querySelector('.nav-inner');
+    if (!navInner || navInner.querySelector('[data-nav-mbd]')) return;
+
+    var wrapper = document.createElement('div');
+    wrapper.setAttribute('data-nav-mbd', '');
+    wrapper.setAttribute('style', 'display:flex;align-items:center;gap:6px;flex-shrink:0;');
+
     if (isMember()) {
       var memberBtn = document.createElement('button');
       memberBtn.textContent = '会员 ✓ 剩余' + daysLeft() + '天';
-      memberBtn.setAttribute('style', 'display:inline-flex;align-items:center;padding:5px 12px;border-radius:6px;background:rgba(52,211,153,0.15);color:#6ee7b7;border:1px solid rgba(52,211,153,0.35);font-size:0.8rem;font-weight:600;cursor:pointer;margin-left:8px;white-space:nowrap;letter-spacing:-0.01em;');
+      memberBtn.setAttribute('style', 'display:inline-flex;align-items:center;padding:5px 12px;border-radius:6px;background:rgba(52,211,153,0.15);color:#6ee7b7;border:1px solid rgba(52,211,153,0.35);font-size:0.8rem;font-weight:600;cursor:pointer;white-space:nowrap;letter-spacing:-0.01em;');
       memberBtn.addEventListener('click', openMbdModal);
-      navLinks.appendChild(memberBtn);
+      wrapper.appendChild(memberBtn);
 
       var logoutBtn = document.createElement('button');
       logoutBtn.textContent = '退出';
       logoutBtn.title = '退出后可重新输入订单号登录';
-      logoutBtn.setAttribute('style', 'display:inline-flex;align-items:center;padding:5px 10px;border-radius:6px;background:transparent;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.3);font-size:0.78rem;cursor:pointer;margin-left:4px;white-space:nowrap;');
+      logoutBtn.setAttribute('style', 'display:inline-flex;align-items:center;padding:5px 10px;border-radius:6px;background:transparent;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.3);font-size:0.78rem;cursor:pointer;white-space:nowrap;');
       logoutBtn.addEventListener('click', logout);
-      navLinks.appendChild(logoutBtn);
+      wrapper.appendChild(logoutBtn);
 
-      // 同时更新首页"当前模式"面板（仅在首页存在该元素）
+      // 同时更新首页"当前模式"面板
       var featureSub = document.querySelector('.hero-feature-sub');
       var featureBtn = document.querySelector('.hero-feature .btn');
       if (featureSub) featureSub.textContent = '已开通会员，剩余 ' + daysLeft() + ' 天。';
@@ -156,9 +162,17 @@
     } else {
       var btn = document.createElement('button');
       btn.textContent = '开通会员';
-      btn.setAttribute('style', 'display:inline-flex;align-items:center;padding:7px 16px;border-radius:6px;background:var(--accent,#CF6B50);color:#fff;border:none;font-size:0.82rem;font-weight:600;cursor:pointer;margin-left:8px;white-space:nowrap;');
+      btn.setAttribute('style', 'display:inline-flex;align-items:center;padding:7px 16px;border-radius:6px;background:#CF6B50;color:#fff;border:none;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;');
       btn.addEventListener('click', openMbdModal);
-      navLinks.appendChild(btn);
+      wrapper.appendChild(btn);
+    }
+
+    // 插在 nav-toggle 之前，保证在 hamburger 左边
+    var navToggle = navInner.querySelector('.nav-toggle');
+    if (navToggle) {
+      navInner.insertBefore(wrapper, navToggle);
+    } else {
+      navInner.appendChild(wrapper);
     }
   }
 
