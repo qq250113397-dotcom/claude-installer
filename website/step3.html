@@ -79,8 +79,6 @@
         <strong>温馨提示：</strong>一天后查看重置次数，如未反馈增加次数请联系站长。
       </div>
 
-      <div class="entry-status" data-codex-email-status style="margin-top:12px;">还没有收到邮箱提交。</div>
-
       <div class="callout-actions" style="margin-top:14px;">
         <a class="btn btn-secondary btn-sm" href="https://chatgpt.com/codex" target="_blank" rel="noopener">打开 Codex 应用</a>
       </div>
@@ -273,6 +271,28 @@
       </div>
     </div>
 
+    <!-- 卡密验证 -->
+    <div style="margin-top:48px;">
+      <h2 style="font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">🔐 已购买代装服务？验证卡密</h2>
+      <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:16px;">
+        购买远程代装服务后，输入收到的卡密完成验证，有效期 7 天。
+      </p>
+      <div class="card-verify-box">
+        <h4>输入卡密</h4>
+        <p>填写购买后收到的卡密，格式如 <code style="font-size:0.82rem;">XXXX-XXXX-XXXX</code>，不区分大小写。</p>
+        <form id="card-verify-form">
+          <div class="card-verify-row">
+            <input id="card-verify-input" type="text" placeholder="例如：TEST-MEMBER-4159" autocomplete="off" spellcheck="false">
+            <button type="submit" class="btn btn-primary" style="flex-shrink:0;">验证</button>
+          </div>
+        </form>
+        <div id="card-verify-status" class="card-verify-status"></div>
+        <div style="margin-top:14px; font-size:0.82rem; color:var(--text-muted);">
+          还没有卡密？<a href="tencent://message/?uin=250113397" style="color:var(--accent); font-weight:600;">联系 QQ 250113397 购买 →</a>
+        </div>
+      </div>
+    </div>
+
     <!-- Page Actions -->
     <div class="page-actions">
       <a href="step2.html" class="btn btn-secondary">← 上一步：下载安装</a>
@@ -290,6 +310,7 @@
         <a href="index.html">首页</a>
         <a href="step1.html">步骤一</a>
         <a href="step2.html">步骤二</a>
+        <a href="step3.html">步骤三</a>
         <a href="faq.html">FAQ</a>
       </div>
       <p class="footer-disclaimer">
@@ -300,6 +321,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20260607a"></script>
+<script src="js/main.js?v=20260619a"></script>
 </body>
 </html>

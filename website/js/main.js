@@ -145,3 +145,60 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// Card verification
+(function () {
+  var form = document.getElementById('card-verify-form');
+  if (!form) return;
+
+  var input = document.getElementById('card-verify-input');
+  var statusEl = document.getElementById('card-verify-status');
+
+  function setStatus(msg, type) {
+    statusEl.textContent = msg;
+    statusEl.className = 'card-verify-status show ' + type;
+  }
+
+  // Auto-fill from localStorage if previously verified
+  var savedCard = localStorage.getItem('cv_card');
+  var savedToken = localStorage.getItem('cv_token');
+  var savedExpiry = Number(localStorage.getItem('cv_expiry') || 0);
+  if (savedCard && savedToken && savedExpiry > Date.now()) {
+    var daysLeft = Math.ceil((savedExpiry - Date.now()) / 86400000);
+    input.value = savedCard;
+    setStatus('已验证 ✓ 卡密有效，剩余 ' + daysLeft + ' 天', 'ok');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var card = input.value.trim().toUpperCase();
+    if (!card) { setStatus('请先输入卡密', 'err'); return; }
+
+    setStatus('验证中...', 'ok');
+
+    fetch('/verify', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        card: card,
+        token: localStorage.getItem('cv_token') || '',
+        mode: 'activate',
+      }),
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.ok) {
+          localStorage.setItem('cv_card', data.card);
+          localStorage.setItem('cv_token', data.token);
+          localStorage.setItem('cv_expiry', String(data.expiry));
+          var daysLeft = Math.ceil((data.expiry - Date.now()) / 86400000);
+          setStatus('验证成功 ✓ 卡密有效，剩余 ' + daysLeft + ' 天。感谢购买！', 'ok');
+        } else {
+          setStatus('验证失败：' + data.error, 'err');
+        }
+      })
+      .catch(function () {
+        setStatus('网络错误，请检查网络后重试', 'err');
+      });
+  });
+})();
