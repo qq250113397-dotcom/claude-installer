@@ -162,6 +162,32 @@
     }
   });
 
+  // data-mbd-gate-href：会员直接跳转，非会员触发购买+验证
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-mbd-gate-href]');
+    if (btn) {
+      e.preventDefault();
+      if (isMember()) {
+        location.href = btn.getAttribute('data-mbd-gate-href');
+      } else {
+        window.open(MBD_PRODUCT_URL, '_blank');
+        openMbdModal();
+      }
+    }
+  });
+
+  // 首页非会员隐藏步骤导航链接
+  (function () {
+    if (isMember()) return;
+    var page = location.pathname.split('/').pop() || 'index.html';
+    if (page !== 'index.html' && page !== '') return;
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      if ((a.getAttribute('href') || '').indexOf('step') === 0) {
+        a.style.display = 'none';
+      }
+    });
+  })();
+
   // URL 含 ?verify 时自动弹出验证框（面包多后台可设付款跳转链接为 ?verify=1）
   if (location.search.indexOf('verify') !== -1) {
     openMbdModal();
