@@ -45,6 +45,103 @@ document.querySelectorAll('[data-copy-target]').forEach(function (btn) {
   });
 });
 
+// Codex email capture / copy helper
+const CODEX_EMAIL_KEY = 'codexInviteEmail';
+
+function normalizeEmail(value) {
+  return String(value || '').trim();
+}
+
+function readSavedCodexEmail() {
+  try {
+    return normalizeEmail(window.localStorage.getItem(CODEX_EMAIL_KEY));
+  } catch (error) {
+    return '';
+  }
+}
+
+function saveCodexEmail(email) {
+  try {
+    window.localStorage.setItem(CODEX_EMAIL_KEY, email);
+  } catch (error) {}
+}
+
+function setCodexEmailDisplays(email) {
+  var text = email || '还没有留下邮箱';
+  document.querySelectorAll('[data-codex-email-display]').forEach(function (node) {
+    node.textContent = text;
+  });
+}
+
+function setCodexStatus(message, success) {
+  document.querySelectorAll('[data-codex-email-status]').forEach(function (node) {
+    node.textContent = message;
+    node.classList.toggle('is-success', !!success);
+    node.classList.toggle('is-muted', !success);
+  });
+}
+
+function copyCodexEmail(email) {
+  if (!email) return Promise.reject(new Error('missing email'));
+  return navigator.clipboard.writeText(email);
+}
+
+var savedCodexEmail = readSavedCodexEmail();
+setCodexEmailDisplays(savedCodexEmail);
+if (savedCodexEmail) {
+  setCodexStatus('已保存：' + savedCodexEmail + '。点击“复制邮箱”即可去官方邀请入口手动填写。', true);
+}
+
+document.querySelectorAll('[data-codex-email-form]').forEach(function (form) {
+  var input = form.querySelector('[data-codex-email-input]');
+  if (input && savedCodexEmail) {
+    input.value = savedCodexEmail;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var email = normalizeEmail(input && input.value);
+    if (!email || !email.includes('@')) {
+      setCodexStatus('请先填写一个有效的邮箱地址。', false);
+      if (input) input.focus();
+      return;
+    }
+
+    saveCodexEmail(email);
+    savedCodexEmail = email;
+    setCodexEmailDisplays(email);
+
+    copyCodexEmail(email).then(function () {
+      setCodexStatus('已保存并复制：' + email + '。你可以直接去官方邀请入口粘贴。', true);
+    }).catch(function () {
+      setCodexStatus('已保存：' + email + '。复制失败时可以手动复制后再去官方邀请入口。', true);
+    });
+  });
+});
+
+document.querySelectorAll('[data-codex-copy-email]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var email = savedCodexEmail || '';
+    if (!email) {
+      var input = document.querySelector('[data-codex-email-input]');
+      email = normalizeEmail(input && input.value);
+    }
+
+    if (!email || !email.includes('@')) {
+      setCodexStatus('还没有可复制的邮箱，先在上方填一个。', false);
+      var focusInput = document.querySelector('[data-codex-email-input]');
+      if (focusInput) focusInput.focus();
+      return;
+    }
+
+    copyCodexEmail(email).then(function () {
+      setCodexStatus('邮箱已复制：' + email + '。', true);
+    }).catch(function () {
+      setCodexStatus('复制失败，你可以手动选中邮箱内容再去官方邀请入口。', false);
+    });
+  });
+});
+
 // Soft modal for quick-start guidance
 function openModal(modalId) {
   const modal = document.getElementById(modalId);

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>步骤三：注册 & 使用 — AI coding 入门导航站</title>
-  <meta name="description" content="注册账号并完成登录与使用，以及查看 Claude Code / Codex 相关订阅说明。">
+  <meta name="description" content="完成 Claude Code / Codex 登录、邀请说明与后续使用提示。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -55,13 +55,43 @@
 <div class="page-header">
   <div class="container">
     <h1>步骤三：登录 &amp; 开始使用</h1>
-    <p>在终端启动 Claude Code / Codex，按提示完成浏览器授权，即可开始使用。</p>
+    <p>在终端启动 Claude Code / Codex，按提示完成浏览器授权，即可开始使用。Codex 的邀请规则和官方快速开始也放在这一步一起看。</p>
   </div>
 </div>
 
 <!-- Main Content -->
 <main class="section-sm">
   <div class="container" style="max-width:800px;">
+
+    <div class="member-card codex-invite-card" style="margin-bottom:28px;">
+      <div class="eyebrow">Codex · 邀请与速率重置</div>
+      <h4>如果你要用 Codex，这里先看官方邀请规则</h4>
+      <p>
+        在官方 Codex 页面里，可以从左下角个人菜单进入邀请入口并填写邮箱。
+        按官方规则，受邀者完成首次使用后，双方会获得一次 banked rate-limit reset，通常可在 30 天内使用。
+      </p>
+
+      <div class="callout-actions">
+        <a class="btn btn-primary btn-sm" href="https://developers.openai.com/codex/pricing" target="_blank" rel="noopener">查看官方邀请规则</a>
+        <a class="btn btn-secondary btn-sm" href="https://developers.openai.com/codex/quickstart" target="_blank" rel="noopener">打开 Codex Quickstart</a>
+      </div>
+
+      <div class="inline-callout" style="margin-top:14px;">
+        <strong>已保存邮箱：</strong><span data-codex-email-display>还没有留下邮箱</span>
+      </div>
+
+      <div class="entry-status" data-codex-email-status style="margin-top:12px;">还没有留下邮箱。</div>
+
+      <div class="callout-actions" style="margin-top:14px;">
+        <button type="button" class="btn btn-secondary btn-sm" data-codex-copy-email>复制邮箱</button>
+        <a class="btn btn-secondary btn-sm" href="https://chatgpt.com/codex" target="_blank" rel="noopener">打开 Codex 应用</a>
+      </div>
+
+      <p style="margin-top:12px; color:var(--text-secondary); font-size:0.85rem; line-height:1.8;">
+        这里的“速率重置”可以理解为：按照官方当前规则，重新拿到一次使用限制恢复机会，让可用额度重新开始计算。
+        如果你之前在步骤一留下过邮箱，这里会自动显示，方便你复制后去官方邀请入口手动填写。
+      </p>
+    </div>
 
     <!-- Login Section -->
     <h2 style="font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">🔑 在终端中登录</h2>
@@ -79,10 +109,10 @@
       <div class="step-item">
         <div class="step-item-num">2</div>
         <div class="step-item-body">
-          <h4>运行 Claude Code</h4>
+          <h4>运行 Claude Code / Codex</h4>
           <p>输入以下命令启动：</p>
           <div class="code-block" style="margin-top:8px; font-family:'Cascadia Code',Consolas,monospace;">claude</div>
-          <p style="margin-top:8px; color:var(--text-muted); font-size:0.82rem;">首次运行会弹出登录提示。</p>
+          <p style="margin-top:8px; color:var(--text-muted); font-size:0.82rem;">首次运行会弹出登录提示；如果你先走 Codex 官方 Quickstart，也可以按官方页面的安装方式继续。</p>
         </div>
       </div>
       <div class="step-item">
