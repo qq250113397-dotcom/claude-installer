@@ -1704,10 +1704,9 @@ ul, ol { list-style: none; }
   position: fixed;
   inset: 0;
   z-index: 1100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 24px 16px 40px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -1717,12 +1716,13 @@ ul, ol { list-style: none; }
   pointer-events: auto;
 }
 .path-overlay-backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.78);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
+  z-index: 0;
 }
 .path-overlay-card {
   position: relative;
@@ -1733,8 +1733,7 @@ ul, ol { list-style: none; }
   padding: 40px 36px 36px;
   max-width: 880px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+  margin: 0 auto;
   transform: translateY(24px) scale(0.97);
   transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
 }
@@ -1760,16 +1759,8 @@ ul, ol { list-style: none; }
   color: var(--text-primary);
 }
 @media (max-width: 640px) {
-  #path-overlay {
-    align-items: flex-start;
-    padding: 12px;
-    overflow-y: auto;
-  }
-  .path-overlay-card {
-    padding: 28px 18px 24px;
-    max-height: none;
-    margin: auto 0;
-  }
+  #path-overlay { padding: 12px 12px 40px; }
+  .path-overlay-card { padding: 28px 18px 24px; }
 }
 
 /* 退出登录按钮 */

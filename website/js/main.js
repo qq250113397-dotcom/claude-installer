@@ -53,11 +53,11 @@
 
   function openPathOverlay() {
     var el = document.getElementById('path-overlay');
-    if (el) { el.classList.add('open'); el.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+    if (el) { el.classList.add('open'); el.setAttribute('aria-hidden', 'false'); el.scrollTop = 0; }
   }
   function closePathOverlay() {
     var el = document.getElementById('path-overlay');
-    if (el) { el.classList.remove('open'); el.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+    if (el) { el.classList.remove('open'); el.setAttribute('aria-hidden', 'true'); }
   }
 
   document.addEventListener('click', function (e) {
