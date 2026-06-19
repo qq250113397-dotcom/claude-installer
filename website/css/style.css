@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap');
+/* 已移除 Google Fonts @import，避免国内访问被 fonts.googleapis.com 阻塞 */
+/* 字体回退到 body 里已有的系统字体栈（-apple-system / PingFang SC / Microsoft YaHei 等） */
 
 /* ===== Claude Design Tokens ===== */
 :root {
