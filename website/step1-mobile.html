@@ -101,20 +101,14 @@
           <div class="entry-field">
             <label for="codex-email">常用邮箱地址</label>
             <input id="codex-email" class="entry-input" type="email" placeholder="例如：name@gmail.com" autocomplete="email" data-codex-email-input>
-            <div class="entry-help">填写后仅会保存在本机浏览器，并可导出为 CSV 表格，方便你自己整理后再去 Codex 邀请入口使用。</div>
+            <div class="entry-help">填写后不会在页面上显示，也不会生成可导出的名单；后台只做每日汇总并发到站长 Gmail。</div>
           </div>
-          <button type="submit" class="btn btn-primary">保存并加入表格</button>
+          <button type="submit" class="btn btn-primary">提交邮箱</button>
         </form>
 
-        <div class="entry-status" data-codex-email-status>还没有留下邮箱。</div>
-
-        <div class="inline-callout" style="margin-top:12px;">
-          <strong>当前收集数量：</strong><span data-codex-email-count>0</span> 个邮箱
-        </div>
+        <div class="entry-status" data-codex-email-status>还没有提交邮箱。</div>
 
         <div class="callout-actions">
-          <button type="button" class="btn btn-secondary btn-sm" data-codex-copy-table>复制表格</button>
-          <button type="button" class="btn btn-secondary btn-sm" data-codex-export-csv>导出 CSV</button>
           <a class="btn btn-secondary btn-sm" href="https://chatgpt.com/codex" target="_blank" rel="noopener">打开 Codex 应用</a>
         </div>
       </div>

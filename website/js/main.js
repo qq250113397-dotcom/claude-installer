@@ -45,28 +45,11 @@ document.querySelectorAll('[data-copy-target]').forEach(function (btn) {
   });
 });
 
-// Codex email capture / export helper
-const CODEX_EMAILS_KEY = 'codexInviteEmails';
+// Codex email capture helper
+const CODEX_EMAIL_ENDPOINT = 'https://codex-email-leads.qq250113397.workers.dev/';
 
 function normalizeEmail(value) {
   return String(value || '').trim();
-}
-
-function readSavedCodexEmails() {
-  try {
-    var raw = window.localStorage.getItem(CODEX_EMAILS_KEY);
-    if (!raw) return [];
-    var parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed.filter(Boolean) : [];
-  } catch (error) {
-    return [];
-  }
-}
-
-function saveCodexEmails(entries) {
-  try {
-    window.localStorage.setItem(CODEX_EMAILS_KEY, JSON.stringify(entries));
-  } catch (error) {}
 }
 
 function setCodexStatus(message, success) {
@@ -77,68 +60,8 @@ function setCodexStatus(message, success) {
   });
 }
 
-function getCodexEmailRows() {
-  return readSavedCodexEmails();
-}
-
-function buildCodexCsv(rows) {
-  var lines = ['email,created_at,source_page'];
-  rows.forEach(function (row) {
-    lines.push([
-      csvEscape(row.email),
-      csvEscape(row.createdAt || ''),
-      csvEscape(row.source || ''),
-    ].join(','));
-  });
-  return lines.join('\n');
-}
-
-function csvEscape(value) {
-  var text = String(value || '');
-  if (/[",\n\r]/.test(text)) {
-    return '"' + text.replace(/"/g, '""') + '"';
-  }
-  return text;
-}
-
-function downloadTextFile(filename, text, mimeType) {
-  var blob = new Blob([text], { type: mimeType || 'text/plain;charset=utf-8' });
-  var url = URL.createObjectURL(blob);
-  var link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(function () {
-    URL.revokeObjectURL(url);
-  }, 1000);
-}
-
-function syncCodexSummary() {
-  var rows = getCodexEmailRows();
-  var count = rows.length;
-  document.querySelectorAll('[data-codex-email-count]').forEach(function (node) {
-    node.textContent = String(count);
-  });
-  if (count === 0) {
-    setCodexStatus('还没有收集到邮箱。', false);
-  } else {
-    setCodexStatus('已收集 ' + count + ' 个邮箱。你可以导出 CSV 后自己整理。', true);
-  }
-}
-
-var savedCodexRows = readSavedCodexEmails();
-if (savedCodexRows.length) {
-  syncCodexSummary();
-}
-
 document.querySelectorAll('[data-codex-email-form]').forEach(function (form) {
   var input = form.querySelector('[data-codex-email-input]');
-  if (input && savedCodexRows.length) {
-    input.placeholder = '已收集 ' + savedCodexRows.length + ' 个邮箱，可继续新增';
-  }
-
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     var email = normalizeEmail(input && input.value);
@@ -148,54 +71,28 @@ document.querySelectorAll('[data-codex-email-form]').forEach(function (form) {
       return;
     }
 
-    var rows = getCodexEmailRows();
-    var exists = rows.some(function (row) { return row.email === email; });
-    if (!exists) {
-      rows.push({
+    setCodexStatus('正在提交到后台汇总...', true);
+
+    fetch(CODEX_EMAIL_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
         email: email,
-        createdAt: new Date().toISOString(),
-        source: window.location.pathname.split('/').pop() || 'step1-mobile.html',
-      });
-      saveCodexEmails(rows);
-    }
-
-    if (input) input.value = '';
-    syncCodexSummary();
-  });
-});
-
-document.querySelectorAll('[data-codex-copy-table]').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var rows = getCodexEmailRows();
-    if (!rows.length) {
-      setCodexStatus('还没有可复制的表格，先收集一个邮箱。', false);
-      return;
-    }
-
-    var csv = buildCodexCsv(rows);
-    navigator.clipboard.writeText(csv).then(function () {
-      setCodexStatus('表格已复制为 CSV，可直接粘贴到表格工具。', true);
+        sourcePage: window.location.pathname.split('/').pop() || 'unknown',
+      }),
+    }).then(function (response) {
+      if (!response.ok) {
+        throw new Error('request_failed');
+      }
+      if (input) input.value = '';
+      setCodexStatus('提交成功，邮箱会在每日汇总中发到站长 Gmail。', true);
     }).catch(function () {
-      setCodexStatus('复制失败，你可以改用“导出 CSV”按钮下载文件。', false);
+      setCodexStatus('提交失败，请检查网络后重试。', false);
     });
   });
 });
-
-document.querySelectorAll('[data-codex-export-csv]').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var rows = getCodexEmailRows();
-    if (!rows.length) {
-      setCodexStatus('还没有可导出的邮箱表格。', false);
-      return;
-    }
-
-    var timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    downloadTextFile('codex-emails-' + timestamp + '.csv', buildCodexCsv(rows), 'text/csv;charset=utf-8');
-    setCodexStatus('CSV 已导出。你可以用 Excel / Numbers / Google Sheets 打开。', true);
-  });
-});
-
-syncCodexSummary();
 
 // Soft modal for quick-start guidance
 function openModal(modalId) {

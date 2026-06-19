@@ -1,0 +1,29 @@
+name = "codex-email-leads"
+main = "codex-email-leads.js"
+compatibility_date = "2026-06-18"
+compatibility_flags = [ "nodejs_compat" ]
+
+[vars]
+DOMAIN = "lbenben.cc.cd"
+ALERT_TO_EMAIL = "qq250113397@gmail.com"
+
+[[send_email]]
+name = "EMAIL"
+remote = true
+
+[[kv_namespaces]]
+binding = "CODEX_EMAIL_LEADS"
+id = "47767f029d5442038c40573debffb659"
+
+[triggers]
+crons = [ "0 2 * * *" ]
+
+[observability]
+enabled = true
+
+  [observability.logs]
+  head_sampling_rate = 1
+
+  [observability.traces]
+  enabled = true
+  head_sampling_rate = 0.01
