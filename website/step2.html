@@ -97,18 +97,12 @@
     </div>
 
     <div class="member-card codex-install-card" style="margin-top:18px;">
-      <div class="eyebrow">Codex · 官方安装入口</div>
-      <h4>如果你想优先用 Codex，可以先走官方 Quickstart</h4>
-      <p>
-        Codex 的安装、登录和命令行入口，官方已经整理在 Quickstart 里。
-        适合想同时保留 <strong>Claude Code / Codex</strong> 两条路线的人，先看官方说明再决定用哪个入口。
-      </p>
+      <div class="eyebrow">想用 Codex？</div>
+      <h4>走官方 Quickstart 即可</h4>
+      <p>Codex 的安装和登录官方已整理在 Quickstart 里，按页面走完即可。</p>
       <div class="callout-actions">
         <a class="btn btn-primary btn-sm" href="https://developers.openai.com/codex/quickstart" target="_blank" rel="noopener">打开官方入口</a>
-        <a class="btn btn-secondary btn-sm" href="https://developers.openai.com/codex/pricing" target="_blank" rel="noopener">查看邀请与额度说明</a>
-      </div>
-      <div class="inline-callout" style="margin-top:14px;">
-        <strong>小提醒：</strong>本页保留 Claude Code 的基础安装命令；如果你想直接走 Codex，优先从官方 Quickstart 开始看。
+        <a class="btn btn-secondary btn-sm" href="https://developers.openai.com/codex/pricing" target="_blank" rel="noopener">邀请与额度说明</a>
       </div>
     </div>
 
@@ -160,7 +154,7 @@
       <strong>提示：</strong> Node.js 安装完成后，打开新的终端窗口再运行 npm 命令，确保环境变量已刷新。
     </div>
 
-    <!-- Windows common issues -->
+    <!-- Windows 常见问题 -->
     <details class="details-block" style="margin-top:4px;">
       <summary>
         <span>🪟 Windows 常见安装问题</span>
@@ -191,6 +185,57 @@
         <div>
           <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题三：安装完后 claude 命令找不到</p>
           <p style="font-size:0.855rem; color:var(--text-secondary);">完全关闭当前终端窗口，重新打开一个新的 PowerShell / cmd，再输入 <code style="font-family:monospace;">claude</code> 即可。若还是找不到，重启电脑后再试。</p>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- macOS 常见问题 -->
+    <details class="details-block" style="margin-top:4px;">
+      <summary>
+        <span>🍎 macOS 常见安装问题</span>
+        <span class="summary-hint">点击展开 ▼</span>
+      </summary>
+      <div class="details-body" style="display:flex; flex-direction:column; gap:16px;">
+
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题一：npm 报权限错误（EACCES / permission denied）</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary); margin-bottom:10px;">
+            macOS 默认全局安装需要管理员权限。在命令前加 <code style="font-family:monospace;">sudo</code> 即可，输入电脑密码后按回车（密码不会显示出来，是正常的）：
+          </p>
+          <div class="code-block">sudo npm install -g @anthropic-ai/claude-code</div>
+        </div>
+
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题二：npm 报网络错误 / 下载超时</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary); margin-bottom:10px;">
+            macOS 上 npm 也不会自动读系统代理。常见代理软件默认 HTTP 端口：<br>
+            • <strong style="color:var(--text-primary);">v2rayN（Mac 版）：10809</strong>　• <strong style="color:var(--text-primary);">ClashX / Surge / Stash：7890</strong>
+          </p>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">在终端依次运行（端口换成你自己的）：</p>
+          <div class="code-block">npm config set proxy http://127.0.0.1:7890</div>
+          <div class="code-block">npm config set https-proxy http://127.0.0.1:7890</div>
+          <div class="code-block">sudo npm install -g @anthropic-ai/claude-code</div>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:8px;">安装完成后恢复：<code style="font-family:monospace;">npm config delete proxy</code> 和 <code style="font-family:monospace;">npm config delete https-proxy</code></p>
+        </div>
+
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题三：安装完后 claude: command not found</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary); margin-bottom:8px;">
+            先关掉当前终端，重新打开一个再试。还是不行的话，把对应路径加到 PATH：
+          </p>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Apple Silicon（M1/M2/M3/M4）芯片：</p>
+          <div class="code-block">echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc &amp;&amp; source ~/.zshrc</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin:8px 0 6px;">Intel 芯片：</p>
+          <div class="code-block">echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc &amp;&amp; source ~/.zshrc</div>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:8px;">不确定芯片？点左上角 Apple 图标 → 关于本机查看。</p>
+        </div>
+
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题四：双击 .pkg 装不上，提示「无法打开」</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary);">
+            系统偏好设置 → 隐私与安全性 → 滚到底部，看到「已阻止 Node.js」点「仍要打开」即可。
+          </p>
         </div>
 
       </div>
