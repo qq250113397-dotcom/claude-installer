@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>会员内容 — AI coding 入门导航站</title>
-  <meta name="description" content="查看会员内容、持续更新视频和精选资源说明。">
+  <title>步骤二：下载 & 安装 — AI coding 入门导航站</title>
+  <meta name="description" content="下载 Node.js 官方安装包，执行一行 npm 命令完成工具安装，支持 Windows 和 macOS。">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- Navigation -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -17,9 +18,9 @@
     </a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="step1.html">邮箱准备</a>
-      <a href="step2.html" class="active">会员内容</a>
-      <a href="step3.html">快速开通</a>
+      <a href="step1.html">步骤一</a>
+      <a href="step2.html" class="active">步骤二</a>
+      <a href="step3.html">步骤三</a>
       <a href="faq.html">FAQ</a>
     </div>
     <button class="nav-toggle" aria-label="菜单">
@@ -28,100 +29,255 @@
   </div>
 </nav>
 
-<div class="page-hero-shell">
+<!-- Progress Bar -->
+<div class="progress-bar">
   <div class="container">
-    <h1 class="page-title">步骤二：会员内容</h1>
-    <p class="page-subtitle">这里放的是持续更新的内容说明、视频整理和适合新手的学习路径。</p>
+    <div class="progress-inner">
+      <div class="prog-step done">
+        <div class="prog-num">✓</div>
+        <span>网络准备</span>
+      </div>
+      <div class="prog-line done"></div>
+      <div class="prog-step active">
+        <div class="prog-num">2</div>
+        <span>下载安装</span>
+      </div>
+      <div class="prog-line"></div>
+      <div class="prog-step">
+        <div class="prog-num">3</div>
+        <span>登录使用</span>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <h1>步骤二：下载 &amp; 安装</h1>
+    <p>前往 Node.js 官网下载并安装，随后通过一行 npm 命令完成 Claude Code 安装。</p>
+  </div>
+</div>
+
+<!-- Main Content -->
 <main class="section-sm">
-  <div class="container" style="max-width:860px;">
-    <div class="soft-banner">
-      <span class="mini-pill">会员专区</span>
-      <span>适合想系统了解、又不想到处找资料的用户。</span>
-    </div>
+  <div class="container" style="max-width:800px;">
 
-    <div class="member-grid">
-      <div class="member-card">
-        <h4>持续更新的视频</h4>
-        <ul>
-          <li>新手入门演示</li>
-          <li>常见问题讲解</li>
-          <li>每周内容补充</li>
-        </ul>
-      </div>
-      <div class="member-card">
-        <h4>精选资源整理</h4>
-        <ul>
-          <li>工具推荐</li>
-          <li>使用说明</li>
-          <li>适合新手的简化路径</li>
-        </ul>
-      </div>
-      <div class="member-card">
-        <h4>学习支持</h4>
-        <ul>
-          <li>入门顺序建议</li>
-          <li>容易卡住的地方提醒</li>
-          <li>常见问题快速查看</li>
-        </ul>
-      </div>
-    </div>
+    <!-- Download Cards -->
+    <div style="display:flex; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;">
 
-    <div class="tip-box tip-green">
-      <strong>适合什么人？</strong><br>
-      如果你是第一次接触这类内容，或者不想自己拼凑资料，这一页更适合你。
-    </div>
-
-    <div class="page-section">
-      <div class="page-section-header">
-        <span class="section-badge optional">内容示例</span>
-        <h2>你能在会员里看到什么</h2>
-        <p>以下是比较常见的内容类型，后续会持续补充。</p>
-      </div>
-      <div class="feature-grid-alt">
-        <div class="feature-card alt">
-          <div class="eyebrow">A</div>
-          <h4>基础视频</h4>
-          <p>把第一步拆成更容易看的短视频和步骤说明。</p>
-        </div>
-        <div class="feature-card alt">
-          <div class="eyebrow">B</div>
-          <h4>进阶说明</h4>
-          <p>适合已经开始上手、想少走弯路的用户。</p>
-        </div>
-        <div class="feature-card alt">
-          <div class="eyebrow">C</div>
-          <h4>更新通知</h4>
-          <p>新内容上线后，会员会优先收到提醒。</p>
+      <div class="download-card" style="flex:1; border:none; border-radius:0; margin:0;">
+        <div class="file-icon">🖥️</div>
+        <h3>Node.js for Windows</h3>
+        <p>下载 LTS 版本，双击 .msi 安装包按向导完成安装，全程点「Next」即可</p>
+        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary" target="_blank" rel="noopener">
+          ⬇️ 前往 Node.js 官网下载
+        </a>
+        <div class="download-meta">
+          <span>🪟 Windows 10/11</span>
+          <span>✅ 官方来源</span>
+          <span>选 LTS 版本</span>
         </div>
       </div>
+
+      <div class="download-card" style="flex:1; border:none; border-radius:0; margin:0; border-left:1px solid var(--border);">
+        <div class="file-icon">🍎</div>
+        <h3>Node.js for macOS</h3>
+        <p>下载 LTS 版本的 .pkg 安装包，双击安装即可，ARM64 和 Intel 均支持</p>
+        <a href="https://nodejs.org/zh-cn/download" class="btn btn-primary" target="_blank" rel="noopener">
+          ⬇️ 前往 Node.js 官网下载
+        </a>
+        <div class="download-meta">
+          <span>🍎 Apple Silicon / Intel</span>
+          <span>✅ 官方来源</span>
+          <span>选 LTS 版本</span>
+        </div>
+      </div>
+
     </div>
 
+    <!-- npm install command -->
+    <div style="margin-top:20px; padding:18px 20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
+      <p style="font-weight:600; font-size:0.875rem; color:var(--text-primary); margin-bottom:10px;">📦 安装 Node.js 后，打开终端执行以下命令安装 Claude Code：</p>
+      <div class="code-block">npm install -g @anthropic-ai/claude-code</div>
+      <p style="margin-top:8px; font-size:0.8rem; color:var(--text-muted);">Windows 请用 <strong style="color:var(--text-secondary);">命令提示符（cmd）</strong> 或 <strong style="color:var(--text-secondary);">PowerShell</strong>；macOS 请用<strong style="color:var(--text-secondary);">终端（Terminal）</strong>。</p>
+    </div>
+
+    <details class="details-block">
+      <summary>
+        <span>❓ 不知道怎么打开终端？点这里</span>
+        <span class="summary-hint">点击展开 ▼</span>
+      </summary>
+      <div class="details-body" style="display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; color:var(--text-primary); margin-bottom:8px;">🪟 Windows — 打开命令提示符 / PowerShell</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="font-size:0.855rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+              <strong style="color:var(--text-primary);">方法一（推荐）：</strong>按键盘 <code>Win + R</code>，在弹出框里输入 <code>cmd</code>，按回车
+            </div>
+            <div style="font-size:0.855rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+              <strong style="color:var(--text-primary);">方法二：</strong>点击开始菜单，搜索「PowerShell」，点击打开
+            </div>
+            <div style="font-size:0.855rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+              <strong style="color:var(--text-primary);">方法三：</strong>在文件夹空白处按住 <code>Shift</code> + 右键，选「在此处打开 PowerShell 窗口」
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; color:var(--text-primary); margin-bottom:8px;">🍎 macOS — 打开终端（Terminal）</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="font-size:0.855rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+              <strong style="color:var(--text-primary);">方法一（推荐）：</strong>按 <code>⌘ Command + 空格</code> 打开 Spotlight，输入「终端」或「Terminal」，按回车
+            </div>
+            <div style="font-size:0.855rem; color:var(--text-secondary); padding:8px 12px; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm);">
+              <strong style="color:var(--text-primary);">方法二：</strong>打开「访达（Finder）」→「应用程序」→「实用工具」→「终端」
+            </div>
+          </div>
+        </div>
+        <div class="tip-box tip-green" style="margin:0;">
+          <strong>打开后：</strong>看到黑色或白色窗口并有光标闪烁，就说明终端已就绪。把上方命令复制粘贴进去，按回车即可。
+        </div>
+      </div>
+    </details>
+
+    <div class="tip-box">
+      <strong>提示：</strong> Node.js 安装完成后，打开新的终端窗口再运行 npm 命令，确保环境变量已刷新。
+    </div>
+
+    <!-- Windows common issues -->
+    <details class="details-block" style="margin-top:4px;">
+      <summary>
+        <span>🪟 Windows 常见安装问题</span>
+        <span class="summary-hint">点击展开 ▼</span>
+      </summary>
+      <div class="details-body" style="display:flex; flex-direction:column; gap:16px;">
+
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题一：npm 报网络错误 / 下载超时</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary); margin-bottom:10px;">
+            v2rayN 开启后 npm 仍可能无法联网，因为 npm 不自动读取系统代理。<br>
+            v2rayN 默认 HTTP 代理端口是 <strong style="color:var(--text-primary);">10809</strong>（可在 v2rayN → 参数设置 → Core 设置里确认）。
+          </p>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">在 PowerShell / cmd 中依次运行：</p>
+          <div class="code-block">npm config set proxy http://127.0.0.1:10809</div>
+          <div class="code-block">npm config set https-proxy http://127.0.0.1:10809</div>
+          <div class="code-block">npm install -g @anthropic-ai/claude-code</div>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:8px;">安装完成后如需恢复：<code style="font-family:monospace;">npm config delete proxy</code> 和 <code style="font-family:monospace;">npm config delete https-proxy</code></p>
+        </div>
+
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题二：PowerShell 提示"无法运行脚本"</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary); margin-bottom:8px;">Windows 默认禁止运行外部脚本，需要先放开执行策略：</p>
+          <div class="code-block">Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</div>
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:6px;">输入后选 Y 确认，再重新运行 npm 安装命令。</p>
+        </div>
+
+        <div>
+          <p style="font-weight:600; font-size:0.875rem; margin-bottom:8px; color:var(--text-primary);">❌ 问题三：安装完后 claude 命令找不到</p>
+          <p style="font-size:0.855rem; color:var(--text-secondary);">完全关闭当前终端窗口，重新打开一个新的 PowerShell / cmd，再输入 <code style="font-family:monospace;">claude</code> 即可。若还是找不到，重启电脑后再试。</p>
+        </div>
+
+      </div>
+    </details>
+
+    <!-- Installation Steps -->
+    <h2 style="margin-top:48px; margin-bottom:4px; font-size:1.1rem; font-weight:700; letter-spacing:-0.01em;">📦 安装步骤</h2>
+    <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:4px;">按以下流程完成安装：</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-item-num">1</div>
+        <div class="step-item-body">
+          <h4>下载并安装 Node.js LTS</h4>
+          <p>点击上方「前往 Node.js 官网下载」，选择 <strong>LTS（长期支持）</strong> 版本下载。Windows 双击 .msi，macOS 双击 .pkg，按向导一路 Next / 继续 即可。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">2</div>
+        <div class="step-item-body">
+          <h4>打开终端 / 命令提示符</h4>
+          <p>Windows：按 <code>Win + R</code>，输入 <code>cmd</code> 回车；或搜索「PowerShell」打开。<br>
+          macOS：按 <code>⌘ + 空格</code> 搜索「终端」打开。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">3</div>
+        <div class="step-item-body">
+          <h4>运行安装命令</h4>
+          <p>在终端中粘贴以下命令并回车，等待安装完成：</p>
+          <div class="code-block" style="margin-top:8px;">npm install -g @anthropic-ai/claude-code</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">4</div>
+        <div class="step-item-body">
+          <h4>验证安装成功</h4>
+          <p>安装完成后，打开新的终端窗口，输入 <code>claude --version</code>，能看到版本号说明安装成功，随后输入 <code>claude</code> 即可开始使用。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-item-num">5</div>
+        <div class="step-item-body">
+          <h4>遇到问题怎么办？</h4>
+          <p>如果 npm 命令报错，先确认步骤一里的网络已经连通，再回到 FAQ 查对应报错。常见原因是网络未连通或 Node.js 安装后未重新打开终端。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Requirements -->
+    <h2 style="margin-top:48px; margin-bottom:4px; font-size:1.1rem; font-weight:700; letter-spacing:-0.01em;">💻 系统要求</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>⚙️ 系统要求</h4>
+        <ul>
+          <li>Windows 10 / 11（64 位）或 macOS 12+</li>
+          <li>Node.js 18 LTS 或更高</li>
+          <li>至少 500MB 可用磁盘空间</li>
+          <li>稳定的网络连接（已完成步骤一）</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>📦 需要安装</h4>
+        <ul>
+          <li>Node.js LTS（从 nodejs.org 下载）</li>
+          <li>npm（随 Node.js 一起安装）</li>
+          <li>@anthropic-ai/claude-code（npm 命令）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip-box tip-red" style="margin-top:8px;">
+      <strong>安装失败？</strong> 最常见原因是网络问题。请确认：① 代理工具已开启 ② 系统代理模式已启用 ③ 关闭终端重新打开后再运行 npm 命令。
+      更多问题请查看 <a href="faq.html">FAQ 页面</a>。
+    </div>
+
+    <!-- Page Actions -->
     <div class="page-actions">
-      <a href="step1.html" class="btn btn-secondary">← 上一步：邮箱准备</a>
-      <a href="step3.html" class="btn btn-primary">继续看快速开通 →</a>
+      <a href="step1.html" class="btn btn-secondary">← 上一步：网络准备</a>
+      <a href="step3.html" class="btn btn-primary">安装完成，下一步 →</a>
     </div>
+
   </div>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-links">
         <a href="index.html">首页</a>
-        <a href="step1.html">邮箱准备</a>
-        <a href="step2.html">会员内容</a>
-        <a href="step3.html">快速开通</a>
+        <a href="step1.html">步骤一</a>
+        <a href="step3.html">步骤三</a>
         <a href="faq.html">FAQ</a>
       </div>
-      <p class="footer-disclaimer">本站仅提供学习导航、内容整理与使用说明。</p>
-      <p class="footer-copy">© 2026 AI coding 入门导航站</p>
+      <p class="footer-disclaimer">
+        ⚠️ 免责声明：本站仅提供 Claude Code 软件的安装指引，不提供任何网络代理或加速服务。
+      </p>
+      <p class="footer-copy">© 2026 AI coding 入门导航站 · 仅供学习参考</p>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js?v=20260618a"></script>
+<script src="js/main.js?v=20260607a"></script>
 </body>
 </html>
