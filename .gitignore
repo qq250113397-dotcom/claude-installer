@@ -14,3 +14,14 @@ cards*.csv
 worker/cards*.csv
 dist/*.exe
 dist/*.zip
+install/assets/*.exe
+install/assets/*.msi
+install/assets/*.zip
+install/assets/*.appx
+install/assets/*.msixbundle
+install/assets/AppInstaller/
+dist/offline-assets/
+
+# Built distribution folders (binary bundles)
+dist/Codex-Claude-Windows-OneClick/
+dist/Codex-Windows-Store-OneClick/

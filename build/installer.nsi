@@ -24,7 +24,7 @@
 
 ; ── 常量定义 ─────────────────────────────────────────────────
 !define APPNAME     "Claude Code 安装助手"
-!define APPVERSION  "1.0.0"
+!define APPVERSION  "2.0.0"
 !define PUBLISHER   "Claude Code 安装助手"
 !define APP_URL     "https://example.com"
 !define INSTDIR_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\ClaudeCodeInstaller"
@@ -48,20 +48,20 @@ ManifestSupportedOS Win10
 !define MUI_WELCOMEPAGE_TITLE   "欢迎使用 Claude Code 安装向导"
 !define MUI_WELCOMEPAGE_TEXT    \
     "此向导将在你的电脑上安装 Claude Code 安装助手。$\r$\n$\r$\n\
-    安装完成后，向导会启动 Claude Code 安装程序。$\r$\n\
-    请在此之前确保你的网络代理已就绪。$\r$\n$\r$\n\
+    安装完成后，向导会启动 Codex + Claude Code 一键安装程序。$\r$\n\
+    程序会自动检测依赖、启动 v2rayN、注入代理并安装所需工具。$\r$\n$\r$\n\
     点击「下一步」继续。"
 
 ; 完成页
 !define MUI_FINISHPAGE_TITLE    "安装完成"
 !define MUI_FINISHPAGE_TEXT     \
     "Claude Code 安装助手已安装完成。$\r$\n$\r$\n\
-    勾选下方选项并点击「完成」，将自动打开 Claude Code 安装程序（命令行窗口）。$\r$\n\
-    安装完成后，打开新的 PowerShell 输入 claude 即可使用。"
+    勾选下方选项并点击「完成」，将自动打开一键安装程序（命令行窗口）。$\r$\n\
+    安装完成后，桌面会生成 Codex-Claude-OneClick-Report.txt。"
 
 ; 完成页「立即运行」选项（默认勾选）
-!define MUI_FINISHPAGE_RUN          "$INSTDIR\install.bat"
-!define MUI_FINISHPAGE_RUN_TEXT     "立即运行 Claude Code 安装程序（推荐）"
+!define MUI_FINISHPAGE_RUN          "$INSTDIR\一键安装-Codex-Claude-Code.cmd"
+!define MUI_FINISHPAGE_RUN_TEXT     "立即运行 Codex + Claude Code 一键安装程序（推荐）"
 ; !define MUI_FINISHPAGE_RUN_NOTCHECKED  ; 取消注释 = 默认不勾选
 
 ; 中止警告
@@ -95,9 +95,25 @@ Section "主程序" SecMain
 
   SetOutPath "$INSTDIR"
 
-  ; 安装批处理文件
+  ; 安装批处理文件和离线资产
   File "..\install\install.bat"
   File "..\install\update.bat"
+  File "..\install\一键安装-Codex-Claude-Code.cmd"
+  File "..\install\紧急恢复网络-关闭Windows代理.cmd"
+  File "..\install\START-ONECLICK.cmd"
+  File "..\install\EMERGENCY-PROXY-RESET.cmd"
+  File "..\install\VERIFY-WINDOWS-ONLY.cmd"
+  File "..\install\README-Windows-OneClick.txt"
+  SetOutPath "$INSTDIR\lib"
+  File "..\install\lib\oneclick-windows.ps1"
+  File "..\install\lib\verify-windows-only.ps1"
+  SetOutPath "$INSTDIR\assets"
+  File /nonfatal "..\install\assets\v2rayN-windows-64-desktop-portable.zip"
+  File /nonfatal "..\install\assets\node-v24.16.0-x64.msi"
+  File /nonfatal "..\install\assets\VC_redist.x64.exe"
+  File /nonfatal "..\install\assets\VC_redist.x86.exe"
+  File /nonfatal "..\install\assets\Git-*-64-bit.exe"
+  SetOutPath "$INSTDIR"
 
   ; 注册表：用于「程序和功能」中显示卸载条目
   WriteRegStr  HKLM "${INSTDIR_KEY}" "DisplayName"     "${APPNAME}"
@@ -115,6 +131,12 @@ Section "主程序" SecMain
 
   ; 开始菜单快捷方式
   CreateDirectory "$SMPROGRAMS\${APPNAME}"
+  CreateShortcut  "$SMPROGRAMS\${APPNAME}\一键安装 Codex + Claude Code.lnk" \
+                  "$INSTDIR\一键安装-Codex-Claude-Code.cmd" "" "$SYSDIR\cmd.exe" 0 \
+                  SW_SHOWNORMAL "" "自动检测依赖、代理并安装 Codex 与 Claude Code"
+  CreateShortcut  "$SMPROGRAMS\${APPNAME}\紧急恢复网络.lnk" \
+                  "$INSTDIR\紧急恢复网络-关闭Windows代理.cmd" "" "$SYSDIR\cmd.exe" 0 \
+                  SW_SHOWNORMAL "" "关闭 Windows 系统代理，恢复直连网络"
   CreateShortcut  "$SMPROGRAMS\${APPNAME}\更新 Claude Code.lnk" \
                   "$INSTDIR\update.bat" "" "$SYSDIR\cmd.exe" 0 \
                   SW_SHOWNORMAL "" "将 Claude Code 更新到最新版本"
@@ -132,10 +154,27 @@ Section "Uninstall"
   ; 删除安装文件
   Delete "$INSTDIR\install.bat"
   Delete "$INSTDIR\update.bat"
+  Delete "$INSTDIR\一键安装-Codex-Claude-Code.cmd"
+  Delete "$INSTDIR\紧急恢复网络-关闭Windows代理.cmd"
+  Delete "$INSTDIR\START-ONECLICK.cmd"
+  Delete "$INSTDIR\EMERGENCY-PROXY-RESET.cmd"
+  Delete "$INSTDIR\VERIFY-WINDOWS-ONLY.cmd"
+  Delete "$INSTDIR\README-Windows-OneClick.txt"
+  Delete "$INSTDIR\lib\oneclick-windows.ps1"
+  Delete "$INSTDIR\lib\verify-windows-only.ps1"
+  RMDir  "$INSTDIR\lib"
+  Delete "$INSTDIR\assets\v2rayN-windows-64-desktop-portable.zip"
+  Delete "$INSTDIR\assets\node-v24.16.0-x64.msi"
+  Delete "$INSTDIR\assets\VC_redist.x64.exe"
+  Delete "$INSTDIR\assets\VC_redist.x86.exe"
+  Delete "$INSTDIR\assets\Git-*-64-bit.exe"
+  RMDir  "$INSTDIR\assets"
   Delete "$INSTDIR\uninstall.exe"
   RMDir  "$INSTDIR"
 
   ; 删除开始菜单
+  Delete "$SMPROGRAMS\${APPNAME}\一键安装 Codex + Claude Code.lnk"
+  Delete "$SMPROGRAMS\${APPNAME}\紧急恢复网络.lnk"
   Delete "$SMPROGRAMS\${APPNAME}\更新 Claude Code.lnk"
   Delete "$SMPROGRAMS\${APPNAME}\卸载.lnk"
   RMDir  "$SMPROGRAMS\${APPNAME}"
