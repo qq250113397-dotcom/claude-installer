@@ -21,6 +21,8 @@ install/assets/*.appx
 install/assets/*.msixbundle
 install/assets/AppInstaller/
 dist/offline-assets/
+test-results/
+playwright-report/
 
 # Built distribution folders (binary bundles)
 dist/Codex-Claude-Windows-OneClick/
