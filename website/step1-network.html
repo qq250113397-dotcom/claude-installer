@@ -13,9 +13,9 @@
     <a href="index.html" class="nav-logo"><div class="logo-icon">✦</div>AI coding 入门导航站</a>
     <div class="nav-links">
       <a href="index.html">首页</a>
-      <a href="step1.html" class="active">步骤一</a>
-      <a href="step2.html">步骤二</a>
-      <a href="step3.html">步骤三</a>
+      <a href="step1.html" class="active">网络配置</a>
+      <a href="step2.html">下载安装</a>
+      <a href="step3.html">会员订阅</a>
       <a href="faq.html">FAQ</a>
     </div>
     <button class="nav-toggle" aria-label="菜单"><span></span><span></span><span></span></button>
@@ -31,11 +31,6 @@
 
 <main class="section-sm">
   <div class="container" style="max-width:860px;">
-    <div class="tip-box tip-blue">
-      <strong>为什么先看这一页？</strong><br>
-      先把网络准备好，后面的账号、工具和更新都会顺很多。这里把内容拆出来，避免和手机视频挤在一起。
-    </div>
-
     <div class="page-section">
       <div class="page-section-header">
         <span class="section-badge required">必做</span>
@@ -71,6 +66,9 @@
                 </div>
               </div>
             </div>
+            <div style="margin-top:12px; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); color:var(--text-secondary); font-size:0.88rem; line-height:1.7;">
+              <strong style="color:var(--text-primary);">苹果手机小火箭说明：</strong>Shadowrocket 需要在美区 App Store 购买，注册美区 ID 的细节放在后面的手机视频里。
+            </div>
           </div>
         </div>
 
@@ -81,7 +79,7 @@
             <p>安装好 v2rayN 后，先看你要走付费的极速云，还是免费的 CF 方案，再按下面对应的教程导入。</p>
             <div class="info-grid" style="margin:14px 0 12px;">
               <div class="info-card">
-                <h4>💎 极速云（付费）</h4>
+                <h4>💎 亲测好用付费机场</h4>
                 <p>适合想省时间的人，直接用现成订阅，不用自己折腾节点来源。</p>
                 <ul>
                   <li>点 <a href="https://905.jsy902.xyz/#/register?code=p4vYuy7J" target="_blank" rel="noopener noreferrer">极速云</a> 去开通</li>
@@ -89,7 +87,7 @@
                 </ul>
               </div>
               <div class="info-card">
-                <h4>🆓 CF 免费方案</h4>
+                <h4>🆓 CF 免费方案（备用免费方案）</h4>
                 <p>如果你想先零成本试试，就走下面这套免费教程，订阅链接和导入步骤都给你留好了。</p>
                 <ul>
                   <li>适合先试用、预算紧的人</li>
@@ -98,13 +96,16 @@
               </div>
             </div>
             <div class="tip-box tip-blue" style="margin:14px 0 10px;">
-              <strong>付费方案视频位：</strong>这里先留给极速云的视频，你后面上传时直接替换这一块。
+              <strong>极速云视频：</strong>先看付费方案演示，照着做就能把订阅导进去。
             </div>
-            <div class="screenshot-placeholder" style="min-height:260px; display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
-              视频位占位：这里放极速云付费方案教程视频
-            </div>
+            <video
+              preload="none"
+              controls
+              src="media/极速云.mp4"
+              style="width:100%; display:block; border-radius:var(--radius); border:1px solid var(--border); background:#000; margin-bottom:14px;"
+            ></video>
             <div class="tip-box tip-blue" style="margin:14px 0 10px;">
-              <strong>免费方案视频：</strong>先看这个节点导入演示，按视频一步一步做就行。
+              <strong>免费方案视频：</strong>下面这个节点导入演示，适合第一次导入订阅的人先照着看一遍。
             </div>
             <video
               preload="none"
@@ -113,7 +114,14 @@
               style="width:100%; display:block; border-radius:var(--radius); border:1px solid var(--border); background:#000; margin-bottom:14px;"
             ></video>
             <div class="tip-box tip-blue" style="margin:14px 0 10px;">
-              <strong>免费方案说明：</strong>这个视频就是 CF 免费方案的导入演示，先照着做就行。
+              <strong>免费方案说明：</strong>看完视频后，再复制下方订阅链接导入。
+            </div>
+            <div style="margin-bottom:14px; padding:12px 16px; border:1px solid var(--border); border-radius:var(--radius-sm); background:var(--bg-secondary);">
+              <p style="margin:0 0 10px; font-size:0.86rem; color:var(--text-secondary); line-height:1.6;">如果你只需要静态住宅IP / 稳定梯子，可以直接点击下面两个链接，亲测可用。</p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <a href="https://app.onesproxy.com/api/channel_agent/track?user_source=1&invite_code=TDQ632279" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">亲测可用住宅IP OnesProxy</a>
+                <a href="https://905.jsy902.xyz/#/register?code=p4vYuy7J" class="btn btn-primary btn-sm" target="_blank" rel="noopener">亲测好用 🪜 极速云</a>
+              </div>
             </div>
             <div style="display:flex; align-items:center; gap:8px; margin:14px 0; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
               <code id="sub-url-txt" style="flex:1; font-size:0.82rem; word-break:break-all; color:var(--accent); user-select:all;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</code>
@@ -145,6 +153,10 @@
                 <li>Core 类型 = sing_box</li>
               </ol>
             </div>
+            <div style="margin-top:16px;">
+              <img src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/全局自动配置系统代理.png" alt="系统代理设置截图" style="width:100%; border-radius:8px; margin-bottom:12px;">
+              <video preload="none" controls src="https://pub-6f98ebdda2dd4688b2e317ccfcaebb21.r2.dev/tun-mode.mp4" style="width:100%; border-radius:8px; background:#000;"></video>
+            </div>
           </div>
         </div>
 
@@ -152,10 +164,11 @@
           <div class="step-item-num">4</div>
           <div class="step-item-body">
             <h4>验证网络连通</h4>
-            <p>在浏览器访问下面两个站点，能打开说明基础网络已就绪。</p>
+            <p>在浏览器访问下面两个站点，能打开说明基础网络已就绪。记得用美国节点设为活动。</p>
             <div style="display:flex; flex-wrap:wrap; gap:10px; margin:12px 0;">
               <a href="https://dash.cloudflare.com/login" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 Cloudflare ↗</a>
               <a href="https://my.dnshe.com/clientarea.php" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">打开 dnshe ↗</a>
+              <a href="https://ping0.cc" class="btn btn-primary btn-sm" target="_blank" rel="noopener">打开 ping0.cc ↗</a>
             </div>
           </div>
         </div>
@@ -174,9 +187,9 @@
     <div class="footer-inner">
       <div class="footer-links">
         <a href="index.html">首页</a>
-        <a href="step1.html">步骤一</a>
-        <a href="step2.html">步骤二</a>
-        <a href="step3.html">步骤三</a>
+        <a href="step1.html">网络配置</a>
+        <a href="step2.html">下载安装</a>
+        <a href="step3.html">会员订阅</a>
         <a href="faq.html">FAQ</a>
       </div>
       <p class="footer-disclaimer">本站仅提供学习导航、内容整理与使用说明。</p>
