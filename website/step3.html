@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>步骤三：注册 & 使用 — AI coding 入门导航站</title>
-  <meta name="description" content="完成 Claude Code / Codex 登录、邀请说明与后续使用提示。">
-  <link rel="stylesheet" href="css/style.css?v=20260619d">
+  <title>步骤三：会员订阅 — AI coding 入门导航站</title>
+  <meta name="description" content="查看 Claude 和 GPT 的订阅价格与官方入口。">
+  <link rel="stylesheet" href="css/style.css?v=20260629a">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
       <div class="prog-line done"></div>
       <div class="prog-step active">
         <div class="prog-num">3</div>
-        <span>登录使用</span>
+        <span>会员订阅</span>
       </div>
     </div>
   </div>
@@ -54,190 +54,16 @@
 <!-- Page Header -->
 <div class="page-header">
   <div class="container">
-    <h1>步骤三：登录 &amp; 开始使用</h1>
-    <p>在终端完成登录授权后即可开始使用。下面把登录、分流规则和价格说明放在同一页，减少来回跳转。</p>
+    <h1>步骤三：会员订阅</h1>
+    <p>这里先只放价格和订阅入口，少走弯路。</p>
   </div>
 </div>
 
 <!-- Main Content -->
 <main class="section-sm">
   <div class="container" style="max-width:800px;">
-
-    <!-- Login Section -->
-    <h2 style="font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">🔑 在终端中登录</h2>
-    <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:4px;">首次运行 <code>claude</code> 会弹出浏览器登录授权，按提示完成即可。</p>
-
-    <div class="steps-list">
-      <div class="step-item">
-        <div class="step-item-num">1</div>
-        <div class="step-item-body">
-          <h4>打开终端</h4>
-          <p>🪟 <strong>Windows：</strong>按 <code>Win + R</code>，输入 <code>powershell</code>，按回车。</p>
-          <p style="margin-top:6px;">🍎 <strong>macOS：</strong>按 <code>⌘ + 空格</code>，输入「终端」打开。</p>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-item-num">2</div>
-        <div class="step-item-body">
-          <h4>运行 Claude Code</h4>
-          <p>输入以下命令启动：</p>
-          <div class="code-block" style="margin-top:8px; font-family:'Cascadia Code',Consolas,monospace;">claude</div>
-          <p style="margin-top:8px; color:var(--text-muted); font-size:0.82rem;">首次运行会弹出登录提示，按浏览器里的授权流程完成即可。</p>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-item-num">3</div>
-        <div class="step-item-body">
-          <h4>按提示完成浏览器授权</h4>
-          <p>终端会显示登录链接，用浏览器打开并完成授权：</p>
-          <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:20px 24px; margin:12px 0; font-family:'Cascadia Code',Consolas,monospace; font-size:0.82rem; color:var(--text-secondary); line-height:1.8;">
-            <span style="color:var(--accent);">Claude Code</span> v1.x.x<br><br>
-            <span style="color:var(--green);">?</span> 请在浏览器中完成登录 →<br>
-            &nbsp;&nbsp;<span style="color:var(--blue);">https://claude.ai/login?code=XXXXXX</span><br><br>
-            等待授权完成...<br><br>
-            <span style="color:var(--green);">✓</span> 登录成功！欢迎使用 Claude Code。
-          </div>
-          <img src="img/claude-login-screenshot.png" alt="Claude Code 终端显示登录链接" style="width:100%; border-radius:6px; margin-top:8px; border:1px solid var(--border);">
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-item-num">4</div>
-        <div class="step-item-body">
-          <h4>开始使用</h4>
-          <p>登录成功后，在任意项目目录打开终端，输入 <code>claude</code> 即可开始使用。</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Success Banner -->
-    <div style="background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2); border-radius:var(--radius); padding:32px; text-align:center; margin:48px 0 0;">
-      <div style="font-size:2.5rem; margin-bottom:12px;">🎉</div>
-      <h3 style="font-size:1.2rem; font-weight:700; color:var(--green); margin-bottom:8px;">恭喜，流程完成！</h3>
-      <p style="color:var(--text-secondary); font-size:0.9rem;">你已完成全部流程，可以开始使用 Claude Code / Codex 了。</p>
-      <p style="margin-top:6px; font-size:0.82rem; color:var(--text-muted);">遇到问题？查看 <a href="faq.html">FAQ 常见问题</a> 获取帮助。</p>
-    </div>
-
-    <!-- 分流规则 -->
-    <div style="margin-top:48px;">
-      <h2 style="font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">🚦 配置 Codex 应用分流规则</h2>
-      <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:16px;">
-        导入分流规则后，Claude、ChatGPT、Codex 等 AI 工具<strong style="color:var(--text-primary);">强制走代理</strong>，国内网站正常直连。切换节点后不需要重新设置。
-      </p>
-
-      <video preload="none" src="https://media.zuibenniuge.cc.cd/v2RayN分流规则.mp4" controls style="width:100%; border-radius:var(--radius); border:1px solid var(--border); display:block; margin-bottom:16px;"></video>
-
-      <!-- 规则代码块 -->
-      <div style="border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:var(--bg-secondary); border-bottom:1px solid var(--border);">
-          <span style="font-size:0.8rem; font-weight:600; color:var(--text-muted); font-family:monospace;">v2rayn-routing.json</span>
-          <button data-copy-target="routing-rules-code" style="padding:5px 14px; background:var(--accent); color:#fff; border:none; border-radius:5px; font-size:0.78rem; font-weight:600; cursor:pointer; white-space:nowrap;">复制全部</button>
-        </div>
-        <pre id="routing-rules-code" style="margin:0; padding:14px 16px; background:var(--bg-card); font-family:'Cascadia Code','Fira Code',Consolas,monospace; font-size:0.78rem; line-height:1.7; color:var(--text-secondary); overflow-x:auto; overflow-y:auto; max-height:280px; user-select:all; white-space:pre;">[
-  {
-    "Id": "6105310000000001001",
-    "Port": "443",
-    "Network": "udp",
-    "OutboundTag": "block",
-    "Enabled": true,
-    "Remarks": "阻断 QUIC/UDP443，避免浏览器绕路"
-  },
-  {
-    "Id": "6105310000000001002",
-    "OutboundTag": "proxy",
-    "Domain": [
-      "domain:openai.com",
-      "domain:chatgpt.com",
-      "domain:oaiusercontent.com",
-      "domain:oaistatic.com",
-      "domain:anthropic.com",
-      "domain:claude.ai",
-      "domain:perplexity.ai",
-      "domain:poe.com",
-      "domain:cursor.com",
-      "domain:cursor.sh",
-      "domain:windsurf.com",
-      "domain:codeium.com",
-      "domain:githubcopilot.com",
-      "domain:copilot.microsoft.com",
-      "domain:gemini.google.com",
-      "domain:generativelanguage.googleapis.com",
-      "domain:ai.google.dev",
-      "domain:grok.com",
-      "domain:x.ai",
-      "domain:groq.com",
-      "domain:openrouter.ai",
-      "domain:huggingface.co",
-      "domain:mistral.ai",
-      "domain:cohere.ai",
-      "domain:together.ai",
-      "domain:replicate.com",
-      "domain:stability.ai",
-      "domain:deepseek.com",
-      "domain:deepseek.com.cn",
-      "domain:kimi.com",
-      "domain:moonshot.cn",
-      "domain:bigmodel.cn",
-      "domain:zhipuai.cn",
-      "domain:doubao.com",
-      "domain:volcengine.com",
-      "domain:qwen.ai",
-      "domain:dashscope.aliyuncs.com",
-      "domain:tongyi.aliyun.com",
-      "domain:siliconflow.cn",
-      "domain:modelscope.cn",
-      "domain:minimax.chat",
-      "domain:minimaxi.com",
-      "geosite:google"
-    ],
-    "Enabled": true,
-    "Remarks": "AI / 开发助手全部走代理"
-  },
-  {
-    "Id": "6105310000000001003",
-    "OutboundTag": "direct",
-    "Ip": ["geoip:private"],
-    "Enabled": true,
-    "Remarks": "局域网 IP 直连"
-  },
-  {
-    "Id": "6105310000000001004",
-    "OutboundTag": "direct",
-    "Domain": ["geosite:private"],
-    "Enabled": true,
-    "Remarks": "局域网域名直连"
-  },
-  {
-    "Id": "6105310000000001005",
-    "OutboundTag": "direct",
-    "Ip": ["geoip:cn"],
-    "Enabled": true,
-    "Remarks": "中国 IP 直连"
-  },
-  {
-    "Id": "6105310000000001006",
-    "OutboundTag": "direct",
-    "Domain": ["geosite:cn", "geosite:geolocation-cn"],
-    "Enabled": true,
-    "Remarks": "中国域名直连"
-  },
-  {
-    "Id": "6105310000000001007",
-    "Port": "0-65535",
-    "OutboundTag": "proxy",
-    "Enabled": true,
-    "Remarks": "其他非中国流量走代理"
-  }
-]</pre>
-      </div>
-
-      <div class="tip-box" style="margin-top:10px;">
-        <strong>导入方式：</strong>按视频演示，在 v2rayN 路由设置里粘贴上方 JSON，保存后即生效。导入后 AI 工具流量自动走代理，国内网站自动直连。
-        <br><span style="color:var(--text-muted);">分流规则可能存在不生效的情况，遇到问题可以让 Claude Code 或 Codex 帮忙一起调试。</span>
-      </div>
-    </div>
-
     <!-- 订阅 Claude Pro -->
-    <div style="margin-top:48px;">
+    <div style="margin-top:16px;">
       <h2 style="font-size:1.1rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:4px;">💳 Claude 和 GPT 的价格</h2>
       <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:16px;">
         价格我已经登录好 WildAI 了，你自己去查就行；这个页面主要负责把你后面要用的入口放齐。
