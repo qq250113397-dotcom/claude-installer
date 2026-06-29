@@ -77,10 +77,34 @@
         <div class="step-item">
           <div class="step-item-num">2</div>
           <div class="step-item-body">
-            <h4>导入订阅链接，连通外网</h4>
-            <p>安装好 v2rayN 后，将下方订阅链接导入即可。</p>
+            <h4>先选订阅方案，再导入外网</h4>
+            <p>安装好 v2rayN 后，先看你要走付费的极速云，还是免费的 CF 方案，再按下面对应的教程导入。</p>
+            <div class="info-grid" style="margin:14px 0 12px;">
+              <div class="info-card">
+                <h4>💎 极速云（付费）</h4>
+                <p>适合想省时间的人，直接用现成订阅，不用自己折腾节点来源。</p>
+                <ul>
+                  <li>点 <a href="https://905.jsy902.xyz/#/register?code=p4vYuy7J" target="_blank" rel="noopener noreferrer">极速云</a> 去开通</li>
+                  <li>开通后，按平台给你的订阅地址导入 v2rayN</li>
+                </ul>
+              </div>
+              <div class="info-card">
+                <h4>🆓 CF 免费方案</h4>
+                <p>如果你想先零成本试试，就走下面这套免费教程，订阅链接和导入步骤都给你留好了。</p>
+                <ul>
+                  <li>适合先试用、预算紧的人</li>
+                  <li>保留当前免费的 CF 订阅链接</li>
+                </ul>
+              </div>
+            </div>
             <div class="tip-box tip-blue" style="margin:14px 0 10px;">
-              <strong>看这个演示就够了：</strong>下面的视频就是“节点导入”，适合第一次导入订阅的人先照着看一遍。
+              <strong>付费方案视频位：</strong>这里先留给极速云的视频，你后面上传时直接替换这一块。
+            </div>
+            <div class="screenshot-placeholder" style="min-height:260px; display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+              视频位占位：这里放极速云付费方案教程视频
+            </div>
+            <div class="tip-box tip-blue" style="margin:14px 0 10px;">
+              <strong>免费方案视频：</strong>先看这个节点导入演示，按视频一步一步做就行。
             </div>
             <video
               preload="none"
@@ -88,6 +112,9 @@
               src="https://media.zuibenniuge.cc.cd/%E8%8A%82%E7%82%B9%E5%AF%BC%E5%85%A5.mp4"
               style="width:100%; display:block; border-radius:var(--radius); border:1px solid var(--border); background:#000; margin-bottom:14px;"
             ></video>
+            <div class="tip-box tip-blue" style="margin:14px 0 10px;">
+              <strong>免费方案说明：</strong>这个视频就是 CF 免费方案的导入演示，先照着做就行。
+            </div>
             <div style="display:flex; align-items:center; gap:8px; margin:14px 0; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm);">
               <code id="sub-url-txt" style="flex:1; font-size:0.82rem; word-break:break-all; color:var(--accent); user-select:all;">https://zuibenniuge.cc.cd/sub?token=b05b99657be99d182b612ab1c1caf641</code>
               <button id="sub-copy-btn" data-copy-target="sub-url-txt" style="flex-shrink:0; padding:6px 14px; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-sm); font-size:0.82rem; cursor:pointer; white-space:nowrap;">复制</button>
