@@ -465,7 +465,7 @@ function Invoke-Analyze {
 
 function Invoke-SelfTest {
   Write-Step "自检"
-  $temp = Join-Path ([IO.Path]::GetTempPath()) ("ai-coding-starter-" + [guid]::NewGuid())
+  $temp = Join-Path ([Environment]::GetFolderPath("Desktop")) ("ai-coding-starter-" + [guid]::NewGuid())
   $oldVault = $script:VaultPath
   try {
     New-Item -ItemType Directory -Path $temp -Force | Out-Null
