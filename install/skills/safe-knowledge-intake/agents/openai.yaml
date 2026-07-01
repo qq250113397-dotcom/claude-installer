@@ -1,0 +1,4 @@
+interface:
+  display_name: "安全资料整理"
+  short_description: "先预览并确认范围，再安全整理本地资料到 Obsidian 知识库"
+  default_prompt: "Use $safe-knowledge-intake to preview my selected folders, wait for confirmation, and organize approved copies into Obsidian."

@@ -1,0 +1,17 @@
+name: Windows starter check
+
+on:
+  pull_request:
+    paths:
+      - "install/lib/ai-coding-starter.ps1"
+      - "install/skills/safe-knowledge-intake/**"
+      - ".github/workflows/windows-starter.yml"
+
+jobs:
+  self-test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test privacy filters and vault setup
+        shell: powershell
+        run: .\install\lib\ai-coding-starter.ps1 -Mode SelfTest -VaultPath "$env:RUNNER_TEMP\vault"
