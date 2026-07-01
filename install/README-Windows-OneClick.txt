@@ -1,19 +1,6 @@
 Codex + Claude Code Windows 一键安装包
 =====================================
 
-AI Coding 小白初始化（新增）
-===========================
-
-直接运行“AI-CODING-新手一键初始化.cmd”，它会：
-1. 缺什么就先复用本包安装 Codex、Node.js、Git。
-2. 安装 Obsidian、ponytail 和安全资料整理 skill。
-3. 建立“文档\AI-Coding知识库”。
-4. 用户输入 SCAN 后才扫描指定目录；输入 IMPORT 后才复制资料副本。
-5. Codex 只读整理知识库副本，原文件不会修改或删除。
-
-默认不扫描密码、密钥、浏览器/聊天数据库、隐藏文件和超大文件。
-安装完成后，新开终端可运行：ai-coding-start -Mode Doctor
-
 适用场景
 --------
 1. Windows 10/11 64 位。

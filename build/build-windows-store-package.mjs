@@ -22,6 +22,7 @@ const topLevelFiles = [
   'START-HERE.cmd',
   'START-ONECLICK.cmd',
   'AI-CODING-新手一键初始化.cmd',
+  'AI-CODING-使用说明.txt',
   '一键安装-Codex-Claude-Code.cmd',
   'v2rayN-急救修复.cmd',
   'VERIFY-WINDOWS-ONLY.cmd',

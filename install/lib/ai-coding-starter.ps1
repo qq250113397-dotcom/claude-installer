@@ -32,7 +32,7 @@ $DeniedNames = @(
 $DeniedNameParts = @(
   "password", "passwd", "credential", "secret", "token", "cookie", "wallet",
   "mnemonic", "seed-phrase", "seed_phrase", "recovery-phrase", "api-key",
-  "apikey", "private-key", "私钥", "密码", "助记词", "恢复短语"
+  "apikey", "private-key", "openai-key", "私钥", "密钥", "密码", "助记词", "恢复短语"
 )
 
 function Write-Step([string]$Text) {
@@ -290,8 +290,10 @@ function Test-EligibleFile([IO.FileInfo]$File) {
 function Test-BlockedPathSegment([string]$Segment) {
   $name = $Segment.ToLowerInvariant()
   if (($DeniedDirectories -contains $name) -or ($DeniedNames -contains $name)) { return $true }
+  $normalized = $name -replace '[-_.\s]', ''
   foreach ($part in $DeniedNameParts) {
-    if ($name.Contains($part)) { return $true }
+    $needle = $part -replace '[-_.\s]', ''
+    if ($normalized.Contains($needle)) { return $true }
   }
   return $false
 }
@@ -434,6 +436,8 @@ function Invoke-Analyze {
   Save-CodexCatalog
   $report = Join-Path $VaultPath "03-资料索引\Codex整理结果.md"
   $fallback = Join-Path $VaultPath "03-资料索引\请让Codex执行的任务.md"
+  # ponytail: inline profile keeps this one run vault-only without changing persistent Codex config.
+  $permissions = 'permissions.knowledge-vault.filesystem={":root"="deny",":minimal"="read","~/.codex"="deny","~/.ssh"="deny","~/.gnupg"="deny","~/AppData"="deny","~/Desktop"="deny","~/Documents"="deny","~/Downloads"="deny","~/OneDrive"="deny",":workspace_roots"={"."="read"}}'
   $prompt = @'
 整理当前 Obsidian 知识库中 `90-原始资料` 的副本，并输出一份中文 Markdown 报告。
 
@@ -452,7 +456,7 @@ function Invoke-Analyze {
 坚持最小配置。默认已安装的 ponytail 和 safe-knowledge-intake 足够时，明确写“不需要再安装”。
 '@
   $prompt | Set-Content -Path $fallback -Encoding UTF8
-  $output = $prompt | & codex exec --ephemeral --ignore-user-config --ignore-rules --sandbox read-only --skip-git-repo-check -C $VaultPath -o $report - 2>&1
+  $output = $prompt | & codex exec --ephemeral --ignore-user-config --ignore-rules --skip-git-repo-check -C $VaultPath -c 'default_permissions="knowledge-vault"' -c $permissions -c 'web_search="disabled"' -o $report - 2>&1
   $code = $LASTEXITCODE
   $output | ForEach-Object { Write-Host $_ }
   if ($code -eq 0 -and (Test-Path $report)) {
@@ -474,6 +478,10 @@ function Invoke-SelfTest {
     "ok" | Set-Content -Path (Join-Path $temp "notes.md")
     "secret" | Set-Content -Path (Join-Path $temp ".env")
     "image" | Set-Content -Path (Join-Path $temp "photo.jpg")
+    "secret" | Set-Content -Path (Join-Path $temp "api_key.txt")
+    "secret" | Set-Content -Path (Join-Path $temp "private key.txt")
+    "secret" | Set-Content -Path (Join-Path $temp "recovery phrase.txt")
+    "secret" | Set-Content -Path (Join-Path $temp "OpenAI密钥.txt")
     New-Item -ItemType Directory -Path (Join-Path $temp "Passwords") | Out-Null
     "secret" | Set-Content -Path (Join-Path $temp "Passwords\accounts.txt")
     New-Item -ItemType Directory -Path (Join-Path $temp "node_modules") | Out-Null
@@ -481,6 +489,9 @@ function Invoke-SelfTest {
     if (-not (Test-EligibleFile (Get-Item (Join-Path $temp "notes.md")))) { throw "notes.md should be eligible" }
     if (Test-EligibleFile (Get-Item (Join-Path $temp ".env") -Force)) { throw ".env should be blocked" }
     if (Test-EligibleFile (Get-Item (Join-Path $temp "photo.jpg"))) { throw "photo.jpg should be blocked" }
+    foreach ($name in @("api_key.txt", "private key.txt", "recovery phrase.txt", "OpenAI密钥.txt")) {
+      if (Test-EligibleFile (Get-Item (Join-Path $temp $name))) { throw "$name should be blocked" }
+    }
     if (Test-EligibleFile (Get-Item (Join-Path $temp "Passwords\accounts.txt"))) { throw "sensitive directory should be blocked" }
     $scanned = @(Get-ScanCandidates @($temp))
     if ($scanned.file.FullName -contains (Join-Path $temp "node_modules\package.md")) { throw "node_modules should be pruned" }
