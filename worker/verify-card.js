@@ -155,24 +155,6 @@ async function readJsonBody(request) {
   return JSON.parse(new TextDecoder().decode(bytes));
 }
 
-async function constantTimeEqual(left, right) {
-  const encoder = new TextEncoder();
-  const [leftHash, rightHash] = await Promise.all([
-    crypto.subtle.digest('SHA-256', encoder.encode(left)),
-    crypto.subtle.digest('SHA-256', encoder.encode(right)),
-  ]);
-
-  const leftBytes = new Uint8Array(leftHash);
-  const rightBytes = new Uint8Array(rightHash);
-  let diff = 0;
-
-  for (let i = 0; i < leftBytes.length; i++) {
-    diff |= leftBytes[i] ^ rightBytes[i];
-  }
-
-  return diff === 0;
-}
-
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,

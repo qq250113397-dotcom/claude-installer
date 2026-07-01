@@ -229,7 +229,11 @@ function normalizeText(value) {
 }
 
 function csvEscape(value) {
-  const text = String(value || '');
+  let text = String(value || '');
+  // 防 Excel 公式注入：以 = + - @ 开头的单元格加前缀，避免被当公式执行
+  if (/^[=+\-@]/.test(text)) {
+    text = `'${text}`;
+  }
   if (/[",\n\r]/.test(text)) {
     return `"${text.replace(/"/g, '""')}"`;
   }

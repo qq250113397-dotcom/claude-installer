@@ -8,6 +8,11 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
+// QQ 号码点击显示（去掉模糊）
+document.querySelectorAll('.qq-blur').forEach(el => {
+  el.addEventListener('click', () => el.classList.add('revealed'));
+});
+
 // Mobile nav toggle
 const toggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
