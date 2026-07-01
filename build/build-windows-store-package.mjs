@@ -21,6 +21,7 @@ const desktopPackageDir = join(
 const topLevelFiles = [
   'START-HERE.cmd',
   'START-ONECLICK.cmd',
+  'AI-CODING-新手一键初始化.cmd',
   '一键安装-Codex-Claude-Code.cmd',
   'v2rayN-急救修复.cmd',
   'VERIFY-WINDOWS-ONLY.cmd',
@@ -45,8 +46,11 @@ const requiredAssets = [
 await assertFiles([
   ...topLevelFiles.map(file => join(installDir, file)),
   join(installDir, 'lib/oneclick-windows.ps1'),
+  join(installDir, 'lib/ai-coding-starter.ps1'),
   join(installDir, 'lib/verify-windows-only.ps1'),
   join(installDir, 'lib/v2rayn-repair.ps1'),
+  join(installDir, 'skills/safe-knowledge-intake/SKILL.md'),
+  join(installDir, 'skills/safe-knowledge-intake/agents/openai.yaml'),
   ...requiredAssets.map(file => join(installDir, file)),
 ]);
 
@@ -59,6 +63,7 @@ for (const file of topLevelFiles) {
   await copy(join(installDir, file), join(stageDir, file));
 }
 await copy(join(installDir, 'lib'), join(stageDir, 'lib'));
+await copy(join(installDir, 'skills'), join(stageDir, 'skills'));
 for (const asset of requiredAssets) {
   await copy(join(installDir, asset), join(stageDir, asset));
 }
