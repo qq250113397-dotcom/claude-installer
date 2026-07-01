@@ -1,4 +1,4 @@
-#requires -Version 5.1
+﻿#requires -Version 5.1
 [CmdletBinding()]
 param(
   [ValidateSet("All", "Doctor", "Setup", "Vault", "Scan", "Analyze", "SelfTest")]
