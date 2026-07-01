@@ -23,6 +23,8 @@ install/assets/AppInstaller/
 dist/offline-assets/
 test-results/
 playwright-report/
+.claude/
+output/
 
 # Built distribution folders (binary bundles)
 dist/Codex-Claude-Windows-OneClick/

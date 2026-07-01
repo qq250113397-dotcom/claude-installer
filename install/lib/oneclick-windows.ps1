@@ -5,8 +5,9 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $InstallDir = Split-Path -Parent $ScriptDir
 $AssetsDir = Join-Path $InstallDir "assets"
 $Desktop = [Environment]::GetFolderPath("Desktop")
-$Report = Join-Path $Desktop "Codex-Claude-OneClick-Report.txt"
 $WorkRoot = Join-Path $env:LOCALAPPDATA "CodexClaudeOneClick"
+$Report = Join-Path $WorkRoot "Codex-Claude-OneClick-Report.txt"
+$DesktopReport = Join-Path $Desktop "Codex-Claude-OneClick-Report.txt"
 $AppInstallerDir = Join-Path $AssetsDir "AppInstaller"
 $ProxyPort = $null
 $ProxyUri = $null
@@ -819,7 +820,7 @@ function Write-FinalSummary {
   if (-not $WingetReady -and -not $CodexCliInstalled) {
     Write-Log "Result: Windows servicing/AppX is too damaged for automatic repair. Use an official Windows 10/11 ISO for an in-place repair install." "ERROR"
   }
-  Write-Log "Report path: $Report"
+  Write-Log "Report path: $DesktopReport"
 }
 
 New-Item -ItemType Directory -Path $WorkRoot -Force | Out-Null
@@ -860,8 +861,17 @@ Install-ClaudeCode
 Install-Codex
 Write-FinalSummary
 
+try {
+  Copy-Item -Path $Report -Destination $DesktopReport -Force
+} catch {
+  Write-Host ""
+  Write-Host "桌面报告复制失败，工作目录报告还在这里：" -ForegroundColor Yellow
+  Write-Host $Report -ForegroundColor Yellow
+  Write-Host "原因: $($_.Exception.Message)" -ForegroundColor Yellow
+}
+
 Write-Host ""
-Write-Host "完成。报告已生成：$Report"
+Write-Host "完成。报告已生成：$DesktopReport"
 if ($CodexAppInstalled -or $CodexCliInstalled) {
   exit 0
 }

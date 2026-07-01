@@ -41,6 +41,7 @@ Entry points:
 START-HERE.cmd
 START-ONECLICK.cmd
 一键安装-Codex-Claude-Code.cmd
+v2rayN-急救修复.cmd
 EMERGENCY-PROXY-RESET.cmd
 紧急恢复网络-关闭Windows代理.cmd
 ```

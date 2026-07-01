@@ -22,6 +22,7 @@ const topLevelFiles = [
   'START-HERE.cmd',
   'START-ONECLICK.cmd',
   '一键安装-Codex-Claude-Code.cmd',
+  'v2rayN-急救修复.cmd',
   'VERIFY-WINDOWS-ONLY.cmd',
   'EMERGENCY-PROXY-RESET.cmd',
   '紧急恢复网络-关闭Windows代理.cmd',
@@ -45,6 +46,7 @@ await assertFiles([
   ...topLevelFiles.map(file => join(installDir, file)),
   join(installDir, 'lib/oneclick-windows.ps1'),
   join(installDir, 'lib/verify-windows-only.ps1'),
+  join(installDir, 'lib/v2rayn-repair.ps1'),
   ...requiredAssets.map(file => join(installDir, file)),
 ]);
 

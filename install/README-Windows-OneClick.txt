@@ -33,6 +33,9 @@ Codex + Claude Code Windows 一键安装包
    - 安装 Codex CLI，作为 Windows App 无法安装时的兜底。
    - 在桌面生成 Codex-Claude-OneClick-Report.txt。
 6. 客户把桌面报告发回来，即可判断是否成功或卡在哪一步。
+7. 如果 v2rayN 出现 `expected socks version 5, got 72`、`invalid subscription content` 或 `unknown host` 这类报错，先双击 `v2rayN-急救修复.cmd`。
+   它会重置本机代理、DNS、Winsock 和 IP 栈，然后重新打开 v2rayN。
+   如果最后还是提示 `invalid subscription content`，通常是订阅链接本身或上游服务器有问题，不是本机坏了。
 
 重要说明
 --------

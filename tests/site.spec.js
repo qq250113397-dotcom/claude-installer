@@ -66,8 +66,10 @@ const PAGES = [
     file: 'step3.html',
     title: '步骤三：会员订阅',
     content: [
-      'Claude 和 GPT 的价格',
+      'wildai订阅会员',
       '去 WildAI 看价格',
+      '这个视频对应申请招行卡订阅会员',
+      '海外手机号码接码 giff卡申请流程',
     ],
     shot: 'main .container > div:first-of-type',
   },
@@ -108,6 +110,7 @@ async function openAndCollectProblems(page, file) {
     problems.push(`pageerror:${err.message}`);
   });
   page.on('requestfailed', (request) => {
+    if (request.url().includes('youtube.com/api/stats/')) return;
     const failure = request.failure();
     problems.push(`requestfailed:${request.method()} ${request.url()} ${failure?.errorText || 'unknown'}`);
   });

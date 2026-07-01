@@ -99,6 +99,7 @@ Section "主程序" SecMain
   File "..\install\install.bat"
   File "..\install\update.bat"
   File "..\install\一键安装-Codex-Claude-Code.cmd"
+  File "..\install\v2rayN-急救修复.cmd"
   File "..\install\紧急恢复网络-关闭Windows代理.cmd"
   File "..\install\START-ONECLICK.cmd"
   File "..\install\EMERGENCY-PROXY-RESET.cmd"
@@ -107,6 +108,7 @@ Section "主程序" SecMain
   SetOutPath "$INSTDIR\lib"
   File "..\install\lib\oneclick-windows.ps1"
   File "..\install\lib\verify-windows-only.ps1"
+  File "..\install\lib\v2rayn-repair.ps1"
   SetOutPath "$INSTDIR\assets"
   File /nonfatal "..\install\assets\v2rayN-windows-64-desktop-portable.zip"
   File /nonfatal "..\install\assets\node-v24.16.0-x64.msi"
@@ -134,6 +136,9 @@ Section "主程序" SecMain
   CreateShortcut  "$SMPROGRAMS\${APPNAME}\一键安装 Codex + Claude Code.lnk" \
                   "$INSTDIR\一键安装-Codex-Claude-Code.cmd" "" "$SYSDIR\cmd.exe" 0 \
                   SW_SHOWNORMAL "" "自动检测依赖、代理并安装 Codex 与 Claude Code"
+  CreateShortcut  "$SMPROGRAMS\${APPNAME}\v2rayN 急救修复.lnk" \
+                  "$INSTDIR\v2rayN-急救修复.cmd" "" "$SYSDIR\cmd.exe" 0 \
+                  SW_SHOWNORMAL "" "重置本机代理和网络栈，重新打开 v2rayN"
   CreateShortcut  "$SMPROGRAMS\${APPNAME}\紧急恢复网络.lnk" \
                   "$INSTDIR\紧急恢复网络-关闭Windows代理.cmd" "" "$SYSDIR\cmd.exe" 0 \
                   SW_SHOWNORMAL "" "关闭 Windows 系统代理，恢复直连网络"
@@ -155,6 +160,7 @@ Section "Uninstall"
   Delete "$INSTDIR\install.bat"
   Delete "$INSTDIR\update.bat"
   Delete "$INSTDIR\一键安装-Codex-Claude-Code.cmd"
+  Delete "$INSTDIR\v2rayN-急救修复.cmd"
   Delete "$INSTDIR\紧急恢复网络-关闭Windows代理.cmd"
   Delete "$INSTDIR\START-ONECLICK.cmd"
   Delete "$INSTDIR\EMERGENCY-PROXY-RESET.cmd"
@@ -162,6 +168,7 @@ Section "Uninstall"
   Delete "$INSTDIR\README-Windows-OneClick.txt"
   Delete "$INSTDIR\lib\oneclick-windows.ps1"
   Delete "$INSTDIR\lib\verify-windows-only.ps1"
+  Delete "$INSTDIR\lib\v2rayn-repair.ps1"
   RMDir  "$INSTDIR\lib"
   Delete "$INSTDIR\assets\v2rayN-windows-64-desktop-portable.zip"
   Delete "$INSTDIR\assets\node-v24.16.0-x64.msi"
@@ -174,6 +181,7 @@ Section "Uninstall"
 
   ; 删除开始菜单
   Delete "$SMPROGRAMS\${APPNAME}\一键安装 Codex + Claude Code.lnk"
+  Delete "$SMPROGRAMS\${APPNAME}\v2rayN 急救修复.lnk"
   Delete "$SMPROGRAMS\${APPNAME}\紧急恢复网络.lnk"
   Delete "$SMPROGRAMS\${APPNAME}\更新 Claude Code.lnk"
   Delete "$SMPROGRAMS\${APPNAME}\卸载.lnk"
