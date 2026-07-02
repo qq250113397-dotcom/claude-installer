@@ -72,6 +72,23 @@
               <strong style="color:var(--text-primary);">MacBook / macOS：</strong>如果提示「无法验证开发者」，先到「系统设置 → 隐私与安全性」里点「仍要打开」；如果提示「已损坏，无法打开」，通常是下载不完整，重新下载对应的 ARM64 / Intel 版本最稳。
             </div>
             <div style="margin-top:12px; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); color:var(--text-secondary); font-size:0.88rem; line-height:1.7;">
+              <strong style="color:var(--text-primary);">MacBook 终端自救（自动找 v2rayN.app）：</strong>
+              <p style="margin:8px 0 0;">把下面整段复制到「终端」里回车，它会先在常见位置自动找 `v2rayN.app`，找到后去掉系统隔离，再打开应用。</p>
+              <div class="code-block" style="margin-top:10px; white-space:pre-wrap; word-break:break-all;">APP="$(mdfind "kMDItemFSName == 'v2rayN.app'" | head -n 1)"
+if [ -z "$APP" ]; then
+  for d in "$HOME/Downloads" "$HOME/Desktop" "/Applications" "/Volumes"; do
+    APP="$(find "$d" -name 'v2rayN.app' -type d -prune 2>/dev/null | head -n 1)"
+    [ -n "$APP" ] &amp;&amp; break
+  done
+fi
+if [ -z "$APP" ]; then
+  echo "没找到 v2rayN.app，请先把它放到下载目录、桌面或应用程序里再运行。"
+else
+  sudo xattr -dr com.apple.quarantine "$APP" &amp;&amp; open "$APP"
+fi</div>
+              <p style="margin:8px 0 0; font-size:0.8rem; color:var(--text-muted);">如果还是打不开，先确认下载的是正确芯片版本，再重新下载一次最稳。</p>
+            </div>
+            <div style="margin-top:12px; padding:12px 16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius-sm); color:var(--text-secondary); font-size:0.88rem; line-height:1.7;">
               <strong style="color:var(--text-primary);">苹果手机小火箭说明：</strong>Shadowrocket 需要在美区 App Store 购买，注册美区 ID 的细节放在后面的手机视频里。
             </div>
           </div>
